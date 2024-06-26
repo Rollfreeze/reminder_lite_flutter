@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:reminder_lite/services/router.dart';
 
 void main() {
@@ -13,6 +14,15 @@ class MainApp extends StatelessWidget {
     return CupertinoApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ru'),
+      ],
     );
   }
 }
