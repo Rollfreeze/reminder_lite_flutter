@@ -1,6 +1,18 @@
 {
-  "helloWorld": "Hello World!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
+  "today": "Today",
+  "@today": {
+    "description": "Today's reminders"
+  },
+  "forMonth": "For a month",
+  "@forMonth": {
+    "description": "Current month's reminders"
+  },
+  "all": "All",
+  "@today": {
+    "description": "All reminders"
+  },
+  "done": "Done",
+  "@today": {
+    "description": "Done reminders"
   }
 }
