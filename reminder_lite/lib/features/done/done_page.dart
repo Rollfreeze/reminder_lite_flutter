@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FinishedPage extends StatelessWidget {
-  const FinishedPage({super.key});
+class DonePage extends StatelessWidget {
+  const DonePage({super.key});
 
   @override
   Widget build(BuildContext context) {
