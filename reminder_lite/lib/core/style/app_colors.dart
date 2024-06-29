@@ -17,4 +17,5 @@ abstract class AppColors {
   static const text1 = Color(0xFF000000);
   static const text2 = Color(0xFF3A3A3C);
   static const text3 = Color(0xFF8E8E93);
+  static const textDefault = Color(0xFF333334);
 }
