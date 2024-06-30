@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/features/all/all_page.dart';
 import 'package:reminder_lite/features/done/done_page.dart';
 import 'package:reminder_lite/features/home/pages/home_page.dart';
