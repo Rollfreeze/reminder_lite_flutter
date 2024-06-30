@@ -9,7 +9,7 @@ import 'package:reminder_lite/features/today/today_page.dart';
 
 const kHome = '/';
 const kAll = 'all';
-const kFinished = 'finished';
+const kDone = 'done';
 const kMonth = 'month';
 const kToday = 'today';
 
@@ -31,7 +31,7 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: kFinished,
+            path: kDone,
             builder: (BuildContext context, GoRouterState state) {
               return const DonePage();
             },
