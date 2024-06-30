@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reminder_lite/core/services/localization_service.dart';
 
 class ForMonthPage extends StatelessWidget {
   const ForMonthPage({super.key});
@@ -9,7 +9,7 @@ class ForMonthPage extends StatelessWidget {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(),
       child: Center(
-        child: Text(AppLocalizations.of(context)!.forMonth),
+        child: Text(LocalizationService.locale.forMonth),
       ),
     );
   }

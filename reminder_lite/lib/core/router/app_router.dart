@@ -20,6 +20,7 @@ class AppRouter {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
+          LocalizationService.init(context);
           return const HomePage();
         },
         routes: <RouteBase>[
