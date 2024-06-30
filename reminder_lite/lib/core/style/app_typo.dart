@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 
-class AppTypo {
+abstract class AppTypo {
   static const semibold32 = TextStyle(
     color: AppColors.textDefault,
     fontWeight: FontWeight.w600,
