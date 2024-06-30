@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
+/// App colors keep class.
 abstract class AppColors {
   /// Primary.
   static const white = Color(0xFFFFFFFF);
