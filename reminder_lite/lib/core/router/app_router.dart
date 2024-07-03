@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/features/all/all_page.dart';
 import 'package:reminder_lite/features/done/done_page.dart';
 import 'package:reminder_lite/features/home/pages/home_page.dart';
 import 'package:reminder_lite/features/for_month/for_month_page.dart';
+import 'package:reminder_lite/features/home/pages/home_page_di_wrapper.dart';
 import 'package:reminder_lite/features/today/today_page.dart';
 
 const kHome = '/';
@@ -20,8 +20,9 @@ class AppRouter {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          LocalizationService.init(context);
-          return const HomePage();
+          return const HomePageDiWrapper(
+            child: HomePage(),
+          );
         },
         routes: <RouteBase>[
           GoRoute(

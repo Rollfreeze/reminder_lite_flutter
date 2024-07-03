@@ -21,19 +21,19 @@ class CategoriesRowItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        borderRadius: AppRadius.radius8,
-        color: !isActive ? AppColors.white : color,
-        boxShadow: !isActive
-            ? null
-            : [BoxShadow(blurRadius: 10, color: color.withOpacity(0.25))],
-      ),
-      child: Center(
-        child: Text(
-          name,
-          style: AppTypo.semibold16
-              .copyWith(color: !isActive ? AppColors.text3 : AppColors.white),
+    return GestureDetector(
+      onTap: onPressed,
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: AppRadius.radius8,
+          color: !isActive ? AppColors.white : color,
+          boxShadow: !isActive ? null : [BoxShadow(blurRadius: 10, color: color.withOpacity(0.25))],
+        ),
+        child: Center(
+          child: Text(
+            name,
+            style: AppTypo.semibold16.copyWith(color: !isActive ? AppColors.text3 : AppColors.white),
+          ),
         ),
       ),
     );
