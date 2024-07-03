@@ -1,16 +1,40 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/categories_row.dart';
 
 /// A section with reminder categories progress on [HomePage].
 class ProgressSection extends StatelessWidget {
-  const ProgressSection({super.key});
+  /// On [TodayCategory] pressed.
+  final VoidCallback onTodayPressed;
+
+  /// On [ForMonthCategory] pressed.
+  final VoidCallback onForMonthPressed;
+
+  /// on [AllCategory] pressed.
+  final VoidCallback onAllPressed;
+
+  /// A chosen reminder category to show.
+  final ReminderCategory selectedCategory;
+
+  const ProgressSection({
+    super.key,
+    required this.onTodayPressed,
+    required this.onForMonthPressed,
+    required this.onAllPressed,
+    required this.selectedCategory,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CategoriesRow(),
+        CategoriesRow(
+          onTodayPressed: onTodayPressed,
+          onForMonthPressed: onForMonthPressed,
+          onAllPressed: onAllPressed,
+          selectedCategory: selectedCategory,
+        ),
       ],
     );
   }

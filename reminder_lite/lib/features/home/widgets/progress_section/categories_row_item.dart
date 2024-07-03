@@ -9,12 +9,14 @@ class CategoriesRowItem extends StatelessWidget {
   final String name;
   final Color color;
   final VoidCallback onPressed;
+  final bool isActive;
 
   const CategoriesRowItem({
     super.key,
     required this.name,
     required this.color,
     required this.onPressed,
+    required this.isActive,
   });
 
   @override
@@ -22,18 +24,16 @@ class CategoriesRowItem extends StatelessWidget {
     return DecoratedBox(
       decoration: BoxDecoration(
         borderRadius: AppRadius.radius8,
-        color: color,
-        boxShadow: [
-          BoxShadow(
-            blurRadius: 10,
-            color: color.withOpacity(0.25),
-          ),
-        ],
+        color: !isActive ? AppColors.white : color,
+        boxShadow: !isActive
+            ? null
+            : [BoxShadow(blurRadius: 10, color: color.withOpacity(0.25))],
       ),
       child: Center(
         child: Text(
           name,
-          style: AppTypo.semibold16.copyWith(color: AppColors.white),
+          style: AppTypo.semibold16
+              .copyWith(color: !isActive ? AppColors.text3 : AppColors.white),
         ),
       ),
     );
