@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/categories_row.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle.dart';
+import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle_section.dart';
 
 /// A section with reminder categories progress on [HomePage].
 class ProgressSection extends StatelessWidget {
@@ -38,7 +38,7 @@ class ProgressSection extends StatelessWidget {
           selectedCategory: selectedCategory,
         ),
         const SizedBox(height: 18),
-        const ProgressCircle(),
+        const ProgressCircleSection(),
       ],
     );
   }
