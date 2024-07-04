@@ -2,49 +2,39 @@ import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reminder_lite/features/all/all_page.dart';
 import 'package:reminder_lite/features/done/done_page.dart';
-import 'package:reminder_lite/features/home/pages/home_page.dart';
 import 'package:reminder_lite/features/for_month/for_month_page.dart';
-import 'package:reminder_lite/features/home/pages/home_page_di_wrapper.dart';
+import 'package:reminder_lite/features/home/pages/home_page_route.dart';
 import 'package:reminder_lite/features/today/today_page.dart';
 
-const kHome = '/';
-const kAll = 'all';
-const kDone = 'done';
-const kMonth = 'month';
-const kToday = 'today';
-
 class AppRouter {
-  /// The route configuration.
   static final _router = GoRouter(
     routes: <RouteBase>[
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return const HomePageDiWrapper(
-            child: HomePage(),
-          );
+          return const HomePageRoute();
         },
         routes: <RouteBase>[
           GoRoute(
-            path: kAll,
+            path: 'all',
             builder: (BuildContext context, GoRouterState state) {
               return const AllPage();
             },
           ),
           GoRoute(
-            path: kDone,
+            path: 'done',
             builder: (BuildContext context, GoRouterState state) {
               return const DonePage();
             },
           ),
           GoRoute(
-            path: kMonth,
+            path: 'month',
             builder: (BuildContext context, GoRouterState state) {
               return const ForMonthPage();
             },
           ),
           GoRoute(
-            path: kToday,
+            path: 'today',
             builder: (BuildContext context, GoRouterState state) {
               return const TodayPage();
             },
