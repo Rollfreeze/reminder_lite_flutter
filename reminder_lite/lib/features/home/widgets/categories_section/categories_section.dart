@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reminder_lite/features/home/pages/home_page.dart';
-import 'package:reminder_lite/features/home/widgets/category_button.dart';
+import 'package:reminder_lite/features/home/widgets/categories_section/category_button.dart';
 
 /// A section with all reminder categories on [HomePage].
 class CategoriesSection extends StatelessWidget {
