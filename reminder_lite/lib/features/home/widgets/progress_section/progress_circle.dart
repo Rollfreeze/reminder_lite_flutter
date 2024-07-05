@@ -13,13 +13,15 @@ class ProgressCirclePainter extends CustomPainter {
     this.centerMessage,
   }) : assert(total >= done, "total can't be less than done");
 
+  static const _outerCircleLineWidth = 35;
+
   @override
   void paint(Canvas canvas, Size size) {
     final whitePaint = Paint()..color = AppColors.white;
     final grayPaint = Paint()..color = AppColors.gray6;
 
     final center = Offset(size.width / 2, size.height / 2);
-    final innerRadius = size.width / 2 - 35;
+    final innerRadius = size.width / 2 - _outerCircleLineWidth;
 
     /// Outer circle.
     canvas.drawCircle(center, size.width / 2, grayPaint);
