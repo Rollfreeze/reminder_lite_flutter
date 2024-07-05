@@ -8,12 +8,20 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_se
 
 /// A circle with reminder progress category for [ProgressSection].
 class ProgressCircleSection extends StatelessWidget {
-  const ProgressCircleSection({super.key});
+  /// Completed category reminders.
+  final int completed;
+
+  /// Total category reminders.
+  final int total;
+
+  const ProgressCircleSection({
+    super.key,
+    required this.completed,
+    required this.total,
+  });
 
   @override
   Widget build(BuildContext context) {
-    const completed = 50;
-    const total = 100;
     return SizedBox(
       height: 260,
       child: DecoratedBox(

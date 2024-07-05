@@ -6,9 +6,16 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_ci
 
 /// A custom painter circle for [ProgressCircle].
 class ProgressCirclePainter extends CustomPainter {
+  /// Completed category reminders.
   final int completed;
+
+  /// Total category reminders.
   final int total;
+
+  /// A color of the progress curve.
   final Color curveColor;
+
+  /// An optional message on the center.
   final String? centerMessage;
 
   const ProgressCirclePainter({
