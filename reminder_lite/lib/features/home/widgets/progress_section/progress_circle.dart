@@ -19,10 +19,13 @@ class ProgressCirclePainter extends CustomPainter {
     final grayPaint = Paint()..color = AppColors.gray6;
 
     final center = Offset(size.width / 2, size.height / 2);
+    final innerRadius = size.width / 2 - 35;
+
+    /// Outer circle.
+    canvas.drawCircle(center, size.width / 2, grayPaint);
 
     /// Inner circle.
-    canvas.drawCircle(center, center.dx, grayPaint);
-    canvas.drawCircle(center, center.dx - 40, whitePaint);
+    canvas.drawCircle(center, innerRadius, whitePaint);
 
     _maybeDrawText(
       canvas: canvas,
@@ -30,6 +33,7 @@ class ProgressCirclePainter extends CustomPainter {
       dx: center.dx,
       dy: center.dy,
       centerMessage: centerMessage,
+      innerRadius: innerRadius * 2,
     );
   }
 
@@ -43,6 +47,7 @@ class ProgressCirclePainter extends CustomPainter {
     required double dx,
     required double dy,
     required String? centerMessage,
+    required double innerRadius,
   }) {
     if (centerMessage == null) return;
 
@@ -55,7 +60,7 @@ class ProgressCirclePainter extends CustomPainter {
       text: textSpan,
       textDirection: TextDirection.ltr,
       textAlign: TextAlign.center,
-    )..layout(maxWidth: size.width);
+    )..layout(maxWidth: innerRadius);
 
     final textPoint = Offset(
       dx - textPainter.size.width / 2,
