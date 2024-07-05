@@ -29,6 +29,7 @@ class ProgressCirclePainter extends CustomPainter {
     /// Inner circle.
     canvas.drawCircle(center, innerRadius, whitePaint);
 
+    /// Draws a centred message.
     _maybeDrawText(
       canvas: canvas,
       size: size,
@@ -42,7 +43,6 @@ class ProgressCirclePainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
-  /// draws a centred message.
   void _maybeDrawText({
     required Canvas canvas,
     required Size size,
