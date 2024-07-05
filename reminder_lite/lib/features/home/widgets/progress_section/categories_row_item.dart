@@ -27,12 +27,15 @@ class CategoriesRowItem extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: AppRadius.radius8,
           color: !isActive ? AppColors.white : color,
-          boxShadow: !isActive ? null : [BoxShadow(blurRadius: 10, color: color.withOpacity(0.25))],
+          boxShadow: !isActive
+              ? null
+              : [BoxShadow(blurRadius: 10, color: color.withOpacity(0.25))],
         ),
         child: Center(
           child: Text(
             name,
-            style: AppTypo.semibold16.copyWith(color: !isActive ? AppColors.text3 : AppColors.white),
+            style: AppTypo.semibold16
+                .copyWith(color: !isActive ? AppColors.text3 : AppColors.white),
           ),
         ),
       ),

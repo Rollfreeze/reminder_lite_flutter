@@ -4,14 +4,14 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_ci
 
 /// A progress circle for [ProgressCircleSection].
 class ProgressCircle extends StatelessWidget {
-  final int done;
+  final int completed;
   final int total;
   final Color curveColor;
   final String? centerMessage;
 
   const ProgressCircle({
     super.key,
-    required this.done,
+    required this.completed,
     required this.total,
     required this.curveColor,
     this.centerMessage,
@@ -21,7 +21,7 @@ class ProgressCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: ProgressCirclePainter(
-        done: done,
+        completed: completed,
         total: total,
         centerMessage: centerMessage,
         curveColor: curveColor,

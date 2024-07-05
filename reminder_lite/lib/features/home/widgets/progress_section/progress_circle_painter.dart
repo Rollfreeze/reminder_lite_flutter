@@ -6,17 +6,19 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_ci
 
 /// A custom painter circle for [ProgressCircle].
 class ProgressCirclePainter extends CustomPainter {
-  final int done;
+  final int completed;
   final int total;
   final Color curveColor;
   final String? centerMessage;
 
   const ProgressCirclePainter({
-    required this.done,
+    required this.completed,
     required this.total,
     required this.curveColor,
     this.centerMessage,
-  }) : assert(total >= done, "Total can't be less than done");
+  })  : assert(total >= completed, "Total can't be less than completed"),
+        assert(completed >= 0, "Completed can't be less than 0"),
+        assert(total >= 0, "total can't be less than 0");
 
   static const _outerCircleLineWidth = 35;
 
@@ -40,7 +42,6 @@ class ProgressCirclePainter extends CustomPainter {
       canvas: canvas,
       size: size,
       center: center,
-      curveColor: curveColor,
     );
 
     /// Inner circle.
@@ -63,17 +64,19 @@ class ProgressCirclePainter extends CustomPainter {
   void _drawProgressCurve({
     required Canvas canvas,
     required Size size,
-    required Color curveColor,
     required Offset center,
   }) {
-    const degrees90 = 3 * pi / 2;
+    const startAngle = 3 * pi / 2;
     const degrees1 = pi / 180;
     final curvePaint = Paint()..color = curveColor;
+    final completedPercent = completed * 100 / total;
+    final progressCurvePercent = 360 * completedPercent / 100;
+    final sweepAngle = degrees1 * progressCurvePercent;
 
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: size.width / 2),
-      degrees90,
-      degrees1 * 270,
+      startAngle,
+      sweepAngle,
       true,
       curvePaint,
     );

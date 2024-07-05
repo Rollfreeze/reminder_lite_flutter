@@ -12,8 +12,8 @@ class ProgressCircleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const done = 3;
-    const total = 7;
+    const completed = 50;
+    const total = 100;
     return SizedBox(
       height: 260,
       child: DecoratedBox(
@@ -25,15 +25,12 @@ class ProgressCircleSection extends StatelessWidget {
         child: Center(
           child: SizedBox.square(
             dimension: 218,
-            child: ColoredBox(
-              color: AppColors.black,
-              child: ProgressCircle(
-                done: done,
-                total: total,
-                curveColor: AppColors.red,
-                centerMessage:
-                    '${LocalizationService.locale.completed}:\n$done ${LocalizationService.locale.from} $total',
-              ),
+            child: ProgressCircle(
+              completed: completed,
+              total: total,
+              curveColor: AppColors.red,
+              centerMessage:
+                  '${LocalizationService.locale.completed}:\n$completed ${LocalizationService.locale.from} $total',
             ),
           ),
         ),
