@@ -8,11 +8,19 @@
     "description": "Current month's reminders"
   },
   "all": "All",
-  "@today": {
+  "@all": {
     "description": "All reminders"
   },
   "done": "Done",
-  "@today": {
+  "@done": {
     "description": "Done reminders"
+  },
+  "completed": "Completed",
+  "@completed": {
+    "description": "Completed progroess of reminder category"
+  },
+  "from": "from",
+  "@from": {
+    "description": "The source of some things"
   }
 }
