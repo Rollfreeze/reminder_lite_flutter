@@ -30,6 +30,7 @@ class ProgressCircleSection extends StatelessWidget {
               child: ProgressCircle(
                 done: done,
                 total: total,
+                curveColor: AppColors.red,
                 centerMessage:
                     '${LocalizationService.locale.completed}:\n$done ${LocalizationService.locale.from} $total',
               ),
