@@ -30,8 +30,8 @@ class ProgressCircle extends StatelessWidget {
       painter: ProgressCirclePainter(
         completed: completed,
         total: total,
-        centerMessage: centerMessage,
         curveColor: curveColor,
+        centerMessage: centerMessage,
       ),
     );
   }
