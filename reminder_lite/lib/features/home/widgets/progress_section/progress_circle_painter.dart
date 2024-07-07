@@ -111,6 +111,33 @@ class ProgressCirclePainter extends CustomPainter {
     );
   }
 
+  void _drawHeadShadow({
+    required Canvas canvas,
+    required Size size,
+    required double headRadius,
+  }) {
+    if (completed >= 100) return;
+
+    const elevation = 3.5;
+    final shadowPath = Path()
+      ..addArc(
+        Rect.fromCenter(
+          center: Offset(size.width / 2 - headRadius - elevation, 0),
+          width: headRadius * 2,
+          height: headRadius * 2,
+        ),
+        0,
+        2 * pi,
+      );
+
+    canvas.drawShadow(
+      shadowPath,
+      curveColor.withOpacity(0.85),
+      elevation,
+      true,
+    );
+  }
+
   void _drawProgressHead({
     required Canvas canvas,
     required Size size,
@@ -123,6 +150,20 @@ class ProgressCirclePainter extends CustomPainter {
     canvas.translate(center.dx, center.dy);
     canvas.rotate(-pi / 2);
     canvas.rotate(_progressSweepAngle);
+
+    _drawHeadShadow(
+      canvas: canvas,
+      size: size,
+      headRadius: headRadius,
+    );
+
+    canvas.drawCircle(
+      Offset(size.width / 2 - headRadius, 0),
+      headRadius,
+      headPaint,
+    );
+
+    canvas.rotate(- pi / 30);
 
     canvas.drawCircle(
       Offset(size.width / 2 - headRadius, 0),
