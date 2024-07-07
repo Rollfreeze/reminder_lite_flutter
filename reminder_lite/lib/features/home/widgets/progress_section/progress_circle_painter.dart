@@ -83,7 +83,7 @@ class ProgressCirclePainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 
-  double get sweepAngle {
+  double get _progressSweepAngle {
     const oneDegree = pi / 180;
     final completedPercent = completed * 100 / total;
     final progressCurvePercent = 360 * completedPercent / 100;
@@ -105,7 +105,7 @@ class ProgressCirclePainter extends CustomPainter {
         radius: size.width / 2,
       ),
       startAngle,
-      sweepAngle,
+      _progressSweepAngle,
       true,
       curvePaint,
     );
@@ -121,7 +121,7 @@ class ProgressCirclePainter extends CustomPainter {
     final headPaint = Paint()..color = curveColor;
 
     canvas.translate(center.dx, center.dy);
-    canvas.rotate(sweepAngle);
+    canvas.rotate(_progressSweepAngle);
     canvas.translate(-center.dx, -center.dy);
 
     canvas.drawCircle(
