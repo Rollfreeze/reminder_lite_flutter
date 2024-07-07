@@ -45,15 +45,12 @@ class ProgressCircleSection extends StatelessWidget {
         child: Center(
           child: SizedBox.square(
             dimension: 218,
-            child: ColoredBox(
-              color: AppColors.gray2,
-              child: ProgressCircle(
-                completed: completed,
-                total: total,
-                curveColor: _curveColor,
-                centerMessage:
-                    '${LocalizationService.locale.completed}:\n$completed ${LocalizationService.locale.from} $total',
-              ),
+            child: ProgressCircle(
+              completed: completed,
+              total: total,
+              curveColor: _curveColor,
+              centerMessage:
+                  '${LocalizationService.locale.completed}:\n$completed ${LocalizationService.locale.from} $total',
             ),
           ),
         ),
