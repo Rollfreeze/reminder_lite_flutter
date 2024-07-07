@@ -9,18 +9,18 @@ part 'progress_bloc.freezed.dart';
 
 final _mock = [
   ProgressCircleModel(
-    total: 5,
+    total: 10,
     completed: 4,
     category: TodayCategory(),
   ),
   ProgressCircleModel(
-    total: 8,
-    completed: 7,
+    total: 20,
+    completed: 16,
     category: ForMonthCategory(),
   ),
   ProgressCircleModel(
-    total: 10,
-    completed: 7,
+    total: 30,
+    completed: 20,
     category: AllCategory(),
   ),
 ];
