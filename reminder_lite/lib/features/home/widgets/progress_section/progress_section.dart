@@ -33,45 +33,39 @@ class _ProgressSectionState extends State<ProgressSection> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProgressBloc, ProgressState>(
-      listener: (_, state) {},
-      builder: (_, state) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            CategoriesRow(
-              onTodayPressed: () => _animateToPage(0),
-              onForMonthPressed: () => _animateToPage(1),
-              onAllPressed: () => _animateToPage(2),
-              selectedCategory: state.category,
-            ),
-            const SizedBox(height: 18),
-            ProgressCircleSection(
-              items: state.items,
-              controller: _controller,
-              onPageChanged: _onPageChanged,
-            ),
-          ],
-        );
-      },
+    return BlocBuilder<ProgressBloc, ProgressState>(
+      builder: (_, state) => Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          CategoriesRow(
+            onTodayPressed: () => _animateToPage(0),
+            onForMonthPressed: () => _animateToPage(1),
+            onAllPressed: () => _animateToPage(2),
+            selectedCategory: state.category,
+          ),
+          const SizedBox(height: 18),
+          ProgressCircleSection(
+            items: state.items,
+            controller: _controller,
+            onPageChanged: _onPageChanged,
+          ),
+        ],
+      ),
     );
   }
 
+  void _onPageSelect(int index) => switch (index) {
+        0 => _bloc.add(ProgressEvent.selectedCategory(TodayCategory())),
+        1 => _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory())),
+        2 => _bloc.add(ProgressEvent.selectedCategory(AllCategory())),
+        _ => null,
+      };
+
   void _animateToPage(int index) {
     if (index == _controller.page) return;
-
-    switch (index) {
-      case 0:
-        _bloc.add(ProgressEvent.selectedCategory(TodayCategory()));
-      case 1:
-        _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory()));
-      case 2:
-        _bloc.add(ProgressEvent.selectedCategory(AllCategory()));
-    }
-
+    _onPageSelect(index);
     _desirePage = index;
-
     _controller.animateToPage(
       index,
       duration: const Duration(milliseconds: 750),
@@ -85,12 +79,6 @@ class _ProgressSectionState extends State<ProgressSection> {
       _desirePage = null;
       return;
     }
-
-    return switch (index) {
-      0 => _bloc.add(ProgressEvent.selectedCategory(TodayCategory())),
-      1 => _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory())),
-      2 => _bloc.add(ProgressEvent.selectedCategory(AllCategory())),
-      _ => null,
-    };
+    _onPageSelect(index);
   }
 }
