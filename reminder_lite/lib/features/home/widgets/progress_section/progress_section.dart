@@ -61,6 +61,15 @@ class _ProgressSectionState extends State<ProgressSection> {
   void _animateToPage(int index) {
     if (index == _controller.page) return;
 
+    switch (index) {
+      case 0:
+        _bloc.add(ProgressEvent.selectedCategory(TodayCategory()));
+      case 1:
+        _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory()));
+      case 2:
+        _bloc.add(ProgressEvent.selectedCategory(AllCategory()));
+    }
+
     _desirePage = index;
 
     _controller.animateToPage(
@@ -71,12 +80,10 @@ class _ProgressSectionState extends State<ProgressSection> {
   }
 
   void _onPageChanged(int index) {
-    if ((_desirePage != null) && (index != _desirePage)) {
-      return;
-    }
-
-    if (_desirePage != null) {
+    if (_desirePage != null && index != _desirePage) return;
+    if (_desirePage != null && _desirePage == index) {
       _desirePage = null;
+      return;
     }
 
     return switch (index) {
