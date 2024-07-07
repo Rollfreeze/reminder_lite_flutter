@@ -62,7 +62,7 @@ class ProgressCirclePainter extends CustomPainter {
       whitePaint,
     );
 
-    // /// Draws a centred message.
+    /// Draws a centred message.
     _maybeDrawText(
       canvas: canvas,
       size: size,
@@ -72,6 +72,7 @@ class ProgressCirclePainter extends CustomPainter {
       innerRadius: innerCircleRadius * 2,
     );
 
+    /// Draws a progress curve rounded head.
     _drawProgressHead(
       canvas: canvas,
       size: size,
