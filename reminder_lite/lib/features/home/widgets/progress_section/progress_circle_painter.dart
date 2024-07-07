@@ -121,11 +121,11 @@ class ProgressCirclePainter extends CustomPainter {
     final headPaint = Paint()..color = curveColor;
 
     canvas.translate(center.dx, center.dy);
+    canvas.rotate(-pi / 2);
     canvas.rotate(_progressSweepAngle);
-    canvas.translate(-center.dx, -center.dy);
 
     canvas.drawCircle(
-      Offset(size.width / 2, headRadius),
+      Offset(size.width / 2 - headRadius, 0),
       headRadius,
       headPaint,
     );
