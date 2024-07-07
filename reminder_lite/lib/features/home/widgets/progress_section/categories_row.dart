@@ -9,6 +9,9 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_se
 
 /// A row with categories to select for [ProgressSection].
 class CategoriesRow extends StatelessWidget {
+  /// A chosen reminder category to show.
+  final ReminderCategory selectedCategory;
+
   /// On [TodayCategory] pressed.
   final VoidCallback onTodayPressed;
 
@@ -18,15 +21,12 @@ class CategoriesRow extends StatelessWidget {
   /// on [AllCategory] pressed.
   final VoidCallback onAllPressed;
 
-  /// A chosen reminder category to show.
-  final ReminderCategory selectedCategory;
-
   const CategoriesRow({
     super.key,
+    required this.selectedCategory,
     required this.onTodayPressed,
     required this.onForMonthPressed,
     required this.onAllPressed,
-    required this.selectedCategory,
   });
 
   @override

@@ -39,10 +39,10 @@ class _ProgressSectionState extends State<ProgressSection> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           CategoriesRow(
+            selectedCategory: state.category,
             onTodayPressed: () => _animateToPage(0),
             onForMonthPressed: () => _animateToPage(1),
             onAllPressed: () => _animateToPage(2),
-            selectedCategory: state.category,
           ),
           const SizedBox(height: 18),
           ProgressCircleSection(
