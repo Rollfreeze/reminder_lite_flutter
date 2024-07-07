@@ -71,6 +71,12 @@ class ProgressCirclePainter extends CustomPainter {
       centerMessage: centerMessage,
       innerRadius: innerCircleRadius * 2,
     );
+
+    _drawProgressHead(
+      canvas: canvas,
+      size: size,
+      center: center,
+    );
   }
 
   @override
@@ -82,11 +88,11 @@ class ProgressCirclePainter extends CustomPainter {
     required Offset center,
   }) {
     const startAngle = 3 * pi / 2;
-    const degrees1 = pi / 180;
+    const oneDegree = pi / 180;
     final curvePaint = Paint()..color = curveColor;
     final completedPercent = completed * 100 / total;
     final progressCurvePercent = 360 * completedPercent / 100;
-    final sweepAngle = degrees1 * progressCurvePercent;
+    final sweepAngle = oneDegree * progressCurvePercent;
 
     canvas.drawArc(
       Rect.fromCircle(
@@ -98,31 +104,30 @@ class ProgressCirclePainter extends CustomPainter {
       true,
       curvePaint,
     );
+  }
 
-    if (completedPercent <= 0) return;
+  void _drawProgressHead({
+    required Canvas canvas,
+    required Size size,
+    required Offset center,
+  }) {
+    if (completed <= 0) return;
+    const oneDegree = pi / 180;
+    final completedPercent = completed * 100 / total;
+    final progressCurvePercent = 360 * completedPercent / 100;
+    final sweepAngle = oneDegree * progressCurvePercent;
 
     const headRadius = _outerCircleLineWidth / 2;
+    final headPaint = Paint()..color = curveColor;
 
-    final curvePaint1 = Paint()..color = AppColors.blue;
-    // canvas.drawArc(
-    //   Rect.fromCircle(center: center, radius: _outerCircleLineWidth / 2),
-    //   startAngle,
-    //   sweepAngle,
-    //   true,
-    //   curvePaint1,
-    // );
+    canvas.translate(center.dx, center.dy);
+    canvas.rotate(sweepAngle);
+    canvas.translate(-center.dx, -center.dy);
 
     canvas.drawCircle(
-      // Offset(size.width - headRadius, size.height / 2),
-      Offset((size.width / 2) + size.width * 1 / 4, size.height / 4),
+      Offset(size.width / 2, headRadius),
       _outerCircleLineWidth / 2,
-      curvePaint1,
-    );
-
-    canvas.drawCircle(
-      Offset(size.width - headRadius, size.height / 2),
-      _outerCircleLineWidth / 2,
-      curvePaint1,
+      headPaint,
     );
   }
 

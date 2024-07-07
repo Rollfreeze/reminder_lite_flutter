@@ -40,7 +40,7 @@ class ProgressSection extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         ProgressCircleSection(
-          completed: 1,
+          completed: 3,
           total: 8,
           selectedCategory: selectedCategory,
         ),
