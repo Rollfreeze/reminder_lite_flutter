@@ -15,12 +15,18 @@
   "@done": {
     "description": "Done reminders"
   },
-  "completed": "Completed",
-  "@completed": {
-    "description": "Completed progroess of reminder category"
-  },
-  "from": "from",
-  "@from": {
-    "description": "The source of some things"
+  "completeAmount": "Completed:\n{completed} out of {total}",
+  "@completeAmount": {
+    "description": "How many reminders of the category are completed",
+    "placeholders": {
+      "completed": {
+        "type": "int",
+        "format": "compact"
+      },
+      "total": {
+        "type": "int",
+        "format": "compact"
+      }
+    }
   }
 }

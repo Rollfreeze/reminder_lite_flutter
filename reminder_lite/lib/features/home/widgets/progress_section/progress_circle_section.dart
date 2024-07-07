@@ -49,8 +49,7 @@ class ProgressCircleSection extends StatelessWidget {
               completed: completed,
               total: total,
               curveColor: _curveColor,
-              centerMessage:
-                  '${LocalizationService.locale.completed}:\n$completed ${LocalizationService.locale.from} $total',
+              centerMessage: LocalizationService.locale.completeAmount(completed, total),
             ),
           ),
         ),

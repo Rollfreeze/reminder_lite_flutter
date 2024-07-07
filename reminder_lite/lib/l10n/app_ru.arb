@@ -3,6 +3,5 @@
     "forMonth": "На месяц",
     "all": "Все",
     "done": "Завершено",
-    "completed": "Выполнено",
-    "from": "из"
+    "completeAmount": "Выполнено:\n{completed} из {total}"
 }
