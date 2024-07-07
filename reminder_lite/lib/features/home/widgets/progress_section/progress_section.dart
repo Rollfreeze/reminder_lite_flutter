@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reminder_lite/features/home/domain/models/progress_circle_model.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 import 'package:reminder_lite/features/home/pages/home_page.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/categories_row.dart';
@@ -18,12 +19,20 @@ class ProgressSection extends StatelessWidget {
   /// A chosen reminder category to show.
   final ReminderCategory selectedCategory;
 
+  /// Progress circles' items.
+  final List<ProgressCircleModel> items;
+
+  /// A circles' slider controller.
+  final PageController controller;
+
   const ProgressSection({
     super.key,
     required this.onTodayPressed,
     required this.onForMonthPressed,
     required this.onAllPressed,
     required this.selectedCategory,
+    required this.items,
+    required this.controller,
   });
 
   @override
@@ -40,9 +49,8 @@ class ProgressSection extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         ProgressCircleSection(
-          completed: 1,
-          total: 8,
-          selectedCategory: selectedCategory,
+          items: items,
+          controller: controller,
         ),
       ],
     );

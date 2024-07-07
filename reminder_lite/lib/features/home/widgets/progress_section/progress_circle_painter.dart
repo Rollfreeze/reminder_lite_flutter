@@ -6,11 +6,11 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_ci
 
 /// A custom painter circle for [ProgressCircle].
 class ProgressCirclePainter extends CustomPainter {
-  /// Completed category reminders.
-  final int completed;
-
   /// Total category reminders.
   final int total;
+
+  /// Completed category reminders.
+  final int completed;
 
   /// A color of the progress curve.
   final Color curveColor;
@@ -19,8 +19,8 @@ class ProgressCirclePainter extends CustomPainter {
   final String? centerMessage;
 
   const ProgressCirclePainter({
-    required this.completed,
     required this.total,
+    required this.completed,
     required this.curveColor,
     this.centerMessage,
   })  : assert(total >= completed, "Total can't be less than completed"),
