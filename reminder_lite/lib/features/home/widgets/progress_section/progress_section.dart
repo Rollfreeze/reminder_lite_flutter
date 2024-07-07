@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reminder_lite/features/home/domain/bloc/progress_bloc/progress_bloc.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
@@ -14,20 +14,23 @@ class ProgressSection extends StatefulWidget {
   State<ProgressSection> createState() => _ProgressSectionState();
 }
 
-class _ProgressSectionState extends State<ProgressSection> {
+class _ProgressSectionState extends State<ProgressSection> with TickerProviderStateMixin {
   final _controller = PageController();
+  late final TabController _tabController;
   late final ProgressBloc _bloc;
   int? _desirePage;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 3, vsync: this);
     _bloc = context.read<ProgressBloc>();
   }
 
   @override
   void dispose() {
     _controller.dispose();
+    _tabController.dispose();
     super.dispose();
   }
 
@@ -49,18 +52,22 @@ class _ProgressSectionState extends State<ProgressSection> {
             items: state.items,
             controller: _controller,
             onPageChanged: _onPageChanged,
+            tabController: _tabController,
           ),
         ],
       ),
     );
   }
 
-  void _onPageSelect(int index) => switch (index) {
-        0 => _bloc.add(ProgressEvent.selectedCategory(TodayCategory())),
-        1 => _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory())),
-        2 => _bloc.add(ProgressEvent.selectedCategory(AllCategory())),
-        _ => null,
-      };
+  void _onPageSelect(int index) {
+    _tabController.index = index;
+    return switch (index) {
+      0 => _bloc.add(ProgressEvent.selectedCategory(TodayCategory())),
+      1 => _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory())),
+      2 => _bloc.add(ProgressEvent.selectedCategory(AllCategory())),
+      _ => null,
+    };
+  }
 
   void _animateToPage(int index) {
     if (index == _controller.page) return;
