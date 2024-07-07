@@ -225,19 +225,26 @@ abstract class _SelectedCategory implements ProgressEvent {
 /// @nodoc
 mixin _$ProgressState {
   ReminderCategory get category => throw _privateConstructorUsedError;
+  List<ProgressCircleModel> get items => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ReminderCategory category) initial,
+    required TResult Function(
+            ReminderCategory category, List<ProgressCircleModel> items)
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ReminderCategory category)? initial,
+    TResult? Function(
+            ReminderCategory category, List<ProgressCircleModel> items)?
+        initial,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ReminderCategory category)? initial,
+    TResult Function(
+            ReminderCategory category, List<ProgressCircleModel> items)?
+        initial,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -269,7 +276,7 @@ abstract class $ProgressStateCopyWith<$Res> {
           ProgressState value, $Res Function(ProgressState) then) =
       _$ProgressStateCopyWithImpl<$Res, ProgressState>;
   @useResult
-  $Res call({ReminderCategory category});
+  $Res call({ReminderCategory category, List<ProgressCircleModel> items});
 }
 
 /// @nodoc
@@ -286,12 +293,17 @@ class _$ProgressStateCopyWithImpl<$Res, $Val extends ProgressState>
   @override
   $Res call({
     Object? category = null,
+    Object? items = null,
   }) {
     return _then(_value.copyWith(
       category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ReminderCategory,
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ProgressCircleModel>,
     ) as $Val);
   }
 }
@@ -304,7 +316,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({ReminderCategory category});
+  $Res call({ReminderCategory category, List<ProgressCircleModel> items});
 }
 
 /// @nodoc
@@ -319,12 +331,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? category = null,
+    Object? items = null,
   }) {
     return _then(_$InitialImpl(
       null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as ReminderCategory,
+      null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<ProgressCircleModel>,
     ));
   }
 }
@@ -332,14 +349,22 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl(this.category);
+  const _$InitialImpl(this.category, final List<ProgressCircleModel> items)
+      : _items = items;
 
   @override
   final ReminderCategory category;
+  final List<ProgressCircleModel> _items;
+  @override
+  List<ProgressCircleModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   String toString() {
-    return 'ProgressState.initial(category: $category)';
+    return 'ProgressState.initial(category: $category, items: $items)';
   }
 
   @override
@@ -348,11 +373,13 @@ class _$InitialImpl implements _Initial {
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            const DeepCollectionEquality().equals(other._items, _items));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, category);
+  int get hashCode => Object.hash(
+      runtimeType, category, const DeepCollectionEquality().hash(_items));
 
   @JsonKey(ignore: true)
   @override
@@ -363,27 +390,33 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(ReminderCategory category) initial,
+    required TResult Function(
+            ReminderCategory category, List<ProgressCircleModel> items)
+        initial,
   }) {
-    return initial(category);
+    return initial(category, items);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(ReminderCategory category)? initial,
+    TResult? Function(
+            ReminderCategory category, List<ProgressCircleModel> items)?
+        initial,
   }) {
-    return initial?.call(category);
+    return initial?.call(category, items);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(ReminderCategory category)? initial,
+    TResult Function(
+            ReminderCategory category, List<ProgressCircleModel> items)?
+        initial,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(category);
+      return initial(category, items);
     }
     return orElse();
   }
@@ -418,10 +451,13 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements ProgressState {
-  const factory _Initial(final ReminderCategory category) = _$InitialImpl;
+  const factory _Initial(final ReminderCategory category,
+      final List<ProgressCircleModel> items) = _$InitialImpl;
 
   @override
   ReminderCategory get category;
+  @override
+  List<ProgressCircleModel> get items;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
