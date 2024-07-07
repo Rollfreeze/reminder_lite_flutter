@@ -25,7 +25,7 @@ class ProgressCirclePainter extends CustomPainter {
     this.centerMessage,
   })  : assert(total >= completed, "Total can't be less than completed"),
         assert(completed >= 0, "Completed can't be less than 0"),
-        assert(total >= 0, "total can't be less than 0");
+        assert(total >= 0, "Total can't be less than 0");
 
   static const _outerCircleLineWidth = 35;
 
