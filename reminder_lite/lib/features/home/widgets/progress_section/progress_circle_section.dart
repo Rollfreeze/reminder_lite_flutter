@@ -14,10 +14,14 @@ class ProgressCircleSection extends StatelessWidget {
   /// A circles' slider controller.
   final PageController controller;
 
+  /// When changes a current circle page.
+  final ValueChanged<int> onPageChanged;
+
   const ProgressCircleSection({
     super.key,
     required this.items,
     required this.controller,
+    required this.onPageChanged,
   });
 
   @override
@@ -33,6 +37,7 @@ class ProgressCircleSection extends StatelessWidget {
         child: PageView.builder(
           controller: controller,
           itemCount: items.length,
+          onPageChanged: onPageChanged,
           itemBuilder: (_, index) => ProgressCircle(
             model: items[index],
           ),

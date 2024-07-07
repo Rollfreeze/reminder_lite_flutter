@@ -51,6 +51,12 @@ class _HomePageState extends State<HomePage> {
                     selectedCategory: state.category,
                     items: state.items,
                     controller: _controller,
+                    onPageChanged: (index) => switch (index) {
+                      0 => bloc.add(ProgressEvent.selectedCategory(TodayCategory())),
+                      1 => bloc.add(ProgressEvent.selectedCategory(ForMonthCategory())),
+                      2 => bloc.add(ProgressEvent.selectedCategory(AllCategory())),
+                      _ => null,
+                    },
                   );
                 },
               ),
