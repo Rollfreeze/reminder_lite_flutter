@@ -5,6 +5,7 @@ import 'package:reminder_lite/features/home/widgets/progress_section/progress_ci
 
 /// A progress circle for [ProgressCircleSection].
 class ProgressCircle extends StatelessWidget {
+  /// A model with information about its category progress.
   final ProgressCircleModel model;
 
   const ProgressCircle({
