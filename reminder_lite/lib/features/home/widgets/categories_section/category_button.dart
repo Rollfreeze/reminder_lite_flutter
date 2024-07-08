@@ -35,7 +35,7 @@ class CategoryButton extends StatelessWidget {
 
   CategoryButton.today({required this.count, required this.onTap, super.key})
       : icon = const Icon(
-          CupertinoIcons.rectangle,
+          CupertinoIcons.calendar_today,
           color: AppColors.white,
           size: _iconSize,
         ),

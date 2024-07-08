@@ -23,6 +23,7 @@ class ProgressCircle extends StatelessWidget {
           completed: model.completed,
           curveColor: model.curveColor,
           centerMessage: model.progressMessage,
+          headIcon: model.headIcon,
         ),
       ),
     );

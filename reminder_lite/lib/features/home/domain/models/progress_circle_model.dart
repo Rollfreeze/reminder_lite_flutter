@@ -15,10 +15,14 @@ class ProgressCircleModel {
   /// A chosen reminder category to show.
   final ReminderCategory category;
 
+  /// The head's icon.
+  final IconData headIcon;
+
   const ProgressCircleModel({
     required this.total,
     required this.completed,
     required this.category,
+    required this.headIcon,
   });
 
   /// Get the message about how many reminders are completed currently.

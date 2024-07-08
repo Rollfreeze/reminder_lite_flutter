@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
@@ -18,16 +19,26 @@ class ProgressCirclePainter extends CustomPainter {
   /// An optional message on the center.
   final String? centerMessage;
 
+  /// The outer circle line width.
+  final int outerCircleLineWidth;
+
+  /// The head's icon.
+  final IconData headIcon;
+
+  /// The head icon size.
+  final double headIconSize;
+
   const ProgressCirclePainter({
     required this.total,
     required this.completed,
     required this.curveColor,
     this.centerMessage,
+    required this.headIcon,
+    this.headIconSize = 15.0,
+    this.outerCircleLineWidth = 35,
   })  : assert(total >= completed, "Total can't be less than completed"),
         assert(completed >= 0, "Completed can't be less than 0"),
         assert(total >= 0, "Total can't be less than 0");
-
-  static const _outerCircleLineWidth = 35;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -37,7 +48,7 @@ class ProgressCirclePainter extends CustomPainter {
     final grayPaint = Paint()..color = AppColors.gray6;
 
     final outerCircleRadius = size.width / 2;
-    final innerCircleRadius = outerCircleRadius - _outerCircleLineWidth;
+    final innerCircleRadius = outerCircleRadius - outerCircleLineWidth;
 
     final center = Offset(outerCircleRadius, outerCircleRadius);
 
@@ -111,24 +122,78 @@ class ProgressCirclePainter extends CustomPainter {
     );
   }
 
+  void _rotateProgressClockwise({
+    required Canvas canvas,
+  }) {
+    canvas.rotate(-pi / 2);
+    canvas.rotate(_progressSweepAngle);
+  }
+
+  void _rotateProgressCounterclockwise({
+    required Canvas canvas,
+  }) {
+    canvas.rotate(-_progressSweepAngle);
+    canvas.rotate(pi / 2);
+  }
+
   void _drawProgressHead({
     required Canvas canvas,
     required Size size,
     required Offset center,
   }) {
     if (completed <= 0) return;
-    const headRadius = _outerCircleLineWidth / 2;
+    final headRadius = outerCircleLineWidth / 2;
     final headPaint = Paint()..color = curveColor;
 
+    final headPoint = Offset(size.width / 2 - headRadius, 0);
+
     canvas.translate(center.dx, center.dy);
-    canvas.rotate(-pi / 2);
-    canvas.rotate(_progressSweepAngle);
+    _rotateProgressClockwise(canvas: canvas);
 
     canvas.drawCircle(
-      Offset(size.width / 2 - headRadius, 0),
+      headPoint,
       headRadius,
       headPaint,
     );
+
+    _drawProgressHeadIcon(
+      headPoint: headPoint,
+      canvas: canvas,
+    );
+  }
+
+  void _drawProgressHeadIcon({
+    required Offset headPoint,
+    required Canvas canvas,
+  }) {
+    canvas.translate(headPoint.dx, headPoint.dy);
+    _rotateProgressCounterclockwise(canvas: canvas);
+
+    final pictureRecorder = PictureRecorder();
+    final iconCanvas = Canvas(pictureRecorder);
+
+    final iconPainter = TextPainter(
+      textDirection: TextDirection.ltr,
+    );
+
+    iconPainter.text = TextSpan(
+      text: String.fromCharCode(headIcon.codePoint),
+      style: TextStyle(
+        fontFamily: headIcon.fontFamily,
+        package: headIcon.fontPackage,
+        fontSize: headIconSize,
+        color: AppColors.white,
+      ),
+    );
+
+    iconPainter.layout();
+    iconPainter.paint(
+      iconCanvas,
+      Offset(-headIconSize / 2, -headIconSize / 2),
+    );
+
+    final picture = pictureRecorder.endRecording();
+    canvas.drawPicture(picture);
   }
 
   void _maybeDrawText({
