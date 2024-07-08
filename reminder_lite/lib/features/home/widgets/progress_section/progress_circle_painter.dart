@@ -169,6 +169,7 @@ class ProgressCirclePainter extends CustomPainter {
     canvas.translate(headPoint.dx, headPoint.dy);
     _rotateProgressCounterclockwise(canvas: canvas);
 
+    final iconOffset = -headIconSize / 2;
     final pictureRecorder = PictureRecorder();
     final iconCanvas = Canvas(pictureRecorder);
 
@@ -189,7 +190,7 @@ class ProgressCirclePainter extends CustomPainter {
     iconPainter.layout();
     iconPainter.paint(
       iconCanvas,
-      Offset(-headIconSize / 2, -headIconSize / 2),
+      Offset(iconOffset, iconOffset),
     );
 
     final picture = pictureRecorder.endRecording();
