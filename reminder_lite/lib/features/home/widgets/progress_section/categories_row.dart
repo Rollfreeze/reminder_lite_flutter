@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_radius.dart';
 import 'package:reminder_lite/core/style/app_shadows.dart';
@@ -45,8 +44,7 @@ class CategoriesRow extends StatelessWidget {
             children: [
               Flexible(
                 child: CategoriesRowItem(
-                  name: LocalizationService.locale.today,
-                  color: AppColors.blue,
+                  category: TodayCategory(),
                   onPressed: onTodayPressed,
                   isActive: selectedCategory is TodayCategory,
                 ),
@@ -54,8 +52,7 @@ class CategoriesRow extends StatelessWidget {
               const SizedBox(width: 14.5),
               Flexible(
                 child: CategoriesRowItem(
-                  name: LocalizationService.locale.forMonth,
-                  color: AppColors.red,
+                  category: ForMonthCategory(),
                   onPressed: onForMonthPressed,
                   isActive: selectedCategory is ForMonthCategory,
                 ),
@@ -63,8 +60,7 @@ class CategoriesRow extends StatelessWidget {
               const SizedBox(width: 14.5),
               Flexible(
                 child: CategoriesRowItem(
-                  name: LocalizationService.locale.all,
-                  color: AppColors.black,
+                  category: AllCategory(),
                   onPressed: onAllPressed,
                   isActive: selectedCategory is AllCategory,
                 ),

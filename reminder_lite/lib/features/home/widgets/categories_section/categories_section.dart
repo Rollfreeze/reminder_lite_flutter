@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
+import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 import 'package:reminder_lite/features/home/pages/home_page.dart';
 import 'package:reminder_lite/features/home/widgets/categories_section/category_button.dart';
 
@@ -15,14 +16,16 @@ class CategoriesSection extends StatelessWidget {
         Row(
           children: [
             Flexible(
-              child: CategoryButton.today(
+              child: CategoryButton(
+                category: TodayCategory(),
                 count: 10,
                 onTap: () => context.go('/today'),
               ),
             ),
             const SizedBox(width: 13),
             Flexible(
-              child: CategoryButton.forMonth(
+              child: CategoryButton(
+                category: ForMonthCategory(),
                 count: 20,
                 onTap: () => context.go('/month'),
               ),
@@ -33,14 +36,16 @@ class CategoriesSection extends StatelessWidget {
         Row(
           children: [
             Flexible(
-              child: CategoryButton.all(
+              child: CategoryButton(
+                category: AllCategory(),
                 count: 30,
                 onTap: () => context.go('/all'),
               ),
             ),
             const SizedBox(width: 13),
             Flexible(
-              child: CategoryButton.done(
+              child: CategoryButton(
+                category: DoneCategory(),
                 count: 40,
                 onTap: () => context.go('/done'),
               ),

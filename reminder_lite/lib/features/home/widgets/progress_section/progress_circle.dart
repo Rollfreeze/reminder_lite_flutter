@@ -21,9 +21,9 @@ class ProgressCircle extends StatelessWidget {
         painter: ProgressCirclePainter(
           total: model.total,
           completed: model.completed,
-          curveColor: model.curveColor,
           centerMessage: model.progressMessage,
-          headIcon: model.headIcon,
+          curveColor: model.category.color,
+          headIcon: model.category.icon,
         ),
       ),
     );
