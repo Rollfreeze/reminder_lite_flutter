@@ -3,5 +3,6 @@
     "forMonth": "На месяц",
     "all": "Все",
     "done": "Завершено",
-    "completeAmount": "Выполнено:\n{completed} из {total}"
+    "completeAmount": "Выполнено:\n{completed} из {total}",
+    "reminder": "Напоминание"
 }

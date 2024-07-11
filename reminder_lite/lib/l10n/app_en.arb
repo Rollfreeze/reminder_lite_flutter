@@ -28,5 +28,9 @@
         "format": "compact"
       }
     }
+  },
+  "reminder": "Reminder",
+  "@reminder": {
+    "description": "Reminder word"
   }
 }
