@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
+import 'package:reminder_lite/core/widgets/add_reminder_button.dart';
 import 'package:reminder_lite/features/home/widgets/categories_section/categories_section.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/progress_section.dart';
 
@@ -18,14 +19,25 @@ class HomePage extends StatelessWidget {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView(
-            children: const [
-              SizedBox(height: 10),
-              CupertinoSearchTextField(),
-              SizedBox(height: 25),
-              CategoriesSection(),
-              SizedBox(height: 25),
-              ProgressSection(),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: ListView(
+                  children: const [
+                    SizedBox(height: 10),
+                    CupertinoSearchTextField(),
+                    SizedBox(height: 25),
+                    CategoriesSection(),
+                    SizedBox(height: 25),
+                    ProgressSection(),
+                  ],
+                ),
+              ),
+              AddReminderButton(
+                onPressed: () {},
+              ),
             ],
           ),
         ),
