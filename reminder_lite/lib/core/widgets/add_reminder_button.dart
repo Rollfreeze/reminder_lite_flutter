@@ -3,7 +3,9 @@ import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
 
+/// A button to create new a reminder.
 class AddReminderButton extends StatelessWidget {
+  /// OnPressed callback.
   final VoidCallback onPressed;
 
   const AddReminderButton({
