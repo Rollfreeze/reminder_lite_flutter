@@ -32,5 +32,9 @@
   "reminder": "Reminder",
   "@reminder": {
     "description": "Reminder word"
+  },
+  "noReminders": "No Reminders",
+  "@noReminders": {
+    "description": "No any created Reminder in the category"
   }
 }

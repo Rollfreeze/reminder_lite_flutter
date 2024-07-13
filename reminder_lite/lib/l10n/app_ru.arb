@@ -4,5 +4,6 @@
     "all": "Все",
     "done": "Завершено",
     "completeAmount": "Выполнено:\n{completed} из {total}",
-    "reminder": "Напоминание"
+    "reminder": "Напоминание",
+    "noReminders": "Напоминаний нет"
 }
