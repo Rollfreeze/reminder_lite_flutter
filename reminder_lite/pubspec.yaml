@@ -26,6 +26,7 @@ dev_dependencies:
   flutter_lints: 3.0.0
   build_runner: 2.4.11
   freezed: 2.5.2
+  lakos: 2.0.4
 
 
 flutter:
