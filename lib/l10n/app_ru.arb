@@ -5,5 +5,8 @@
     "done": "Завершено",
     "completeAmount": "Выполнено:\n{completed} из {total}",
     "reminder": "Напоминание",
-    "noReminders": "Напоминаний нет"
+    "noReminders": "Напоминаний нет",
+    "morning": "Утром",
+    "afternoon": "Днем",
+    "tonight": "Вечером"
 }

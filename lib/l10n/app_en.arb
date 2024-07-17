@@ -36,5 +36,17 @@
   "noReminders": "No Reminders",
   "@noReminders": {
     "description": "No any created Reminder in the category"
+  },
+  "morning": "Morning",
+  "@morning": {
+    "description": "A new reminder will be created for the morning"
+  },
+  "afternoon": "Afternoon",
+  "@afternoon": {
+    "description": "A new reminder will be created for the afternoon"
+  },
+  "tonight": "Tonight",
+  "@tonight": {
+    "description": "A new reminder will be created for the evening"
   }
 }
