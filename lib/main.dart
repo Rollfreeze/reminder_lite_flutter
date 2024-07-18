@@ -4,9 +4,7 @@ import 'package:reminder_lite/l10n/l10n.dart';
 import 'package:reminder_lite/core/router/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-void main() {
-  runApp(const MainApp());
-}
+void main() => runApp(const MainApp());
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
