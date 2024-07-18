@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:reminder_lite/l10n/l10n.dart';
-import 'package:reminder_lite/core/router/app_router.dart';
+// import 'package:reminder_lite/core/router/app_router.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoApp.router(
       debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
+      // routerConfig: AppRouter().config,
       supportedLocales: L10n.all,
       localizationsDelegates: const [
         AppLocalizations.delegate,
