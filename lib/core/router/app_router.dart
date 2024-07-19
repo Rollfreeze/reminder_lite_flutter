@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:reminder_lite/features/all/all_page.dart';
 import 'package:reminder_lite/features/done/done_page.dart';
 import 'package:reminder_lite/features/for_month/for_month_page.dart';
@@ -16,9 +17,16 @@ class AppRouter extends _$AppRouter {
           path: '/',
           page: HomeRouteWrapper.page,
           children: [
-            AutoRoute(
+            CustomRoute(
               path: '',
               page: HomeRoute.page,
+              customRouteBuilder: (_, child, page) {
+                return MaterialWithModalsPageRoute(
+                  fullscreenDialog: page.fullscreenDialog,
+                  settings: page,
+                  builder: (_) => child,
+                );
+              },
             ),
             AutoRoute(
               path: 'all',

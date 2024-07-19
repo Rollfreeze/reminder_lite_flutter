@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/widgets/add_reminder_button.dart';
 import 'package:reminder_lite/features/home/widgets/categories_section/categories_section.dart';
@@ -38,7 +39,17 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               AddReminderButton(
-                onPressed: () {},
+                onPressed: () {
+                  showCupertinoModalBottomSheet(
+                    context: context,
+                    builder: (context) {
+                      return const ColoredBox(
+                        color: AppColors.blue,
+                        child: Column(),
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),
