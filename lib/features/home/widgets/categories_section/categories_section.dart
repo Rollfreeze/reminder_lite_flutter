@@ -1,5 +1,5 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 import 'package:reminder_lite/features/home/pages/home_page.dart';
 import 'package:reminder_lite/features/home/widgets/categories_section/category_button.dart';
@@ -19,7 +19,7 @@ class CategoriesSection extends StatelessWidget {
               child: CategoryButton(
                 category: TodayCategory(),
                 count: 10,
-                onTap: () => context.go('/today'),
+                onTap: () => context.router.pushNamed('today'),
               ),
             ),
             const SizedBox(width: 13),
@@ -27,7 +27,7 @@ class CategoriesSection extends StatelessWidget {
               child: CategoryButton(
                 category: ForMonthCategory(),
                 count: 20,
-                onTap: () => context.go('/month'),
+                onTap: () => context.router.pushNamed('month'),
               ),
             ),
           ],
@@ -39,7 +39,7 @@ class CategoriesSection extends StatelessWidget {
               child: CategoryButton(
                 category: AllCategory(),
                 count: 30,
-                onTap: () => context.go('/all'),
+                onTap: () => context.router.pushNamed('all'),
               ),
             ),
             const SizedBox(width: 13),
@@ -47,7 +47,7 @@ class CategoriesSection extends StatelessWidget {
               child: CategoryButton(
                 category: DoneCategory(),
                 count: 40,
-                onTap: () => context.go('/done'),
+                onTap: () => context.router.pushNamed('done'),
               ),
             ),
           ],

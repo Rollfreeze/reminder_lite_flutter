@@ -1,48 +1,52 @@
-import 'package:flutter/cupertino.dart';
-import 'package:go_router/go_router.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:reminder_lite/features/all/all_page.dart';
 import 'package:reminder_lite/features/done/done_page.dart';
 import 'package:reminder_lite/features/for_month/for_month_page.dart';
-import 'package:reminder_lite/features/home/pages/home_page_route.dart';
+import 'package:reminder_lite/features/home/pages/home_page.dart';
+import 'package:reminder_lite/features/home/pages/home_page_wrapper.dart';
 import 'package:reminder_lite/features/today/today_page.dart';
 
-class AppRouter {
-  static final _router = GoRouter(
-    routes: <RouteBase>[
-      GoRoute(
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) {
-          return const HomePageRoute();
-        },
-        routes: <RouteBase>[
-          GoRoute(
-            path: 'all',
-            builder: (BuildContext context, GoRouterState state) {
-              return const AllPage();
-            },
-          ),
-          GoRoute(
-            path: 'done',
-            builder: (BuildContext context, GoRouterState state) {
-              return const DonePage();
-            },
-          ),
-          GoRoute(
-            path: 'month',
-            builder: (BuildContext context, GoRouterState state) {
-              return const ForMonthPage();
-            },
-          ),
-          GoRoute(
-            path: 'today',
-            builder: (BuildContext context, GoRouterState state) {
-              return const TodayPage();
-            },
-          ),
-        ],
-      ),
-    ],
-  );
+part 'app_router.gr.dart';
 
-  static GoRouter get router => _router;
+@AutoRouterConfig(replaceInRouteName: 'Page,Route')
+class AppRouter extends _$AppRouter {
+  @override
+  List<AutoRoute> get routes => [
+        CupertinoRoute(
+          path: '/',
+          page: HomeRouteWrapper.page,
+          children: [
+            CustomRoute(
+              path: '',
+              page: HomeRoute.page,
+              title: (_, __) => '',
+              transitionsBuilder: TransitionsBuilders.slideBottom,
+              customRouteBuilder: (_, child, page) {
+                return MaterialWithModalsPageRoute(
+                  fullscreenDialog: page.fullscreenDialog,
+                  settings: page,
+                  builder: (_) => child,
+                );
+              },
+            ),
+            CupertinoRoute(
+              path: 'all',
+              page: AllRoute.page,
+            ),
+            CupertinoRoute(
+              path: 'done',
+              page: DoneRoute.page,
+            ),
+            CupertinoRoute(
+              path: 'month',
+              page: ForMonthRoute.page,
+            ),
+            CupertinoRoute(
+              path: 'today',
+              page: TodayRoute.page,
+            ),
+          ],
+        ),
+      ];
 }
