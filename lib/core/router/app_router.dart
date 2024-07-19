@@ -9,9 +9,8 @@ import 'package:reminder_lite/features/today/today_page.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Page,Route')
-class AppRouter extends $AppRouter {
-  const AppRouter();
-
+class AppRouter extends _$AppRouter {
+  @override
   List<AutoRoute> get routes => [
         AutoRoute(
           path: '/',
@@ -20,24 +19,22 @@ class AppRouter extends $AppRouter {
             AutoRoute(
               path: '',
               page: HomeRoute.page,
-              children: [
-                AutoRoute(
-                  path: 'all',
-                  page: AllRoute.page,
-                ),
-                AutoRoute(
-                  path: 'done',
-                  page: DoneRoute.page,
-                ),
-                AutoRoute(
-                  path: 'month',
-                  page: ForMonthRoute.page,
-                ),
-                AutoRoute(
-                  path: 'today',
-                  page: TodayRoute.page,
-                ),
-              ],
+            ),
+            AutoRoute(
+              path: 'all',
+              page: AllRoute.page,
+            ),
+            AutoRoute(
+              path: 'done',
+              page: DoneRoute.page,
+            ),
+            AutoRoute(
+              path: 'month',
+              page: ForMonthRoute.page,
+            ),
+            AutoRoute(
+              path: 'today',
+              page: TodayRoute.page,
             ),
           ],
         ),
