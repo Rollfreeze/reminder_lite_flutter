@@ -13,13 +13,15 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
+        CupertinoRoute(
           path: '/',
           page: HomeRouteWrapper.page,
           children: [
             CustomRoute(
               path: '',
               page: HomeRoute.page,
+              title: (_, __) => '',
+              transitionsBuilder: TransitionsBuilders.slideBottom,
               customRouteBuilder: (_, child, page) {
                 return MaterialWithModalsPageRoute(
                   fullscreenDialog: page.fullscreenDialog,
@@ -28,19 +30,19 @@ class AppRouter extends _$AppRouter {
                 );
               },
             ),
-            AutoRoute(
+            CupertinoRoute(
               path: 'all',
               page: AllRoute.page,
             ),
-            AutoRoute(
+            CupertinoRoute(
               path: 'done',
               page: DoneRoute.page,
             ),
-            AutoRoute(
+            CupertinoRoute(
               path: 'month',
               page: ForMonthRoute.page,
             ),
-            AutoRoute(
+            CupertinoRoute(
               path: 'today',
               page: TodayRoute.page,
             ),
