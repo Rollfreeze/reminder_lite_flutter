@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/features/home/domain/models/progress_circle_model.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle_painter.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle_section.dart';
 
-/// A progress circle for [ProgressCircleSection].
+/// A progress circle box that sets restrictions to its painter and draws it.
 class ProgressCircle extends StatelessWidget {
   /// A model with information about its category progress.
   final ProgressCircleModel model;

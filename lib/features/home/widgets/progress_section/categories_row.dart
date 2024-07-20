@@ -4,9 +4,8 @@ import 'package:reminder_lite/core/style/app_radius.dart';
 import 'package:reminder_lite/core/style/app_shadows.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/categories_row_item.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_section.dart';
 
-/// A row with categories to select for [ProgressSection].
+/// A Row that contains reminder categories to select for a certain progress circle.
 class CategoriesRow extends StatelessWidget {
   /// A chosen reminder category to show.
   final ReminderCategory selectedCategory;

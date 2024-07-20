@@ -4,9 +4,8 @@ import 'package:reminder_lite/core/style/app_radius.dart';
 import 'package:reminder_lite/core/style/app_shadows.dart';
 import 'package:reminder_lite/features/home/domain/models/progress_circle_model.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_section.dart';
 
-/// A circle with reminder progress category for [ProgressSection].
+/// A section with a progrss circles' slider and theirs current page indicator.
 class ProgressCircleSection extends StatelessWidget {
   /// Progress circles' items.
   final List<ProgressCircleModel> items;

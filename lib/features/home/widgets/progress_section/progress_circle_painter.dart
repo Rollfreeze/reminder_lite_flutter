@@ -3,9 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle.dart';
 
-/// A custom painter circle for [ProgressCircle].
+/// A Painter for drawing a circle with progress.
 class ProgressCirclePainter extends CustomPainter {
   /// Total category reminders.
   final int total;

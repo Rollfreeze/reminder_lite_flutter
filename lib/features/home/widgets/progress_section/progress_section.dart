@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reminder_lite/features/home/domain/bloc/progress_bloc/progress_bloc.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
-import 'package:reminder_lite/features/home/pages/home_page.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/categories_row.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle_section.dart';
 
-/// A section with reminder categories progress on [HomePage].
+/// A section that contains all the control logic for working with progress of each category.
 class ProgressSection extends StatefulWidget {
   const ProgressSection({super.key});
 
