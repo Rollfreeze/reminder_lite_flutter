@@ -1,8 +1,7 @@
 import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle.dart';
 
-/// A model for [ProgressCircle] widget.
+/// A model of ProgressCircle widget.
 class ProgressCircleModel {
   /// Total category reminders.
   final int total;
