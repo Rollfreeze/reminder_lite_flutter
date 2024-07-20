@@ -3,10 +3,10 @@ import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_radius.dart';
 import 'package:reminder_lite/core/style/app_shadows.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/categories_row_item.dart';
+import 'package:reminder_lite/features/home/widgets/progress_section/progress_switch_button.dart';
 
 /// A Row that contains reminder categories to select for a certain progress circle.
-class CategoriesRow extends StatelessWidget {
+class ProgressSwitchRow extends StatelessWidget {
   /// A chosen reminder category to show.
   final ReminderCategory selectedCategory;
 
@@ -19,7 +19,7 @@ class CategoriesRow extends StatelessWidget {
   /// on [AllCategory] pressed.
   final VoidCallback onAllPressed;
 
-  const CategoriesRow({
+  const ProgressSwitchRow({
     super.key,
     required this.selectedCategory,
     required this.onTodayPressed,
@@ -42,7 +42,7 @@ class CategoriesRow extends StatelessWidget {
           child: Row(
             children: [
               Flexible(
-                child: CategoriesRowItem(
+                child: ProgressSwitchButton(
                   category: TodayCategory(),
                   onPressed: onTodayPressed,
                   isActive: selectedCategory is TodayCategory,
@@ -50,7 +50,7 @@ class CategoriesRow extends StatelessWidget {
               ),
               const SizedBox(width: 14.5),
               Flexible(
-                child: CategoriesRowItem(
+                child: ProgressSwitchButton(
                   category: ForMonthCategory(),
                   onPressed: onForMonthPressed,
                   isActive: selectedCategory is ForMonthCategory,
@@ -58,7 +58,7 @@ class CategoriesRow extends StatelessWidget {
               ),
               const SizedBox(width: 14.5),
               Flexible(
-                child: CategoriesRowItem(
+                child: ProgressSwitchButton(
                   category: AllCategory(),
                   onPressed: onAllPressed,
                   isActive: selectedCategory is AllCategory,

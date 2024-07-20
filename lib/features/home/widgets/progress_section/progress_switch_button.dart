@@ -5,7 +5,7 @@ import 'package:reminder_lite/core/style/app_typo.dart';
 import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
 
 /// A selectable reminder category item for its progress to show.
-class CategoriesRowItem extends StatelessWidget {
+class ProgressSwitchButton extends StatelessWidget {
   /// An item category.
   final ReminderCategory category;
 
@@ -15,7 +15,7 @@ class CategoriesRowItem extends StatelessWidget {
   /// Is this item currently active.
   final bool isActive;
 
-  const CategoriesRowItem({
+  const ProgressSwitchButton({
     super.key,
     required this.category,
     required this.onPressed,
