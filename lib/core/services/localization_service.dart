@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// A service that provides a possibility to get locale everywhere.
 class LocalizationService {
   LocalizationService._();
 
