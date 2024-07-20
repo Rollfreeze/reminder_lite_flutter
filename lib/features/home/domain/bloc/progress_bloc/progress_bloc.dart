@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:reminder_lite/features/home/domain/models/progress_circle_model.dart';
-import 'package:reminder_lite/features/home/domain/models/reminder_categories.dart';
+import 'package:reminder_lite/core/models/reminder_categories.dart';
 
 part 'progress_event.dart';
 part 'progress_state.dart';
