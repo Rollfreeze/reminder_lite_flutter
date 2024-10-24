@@ -45,10 +45,13 @@ class ProgressSlider extends StatelessWidget {
                 controller: controller,
                 itemCount: items.length,
                 onPageChanged: onPageChanged,
-                itemBuilder: (_, index) => const ProgressCircle.fromValues(
+                itemBuilder: (_, index) => ProgressCircle.fromValues(
                   boxSize: 220,
                   total: 4,
                   completed: 3,
+                  headIcon: items[index].category.icon,
+                  centerMessage: items[index].category.name,
+                  progressArcColor: items[index].category.color,
                 ),
               ),
             ),
