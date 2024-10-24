@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:progress_circle/progress_circle.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_radius.dart';
 import 'package:reminder_lite/core/style/app_shadows.dart';
 import 'package:reminder_lite/features/home/domain/models/progress_circle_model.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_circle.dart';
 
 /// A slider section with all progrss circles and theirs current tab indicator.
 class ProgressSlider extends StatelessWidget {
@@ -45,8 +45,10 @@ class ProgressSlider extends StatelessWidget {
                 controller: controller,
                 itemCount: items.length,
                 onPageChanged: onPageChanged,
-                itemBuilder: (_, index) => ProgressCircle(
-                  model: items[index],
+                itemBuilder: (_, index) => const ProgressCircle.fromValues(
+                  boxSize: 220,
+                  total: 4,
+                  completed: 3,
                 ),
               ),
             ),
