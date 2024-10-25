@@ -56,5 +56,9 @@
   "newReminder": "New Reminder",
   "@newReminder": {
     "description": "Creating a new reminder"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Add some new item to somewhere"
   }
 }
