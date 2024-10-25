@@ -48,5 +48,9 @@
   "tonight": "Tonight",
   "@tonight": {
     "description": "A new reminder will be created for the evening"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel some action"
   }
 }

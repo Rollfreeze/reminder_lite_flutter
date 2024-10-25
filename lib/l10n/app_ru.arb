@@ -8,5 +8,6 @@
     "noReminders": "Напоминаний нет",
     "morning": "Утром",
     "afternoon": "Днем",
-    "tonight": "Вечером"
+    "tonight": "Вечером",
+    "cancel": "Отменить"
 }
