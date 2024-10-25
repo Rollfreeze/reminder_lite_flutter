@@ -52,5 +52,9 @@
   "cancel": "Cancel",
   "@cancel": {
     "description": "Cancel some action"
+  },
+  "newReminder": "New Reminder",
+  "@newReminder": {
+    "description": "Creating a new reminder"
   }
 }

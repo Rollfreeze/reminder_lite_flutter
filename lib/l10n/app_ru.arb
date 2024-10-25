@@ -9,5 +9,6 @@
     "morning": "Утром",
     "afternoon": "Днем",
     "tonight": "Вечером",
-    "cancel": "Отменить"
+    "cancel": "Отменить",
+    "newReminder": "Новое напоминание"
 }
