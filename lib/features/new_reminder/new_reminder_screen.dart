@@ -1,7 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
+import 'package:reminder_lite/features/new_reminder/new_reminder_app_bar.dart';
 
 class NewReminderScreen extends StatefulWidget {
   const NewReminderScreen({super.key});
@@ -23,39 +24,14 @@ class _NewReminderScreenState extends State<NewReminderScreen> {
       backgroundColor: AppColors.gray6,
       child: Column(
         children: [
-          /// AppBar.
-          Row(
-            children: [
-              SizedBox(
-                width: 86,
-                child: CupertinoButton(
-                  onPressed: () {},
-                  child: Text(LocalizationService.locale.cancel),
-                ),
-              ),
-              const Spacer(),
-              Text(
-                LocalizationService.locale.newReminder,
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-              const Spacer(),
-              SizedBox(
-                width: 86,
-                child: CupertinoButton(
-                  onPressed: () {},
-                  child: Text(
-                    LocalizationService.locale.add,
-                    style: const TextStyle(fontWeight: FontWeight.w600),
-                  ),
-                ),
-              ),
-            ],
+          NewReminderAppBar(
+            onCancel: context.router.maybePop,
+            onAdd: () => throw UnimplementedError(),
           ),
           const Padding(
             padding: EdgeInsets.fromLTRB(16, 43, 16, 20),
             child: CupertinoTextField(
               maxLines: 4,
-              // decoration: BoxDecoration(),
             ),
           ),
         ],
