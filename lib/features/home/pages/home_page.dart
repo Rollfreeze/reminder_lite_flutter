@@ -40,10 +40,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               AddReminderButton(
-                onPressed: () => showCupertinoModalBottomSheet(
-                  context: context,
-                  builder: (context) => const NewReminderScreen(),
-                ),
+                onPressed: () => NewReminderScreen.open(context),
               ),
             ],
           ),
