@@ -6,6 +6,7 @@ import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/widgets/add_reminder_button.dart';
 import 'package:reminder_lite/features/home/widgets/categories_section/categories_section.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/progress_section.dart';
+import 'package:reminder_lite/features/new_reminder/new_reminder_screen.dart';
 
 /// This is a home page with all reminder groups.
 @RoutePage()
@@ -42,40 +43,7 @@ class HomePage extends StatelessWidget {
               AddReminderButton(
                 onPressed: () => showCupertinoModalBottomSheet(
                   context: context,
-                  builder: (context) => CupertinoPageScaffold(
-                    backgroundColor: AppColors.gray6,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 86,
-                              child: CupertinoButton(
-                                onPressed: () {},
-                                child: Text(LocalizationService.locale.cancel),
-                              ),
-                            ),
-                            const Spacer(),
-                            Text(
-                              LocalizationService.locale.newReminder,
-                              style: const TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            const Spacer(),
-                            SizedBox(
-                              width: 86,
-                              child: CupertinoButton(
-                                onPressed: () {},
-                                child: Text(
-                                  LocalizationService.locale.add,
-                                  style: const TextStyle(fontWeight: FontWeight.w600),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  builder: (context) => const NewReminderScreen(),
                 ),
               ),
             ],
