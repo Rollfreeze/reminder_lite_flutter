@@ -23,22 +23,7 @@ class NewReminderService: NSObject, FlutterPlugin {
     
     func newReminderBottomSheet() -> Void {
         let viewController = getRootViewController
-        
-        if viewController == nil {return}
-        
-        let bottomSheetViewController = UIViewController()
-        bottomSheetViewController.view.backgroundColor = .white
-        
-        let nav = UINavigationController(rootViewController: bottomSheetViewController)
-        
-        
-        nav.modalPresentationStyle = .pageSheet
-        
-        if let sheet = nav.sheetPresentationController {
-            sheet.detents = [.large()]
-        }
-        
-        viewController!.present(nav, animated: true, completion: nil)
+        viewController?.present(getControllerForBottomSheet, animated: true, completion: nil)
     }
     
     var getRootViewController: UIViewController? {
@@ -49,5 +34,17 @@ class NewReminderService: NSObject, FlutterPlugin {
         return nil
     }
     
-    
+    var getControllerForBottomSheet: UINavigationController {
+        let bottomSheetViewController = UIViewController()
+        bottomSheetViewController.view.backgroundColor = .white
+        
+        let nav = UINavigationController(rootViewController: bottomSheetViewController)
+        nav.modalPresentationStyle = .pageSheet
+        
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.large()]
+        }
+        
+        return nav
+    }
 }
