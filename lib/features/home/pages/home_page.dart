@@ -4,7 +4,7 @@ import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/widgets/add_reminder_button.dart';
 import 'package:reminder_lite/features/home/widgets/categories_section/categories_section.dart';
 import 'package:reminder_lite/features/home/widgets/progress_section/progress_section.dart';
-import 'package:reminder_lite/features/new_reminder/new_reminder_screen.dart';
+import 'package:reminder_lite/features/new_reminder/new_reminder_service.dart';
 
 /// This is a home page with all reminder groups.
 @RoutePage()
@@ -38,8 +38,9 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              AddReminderButton(
-                onPressed: () => NewReminderScreen.open(context),
+              const AddReminderButton(
+                // onPressed: () => NewReminderScreen.open(context),
+                onPressed: NewReminderService.newReminderBottomSheet,
               ),
             ],
           ),
