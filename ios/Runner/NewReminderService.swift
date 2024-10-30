@@ -38,6 +38,20 @@ class NewReminderService: NSObject, FlutterPlugin {
         let bottomSheetViewController = UIViewController()
         bottomSheetViewController.view.backgroundColor = .white
         
+        let sheetView = SheetView()
+        let sheetViewHostingController = UIHostingController(rootView: sheetView)
+        
+        bottomSheetViewController.addChild(sheetViewHostingController)
+        bottomSheetViewController.view.addSubview(sheetViewHostingController.view)
+        sheetViewHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            sheetViewHostingController.view.topAnchor.constraint(equalTo: bottomSheetViewController.view.topAnchor),
+            sheetViewHostingController.view.leadingAnchor.constraint(equalTo: bottomSheetViewController.view.leadingAnchor),
+            sheetViewHostingController.view.trailingAnchor.constraint(equalTo: bottomSheetViewController.view.trailingAnchor),
+            sheetViewHostingController.view.bottomAnchor.constraint(equalTo: bottomSheetViewController.view.bottomAnchor)
+        ])
+        sheetViewHostingController.didMove(toParent: bottomSheetViewController)
+        
         let nav = UINavigationController(rootViewController: bottomSheetViewController)
         nav.modalPresentationStyle = .pageSheet
         
