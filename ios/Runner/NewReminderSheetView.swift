@@ -10,7 +10,7 @@ struct SheetView: View {
                     onClose()
                 }.frame(width: 82)
                 Spacer()
-                Text("New reminder").fontWeight(.bold)
+                Text("New reminder").fontWeight(.semibold)
                 Spacer()
                 Button("Add") {
                     
