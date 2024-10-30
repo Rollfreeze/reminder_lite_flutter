@@ -38,11 +38,12 @@ class NewReminderService: NSObject, FlutterPlugin {
         let bottomSheetViewController = UIViewController()
         bottomSheetViewController.view.backgroundColor = .white
         
-        let sheetView = SheetView()
+        let sheetView = SheetView(onClose: { bottomSheetViewController.dismiss(animated: true, completion: nil) })
         let sheetViewHostingController = UIHostingController(rootView: sheetView)
         
         bottomSheetViewController.addChild(sheetViewHostingController)
         bottomSheetViewController.view.addSubview(sheetViewHostingController.view)
+        
         sheetViewHostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             sheetViewHostingController.view.topAnchor.constraint(equalTo: bottomSheetViewController.view.topAnchor),

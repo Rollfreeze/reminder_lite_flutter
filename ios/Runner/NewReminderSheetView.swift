@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct SheetView: View {
-    @Environment(\.dismiss) var dismiss
+    let onClose: () -> Void
     
     var body: some View {
         VStack {
             HStack {
                 Button("Cancel") {
-                    dismiss()
+                    onClose()
                 }.frame(width: 82)
                 Spacer()
                 Text("New reminder")
@@ -18,6 +18,5 @@ struct SheetView: View {
             }
             Spacer()
         }
-        .padding()
     }
 }
