@@ -50,7 +50,9 @@ mixin _$ProgressEvent {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProgressEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProgressEventCopyWith<ProgressEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,6 +76,8 @@ class _$ProgressEventCopyWithImpl<$Res, $Val extends ProgressEvent>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProgressEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -107,6 +111,8 @@ class __$$SelectedCategoryImplCopyWithImpl<$Res>
       $Res Function(_$SelectedCategoryImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProgressEvent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,7 +152,9 @@ class _$SelectedCategoryImpl implements _SelectedCategory {
   @override
   int get hashCode => Object.hash(runtimeType, category);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProgressEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedCategoryImplCopyWith<_$SelectedCategoryImpl> get copyWith =>
@@ -216,8 +224,11 @@ abstract class _SelectedCategory implements ProgressEvent {
 
   @override
   ReminderCategory get category;
+
+  /// Create a copy of ProgressEvent
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SelectedCategoryImplCopyWith<_$SelectedCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -265,7 +276,9 @@ mixin _$ProgressState {
   }) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProgressState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProgressStateCopyWith<ProgressState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -289,6 +302,8 @@ class _$ProgressStateCopyWithImpl<$Res, $Val extends ProgressState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProgressState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -327,6 +342,8 @@ class __$$InitialImplCopyWithImpl<$Res>
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProgressState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -381,7 +398,9 @@ class _$InitialImpl implements _Initial {
   int get hashCode => Object.hash(
       runtimeType, category, const DeepCollectionEquality().hash(_items));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProgressState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
@@ -458,8 +477,11 @@ abstract class _Initial implements ProgressState {
   ReminderCategory get category;
   @override
   List<ProgressCircleModel> get items;
+
+  /// Create a copy of ProgressState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
