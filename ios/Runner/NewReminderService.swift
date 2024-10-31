@@ -36,7 +36,6 @@ class NewReminderService: NSObject, FlutterPlugin {
     
     var getControllerForBottomSheet: UINavigationController {
         let bottomSheetViewController = UIViewController()
-        bottomSheetViewController.view.backgroundColor = .white
         
         let sheetView = SheetView(onClose: { bottomSheetViewController.dismiss(animated: true, completion: nil) })
         let sheetViewHostingController = UIHostingController(rootView: sheetView)
@@ -55,6 +54,7 @@ class NewReminderService: NSObject, FlutterPlugin {
         
         let nav = UINavigationController(rootViewController: bottomSheetViewController)
         nav.modalPresentationStyle = .pageSheet
+        nav.navigationBar.isHidden = true
         
         if let sheet = nav.sheetPresentationController {
             sheet.detents = [.large()]

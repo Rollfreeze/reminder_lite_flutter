@@ -16,6 +16,7 @@ struct SheetView: View {
                     
                 }.frame(width: 82)
             }
+            .padding(EdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0))
             Spacer()
         }
     }
