@@ -27,11 +27,11 @@ class NewReminderService: NSObject, FlutterPlugin {
     }
     
     var getRootViewController: UIViewController? {
-        if let keyWindow = UIApplication.shared.windows.first(where: {$0.isKeyWindow}) {
-            return keyWindow.rootViewController
-        }
-        
-        return nil
+        UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }?
+            .rootViewController
     }
     
     var getControllerForBottomSheet: UINavigationController {
