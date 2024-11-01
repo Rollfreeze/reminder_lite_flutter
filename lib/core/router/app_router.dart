@@ -19,22 +19,27 @@ class AppRouter extends _$AppRouter {
             CupertinoRoute(
               path: '',
               page: HomeRoute.page,
+              title: (_, __) => '',
             ),
             CupertinoRoute(
               path: 'all',
               page: AllRoute.page,
+              title: (_, __) => '',
             ),
             CupertinoRoute(
               path: 'done',
               page: DoneRoute.page,
+              title: (_, __) => '',
             ),
             CupertinoRoute(
               path: 'month',
               page: ForMonthRoute.page,
+              title: (_, __) => '',
             ),
             CupertinoRoute(
               path: 'today',
               page: TodayRoute.page,
+              title: (_, __) => '',
             ),
           ],
         ),
