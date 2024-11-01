@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct SheetView: View {
+struct NewReminderSheetView: View {
     let onClose: () -> Void
     
     var body: some View {

@@ -37,7 +37,7 @@ class NewReminderService: NSObject, FlutterPlugin {
     var getControllerForBottomSheet: UINavigationController {
         let bottomSheetViewController = UIViewController()
         
-        let sheetView = SheetView(onClose: { bottomSheetViewController.dismiss(animated: true, completion: nil) })
+        let sheetView = NewReminderSheetView(onClose: { bottomSheetViewController.dismiss(animated: true, completion: nil) })
         let sheetViewHostingController = UIHostingController(rootView: sheetView)
         
         bottomSheetViewController.addChild(sheetViewHostingController)
