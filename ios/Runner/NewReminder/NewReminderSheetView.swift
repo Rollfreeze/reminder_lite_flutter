@@ -7,7 +7,7 @@ struct NewReminderSheetView: View {
         VStack {
             NewReminderAppBar(onCancel: onCancel, onAdd: onCancel)
             NewReminderForm()
-            MaybeDatePicker()
+            NewReminderPresets()
             Spacer()
         }
         .background(Color.gray.opacity(0.1))
