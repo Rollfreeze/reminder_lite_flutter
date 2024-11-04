@@ -30,40 +30,25 @@ class ProgressSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 310,
+      height: 260,
       child: DecoratedBox(
         decoration: const BoxDecoration(
           borderRadius: AppRadius.radius15,
           boxShadow: AppShadows.defaultShadow,
           color: AppColors.white,
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: PageView.builder(
-                controller: controller,
-                itemCount: items.length,
-                onPageChanged: onPageChanged,
-                itemBuilder: (_, index) => ProgressCircle.fromValues(
-                  boxSize: 220,
-                  total: 4,
-                  completed: 3,
-                  headIcon: items[index].category.icon,
-                  centerMessage: items[index].category.name,
-                  progressArcColor: items[index].category.color,
-                ),
-              ),
-            ),
-            const SizedBox(height: 5),
-            TabPageSelector(
-              controller: tabController,
-              borderStyle: BorderStyle.none,
-              color: AppColors.gray1,
-              indicatorSize: 10,
-            ),
-            const SizedBox(height: 20),
-          ],
+        child: PageView.builder(
+          controller: controller,
+          itemCount: items.length,
+          onPageChanged: onPageChanged,
+          itemBuilder: (_, index) => ProgressCircle.fromValues(
+            boxSize: 220,
+            total: 4,
+            completed: 3,
+            headIcon: items[index].category.icon,
+            centerMessage: items[index].category.name,
+            progressArcColor: items[index].category.color,
+          ),
         ),
       ),
     );
