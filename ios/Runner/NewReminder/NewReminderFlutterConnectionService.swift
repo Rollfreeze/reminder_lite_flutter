@@ -4,11 +4,13 @@ import UIKit
 import SwiftUI
 
 
-class NewReminderService: NSObject, FlutterPlugin {
+class NewReminderFlutterService: NSObject, FlutterPlugin {
+    public static var registrarServiceName: String = "NewReminderFlutterService"
+    private static var flutterMethodChannelName: String = "new_reminder_service"
     
     static func register(with registrar: FlutterPluginRegistrar) {
-        let methodChannel = FlutterMethodChannel(name: "new_reminder_service", binaryMessenger: registrar.messenger())
-        registrar.addMethodCallDelegate(NewReminderService(), channel: methodChannel)
+        let methodChannel = FlutterMethodChannel(name: self.flutterMethodChannelName, binaryMessenger: registrar.messenger())
+        registrar.addMethodCallDelegate(NewReminderFlutterService(), channel: methodChannel)
     }
     
     func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -37,7 +39,7 @@ class NewReminderService: NSObject, FlutterPlugin {
     var getControllerForBottomSheet: UINavigationController {
         let bottomSheetViewController = UIViewController()
         
-        let sheetView = NewReminderSheetView(onClose: { bottomSheetViewController.dismiss(animated: true, completion: nil) })
+        let sheetView = NewReminderSheetView(onCancel: { bottomSheetViewController.dismiss(animated: true, completion: nil) })
         let sheetViewHostingController = UIHostingController(rootView: sheetView)
         
         bottomSheetViewController.addChild(sheetViewHostingController)

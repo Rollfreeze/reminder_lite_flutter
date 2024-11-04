@@ -39,7 +39,6 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const AddReminderButton(
-                // onPressed: () => NewReminderScreen.open(context),
                 onPressed: NewReminderService.newReminderBottomSheet,
               ),
             ],
