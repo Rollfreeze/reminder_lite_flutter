@@ -7,7 +7,7 @@ import UIKit
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        NewReminderFlutterService.register(with: self.registrar(forPlugin: NewReminderFlutterService.registrarServiceName)!)
+        NativeViewService.register(with: self.registrar(forPlugin: NativeViewService.registrarServiceName)!)
         
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
