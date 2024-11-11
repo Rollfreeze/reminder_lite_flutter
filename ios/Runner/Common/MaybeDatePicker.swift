@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct MaybeDatePicker: View {
-    @State private var isOn: Bool = false
+    @State private var showDatePicker: Bool = false
     @State private var selectedDates: Set<DateComponents> = []
     
     var body: some View {
         VStack {
             HStack {
-                Toggle(isOn: $isOn) {
+                Toggle(isOn: $showDatePicker) {
                     HStack {
                         Image(systemName: "calendar")
                             .foregroundColor(.white)
@@ -24,13 +24,15 @@ struct MaybeDatePicker: View {
             .padding(.horizontal)
             .padding(.vertical, 10)
             .background(Color.white)
+            
+            if showDatePicker {
+                Divider()
+                    .padding(.leading, 60)
+                
+                MultiDatePicker("Date", selection: $selectedDates)
+                    .padding(.horizontal)
+            }
         }
-        if isOn {
-            MultiDatePicker("Label", selection: $selectedDates)
-                .transition(.move(edge: .top))
-                .animation(.easeInOut, value: isOn)
-        }
-        
     }
 }
 
