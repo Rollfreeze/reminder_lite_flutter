@@ -4,13 +4,19 @@ struct NewReminderSheetView: View {
     let onCancel: () -> Void
     
     var body: some View {
-        VStack {
-            NewReminderAppBar(onCancel: onCancel, onAdd: onCancel)
-            NewReminderForm()
-            NewReminderPresets()
-            Spacer()
+        ZStack {
+            Color.gray.opacity(0.15)
+                .ignoresSafeArea()
+            
+            ScrollView {
+                VStack {
+                    NewReminderAppBar(onCancel: onCancel, onAdd: onCancel)
+                    NewReminderForm()
+                    NewReminderPresets()
+                    Spacer()
+                }
+            }
         }
-        .background(Color.gray.opacity(0.1))
     }
 }
 

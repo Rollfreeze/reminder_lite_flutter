@@ -4,6 +4,7 @@ struct ListTileSwitcher: View {
     @Binding var isToggleOn: Bool
     let title: String
     let imageName: String
+    let bgColor: Color
     
     var body: some View {
         HStack {
@@ -13,7 +14,7 @@ struct ListTileSwitcher: View {
                         .foregroundColor(.white)
                         .padding(.vertical, 5)
                         .padding(.horizontal, 4.5)
-                        .background(Color.red)
+                        .background(bgColor)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                     
                     Text(title)

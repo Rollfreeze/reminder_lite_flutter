@@ -6,6 +6,8 @@ struct NewReminderPresets: View {
     var body: some View {
         VStack {
             MaybeDatePicker(selectedDates: $selectedDates)
+            Divider()
+            MaybeTimePicker()
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 12))

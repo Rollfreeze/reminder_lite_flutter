@@ -9,7 +9,8 @@ struct MaybeDatePicker: View {
             ListTileSwitcher(
                 isToggleOn: $showDatePicker,
                 title: "Date",
-                imageName: "calendar"
+                imageName: "calendar",
+                bgColor: Color.red
             )
             
             if showDatePicker {
