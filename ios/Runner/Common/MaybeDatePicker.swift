@@ -6,24 +6,11 @@ struct MaybeDatePicker: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Toggle(isOn: $showDatePicker) {
-                    HStack {
-                        Image(systemName: "calendar")
-                            .foregroundColor(.white)
-                            .padding(.vertical, 5)
-                            .padding(.horizontal, 4.5)
-                            .background(Color.red)
-                            .clipShape(RoundedRectangle(cornerRadius: 4))
-                        
-                        Text("Date")
-                            .padding(.horizontal, 4)
-                    }
-                }
-            }
-            .padding(.horizontal)
-            .padding(.vertical, 10)
-            .background(Color.white)
+            ListTileSwitcher(
+                isToggleOn: $showDatePicker,
+                title: "Date",
+                imageName: "calendar"
+            )
             
             if showDatePicker {
                 Divider()
