@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MaybeTimePicker: View {
     @State private var showTimePicker: Bool = false
-//    @Binding var selectedDates: Set<DateComponents>
+    @Binding var selectedTime: Date
     
     var body: some View {
         VStack {
@@ -16,6 +16,14 @@ struct MaybeTimePicker: View {
             if showTimePicker {
                 Divider()
                     .padding(.leading, 60)
+     
+                DatePicker(
+                    "DatePicker",
+                    selection: $selectedTime,
+                    displayedComponents: .hourAndMinute
+                )
+                .datePickerStyle(WheelDatePickerStyle())
+                .labelsHidden()
             }
         }
     }
