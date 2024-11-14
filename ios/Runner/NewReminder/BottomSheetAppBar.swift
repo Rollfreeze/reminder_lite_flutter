@@ -9,7 +9,7 @@ struct BottomSheetAppBar: ToolbarContent {
             Button("Cancel", action: onCancel)
         }
         ToolbarItem(placement: .principal) {
-            Text("New reminder")
+            Text("New Reminder")
                 .font(.headline)
         }
         ToolbarItem(placement: .confirmationAction) {
