@@ -19,6 +19,7 @@ struct NewReminderSheetView: View {
                 }
             }
             .toolbar { BottomSheetAppBar(onCancel: onCancel, onAdd: onCancel) }
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
