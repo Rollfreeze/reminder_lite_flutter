@@ -10,9 +10,7 @@ struct NewReminderForm: View {
                 .padding(.vertical, 10)
                 .padding(.horizontal, 16)
                 .background(Color.white)
-                .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12))
-                )
-            
+                .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12)))
             
             // Notes-area
             ZStack(alignment: .topLeading) {
