@@ -1,24 +1,19 @@
 import SwiftUI
 
-struct NewReminderAppBar: View {
+struct BottomSheetAppBar: ToolbarContent {
     let onCancel: () -> Void
     let onAdd: () -> Void
     
-    var body: some View {
-        HStack() {
+    var body: some ToolbarContent {
+        ToolbarItem(placement: .navigationBarLeading) {
             Button("Cancel", action: onCancel)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            Text("New reminder")
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity)
-            Button("Add", action: onAdd)
-                .frame(maxWidth: .infinity, alignment: .trailing)
         }
-        .padding()
+        ToolbarItem(placement: .principal) {
+            Text("New reminder")
+                .font(.headline)
+        }
+        ToolbarItem(placement: .confirmationAction) {
+            Button("Add", action: onCancel)
+        }
     }
-}
-
-#Preview {
-    let nothing: () -> Void = { }
-    NewReminderSheetView(onCancel: nothing)
 }
