@@ -1,14 +1,22 @@
 import SwiftUI
 
 struct NewReminderPresets: View {
-    @State private var selectedDates: Set<DateComponents> = []
-    @State var selectedTime: Date = Date(timeIntervalSinceNow: 0)
+    @Binding var selectedDates: Set<DateComponents>
+    @Binding var selectedTime: Date
+    @Binding var showDatePicker: Bool
+    @Binding var showTimePicker: Bool
     
     var body: some View {
         VStack {
-            MaybeDatePicker(selectedDates: $selectedDates)
+            MaybeDatePicker(
+                showDatePicker: $showDatePicker,
+                selectedDates: $selectedDates
+            )
             Divider()
-            MaybeTimePicker(selectedTime: $selectedTime)
+            MaybeTimePicker(
+                showTimePicker: $showTimePicker,
+                selectedTime: $selectedTime
+            )
         }
         .background(Color.white)
         .clipShape(RoundedRectangle(cornerRadius: 12))

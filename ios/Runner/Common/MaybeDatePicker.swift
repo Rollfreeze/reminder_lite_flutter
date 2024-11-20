@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MaybeDatePicker: View {
-    @State private var showDatePicker: Bool = false
+    @Binding var showDatePicker: Bool
     @Binding var selectedDates: Set<DateComponents>
     
     var body: some View {

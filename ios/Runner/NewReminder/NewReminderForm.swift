@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct NewReminderForm: View {
-    @State private var titleController: String = ""
-    @State private var notesController: String = ""
+    @Binding var titleController: String
+    @Binding var notesController: String
+    
     
     var body: some View {
         VStack {
