@@ -5,6 +5,8 @@ struct NewReminderSheetView: View {
     
     @State private var titleController: String = ""
     @State private var notesController: String = ""
+    @State private var selectedDateFormated: String = ""
+    @State private var selectedTimeFormated: String = ""
     @State private var selectedDates: Set<DateComponents> = []
     @State private var selectedTime: Date = Date(timeIntervalSinceNow: 0)
     @State private var showDatePicker: Bool = false
@@ -27,7 +29,9 @@ struct NewReminderSheetView: View {
                             selectedDates: $selectedDates,
                             selectedTime: $selectedTime,
                             showDatePicker: $showDatePicker,
-                            showTimePicker: $showTimePicker
+                            showTimePicker: $showTimePicker,
+                            selectedDateFormated: $selectedDateFormated,
+                            selectedTimeFormated: $selectedTimeFormated
                         )
                         Spacer()
                     }
