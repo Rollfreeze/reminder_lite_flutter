@@ -37,6 +37,12 @@ struct NewReminderSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
     }
+    
+    private func setCurrentDate() {
+        let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
+        selectedDates = [currentDateComponents]
+        
+    }
 }
 
 #Preview {
