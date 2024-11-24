@@ -7,8 +7,8 @@ struct NewReminderSheetView: View {
     @State private var notesController: String = ""
     @State private var selectedDates: Set<DateComponents> = []
     @State private var selectedTime: Date = Date(timeIntervalSinceNow: 0)
-    @State private var showDatePicker: Bool = false;
-    @State private var showTimePicker: Bool = false;
+    @State private var showDatePicker: Bool = false
+    @State private var showTimePicker: Bool = false
     
     var body: some View {
         
