@@ -5,17 +5,21 @@ struct NewReminderPresets: View {
     @Binding var selectedTime: Date
     @Binding var showDatePicker: Bool
     @Binding var showTimePicker: Bool
+    @Binding var selectedDateFormated: String
+    @Binding var selectedTimeFormated: String
     
     var body: some View {
         VStack {
             MaybeDatePicker(
                 showDatePicker: $showDatePicker,
-                selectedDates: $selectedDates
+                selectedDates: $selectedDates,
+                selectedDateFormated: $selectedDateFormated
             )
             Divider()
             MaybeTimePicker(
                 showTimePicker: $showTimePicker,
-                selectedTime: $selectedTime
+                selectedTime: $selectedTime,
+                selectedTimeFormated: $selectedTimeFormated
             )
         }
         .background(Color.white)

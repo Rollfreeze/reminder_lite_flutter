@@ -3,12 +3,14 @@ import SwiftUI
 struct MaybeTimePicker: View {
     @Binding var showTimePicker: Bool
     @Binding var selectedTime: Date
+    @Binding var selectedTimeFormated: String
     
     var body: some View {
         VStack {
             ListTileSwitcher(
                 isToggleOn: $showTimePicker,
                 title: "Time",
+                subTitle: $selectedTimeFormated,
                 imageName: "clock.fill",
                 bgColor: Color.blue
             )
