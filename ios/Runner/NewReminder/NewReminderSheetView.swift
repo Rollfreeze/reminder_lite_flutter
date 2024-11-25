@@ -33,6 +33,24 @@ struct NewReminderSheetView: View {
                             selectedDateFormated: $selectedDateFormated,
                             selectedTimeFormated: $selectedTimeFormated
                         )
+                        .onChange(of: showDatePicker) { value in
+                            if value && selectedDates.isEmpty {
+                                setCurrentDate()
+                            }
+                        }
+                        .onChange(of: selectedDates) { value in
+                            if selectedDates.isEmpty {
+                                selectedDateFormated = ""
+                            } else {
+                                selectedDateFormated = "Date selected"
+                            }
+                        }
+                        .onChange(of: showTimePicker) { value in
+                            if selectedDates.isEmpty {
+                                showDatePicker = true
+                                setCurrentDate()
+                            }
+                        }
                         Spacer()
                     }
                 }
