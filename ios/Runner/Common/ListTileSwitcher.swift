@@ -18,17 +18,17 @@ struct ListTileSwitcher: View {
                         .background(bgColor)
                         .clipShape(RoundedRectangle(cornerRadius: 4))
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text(title)
+                            .offset(y: subTitle.isEmpty ? 0 : 2)
                         if (!subTitle.isEmpty) {
                             Text(subTitle)
                                 .font(.subheadline)
                                 .foregroundStyle(.blue)
-                                .offset(x: 2, y: 2)
+                                .offset(x: 1, y: 2)
                         }
                     }
                     .padding(.horizontal, 4)
-                    .padding(.vertical, 0)
                 }
             }
         }
