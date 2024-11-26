@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct ListTileSwitcher: View {
-    @Binding var isToggleOn: Bool
-    let title: String
-    @Binding var subTitle: String
     let imageName: String
     let bgColor: Color
+    let title: String
+    @Binding var subTitle: String
+    @Binding var isToggleOn: Bool
     
     var body: some View {
         HStack {

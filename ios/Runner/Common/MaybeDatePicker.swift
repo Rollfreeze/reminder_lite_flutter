@@ -8,11 +8,11 @@ struct MaybeDatePicker: View {
     var body: some View {
         VStack {
             ListTileSwitcher(
-                isToggleOn: $showDatePicker,
+                imageName: "calendar",
+                bgColor: Color.red,
                 title: "Date",
                 subTitle: $selectedDateFormated,
-                imageName: "calendar",
-                bgColor: Color.red
+                isToggleOn: $showDatePicker
             )
             
             if showDatePicker {

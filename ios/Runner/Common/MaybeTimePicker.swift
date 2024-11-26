@@ -8,17 +8,17 @@ struct MaybeTimePicker: View {
     var body: some View {
         VStack {
             ListTileSwitcher(
-                isToggleOn: $showTimePicker,
+                imageName: "clock.fill",
+                bgColor: Color.blue,
                 title: "Time",
                 subTitle: $selectedTimeFormated,
-                imageName: "clock.fill",
-                bgColor: Color.blue
+                isToggleOn: $showTimePicker
             )
             
             if showTimePicker {
                 Divider()
                     .padding(.leading, 60)
-     
+                
                 DatePicker(
                     "DatePicker",
                     selection: $selectedTime,
