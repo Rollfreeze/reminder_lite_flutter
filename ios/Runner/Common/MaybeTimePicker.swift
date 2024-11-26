@@ -17,7 +17,7 @@ struct MaybeTimePicker: View {
             
             if showTimePicker {
                 Divider()
-                    .padding(.leading, 60)
+                    .padding(.leading, 58)
                 
                 DatePicker(
                     "DatePicker",

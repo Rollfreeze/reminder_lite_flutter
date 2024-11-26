@@ -16,6 +16,7 @@ struct NewReminderPresets: View {
                 selectedDateFormated: $selectedDateFormated
             )
             Divider()
+                .padding(.leading, $showDatePicker.wrappedValue ? 16 : 58)
             MaybeTimePicker(
                 showTimePicker: $showTimePicker,
                 selectedTime: $selectedTime,

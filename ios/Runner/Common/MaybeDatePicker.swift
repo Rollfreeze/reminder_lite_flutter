@@ -17,7 +17,7 @@ struct MaybeDatePicker: View {
             
             if showDatePicker {
                 Divider()
-                    .padding(.leading, 60)
+                    .padding(.leading, 58)
                 
                 MultiDatePicker("Date", selection: $selectedDates)
                     .padding(.horizontal)
