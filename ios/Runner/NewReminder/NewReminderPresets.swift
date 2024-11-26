@@ -15,16 +15,19 @@ struct NewReminderPresets: View {
                 selectedDates: $selectedDates,
                 selectedDateFormated: $selectedDateFormated
             )
-            Divider()
-                .padding(.leading, $showDatePicker.wrappedValue ? 16 : 58)
+            .background(Color.white)
+            .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12)))
+            
             MaybeTimePicker(
                 showTimePicker: $showTimePicker,
                 selectedTime: $selectedTime,
                 selectedTimeFormated: $selectedTimeFormated
             )
+            .background(Color.white)
+            .clipShape(.rect(bottomLeadingRadius: CGFloat(12), bottomTrailingRadius: CGFloat(12)))
+            .offset(y: -7)
         }
-        .background(Color.white)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+     
         .padding()
     }
 }
