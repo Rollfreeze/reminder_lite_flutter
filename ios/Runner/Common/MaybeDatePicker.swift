@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct MaybeDatePicker: View {
+    @Binding var isDatePickerActive: Bool
     @Binding var showDatePicker: Bool
     @Binding var selectedDates: Set<DateComponents>
-    let selectedDateFormated: String
     
     var body: some View {
         VStack {
@@ -11,8 +11,8 @@ struct MaybeDatePicker: View {
                 imageName: "calendar",
                 bgColor: Color.red,
                 title: "Date",
-                subTitle: selectedDateFormated,
-                isToggleOn: $showDatePicker
+                subTitle: "selectedDateFormated",
+                isToggleOn: $isDatePickerActive
             )
             
             if showDatePicker {

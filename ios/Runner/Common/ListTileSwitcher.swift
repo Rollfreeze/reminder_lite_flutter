@@ -4,7 +4,7 @@ struct ListTileSwitcher: View {
     let imageName: String
     let bgColor: Color
     let title: String
-    let subTitle: String
+    let subTitle: String?
     @Binding var isToggleOn: Bool
     
     var body: some View {
@@ -20,9 +20,9 @@ struct ListTileSwitcher: View {
                     
                     VStack(alignment: .leading) {
                         Text(title)
-                            .offset(y: subTitle.isEmpty ? 0 : 2)
-                        if (!subTitle.isEmpty) {
-                            Text(subTitle)
+                            .offset(y: subTitle == nil ? 0 : 2)
+                        if (subTitle != nil) {
+                            Text(subTitle!)
                                 .font(.subheadline)
                                 .foregroundStyle(.blue)
                                 .offset(x: 1)

@@ -9,6 +9,9 @@ struct NewReminderSheetView: View {
     @State private var selectedTime: Date = Date(timeIntervalSinceNow: 0)
     @State private var showDatePicker: Bool = false
     @State private var showTimePicker: Bool = false
+    @State private var isDatePickerActive: Bool = false
+    @State private var isTimePickerActive: Bool = false
+
     
     var body: some View {
         NavigationStack {
@@ -27,8 +30,8 @@ struct NewReminderSheetView: View {
                             selectedTime: $selectedTime,
                             showDatePicker: $showDatePicker,
                             showTimePicker: $showTimePicker,
-                            selectedDateFormated: "selectedDates.wrappedValue",
-                            selectedTimeFormated: $selectedTime.wrappedValue.formatted(.dateTime.hour().minute())
+                            isDatePickerActive: $isDatePickerActive,
+                            isTimePickerActive: $isTimePickerActive
                         )
                         Spacer()
                     }
@@ -63,7 +66,6 @@ struct NewReminderSheetView: View {
     private func setCurrentDate() {
         let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
         selectedDates = [currentDateComponents]
-        
     }
 }
 

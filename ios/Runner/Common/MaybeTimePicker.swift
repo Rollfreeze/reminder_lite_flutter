@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct MaybeTimePicker: View {
+    @Binding var isTimePickerActive: Bool
     @Binding var showTimePicker: Bool
     @Binding var selectedTime: Date
-    let selectedTimeFormated: String
     
     var body: some View {
         VStack {
@@ -11,8 +11,8 @@ struct MaybeTimePicker: View {
                 imageName: "clock.fill",
                 bgColor: Color.blue,
                 title: "Time",
-                subTitle: selectedTimeFormated,
-                isToggleOn: $showTimePicker
+                subTitle: formatTimeIfSelected(),
+                isToggleOn: $isTimePickerActive
             )
             
             if showTimePicker {
@@ -20,7 +20,7 @@ struct MaybeTimePicker: View {
                     .padding(.leading, 58)
                 
                 DatePicker(
-                    "DatePicker",
+                    "TimePicker",
                     selection: $selectedTime,
                     displayedComponents: .hourAndMinute
                 )
@@ -28,6 +28,11 @@ struct MaybeTimePicker: View {
                 .labelsHidden()
             }
         }
+    }
+    
+    private func formatTimeIfSelected() -> String? {
+        if !isTimePickerActive { return nil }
+        return $selectedTime.wrappedValue.formatted(.dateTime.hour().minute())
     }
 }
 
