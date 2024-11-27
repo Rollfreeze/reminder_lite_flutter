@@ -3,7 +3,7 @@ import SwiftUI
 struct MaybeDatePicker: View {
     @Binding var showDatePicker: Bool
     @Binding var selectedDates: Set<DateComponents>
-    @Binding var selectedDateFormated: String
+    let selectedDateFormated: String
     
     var body: some View {
         VStack {
@@ -11,7 +11,7 @@ struct MaybeDatePicker: View {
                 imageName: "calendar",
                 bgColor: Color.red,
                 title: "Date",
-                subTitle: $selectedDateFormated,
+                subTitle: selectedDateFormated,
                 isToggleOn: $showDatePicker
             )
             
@@ -21,9 +21,6 @@ struct MaybeDatePicker: View {
                 
                 MultiDatePicker("Date", selection: $selectedDates)
                     .padding(.horizontal)
-                    .onDisappear {
-                        selectedDates.removeAll()
-                    }
             }
         }
     }

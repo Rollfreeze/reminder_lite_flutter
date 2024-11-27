@@ -3,7 +3,7 @@ import SwiftUI
 struct MaybeTimePicker: View {
     @Binding var showTimePicker: Bool
     @Binding var selectedTime: Date
-    @Binding var selectedTimeFormated: String
+    let selectedTimeFormated: String
     
     var body: some View {
         VStack {
@@ -11,7 +11,7 @@ struct MaybeTimePicker: View {
                 imageName: "clock.fill",
                 bgColor: Color.blue,
                 title: "Time",
-                subTitle: $selectedTimeFormated,
+                subTitle: selectedTimeFormated,
                 isToggleOn: $showTimePicker
             )
             

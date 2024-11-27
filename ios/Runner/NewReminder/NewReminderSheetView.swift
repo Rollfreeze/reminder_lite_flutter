@@ -5,15 +5,12 @@ struct NewReminderSheetView: View {
     
     @State private var titleController: String = ""
     @State private var notesController: String = ""
-    @State private var selectedDateFormated: String = ""
-    @State private var selectedTimeFormated: String = ""
     @State private var selectedDates: Set<DateComponents> = []
     @State private var selectedTime: Date = Date(timeIntervalSinceNow: 0)
     @State private var showDatePicker: Bool = false
     @State private var showTimePicker: Bool = false
     
     var body: some View {
-        
         NavigationStack {
             ZStack {
                 Color.gray.opacity(0.15)
@@ -30,33 +27,36 @@ struct NewReminderSheetView: View {
                             selectedTime: $selectedTime,
                             showDatePicker: $showDatePicker,
                             showTimePicker: $showTimePicker,
-                            selectedDateFormated: $selectedDateFormated,
-                            selectedTimeFormated: $selectedTimeFormated
+                            selectedDateFormated: "selectedDates.wrappedValue",
+                            selectedTimeFormated: $selectedTime.wrappedValue.formatted(.dateTime.hour().minute())
                         )
-                        .onChange(of: showDatePicker) { value in
-                            if value && selectedDates.isEmpty {
-                                setCurrentDate()
-                            }
-                        }
-                        .onChange(of: selectedDates) { value in
-                            if selectedDates.isEmpty {
-                                selectedDateFormated = ""
-                            } else {
-                                selectedDateFormated = "Date selected"
-                            }
-                        }
-                        .onChange(of: showTimePicker) { value in
-                            if selectedDates.isEmpty {
-                                showDatePicker = true
-                                setCurrentDate()
-                            }
-                        }
                         Spacer()
                     }
                 }
             }
-            .toolbar { BottomSheetAppBar(onCancel: onCancel, onAdd: onCancel) }
+            .toolbar {
+                BottomSheetAppBar(
+                    onCancel: onCancel,
+                    onAdd: onCancel,
+                    isConfirmActive: !selectedDates.isEmpty
+                )
+            }
             .navigationBarTitleDisplayMode(.inline)
+        }
+        .onChange(of: showDatePicker) { value in
+            if value && selectedDates.isEmpty {
+                setCurrentDate()
+            }
+        }
+        .onChange(of: showTimePicker) { value in
+            if (value) {
+                showDatePicker = false
+                if selectedDates.isEmpty { setCurrentDate() }
+            } else {
+                selectedTime = Date()
+            }
+
+            
         }
     }
     

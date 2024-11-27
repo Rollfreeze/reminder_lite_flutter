@@ -5,15 +5,15 @@ struct NewReminderPresets: View {
     @Binding var selectedTime: Date
     @Binding var showDatePicker: Bool
     @Binding var showTimePicker: Bool
-    @Binding var selectedDateFormated: String
-    @Binding var selectedTimeFormated: String
+    let selectedDateFormated: String
+    let selectedTimeFormated: String
     
     var body: some View {
         VStack {
             MaybeDatePicker(
                 showDatePicker: $showDatePicker,
                 selectedDates: $selectedDates,
-                selectedDateFormated: $selectedDateFormated
+                selectedDateFormated: selectedDateFormated
             )
             .background(Color.white)
             .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12)))
@@ -21,13 +21,13 @@ struct NewReminderPresets: View {
             MaybeTimePicker(
                 showTimePicker: $showTimePicker,
                 selectedTime: $selectedTime,
-                selectedTimeFormated: $selectedTimeFormated
+                selectedTimeFormated: selectedTimeFormated
             )
             .background(Color.white)
             .clipShape(.rect(bottomLeadingRadius: CGFloat(12), bottomTrailingRadius: CGFloat(12)))
             .offset(y: -7)
         }
-     
+        
         .padding()
     }
 }

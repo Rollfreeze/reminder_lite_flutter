@@ -3,6 +3,8 @@ import SwiftUI
 struct BottomSheetAppBar: ToolbarContent {
     let onCancel: () -> Void
     let onAdd: () -> Void
+    let isConfirmActive: Bool
+    
     
     var body: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -13,7 +15,8 @@ struct BottomSheetAppBar: ToolbarContent {
                 .font(.headline)
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("Add", action: onCancel)
+            Button("Add", action: onAdd)
+                .disabled(!isConfirmActive)
         }
     }
 }

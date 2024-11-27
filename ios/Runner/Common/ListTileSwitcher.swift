@@ -4,7 +4,7 @@ struct ListTileSwitcher: View {
     let imageName: String
     let bgColor: Color
     let title: String
-    @Binding var subTitle: String
+    let subTitle: String
     @Binding var isToggleOn: Bool
     
     var body: some View {
@@ -25,7 +25,7 @@ struct ListTileSwitcher: View {
                             Text(subTitle)
                                 .font(.subheadline)
                                 .foregroundStyle(.blue)
-                                .offset(x: 1, y: 2)
+                                .offset(x: 1)
                         }
                     }
                     .padding(.horizontal, 4)
