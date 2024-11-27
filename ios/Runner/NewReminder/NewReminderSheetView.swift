@@ -11,7 +11,7 @@ struct NewReminderSheetView: View {
     @State private var showTimePicker: Bool = false
     @State private var isDatePickerActive: Bool = false
     @State private var isTimePickerActive: Bool = false
-
+    
     
     var body: some View {
         NavigationStack {
@@ -46,26 +46,27 @@ struct NewReminderSheetView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .onChange(of: showDatePicker) { value in
-            if value && selectedDates.isEmpty {
-                setCurrentDate()
+        .onChange(of: isDatePickerActive) { value in
+            showDatePicker = value
+            if (!value) { selectedDates = [] }
+            else {
+                showTimePicker = false
+                selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
             }
         }
-        .onChange(of: showTimePicker) { value in
+        .onChange(of: isTimePickerActive) { value in
+            showTimePicker = value
             if (value) {
                 showDatePicker = false
-                if selectedDates.isEmpty { setCurrentDate() }
-            } else {
                 selectedTime = Date()
             }
-
-            
         }
-    }
-    
-    private func setCurrentDate() {
-        let currentDateComponents = Calendar.current.dateComponents([.year, .month, .day], from: Date())
-        selectedDates = [currentDateComponents]
+        .onChange(of: showDatePicker) { value in
+            if (value) { showTimePicker = false }
+        }
+        .onChange(of: showTimePicker) { value in
+            if (value) { showDatePicker = false }
+        }
     }
 }
 
