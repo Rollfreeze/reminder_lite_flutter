@@ -48,50 +48,45 @@ struct NewReminderSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onChange(of: isDatePickerActive) { value in
-            guard isSetStateFinished else { return }
-            isSetStateFinished = false
-            
-            showDatePicker = value
-            showTimePicker = false
-            if (!value) {
-                selectedDates = []
-                isTimePickerActive = false
-            }
-            else {
-                selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
-            }
-            
-            isSetStateFinished = true
+            setState({
+                showDatePicker = value
+                showTimePicker = false
+                if (!value) {
+                    selectedDates = []
+                    isTimePickerActive = false
+                }
+                else {
+                    selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
+                }
+            })
         }
         .onChange(of: isTimePickerActive) { value in
-            guard isSetStateFinished else { return }
-            isSetStateFinished = false
-            
-            showTimePicker = value
-            if (value) {
-                showDatePicker = false
-                isDatePickerActive = true
-                selectedTime = Date()
-            }
-            
-            isSetStateFinished = true
+            setState({
+                showTimePicker = value
+                if (value) {
+                    showDatePicker = false
+                    isDatePickerActive = true
+                    selectedTime = Date()
+                }
+            })
         }
         .onChange(of: showDatePicker) { value in
-            guard isSetStateFinished else { return }
-            isSetStateFinished = false
-            
-            if (value) { showTimePicker = false }
-            
-            isSetStateFinished = true
+            setState {
+                if (value) { showTimePicker = false }
+            }
         }
         .onChange(of: showTimePicker) { value in
-            guard isSetStateFinished else { return }
-            isSetStateFinished = false
-            
-            if (value) { showDatePicker = false }
-            
-            isSetStateFinished = true
+            setState {
+                if (value) { showDatePicker = false }
+            }
         }
+    }
+    
+    func setState(_ closure: @escaping () -> Void) -> Void {
+        guard isSetStateFinished else { return }
+        isSetStateFinished = false
+        closure()
+        isSetStateFinished = true
     }
 }
 
