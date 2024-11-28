@@ -48,9 +48,12 @@ struct NewReminderSheetView: View {
         }
         .onChange(of: isDatePickerActive) { value in
             showDatePicker = value
-            if (!value) { selectedDates = [] }
+            showTimePicker = false
+            if (!value) {
+                selectedDates = []
+                isTimePickerActive = false
+            }
             else {
-                showTimePicker = false
                 selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
             }
         }
