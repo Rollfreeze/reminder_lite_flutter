@@ -11,6 +11,7 @@ struct NewReminderSheetView: View {
     @State private var showTimePicker: Bool = false
     @State private var isDatePickerActive: Bool = false
     @State private var isTimePickerActive: Bool = false
+    @State private var isSetStateFinished: Bool = true
     
     
     var body: some View {
@@ -47,6 +48,9 @@ struct NewReminderSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onChange(of: isDatePickerActive) { value in
+            guard isSetStateFinished else { return }
+            isSetStateFinished = false
+            
             showDatePicker = value
             showTimePicker = false
             if (!value) {
@@ -56,19 +60,37 @@ struct NewReminderSheetView: View {
             else {
                 selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
             }
+            
+            isSetStateFinished = true
         }
         .onChange(of: isTimePickerActive) { value in
+            guard isSetStateFinished else { return }
+            isSetStateFinished = false
+            
             showTimePicker = value
             if (value) {
                 showDatePicker = false
+                isDatePickerActive = true
                 selectedTime = Date()
             }
+            
+            isSetStateFinished = true
         }
         .onChange(of: showDatePicker) { value in
+            guard isSetStateFinished else { return }
+            isSetStateFinished = false
+            
             if (value) { showTimePicker = false }
+            
+            isSetStateFinished = true
         }
         .onChange(of: showTimePicker) { value in
+            guard isSetStateFinished else { return }
+            isSetStateFinished = false
+            
             if (value) { showDatePicker = false }
+            
+            isSetStateFinished = true
         }
     }
 }
