@@ -6,6 +6,7 @@ struct ListTileSwitcher: View {
     let title: String
     let subTitle: String?
     @Binding var isToggleOn: Bool
+    @State private var isPressed = false
     
     var body: some View {
         HStack {
@@ -30,12 +31,16 @@ struct ListTileSwitcher: View {
                     }
                     .padding(.horizontal, 4)
                 }
+
             }
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
-        .background(Color.white)
+        .background(isPressed ? Color.gray.opacity(0.4) : Color.white)
         .frame(maxHeight: 50)
+        .onLongPressGesture(minimumDuration: 0.01, perform: ({}), onPressingChanged: { isPressing in
+            isPressed = isPressing
+        })
     }
 }
 
