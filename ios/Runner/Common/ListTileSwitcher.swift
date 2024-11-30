@@ -22,8 +22,8 @@ struct ListTileSwitcher: View {
                     VStack(alignment: .leading) {
                         Text(title)
                             .offset(y: subTitle == nil ? 0 : 2)
-                        if (subTitle != nil) {
-                            Text(subTitle!)
+                        if let subTitle = subTitle {
+                            Text(subTitle)
                                 .font(.subheadline)
                                 .foregroundStyle(.blue)
                                 .offset(x: 1)
@@ -31,16 +31,24 @@ struct ListTileSwitcher: View {
                     }
                     .padding(.horizontal, 4)
                 }
-
             }
         }
         .padding(.horizontal)
         .padding(.vertical, 10)
         .background(isPressed ? Color.gray.opacity(0.4) : Color.white)
+        .animation(.easeInOut(duration: 0.2), value: isPressed)
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 0)
+                .onChanged { _ in
+                    if isToggleOn {
+                        isPressed = true
+                    }
+                }
+                .onEnded { _ in
+                    isPressed = false
+                }
+        )
         .frame(maxHeight: 50)
-        .onLongPressGesture(minimumDuration: 0.01, perform: ({}), onPressingChanged: { isPressing in
-            isPressed = isPressing
-        })
     }
 }
 
