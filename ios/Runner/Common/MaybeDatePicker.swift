@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MaybeDatePicker: View {
+    let onActivePressed: Void
     @Binding var isDatePickerActive: Bool
     @Binding var showDatePicker: Bool
     @Binding var selectedDates: Set<DateComponents>
@@ -12,6 +13,7 @@ struct MaybeDatePicker: View {
                 bgColor: Color.red,
                 title: "Date",
                 subTitle: formatDateIfSelected(),
+                onPressed: onActivePressed,
                 isToggleOn: $isDatePickerActive
             )
             

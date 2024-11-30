@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MaybeTimePicker: View {
+    let onActivePressed: Void
     @Binding var isTimePickerActive: Bool
     @Binding var showTimePicker: Bool
     @Binding var selectedTime: Date
@@ -12,6 +13,7 @@ struct MaybeTimePicker: View {
                 bgColor: Color.blue,
                 title: "Time",
                 subTitle: formatTimeIfSelected(),
+                onActivePressed: onActivePressed,
                 isToggleOn: $isTimePickerActive
             )
             
