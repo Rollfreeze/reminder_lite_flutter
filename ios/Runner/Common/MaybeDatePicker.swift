@@ -17,10 +17,7 @@ struct MaybeDatePicker: View {
                 isToggleOn: $isDatePickerActive
             )
             
-            if showDatePicker {
-                Divider()
-                    .padding(.leading, 58)
-                
+            if showDatePicker {                
                 MultiDatePicker("Date", selection: $selectedDates)
                     .padding(.horizontal)
             }
