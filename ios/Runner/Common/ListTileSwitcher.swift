@@ -41,9 +41,9 @@ struct ListTileSwitcher: View {
         .simultaneousGesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { _ in
-                    if isToggleOn {
+                    if (isToggleOn && !isPressed) {
                         isPressed = true
-                        onActivePressed()
+                        if isToggleOn { onActivePressed() }
                     }
                 }
                 .onEnded { _ in
