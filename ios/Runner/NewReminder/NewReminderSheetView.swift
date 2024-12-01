@@ -27,12 +27,8 @@ struct NewReminderSheetView: View {
                             notesController: $notesController
                         )
                         NewReminderPresets(
-                            onActiveDatePressed: {
-                                setState({ showDatePicker.toggle() })
-                            },
-                            onActiveTimePressed: {
-                                setState({ showTimePicker.toggle() })
-                            },
+                            onActiveDatePressed: { showDatePicker.toggle() },
+                            onActiveTimePressed: { showTimePicker.toggle() },
                             selectedDates: $selectedDates,
                             selectedTime: $selectedTime,
                             showDatePicker: $showDatePicker,
