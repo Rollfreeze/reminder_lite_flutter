@@ -5,7 +5,7 @@ struct ListTileSwitcher: View {
     let bgColor: Color
     let title: String
     let subTitle: String?
-    let onActivePressed: Void
+    let onActivePressed: () -> Void
     @Binding var isToggleOn: Bool
     @State private var isPressed = false
     
@@ -43,7 +43,7 @@ struct ListTileSwitcher: View {
                 .onChanged { _ in
                     if isToggleOn {
                         isPressed = true
-                        onActivePressed
+                        onActivePressed()
                     }
                 }
                 .onEnded { _ in

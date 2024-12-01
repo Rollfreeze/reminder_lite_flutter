@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct NewReminderPresets: View {
-    let onActiveDatePressed: Void
-    let onActiveTimePressed: Void
+    let onActiveDatePressed: () -> Void
+    let onActiveTimePressed: () -> Void
     @Binding var selectedDates: Set<DateComponents>
     @Binding var selectedTime: Date
     @Binding var showDatePicker: Bool
@@ -13,7 +13,7 @@ struct NewReminderPresets: View {
     var body: some View {
         VStack {
             MaybeDatePicker(
-                onActivePressed: onActiveDatePressed,
+                onActiveDatePressed: onActiveDatePressed,
                 isDatePickerActive: $isDatePickerActive,
                 showDatePicker: $showDatePicker,
                 selectedDates: $selectedDates
@@ -22,7 +22,7 @@ struct NewReminderPresets: View {
             .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12)))
             
             MaybeTimePicker(
-                onActivePressed: onActiveTimePressed,
+                onActiveTimePressed: onActiveTimePressed,
                 isTimePickerActive: $isTimePickerActive,
                 showTimePicker: $showTimePicker,
                 selectedTime: $selectedTime
