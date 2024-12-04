@@ -11,8 +11,6 @@ struct NewReminderSheetView: View {
     @State private var showTimePicker: Bool = false
     @State private var isDatePickerActive: Bool = false
     @State private var isTimePickerActive: Bool = false
-    @State private var isSetStateFinished: Bool = true
-    
     
     var body: some View {
         NavigationStack {
