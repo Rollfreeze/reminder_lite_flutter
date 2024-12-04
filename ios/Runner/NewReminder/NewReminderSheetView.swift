@@ -50,45 +50,27 @@ struct NewReminderSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onChange(of: isDatePickerActive) { value in
-            setState({
-                showDatePicker = value
-                showTimePicker = false
-                if (!value) {
-                    selectedDates = []
-                    isTimePickerActive = false
-                }
-                else {
-                    selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
-                }
-            })
+            showDatePicker = value
+            showTimePicker = false
+            if (!value) {
+                selectedDates = []
+                isTimePickerActive = false
+            }
+            else { selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())] }
         }
         .onChange(of: isTimePickerActive) { value in
-            setState({
-                showTimePicker = value
-                if (value) {
-                    showDatePicker = false
-                    isDatePickerActive = true
-                    selectedTime = Date()
-                }
-            })
+            showTimePicker = value
+            guard value else { return }
+            selectedTime = Date()
+            isDatePickerActive = true
+            showDatePicker = false
         }
         .onChange(of: showDatePicker) { value in
-            setState {
-                if (value) { showTimePicker = false }
-            }
+            if (value) { showTimePicker = false }
         }
         .onChange(of: showTimePicker) { value in
-            setState {
-                if (value) { showDatePicker = false }
-            }
+            if (value) { showDatePicker = false }
         }
-    }
-    
-    func setState(_ closure: @escaping () -> Void) -> Void {
-        guard isSetStateFinished else { return }
-        isSetStateFinished = false
-        closure()
-        isSetStateFinished = true
     }
 }
 
