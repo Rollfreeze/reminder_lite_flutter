@@ -5,12 +5,9 @@ struct NewReminderSheetView: View {
     
     @State private var titleController: String = ""
     @State private var notesController: String = ""
-    @State private var selectedDates: Set<DateComponents> = []
-    @State private var selectedTime: Date = Date(timeIntervalSinceNow: 0)
-    @State private var showDatePicker: Bool = false
-    @State private var showTimePicker: Bool = false
-    @State private var isDatePickerActive: Bool = false
-    @State private var isTimePickerActive: Bool = false
+    
+    @StateObject private var datePicker = DatePickerModel()
+    @StateObject private var timePicker = TimePickerModel()
     
     var body: some View {
         NavigationStack {
@@ -24,16 +21,9 @@ struct NewReminderSheetView: View {
                             titleController: $titleController,
                             notesController: $notesController
                         )
-                        NewReminderPresets(
-                            onActiveDatePressed: { showDatePicker.toggle() },
-                            onActiveTimePressed: { showTimePicker.toggle() },
-                            selectedDates: $selectedDates,
-                            selectedTime: $selectedTime,
-                            showDatePicker: $showDatePicker,
-                            showTimePicker: $showTimePicker,
-                            isDatePickerActive: $isDatePickerActive,
-                            isTimePickerActive: $isTimePickerActive
-                        )
+                        NewReminderPresets()
+                            .environmentObject(datePicker)
+                            .environmentObject(timePicker)
                         Spacer()
                     }
                 }
@@ -42,33 +32,33 @@ struct NewReminderSheetView: View {
                 BottomSheetAppBar(
                     onCancel: onCancel,
                     onAdd: onCancel,
-                    isConfirmActive: !selectedDates.isEmpty
+                    isConfirmActive: false
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .onChange(of: isDatePickerActive) { value in
-            showDatePicker = value
-            showTimePicker = false
-            if (!value) {
-                selectedDates = []
-                isTimePickerActive = false
-            }
-            else { selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())] }
-        }
-        .onChange(of: isTimePickerActive) { value in
-            showTimePicker = value
-            guard value else { return }
-            selectedTime = Date()
-            isDatePickerActive = true
-            showDatePicker = false
-        }
-        .onChange(of: showDatePicker) { value in
-            if (value) { showTimePicker = false }
-        }
-        .onChange(of: showTimePicker) { value in
-            if (value) { showDatePicker = false }
-        }
+//        .onChange(of: isDatePickerActive) { value in
+//            showDatePicker = value
+//            showTimePicker = false
+//            if (!value) {
+//                selectedDates = []
+//                isTimePickerActive = false
+//            }
+//            else { selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())] }
+//        }
+//        .onChange(of: isTimePickerActive) { value in
+//            showTimePicker = value
+//            guard value else { return }
+//            selectedTime = Date()
+//            isDatePickerActive = true
+//            showDatePicker = false
+//        }
+//        .onChange(of: showDatePicker) { value in
+//            if (value) { showTimePicker = false }
+//        }
+//        .onChange(of: showTimePicker) { value in
+//            if (value) { showDatePicker = false }
+//        }
     }
 }
 

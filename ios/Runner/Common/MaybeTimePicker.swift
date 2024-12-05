@@ -1,10 +1,7 @@
 import SwiftUI
 
 struct MaybeTimePicker: View {
-    let onActiveTimePressed: () -> Void
-    @Binding var isTimePickerActive: Bool
-    @Binding var showTimePicker: Bool
-    @Binding var selectedTime: Date
+    @EnvironmentObject var timePicker: TimePickerModel
     
     var body: some View {
         VStack {
@@ -12,15 +9,15 @@ struct MaybeTimePicker: View {
                 imageName: "clock.fill",
                 bgColor: Color.blue,
                 title: "Time",
-                subTitle: formatTimeIfSelected(),
-                onActivePressed: onActiveTimePressed,
-                isToggleOn: $isTimePickerActive
+                subTitle: timePicker.formatTimeIfSelected(),
+                onActivePressed: timePicker.show,
+                isToggleOn: $timePicker.isTimePickerActive
             )
             
-            if showTimePicker {
+            if timePicker.showTimePicker {
                 DatePicker(
                     "TimePicker",
-                    selection: $selectedTime,
+                    selection: $timePicker.selectedTime,
                     displayedComponents: .hourAndMinute
                 )
                 .datePickerStyle(WheelDatePickerStyle())
@@ -29,10 +26,6 @@ struct MaybeTimePicker: View {
         }
     }
     
-    private func formatTimeIfSelected() -> String? {
-        if !isTimePickerActive { return nil }
-        return $selectedTime.wrappedValue.formatted(.dateTime.hour().minute())
-    }
 }
 
 #Preview {
