@@ -1,13 +1,11 @@
 import SwiftUI
 
 struct NewReminderForm: View {
-    @Binding var titleController: String
-    @Binding var notesController: String
-    
+    @EnvironmentObject var form: ReminderFormModel
     
     var body: some View {
         VStack {
-            TextField("Title", text: $titleController)
+            TextField("Title", text: $form.titleController)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 16)
                 .background(Color.white)
@@ -15,7 +13,7 @@ struct NewReminderForm: View {
             
             // Notes-area
             ZStack(alignment: .topLeading) {
-                TextEditor(text: $notesController)
+                TextEditor(text: $form.notesController)
                     .padding(.vertical, 2)
                     .padding(.horizontal, 12)
                     .frame(height: 150)
@@ -25,7 +23,7 @@ struct NewReminderForm: View {
                     )
                 
                 // Pseudo-placeholder
-                if notesController.isEmpty {
+                if form.notesController.isEmpty {
                     Text("Notes")
                         .foregroundColor(.gray.opacity(0.5))
                         .padding(.vertical, 10)

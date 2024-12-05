@@ -3,9 +3,7 @@ import SwiftUI
 struct NewReminderSheetView: View {
     let onCancel: () -> Void
     
-    @State private var titleController: String = ""
-    @State private var notesController: String = ""
-    
+    @StateObject private var form = ReminderFormModel()
     @StateObject private var datePicker = DatePickerModel()
     @StateObject private var timePicker = TimePickerModel()
     
@@ -17,10 +15,8 @@ struct NewReminderSheetView: View {
                 
                 ScrollView {
                     VStack {
-                        NewReminderForm(
-                            titleController: $titleController,
-                            notesController: $notesController
-                        )
+                        NewReminderForm()
+                            .environmentObject(form)
                         NewReminderPresets()
                             .environmentObject(datePicker)
                             .environmentObject(timePicker)
