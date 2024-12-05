@@ -61,6 +61,7 @@
 		5D2B2A5E2CD911E2000DCE9E /* NewReminder */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NewReminder; sourceTree = "<group>"; };
 		5D2B2A772CD92098000DCE9E /* Common */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Common; sourceTree = "<group>"; };
 		5D2B2AB02CD9540E000DCE9E /* FlutterServices */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FlutterServices; sourceTree = "<group>"; };
+		5DBD24682D00F057002AE617 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +127,7 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				5DBD24682D00F057002AE617 /* Models */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -169,6 +171,7 @@
 				5D2B2A5E2CD911E2000DCE9E /* NewReminder */,
 				5D2B2A772CD92098000DCE9E /* Common */,
 				5D2B2AB02CD9540E000DCE9E /* FlutterServices */,
+				5DBD24682D00F057002AE617 /* Models */,
 			);
 			name = Runner;
 			productName = Runner;
