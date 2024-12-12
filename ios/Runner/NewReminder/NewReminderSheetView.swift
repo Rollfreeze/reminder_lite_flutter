@@ -34,27 +34,30 @@ struct NewReminderSheetView: View {
             .navigationBarTitleDisplayMode(.inline)
         }
         .onChange(of: datePicker.showDatePicker) { value in
-            if (value) { timePicker.showTimePicker = false }
+            if (value) { timePicker.hide() }
         }
         .onChange(of: timePicker.showTimePicker) { value in
-            if (value) { datePicker.showDatePicker = false }
+            if (value) { datePicker.hide() }
         }
-        //        .onChange(of: isDatePickerActive) { value in
-        //            showDatePicker = value
-        //            showTimePicker = false
-        //            if (!value) {
-        //                selectedDates = []
-        //                isTimePickerActive = false
-        //            }
-        //            else { selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())] }
-        //        }
-        //        .onChange(of: isTimePickerActive) { value in
-        //            showTimePicker = value
-        //            guard value else { return }
-        //            selectedTime = Date()
-        //            isDatePickerActive = true
-        //            showDatePicker = false
-        //        }
+        .onChange(of: datePicker.isDatePickerActive) { value in
+            if (value) {
+                datePicker.setDefault()
+                datePicker.show()
+                timePicker.hide()
+            }
+            else {
+                datePicker.reset()
+                timePicker.reset()
+            }
+        }
+        .onChange(of: timePicker.isTimePickerActive) { value in
+            if (value) {
+                datePicker.setDefaultIfEmpty()
+                datePicker.setActive()
+                timePicker.show()
+            }
+            else { timePicker.reset() }
+        }
     }
 }
 

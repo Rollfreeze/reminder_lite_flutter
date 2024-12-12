@@ -3,8 +3,39 @@ class DatePickerModel: ObservableObject {
     @Published var isDatePickerActive: Bool = false
     @Published var showDatePicker: Bool = false
     
+    public func show() -> Void {
+        showDatePicker = true
+    }
+    
+    public func hide() -> Void {
+        showDatePicker = false
+    }
+
     public func showToggle() -> Void {
         if (isDatePickerActive) { showDatePicker.toggle() }
+    }
+    
+    public func reset() -> Void {
+        selectedDates = []
+        showDatePicker = false
+        isDatePickerActive = false
+    }
+    
+    public func setActive() -> Void {
+        isDatePickerActive = true
+    }
+    
+    public func setInactive() -> Void {
+        isDatePickerActive = false
+    }
+
+    
+    public func setDefault() -> Void {
+        selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
+    }
+    
+    public func setDefaultIfEmpty() -> Void {
+        if selectedDates.isEmpty { setDefault() }
     }
     
     public func formatDateIfSelected() -> String? {
