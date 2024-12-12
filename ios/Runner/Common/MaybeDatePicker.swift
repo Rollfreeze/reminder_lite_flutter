@@ -10,7 +10,7 @@ struct MaybeDatePicker: View {
                 bgColor: Color.red,
                 title: "Date",
                 subTitle: datePicker.formatDateIfSelected(),
-                onActivePressed: datePicker.show,
+                onActivePressed: datePicker.showToggle,
                 isToggleOn: $datePicker.isDatePickerActive
             )
             

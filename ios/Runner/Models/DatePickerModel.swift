@@ -3,8 +3,8 @@ class DatePickerModel: ObservableObject {
     @Published var isDatePickerActive: Bool = false
     @Published var showDatePicker: Bool = false
     
-    public func show() -> Void {
-        showDatePicker = true
+    public func showToggle() -> Void {
+        if (isDatePickerActive) { showDatePicker.toggle() }
     }
     
     public func formatDateIfSelected() -> String? {

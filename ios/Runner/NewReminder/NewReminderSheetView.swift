@@ -33,28 +33,28 @@ struct NewReminderSheetView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-//        .onChange(of: isDatePickerActive) { value in
-//            showDatePicker = value
-//            showTimePicker = false
-//            if (!value) {
-//                selectedDates = []
-//                isTimePickerActive = false
-//            }
-//            else { selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())] }
-//        }
-//        .onChange(of: isTimePickerActive) { value in
-//            showTimePicker = value
-//            guard value else { return }
-//            selectedTime = Date()
-//            isDatePickerActive = true
-//            showDatePicker = false
-//        }
-//        .onChange(of: showDatePicker) { value in
-//            if (value) { showTimePicker = false }
-//        }
-//        .onChange(of: showTimePicker) { value in
-//            if (value) { showDatePicker = false }
-//        }
+        .onChange(of: datePicker.showDatePicker) { value in
+            if (value) { timePicker.showTimePicker = false }
+        }
+        .onChange(of: timePicker.showTimePicker) { value in
+            if (value) { datePicker.showDatePicker = false }
+        }
+        //        .onChange(of: isDatePickerActive) { value in
+        //            showDatePicker = value
+        //            showTimePicker = false
+        //            if (!value) {
+        //                selectedDates = []
+        //                isTimePickerActive = false
+        //            }
+        //            else { selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())] }
+        //        }
+        //        .onChange(of: isTimePickerActive) { value in
+        //            showTimePicker = value
+        //            guard value else { return }
+        //            selectedTime = Date()
+        //            isDatePickerActive = true
+        //            showDatePicker = false
+        //        }
     }
 }
 

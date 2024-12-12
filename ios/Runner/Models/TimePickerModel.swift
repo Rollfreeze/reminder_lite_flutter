@@ -5,8 +5,8 @@ class TimePickerModel: ObservableObject {
     @Published var isTimePickerActive: Bool = false
     @Published var showTimePicker: Bool = false
     
-    public func show() -> Void {
-        showTimePicker = true
+    public func showToggle() -> Void {
+        if (isTimePickerActive) { showTimePicker.toggle() }
     }
     
     public func formatTimeIfSelected() -> String? {

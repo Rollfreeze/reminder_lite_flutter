@@ -10,7 +10,7 @@ struct MaybeTimePicker: View {
                 bgColor: Color.blue,
                 title: "Time",
                 subTitle: timePicker.formatTimeIfSelected(),
-                onActivePressed: timePicker.show,
+                onActivePressed: timePicker.showToggle,
                 isToggleOn: $timePicker.isTimePickerActive
             )
             
