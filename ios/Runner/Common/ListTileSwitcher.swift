@@ -6,12 +6,16 @@ struct ListTileSwitcher: View {
     let title: String
     let subTitle: String?
     let onActivePressed: () -> Void
+    let onToggleChange: (_ value: Bool) -> Void
     @Binding var isToggleOn: Bool
     @State private var isPressed = false
     
     var body: some View {
         HStack {
-            Toggle(isOn: $isToggleOn) {
+            Toggle(isOn: Binding(
+                get: { isToggleOn },
+                set: onToggleChange
+            )) {
                 HStack {
                     Image(systemName: imageName)
                         .foregroundColor(.white)

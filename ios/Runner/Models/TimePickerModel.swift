@@ -13,12 +13,17 @@ class TimePickerModel: ObservableObject {
         showTimePicker = false
     }
     
-    public func showToggle() -> Void {
-        if (isTimePickerActive) { showTimePicker.toggle() }
-    }
-    
     public func reset() -> Void {
         selectedTime = Date(timeIntervalSinceNow: 0)
+        isTimePickerActive = false
+        showTimePicker = false
+    }
+    
+    public func setActive() -> Void {
+        isTimePickerActive = true
+    }
+    
+    public func setInactive() -> Void {
         isTimePickerActive = false
     }
     

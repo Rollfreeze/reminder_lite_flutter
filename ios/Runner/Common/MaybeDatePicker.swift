@@ -1,7 +1,10 @@
 import SwiftUI
 
 struct MaybeDatePicker: View {
+    let onToggleChange: (_ value: Bool) -> Void
+    let onActivePressed: () -> Void
     @EnvironmentObject var datePicker: DatePickerModel
+    
     
     var body: some View {
         VStack {
@@ -10,7 +13,8 @@ struct MaybeDatePicker: View {
                 bgColor: Color.red,
                 title: "Date",
                 subTitle: datePicker.formatDateIfSelected(),
-                onActivePressed: datePicker.showToggle,
+                onActivePressed: onActivePressed,
+                onToggleChange: onToggleChange,
                 isToggleOn: $datePicker.isDatePickerActive
             )
             

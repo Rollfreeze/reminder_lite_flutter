@@ -17,9 +17,14 @@ struct NewReminderSheetView: View {
                     VStack {
                         NewReminderForm()
                             .environmentObject(form)
-                        NewReminderPresets()
-                            .environmentObject(datePicker)
-                            .environmentObject(timePicker)
+                        NewReminderPresets(
+                            onToggleDate: onToggleDate,
+                            onActiveDatePressed: onActiveDatePressed,
+                            onToggleTime: onToggleTime,
+                            onActiveTimePressed: onActiveTimePressed
+                        )
+                        .environmentObject(datePicker)
+                        .environmentObject(timePicker)
                         Spacer()
                     }
                 }
@@ -33,31 +38,39 @@ struct NewReminderSheetView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .onChange(of: datePicker.showDatePicker) { value in
-            if (value) { timePicker.hide() }
+    }
+    
+    private func onActiveDatePressed() -> Void {
+        timePicker.hide()
+        datePicker.showDatePicker.toggle()
+    }
+    
+    private func onActiveTimePressed() -> Void {
+        datePicker.hide()
+        timePicker.showTimePicker.toggle()
+    }
+    
+    private func onToggleDate(_ value: Bool) -> Void {
+        if (value) {
+            timePicker.hide()
+            datePicker.setDefault()
+            datePicker.setActive()
+            datePicker.show()
         }
-        .onChange(of: timePicker.showTimePicker) { value in
-            if (value) { datePicker.hide() }
+        else {
+            datePicker.reset()
+            timePicker.reset()
         }
-        .onChange(of: datePicker.isDatePickerActive) { value in
-            if (value) {
-                datePicker.setDefault()
-                datePicker.show()
-                timePicker.hide()
-            }
-            else {
-                datePicker.reset()
-                timePicker.reset()
-            }
+    }
+    
+    private func onToggleTime(_ value: Bool) -> Void {
+        if (value) {
+            datePicker.setDefaultIfEmpty()
+            datePicker.setActive()
+            timePicker.setActive()
+            timePicker.show()
         }
-        .onChange(of: timePicker.isTimePickerActive) { value in
-            if (value) {
-                datePicker.setDefaultIfEmpty()
-                datePicker.setActive()
-                timePicker.show()
-            }
-            else { timePicker.reset() }
-        }
+        else { timePicker.reset() }
     }
 }
 

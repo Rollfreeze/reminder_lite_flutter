@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct MaybeTimePicker: View {
+    let onToggleChange: (_ value: Bool) -> Void
+    let onActivePressed: () -> Void
     @EnvironmentObject var timePicker: TimePickerModel
     
     var body: some View {
@@ -10,7 +12,8 @@ struct MaybeTimePicker: View {
                 bgColor: Color.blue,
                 title: "Time",
                 subTitle: timePicker.formatTimeIfSelected(),
-                onActivePressed: timePicker.showToggle,
+                onActivePressed: onActivePressed,
+                onToggleChange: onToggleChange,
                 isToggleOn: $timePicker.isTimePickerActive
             )
             

@@ -10,10 +10,6 @@ class DatePickerModel: ObservableObject {
     public func hide() -> Void {
         showDatePicker = false
     }
-
-    public func showToggle() -> Void {
-        if (isDatePickerActive) { showDatePicker.toggle() }
-    }
     
     public func reset() -> Void {
         selectedDates = []
