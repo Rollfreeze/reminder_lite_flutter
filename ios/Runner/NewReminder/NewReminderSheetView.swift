@@ -40,7 +40,7 @@ struct NewReminderSheetView: View {
                 BottomSheetAppBar(
                     onCancel: onCancel,
                     onAdd: onCancel,
-                    isConfirmActive: false
+                    isConfirmActive: form.isTitleNotEmpty()
                 )
             }
             .navigationBarTitleDisplayMode(.inline)
