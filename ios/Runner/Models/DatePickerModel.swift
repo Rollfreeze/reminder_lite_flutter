@@ -1,5 +1,5 @@
 class DatePickerModel: ObservableObject {
-    @Published var selectedDates: Set<DateComponents> = []
+    @Published var selectedDate: Date = Date(timeIntervalSinceNow: 0)
     @Published var isDatePickerActive: Bool = false
     @Published var showDatePicker: Bool = false
     
@@ -12,7 +12,7 @@ class DatePickerModel: ObservableObject {
     }
     
     public func reset() -> Void {
-        selectedDates = []
+        selectedDate = Date(timeIntervalSinceNow: 0)
         showDatePicker = false
         isDatePickerActive = false
     }
@@ -25,21 +25,13 @@ class DatePickerModel: ObservableObject {
         isDatePickerActive = false
     }
 
-    
     public func setDefault() -> Void {
-        selectedDates = [Calendar.current.dateComponents([.year, .month, .day], from: Date())]
-    }
-    
-    public func setDefaultIfEmpty() -> Void {
-        if selectedDates.isEmpty { setDefault() }
+        selectedDate = Date(timeIntervalSinceNow: 0)
     }
     
     public func formatDateIfSelected() -> String? {
-        guard let selectedDateComponents = selectedDates.first,
-              let selectedDate = Calendar.current.date(from: selectedDateComponents) else {
-            return nil
-        }
-        
+        if !isDatePickerActive { return nil }
+
         let calendar = Calendar.current
         let today = calendar.startOfDay(for: Date())
         let tomorrow = calendar.date(byAdding: .day, value: 1, to: today)!

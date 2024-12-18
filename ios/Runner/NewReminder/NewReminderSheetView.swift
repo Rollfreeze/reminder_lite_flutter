@@ -76,7 +76,6 @@ struct NewReminderSheetView: View {
     /// Toggle active for the time presset.
     private func onToggleTime(_ value: Bool) -> Void {
         if (value) {
-            datePicker.setDefaultIfEmpty()
             datePicker.setActive()
             timePicker.setActive()
             timePicker.show()
