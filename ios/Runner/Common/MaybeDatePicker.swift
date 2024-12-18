@@ -5,9 +5,6 @@ struct MaybeDatePicker: View {
     let onActivePressed: () -> Void
     @EnvironmentObject var datePicker: DatePickerModel
     
-    @State private var date = Date()
-    
-    
     var body: some View {
         VStack {
             ListTileSwitcher(
@@ -21,7 +18,7 @@ struct MaybeDatePicker: View {
             )
             
             if datePicker.showDatePicker {
-                DatePicker("Select Date", selection: $date, displayedComponents: [.date])
+                DatePicker("Select Date", selection: $datePicker.selectedDate, displayedComponents: [.date])
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .padding(.horizontal)
             }
