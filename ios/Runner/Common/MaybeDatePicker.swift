@@ -21,8 +21,6 @@ struct MaybeDatePicker: View {
                 DatePicker("Select Date", selection: $datePicker.selectedDate, displayedComponents: [.date])
                     .datePickerStyle(GraphicalDatePickerStyle())
                     .padding(.horizontal)
-                    .frame(height: datePicker.showDatePicker ? nil : 0, alignment: .top)
-                    .clipped()
             }
             
         }
