@@ -41,7 +41,7 @@ struct ListTileSwitcher: View {
         .padding(.horizontal)
         .padding(.vertical, 10)
         .background(isPressed ? Color.gray.opacity(0.4) : Color.white)
-        .animation(.easeInOut(duration: 0.2), value: isPressed)
+        .animation(.easeInOut(duration: 0.25), value: isPressed)
         .simultaneousGesture(
             DragGesture(minimumDistance: 0)
                 .onChanged { _ in
