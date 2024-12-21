@@ -49,38 +49,47 @@ struct NewReminderSheetView: View {
     
     /// Toggle the date presset showing when it's active.
     private func onActiveDatePressed() -> Void {
-        timePicker.hide()
-        datePicker.showDatePicker.toggle()
+        withAnimation {
+            timePicker.hide()
+            datePicker.showDatePicker.toggle()
+        }
     }
     
     /// Toggle the time presset showing when it's active.
     private func onActiveTimePressed() -> Void {
-        datePicker.hide()
-        timePicker.showTimePicker.toggle()
+        withAnimation {
+            datePicker.hide()
+            timePicker.showTimePicker.toggle()
+        }
     }
     
     /// Toggle active for the date presset.
     private func onToggleDate(_ value: Bool) -> Void {
-        if (value) {
-            timePicker.hide()
-            datePicker.setDefault()
-            datePicker.setActive()
-            datePicker.show()
-        }
-        else {
-            datePicker.reset()
-            timePicker.reset()
+        withAnimation {
+            if (value) {
+                timePicker.hide()
+                datePicker.setDefault()
+                datePicker.setActive()
+                datePicker.show()
+            }
+            else {
+                datePicker.reset()
+                timePicker.reset()
+            }
         }
     }
     
     /// Toggle active for the time presset.
     private func onToggleTime(_ value: Bool) -> Void {
-        if (value) {
-            datePicker.setActive()
-            timePicker.setActive()
-            timePicker.show()
+        withAnimation {
+            if (value) {
+                datePicker.setActive()
+                datePicker.hide()
+                timePicker.setActive()
+                timePicker.show()
+            }
+            else { timePicker.reset() }
         }
-        else { timePicker.reset() }
     }
 }
 
