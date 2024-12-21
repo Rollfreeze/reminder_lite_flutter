@@ -47,7 +47,7 @@ struct ListTileSwitcher: View {
                 .onChanged { _ in
                     if (isToggleOn && !isPressed) {
                         isPressed = true
-                        if isToggleOn { onActivePressed() }
+                        onActivePressed()
                     }
                 }
                 .onEnded { _ in
