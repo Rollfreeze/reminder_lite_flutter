@@ -1,5 +1,9 @@
 import SwiftUI
 
+/// A toggle component that has incon and title.
+/// It also has some actions:
+/// 1) Action on `Toggle`.
+/// 2) Action on tap the whole area widget when `Toggle` is set as Active.
 struct ListTileSwitcher: View {
     let imageName: String
     let bgColor: Color
