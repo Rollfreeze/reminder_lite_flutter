@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Time picker presset for a new reminder view.
 struct MaybeTimePicker: View {
     let onToggleChange: (_ value: Bool) -> Void
     let onActivePressed: () -> Void
