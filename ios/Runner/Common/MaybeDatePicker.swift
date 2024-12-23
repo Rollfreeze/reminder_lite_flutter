@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Date picker presset for a new reminder view.
 struct MaybeDatePicker: View {
     let onToggleChange: (_ value: Bool) -> Void
     let onActivePressed: () -> Void
