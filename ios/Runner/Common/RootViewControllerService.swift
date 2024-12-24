@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Service class that can call iOS views for Flutter.
 class RootViewService {
     static func getController() -> UIViewController? {
         let rootController = UIApplication.shared.connectedScenes
