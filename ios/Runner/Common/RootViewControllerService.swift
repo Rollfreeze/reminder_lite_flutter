@@ -12,6 +12,7 @@ class RootViewService {
         return rootController
     }
     
+    /// Calls a bottom sheet passing the `builder` as a body to it.
     static func presentFullBottomSheet<Content: View>(@ViewBuilder buider: @escaping (_ onClose: @escaping () -> Void) -> Content) -> Void {
         let viewController = UIViewController()
 
