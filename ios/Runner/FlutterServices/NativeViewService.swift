@@ -3,6 +3,7 @@ import Flutter
 import UIKit
 import SwiftUI
 
+/// Service class that provides a method channel to the Flutter side for calling native iOS view.
 class NativeViewService: NSObject, FlutterPlugin {
     public static var registrarServiceName: String = "NativeViewService"
     private static var flutterMethodChannelName: String = "native_view_service"
