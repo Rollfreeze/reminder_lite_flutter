@@ -8,8 +8,8 @@ import 'package:reminder_lite/features/home/presentation/widgets/progress_sectio
 
 /// This is a home page with all reminder groups.
 @RoutePage()
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

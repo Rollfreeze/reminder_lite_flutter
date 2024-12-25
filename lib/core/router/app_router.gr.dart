@@ -18,44 +18,44 @@ abstract class _$AppRouter extends RootStackRouter {
     AllRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const AllPage(),
+        child: const AllScreen(),
       );
     },
     DoneRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const DonePage(),
+        child: const DoneScreen(),
       );
     },
     ForMonthRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ForMonthPage(),
+        child: const ForMonthScreen(),
       );
     },
     HomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: const HomeScreen(),
       );
     },
     HomeRouteWrapper.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: WrappedRoute(child: const HomePageWrapper()),
+        child: WrappedRoute(child: const HomeScreenWrapper()),
       );
     },
     TodayRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TodayPage(),
+        child: const TodayScreen(),
       );
     },
   };
 }
 
 /// generated route for
-/// [AllPage]
+/// [AllScreen]
 class AllRoute extends PageRouteInfo<void> {
   const AllRoute({List<PageRouteInfo>? children})
       : super(
@@ -69,7 +69,7 @@ class AllRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [DonePage]
+/// [DoneScreen]
 class DoneRoute extends PageRouteInfo<void> {
   const DoneRoute({List<PageRouteInfo>? children})
       : super(
@@ -83,7 +83,7 @@ class DoneRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [ForMonthPage]
+/// [ForMonthScreen]
 class ForMonthRoute extends PageRouteInfo<void> {
   const ForMonthRoute({List<PageRouteInfo>? children})
       : super(
@@ -97,7 +97,7 @@ class ForMonthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomePage]
+/// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
       : super(
@@ -111,7 +111,7 @@ class HomeRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomePageWrapper]
+/// [HomeScreenWrapper]
 class HomeRouteWrapper extends PageRouteInfo<void> {
   const HomeRouteWrapper({List<PageRouteInfo>? children})
       : super(
@@ -125,7 +125,7 @@ class HomeRouteWrapper extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TodayPage]
+/// [TodayScreen]
 class TodayRoute extends PageRouteInfo<void> {
   const TodayRoute({List<PageRouteInfo>? children})
       : super(

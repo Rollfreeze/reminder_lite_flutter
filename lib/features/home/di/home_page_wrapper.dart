@@ -3,12 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/features/home/domain/bloc/progress_bloc/progress_bloc.dart';
-import 'package:reminder_lite/features/home/presentation/screens/home_page.dart';
+import 'package:reminder_lite/features/home/presentation/screens/home_screen.dart';
 
-/// Di wrapper for [HomePage].
+/// Di wrapper for [HomeScreen].
 @RoutePage()
-class HomePageWrapper extends AutoRouter implements AutoRouteWrapper {
-  const HomePageWrapper({super.key});
+class HomeScreenWrapper extends AutoRouter implements AutoRouteWrapper {
+  const HomeScreenWrapper({super.key});
 
   @override
   Widget wrappedRoute(BuildContext context) {

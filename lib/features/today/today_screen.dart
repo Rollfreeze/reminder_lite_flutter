@@ -3,15 +3,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/services/localization_service.dart';
 
 @RoutePage()
-class ForMonthPage extends StatelessWidget {
-  const ForMonthPage({super.key});
+class TodayScreen extends StatelessWidget {
+  const TodayScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(),
       child: Center(
-        child: Text(LocalizationService.locale.forMonth),
+        child: Text(LocalizationService.locale.today),
       ),
     );
   }
