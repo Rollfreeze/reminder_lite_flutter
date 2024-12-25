@@ -3,7 +3,7 @@ import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_radius.dart';
 import 'package:reminder_lite/core/style/app_shadows.dart';
 import 'package:reminder_lite/core/models/reminder_categories.dart';
-import 'package:reminder_lite/features/home/widgets/progress_section/progress_switch_button.dart';
+import 'package:reminder_lite/features/home/presentation/widgets/progress_section/progress_switch_button.dart';
 
 /// A Row that contains reminder categories to select for a certain progress circle.
 class ProgressSwitchRow extends StatelessWidget {
