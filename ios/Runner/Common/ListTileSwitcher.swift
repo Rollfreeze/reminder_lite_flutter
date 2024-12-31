@@ -60,7 +60,7 @@ struct ListTileSwitcher: View {
                     set: onToggleChange
                 )
             ) {}
-            .padding(.horizontal)
+                .padding(.horizontal)
         }
         .frame(maxHeight: 50)
     }
