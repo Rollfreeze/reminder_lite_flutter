@@ -15,7 +15,7 @@ class NativeViewService: NSObject, FlutterPlugin {
     
     func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch(call.method) {
-        case "newReminderBottomSheet":
+        case "createNewReminder":
             self.newReminderBottomSheet()
             result(nil)
         default:

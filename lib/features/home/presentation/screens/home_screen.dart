@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               AddReminderButton(
-                onPressed: NativeViewService.newReminderBottomSheet,
+                onPressed: NativeViewService.createNewReminder,
               ),
             ],
           ),
