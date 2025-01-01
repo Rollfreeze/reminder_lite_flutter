@@ -1,4 +1,4 @@
-/// A model that represents and contains all about some reminder.
+/// A model that represents and contains all about some certain reminder.
 class Reminder {
   final String id;
   final String title;
