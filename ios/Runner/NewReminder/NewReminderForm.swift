@@ -5,7 +5,7 @@ struct NewReminderForm: View {
     
     var body: some View {
         VStack {
-            TextField("Title", text: $form.titleController)
+            TextField("Title", text: $form.title)
                 .padding(.vertical, 10)
                 .padding(.horizontal, 16)
                 .background(Color.white)
@@ -13,7 +13,7 @@ struct NewReminderForm: View {
             
             // Notes-area
             ZStack(alignment: .topLeading) {
-                TextEditor(text: $form.notesController)
+                TextEditor(text: $form.notes)
                     .padding(.vertical, 2)
                     .padding(.horizontal, 12)
                     .frame(height: 150)
@@ -23,7 +23,7 @@ struct NewReminderForm: View {
                     )
                 
                 // Pseudo-placeholder
-                if form.notesController.isEmpty {
+                if form.notes.isEmpty {
                     Text("Notes")
                         .foregroundColor(.gray.opacity(0.5))
                         .padding(.vertical, 10)

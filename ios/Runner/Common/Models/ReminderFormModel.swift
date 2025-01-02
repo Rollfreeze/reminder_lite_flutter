@@ -1,8 +1,8 @@
 class ReminderFormModel: ObservableObject {
-    @Published var titleController: String = ""
-    @Published var notesController: String = ""
+    @Published var title: String = ""
+    @Published var notes: String = ""
     
     func isTitleNotEmpty() -> Bool {
-        return !titleController.isEmpty
+        return !title.isEmpty
     }
 }
