@@ -24,6 +24,8 @@ class ReminderService: NSObject, FlutterPlugin {
     }
     
     func create() -> Void {
-        RootViewService.presentFullBottomSheet(buider: { onClose in ReminderView(onCancel: onClose) })
+        RootViewService.presentFullBottomSheet(buider: { onClose in
+            ReminderView(onCancel: onClose)
+        })
     }
 }
