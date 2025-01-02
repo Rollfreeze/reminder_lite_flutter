@@ -1,14 +1,14 @@
 import SwiftUI
 
 /// Date picker presset for a new reminder view.
-struct MaybeDatePicker: View {
+struct ReminderDatePicker: View {
     let onToggleChange: (_ value: Bool) -> Void
     let onActivePressed: () -> Void
     @EnvironmentObject var datePicker: DatePickerModel
     
     var body: some View {
         VStack {
-            ListTileSwitcher(
+            ListTileToggle(
                 imageName: "calendar",
                 bgColor: Color.red,
                 title: "Date",
@@ -33,5 +33,5 @@ struct MaybeDatePicker: View {
 
 #Preview {
     let nothing: () -> Void = { }
-    NewReminderSheetView(onCancel: nothing)
+    ReminderView(onCancel: nothing)
 }

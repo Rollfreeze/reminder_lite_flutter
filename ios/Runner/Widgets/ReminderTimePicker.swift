@@ -1,14 +1,14 @@
 import SwiftUI
 
 /// Time picker presset for a new reminder view.
-struct MaybeTimePicker: View {
+struct ReminderTimePicker: View {
     let onToggleChange: (_ value: Bool) -> Void
     let onActivePressed: () -> Void
     @EnvironmentObject var timePicker: TimePickerModel
     
     var body: some View {
         VStack {
-            ListTileSwitcher(
+            ListTileToggle(
                 imageName: "clock.fill",
                 bgColor: Color.blue,
                 title: "Time",
@@ -37,5 +37,5 @@ struct MaybeTimePicker: View {
 
 #Preview {
     let nothing: () -> Void = { }
-    NewReminderSheetView(onCancel: nothing)
+    ReminderView(onCancel: nothing)
 }

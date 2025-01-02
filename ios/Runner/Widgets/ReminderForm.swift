@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewReminderForm: View {
+struct ReminderForm: View {
     @EnvironmentObject var form: ReminderFormModel
     
     var body: some View {
@@ -39,6 +39,6 @@ struct NewReminderForm: View {
 
 #Preview {
     let nothing: () -> Void = { }
-    NewReminderSheetView(onCancel: nothing)
+    ReminderView(onCancel: nothing)
 }
 

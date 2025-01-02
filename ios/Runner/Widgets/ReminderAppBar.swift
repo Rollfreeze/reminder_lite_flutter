@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct BottomSheetAppBar: ToolbarContent {
+struct ReminderAppBar: ToolbarContent {
     let onCancel: () -> Void
     let onAdd: () -> Void
     let isConfirmActive: Bool

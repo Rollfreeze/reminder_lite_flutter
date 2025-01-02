@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// A new reminder sheet view with its UI logic.
-struct NewReminderSheetView: View {
+struct ReminderView: View {
     /// Callback to close the view.
     let onCancel: () -> Void
     
@@ -22,9 +22,9 @@ struct NewReminderSheetView: View {
                 
                 ScrollView {
                     VStack {
-                        NewReminderForm()
+                        ReminderForm()
                             .environmentObject(form)
-                        NewReminderPresets(
+                        ReminderPresets(
                             onToggleDate: onToggleDate,
                             onActiveDatePressed: onActiveDatePressed,
                             onToggleTime: onToggleTime,
@@ -37,7 +37,7 @@ struct NewReminderSheetView: View {
                 }
             }
             .toolbar {
-                BottomSheetAppBar(
+                ReminderAppBar(
                     onCancel: onCancel,
                     onAdd: onCancel,
                     isConfirmActive: form.isTitleNotEmpty()
@@ -95,5 +95,5 @@ struct NewReminderSheetView: View {
 
 #Preview {
     let nothing: () -> Void = { }
-    NewReminderSheetView(onCancel: nothing)
+    ReminderView(onCancel: nothing)
 }

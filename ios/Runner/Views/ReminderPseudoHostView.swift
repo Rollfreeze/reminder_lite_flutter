@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewReminderPseudoHostView: View {
+struct ReminderPseudoHostView: View {
     @State private var isPresented: Bool = false
     
     private func isPresentedToggle() { isPresented.toggle() }
@@ -20,13 +20,13 @@ struct NewReminderPseudoHostView: View {
         .background(Color.black)
         .sheet(
             isPresented: $isPresented,
-            content: { NewReminderSheetView(onCancel: isPresentedToggle) }
+            content: { ReminderView(onCancel: isPresentedToggle) }
         )
     }
 }
 
 #Preview {
-    NewReminderPseudoHostView()
+    ReminderPseudoHostView()
 }
 
 

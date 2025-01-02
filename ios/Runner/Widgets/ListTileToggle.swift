@@ -4,7 +4,7 @@ import SwiftUI
 /// It also has some actions:
 /// 1) Action on `Toggle`.
 /// 2) Action on tap the whole area widget when `Toggle` is set as Active.
-struct ListTileSwitcher: View {
+struct ListTileToggle: View {
     let imageName: String
     let bgColor: Color
     let title: String
@@ -68,5 +68,5 @@ struct ListTileSwitcher: View {
 
 #Preview {
     let nothing: () -> Void = { }
-    NewReminderSheetView(onCancel: nothing)
+    ReminderView(onCancel: nothing)
 }
