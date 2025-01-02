@@ -3,27 +3,27 @@ import Flutter
 import UIKit
 import SwiftUI
 
-/// Service class that provides a method channel to the Flutter side for calling native iOS view.
-class NativeViewService: NSObject, FlutterPlugin {
-    public static var registrarServiceName: String = "NativeViewService"
-    private static var flutterMethodChannelName: String = "native_view_service"
+/// Service class that working with Reminders.
+class ReminderService: NSObject, FlutterPlugin {
+    public static var registrarServiceName: String = "ReminderService"
+    private static var flutterMethodChannelName: String = "ReminderServiceMethodChannel"
     
     static func register(with registrar: FlutterPluginRegistrar) {
         let methodChannel = FlutterMethodChannel(name: self.flutterMethodChannelName, binaryMessenger: registrar.messenger())
-        registrar.addMethodCallDelegate(NativeViewService(), channel: methodChannel)
+        registrar.addMethodCallDelegate(ReminderService(), channel: methodChannel)
     }
     
     func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch(call.method) {
-        case "createNewReminder":
-            self.newReminderBottomSheet()
+        case "create":
+            self.create()
             result(nil)
         default:
             result(FlutterMethodNotImplemented)
         }
     }
     
-    func newReminderBottomSheet() -> Void {
+    func create() -> Void {
         RootViewService.presentFullBottomSheet(buider: { onClose in NewReminderSheetView(onCancel: onClose) })
     }
 }

@@ -7,7 +7,7 @@ import UIKit
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
-        NativeViewService.register(with: self.registrar(forPlugin: NativeViewService.registrarServiceName)!)
+        ReminderService.register(with: self.registrar(forPlugin: ReminderService.registrarServiceName)!)
         
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
