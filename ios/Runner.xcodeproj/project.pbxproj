@@ -62,6 +62,7 @@
 		5DAE09942D272D9F00A88720 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		5DAE099A2D272DA400A88720 /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
 		5DAE099F2D272DAA00A88720 /* Widgets */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Widgets; sourceTree = "<group>"; };
+		5DAE09C72D28057700A88720 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +117,7 @@
 		97C146F01CF9000F007C117D /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				5DAE09C72D28057700A88720 /* Extensions */,
 				5DAE09942D272D9F00A88720 /* Models */,
 				5DAE099F2D272DAA00A88720 /* Widgets */,
 				5DAE099A2D272DA400A88720 /* Services */,
@@ -172,6 +174,7 @@
 				5DAE09942D272D9F00A88720 /* Models */,
 				5DAE099A2D272DA400A88720 /* Services */,
 				5DAE099F2D272DAA00A88720 /* Widgets */,
+				5DAE09C72D28057700A88720 /* Extensions */,
 			);
 			name = Runner;
 			productName = Runner;
