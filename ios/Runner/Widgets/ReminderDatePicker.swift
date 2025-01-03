@@ -22,9 +22,13 @@ struct ReminderDatePicker: View {
                 Divider()
                     .padding(.leading, 55)
                     .offset(y: -3)
-                DatePicker("Select Date", selection: $datePicker.selectedDate, displayedComponents: [.date])
-                    .datePickerStyle(GraphicalDatePickerStyle())
-                    .padding(.horizontal)
+                DatePicker(
+                    "",
+                    selection: $datePicker.selectedDate,
+                    displayedComponents: .date
+                )
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .padding(.horizontal)
             }
             
         }

@@ -23,7 +23,7 @@ struct ReminderTimePicker: View {
                     .padding(.leading, 55)
                     .offset(y: -3)
                 DatePicker(
-                    "TimePicker",
+                    "",
                     selection: $timePicker.selectedTime,
                     displayedComponents: .hourAndMinute
                 )
