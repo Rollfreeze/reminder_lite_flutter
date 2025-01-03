@@ -1,5 +1,5 @@
 class DatePickerModel: ObservableObject {
-    @Published var selectedDate: Date = Date(timeIntervalSinceNow: 0)
+    @Published var selectedDate: Date = Date.now
     @Published var isDatePickerActive: Bool = false
     @Published var showDatePicker: Bool = false
     

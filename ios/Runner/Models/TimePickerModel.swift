@@ -1,7 +1,7 @@
 import SwiftUI
 
 class TimePickerModel: ObservableObject {
-    @Published var selectedTime: Date = Date(timeIntervalSinceNow: 0)
+    @Published var selectedTime: Date = Date.now
     @Published var isTimePickerActive: Bool = false
     @Published var showTimePicker: Bool = false
     
