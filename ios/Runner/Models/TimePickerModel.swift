@@ -5,6 +5,11 @@ class TimePickerModel: ObservableObject {
     @Published var isTimePickerActive: Bool = false
     @Published var showTimePicker: Bool = false
     
+    public func getSelectedTime() -> Date? {
+        if !isTimePickerActive { return nil }
+        return selectedTime.withTimeOnly
+    }
+    
     public func show() -> Void {
         showTimePicker = true
     }
