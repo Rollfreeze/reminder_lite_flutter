@@ -9,7 +9,7 @@ extension Date {
     var withTimeOnly: Date? {
         var calendar = Calendar.current
         calendar.timeZone = .gmt
-        var dateComponents = calendar.dateComponents([.hour, .minute, .second], from: self)
+        let dateComponents = calendar.dateComponents([.hour, .minute, .second], from: self)
         return calendar.date(from: dateComponents)
     }
 }
