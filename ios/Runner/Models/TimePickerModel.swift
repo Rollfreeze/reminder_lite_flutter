@@ -19,7 +19,7 @@ class TimePickerModel: ObservableObject {
     }
     
     public func reset() -> Void {
-        selectedTime = Date(timeIntervalSinceNow: 0)
+        selectedTime = Date.now
         isTimePickerActive = false
         showTimePicker = false
     }

@@ -17,7 +17,7 @@ class DatePickerModel: ObservableObject {
     }
     
     public func reset() -> Void {
-        selectedDate = Date(timeIntervalSinceNow: 0)
+        selectedDate = Date.now
         showDatePicker = false
         isDatePickerActive = false
     }
@@ -31,7 +31,7 @@ class DatePickerModel: ObservableObject {
     }
 
     public func setDefault() -> Void {
-        selectedDate = Date(timeIntervalSinceNow: 0)
+        selectedDate = Date.now
     }
     
     public func formatDateIfSelected() -> String? {
