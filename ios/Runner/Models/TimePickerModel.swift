@@ -7,7 +7,7 @@ class TimePickerModel: ObservableObject {
     
     public func getSelectedTime() -> Date? {
         if !isTimePickerActive { return nil }
-        return selectedTime.withTimeOnly
+        return selectedTime
     }
     
     public func show() -> Void {
