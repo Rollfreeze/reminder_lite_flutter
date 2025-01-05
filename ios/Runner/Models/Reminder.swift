@@ -10,7 +10,7 @@ struct Reminder {
         self.id = UUID().uuidString
         self.title = title
         self.notes = notes
-        self.date = date?.addingTimeInterval(time?.timeIntervalSinceReferenceDate ?? 0)
+        self.date = date?.replaceTimeFrom(time)
     }
     
     /// An existing reminder.
