@@ -20,4 +20,15 @@ struct Reminder {
         self.notes = notes
         self.date = date
     }
+    
+    /// Get json representation of Reminder.
+    func toJson() -> [String: Any] {
+        return [
+            "id": id,
+            "title": title,
+            "notes": notes,
+            "date": date?.timeIntervalSince1970 ?? ""
+        ]
+    }
+
 }
