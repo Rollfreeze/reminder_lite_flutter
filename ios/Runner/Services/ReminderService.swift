@@ -16,16 +16,24 @@ class ReminderService: NSObject, FlutterPlugin {
     func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch(call.method) {
         case "create":
-            self.create()
-            result(nil)
+            self.create(result)
         default:
             result(FlutterMethodNotImplemented)
         }
     }
     
-    func create() -> Void {
+    func create(_ result: @escaping FlutterResult) -> Void {
         RootViewService.presentFullBottomSheet(buider: { onClose in
-            ReminderView(onCancel: onClose)
+            ReminderView(
+                onCancel: {
+                    onClose()
+                    result(nil)
+                },
+                onConfirm: { reminder in
+                    onClose()
+                    result(reminder?.toJson())
+                }
+            )
         })
     }
 }

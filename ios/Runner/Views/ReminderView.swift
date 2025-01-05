@@ -5,6 +5,9 @@ struct ReminderView: View {
     /// Callback to close the view.
     let onCancel: () -> Void
     
+    /// Callback to confirm changes.
+    let onConfirm: (Reminder?) -> Void
+    
     /// Model for text fields logic.
     @StateObject private var form = ReminderFormModel()
     
@@ -93,10 +96,20 @@ struct ReminderView: View {
     }
     
     private func confirm() -> Void {
+        if !form.isTitleNotEmpty() { return }
+        let reminder = Reminder(
+            title: form.title,
+            notes: form.notes,
+            date: datePicker.getSelectedDate(),
+            time: timePicker.getSelectedTime()
+        )
+        onConfirm(reminder)
     }
 }
 
 #Preview {
-    let nothing: () -> Void = { }
-    ReminderView(onCancel: nothing)
+    ReminderView(
+        onCancel: {},
+        onConfirm: { reminder in }
+    )
 }

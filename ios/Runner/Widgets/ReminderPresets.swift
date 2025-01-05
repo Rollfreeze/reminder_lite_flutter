@@ -23,6 +23,8 @@ struct ReminderPresets: View {
 }
 
 #Preview {
-    let nothing: () -> Void = { }
-    ReminderView(onCancel: nothing)
+    ReminderView(
+        onCancel: {},
+        onConfirm: { reminder in }
+    )
 }

@@ -20,7 +20,12 @@ struct ReminderPseudoHostView: View {
         .background(Color.black)
         .sheet(
             isPresented: $isPresented,
-            content: { ReminderView(onCancel: isPresentedToggle) }
+            content: {
+                ReminderView(
+                    onCancel: isPresentedToggle,
+                    onConfirm: { reminder in }
+                )
+            }
         )
     }
 }
