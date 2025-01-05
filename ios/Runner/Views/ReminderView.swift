@@ -96,7 +96,7 @@ struct ReminderView: View {
     }
     
     private func confirm() -> Void {
-        if !form.isTitleNotEmpty() { return }
+        guard form.isTitleNotEmpty() else { return }
         let reminder = Reminder(
             title: form.title,
             notes: form.notes,
