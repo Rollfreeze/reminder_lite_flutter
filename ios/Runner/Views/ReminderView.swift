@@ -39,7 +39,7 @@ struct ReminderView: View {
             .toolbar {
                 ReminderAppBar(
                     onCancel: onCancel,
-                    onAdd: onCancel,
+                    onConfirm: confirm,
                     isConfirmActive: form.isTitleNotEmpty()
                 )
             }
@@ -90,6 +90,9 @@ struct ReminderView: View {
             }
             else { timePicker.reset() }
         }
+    }
+    
+    private func confirm() -> Void {
     }
 }
 

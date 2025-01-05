@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ReminderAppBar: ToolbarContent {
     let onCancel: () -> Void
-    let onAdd: () -> Void
+    let onConfirm: () -> Void
     let isConfirmActive: Bool
     
     
@@ -15,7 +15,7 @@ struct ReminderAppBar: ToolbarContent {
                 .font(.headline)
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("Add", action: onAdd)
+            Button("Add", action: onConfirm)
                 .disabled(!isConfirmActive)
         }
     }
