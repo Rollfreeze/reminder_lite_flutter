@@ -30,5 +30,4 @@ struct Reminder {
             "date": date?.timeIntervalSince1970 ?? ""
         ]
     }
-
 }

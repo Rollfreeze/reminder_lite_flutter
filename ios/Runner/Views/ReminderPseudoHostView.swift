@@ -33,5 +33,3 @@ struct ReminderPseudoHostView: View {
 #Preview {
     ReminderPseudoHostView()
 }
-
-

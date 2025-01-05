@@ -36,11 +36,9 @@ struct ReminderForm: View {
     }
 }
 
-
 #Preview {
     ReminderView(
         onCancel: {},
         onConfirm: { reminder in }
     )
 }
-
