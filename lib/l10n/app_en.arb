@@ -64,5 +64,9 @@
   "name": "Name",
   "@name": {
     "description": "Name of new reminder"
+  },
+  "notes": "Notes",
+  "@notes": {
+    "description": "Some notes or description for Reminder"
   }
 }
