@@ -30,7 +30,14 @@ class ProgressSwitchButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: AppRadius.radius8,
           color: !isActive ? AppColors.white : category.color,
-          boxShadow: !isActive ? null : [BoxShadow(blurRadius: 10, color: category.color.withOpacity(0.25))],
+          boxShadow: !isActive
+              ? null
+              : [
+                  BoxShadow(
+                    blurRadius: 10,
+                    color: category.color.withAlpha(64),
+                  ),
+                ],
         ),
         child: Center(
           child: Text(
