@@ -33,9 +33,9 @@ class ReminderService: NSObject, FlutterPlugin {
                     onClose()
                     result(nil)
                 },
-                onConfirm: { reminder in
+                onConfirm: { (reminder: Reminder) in
                     onClose()
-                    result(reminder?.toJson())
+                    result(reminder.toJson())
                 }
             )
         })

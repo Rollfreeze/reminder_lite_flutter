@@ -6,7 +6,7 @@ struct ReminderView: View {
     let onCancel: () -> Void
     
     /// Callback to confirm changes.
-    let onConfirm: (Reminder?) -> Void
+    let onConfirm: (Reminder) -> Void
     
     /// Model for text fields logic.
     @StateObject private var form = ReminderFormModel()
