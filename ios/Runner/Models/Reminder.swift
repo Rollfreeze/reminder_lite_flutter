@@ -23,11 +23,16 @@ struct Reminder {
     
     /// Get json representation of Reminder.
     func toJson() -> [String: Any] {
-        return [
+        var json: [String: Any] = [
             "id": id,
             "title": title,
-            "notes": notes,
-            "date": date?.timeIntervalSince1970 ?? ""
+            "notes": notes
         ]
+        
+        if let date = date {
+            json["date"] = date.timeIntervalSince1970
+        }
+        
+        return json
     }
 }
