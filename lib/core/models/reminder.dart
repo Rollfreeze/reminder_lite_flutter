@@ -24,4 +24,11 @@ class Reminder {
                 ((json['date'] as double) * 1000).toInt(),
               ),
       );
+
+  /// A message with all properties of reminder instance.
+  String get propertiesFormated => "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated'";
+
+  /// Swift-like date formation.
+  String get dateFormated =>
+      '${date?.year}-${date?.month}-${date?.day} ${date?.hour}:${date?.minute}:${date?.second} ${date?.timeZoneName}';
 }
