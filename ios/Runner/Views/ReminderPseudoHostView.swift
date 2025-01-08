@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// This is a test view for checking native bottom sheet opening and closing.
 struct ReminderPseudoHostView: View {
     @State private var isPresented: Bool = false
     
