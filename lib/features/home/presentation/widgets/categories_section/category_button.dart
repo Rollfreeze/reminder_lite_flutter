@@ -23,11 +23,12 @@ class CategoryButton extends StatelessWidget {
     required this.onTap,
   });
 
-  static const _iconSize = 12.0;
+  static const _iconSize = 21.0;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: DecoratedBox(
         decoration: const BoxDecoration(
@@ -36,7 +37,7 @@ class CategoryButton extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 13, 6),
+          padding: const EdgeInsets.fromLTRB(10, 10, 8, 4),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,7 +46,7 @@ class CategoryButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox.square(
-                    dimension: 22,
+                    dimension: 30,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -58,13 +59,13 @@ class CategoryButton extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text('$count', style: AppTypo.bold17),
+                  Text('$count', style: AppTypo.bold25),
                 ],
               ),
-              const SizedBox(height: 11),
+              const SizedBox(height: 5),
               Text(
                 category.name,
-                style: AppTypo.semibold13.copyWith(
+                style: AppTypo.semibold16.copyWith(
                   color: AppColors.text3,
                 ),
               ),
