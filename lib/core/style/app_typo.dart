@@ -30,6 +30,15 @@ abstract class AppTypo {
     leadingDistribution: TextLeadingDistribution.even,
   );
 
+  static const regular16 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w400,
+    fontSize: 16,
+    height: 22 / 16,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
   static const regular17 = TextStyle(
     color: AppColors.textDefault,
     fontWeight: FontWeight.w400,
@@ -48,20 +57,20 @@ abstract class AppTypo {
     leadingDistribution: TextLeadingDistribution.even,
   );
 
+  static const bold25 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w700,
+    fontSize: 25,
+    height: 25 / 22,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
   static const medium17 = TextStyle(
     color: AppColors.textDefault,
     fontWeight: FontWeight.w500,
     fontSize: 17,
     height: 22 / 17,
-    letterSpacing: -0.4,
-    leadingDistribution: TextLeadingDistribution.even,
-  );
-
-  static const regular16 = TextStyle(
-    color: AppColors.textDefault,
-    fontWeight: FontWeight.w400,
-    fontSize: 16,
-    height: 22 / 16,
     letterSpacing: -0.4,
     leadingDistribution: TextLeadingDistribution.even,
   );
