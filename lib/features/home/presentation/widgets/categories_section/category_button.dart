@@ -23,7 +23,7 @@ class CategoryButton extends StatelessWidget {
     required this.onTap,
   });
 
-  static const _iconSize = 21.0;
+  static const _iconSize = 22.0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class CategoryButton extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 10, 8, 4),
+          padding: const EdgeInsets.fromLTRB(12, 12, 20, 6),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -46,7 +46,7 @@ class CategoryButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox.square(
-                    dimension: 30,
+                    dimension: 32,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
@@ -62,7 +62,7 @@ class CategoryButton extends StatelessWidget {
                   Text('$count', style: AppTypo.bold25),
                 ],
               ),
-              const SizedBox(height: 5),
+              const SizedBox(height: 10),
               Text(
                 category.name,
                 style: AppTypo.semibold16.copyWith(
