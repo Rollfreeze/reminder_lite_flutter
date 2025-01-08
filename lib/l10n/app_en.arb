@@ -3,8 +3,8 @@
   "@today": {
     "description": "Today's reminders"
   },
-  "forMonth": "For a month",
-  "@forMonth": {
+  "thisMonth": "This month",
+  "@thisMonth": {
     "description": "Current month's reminders"
   },
   "all": "All",

@@ -1,6 +1,6 @@
 {
     "today": "Сегодня",
-    "forMonth": "На месяц",
+    "thisMonth": "Этот месяц",
     "all": "Все",
     "done": "Завершено",
     "completeAmount": "Выполнено:\n{completed} из {total}",

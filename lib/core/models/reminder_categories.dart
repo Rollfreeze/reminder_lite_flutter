@@ -32,7 +32,7 @@ final class TodayCategory implements ReminderCategory {
 
 final class ForMonthCategory implements ReminderCategory {
   @override
-  String get name => LocalizationService.locale.forMonth;
+  String get name => LocalizationService.locale.thisMonth;
 
   @override
   IconData get icon => CupertinoIcons.calendar;

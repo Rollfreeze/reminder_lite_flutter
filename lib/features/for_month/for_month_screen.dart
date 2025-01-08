@@ -11,7 +11,7 @@ class ForMonthScreen extends StatelessWidget {
     return CupertinoPageScaffold(
       navigationBar: const CupertinoNavigationBar(),
       child: Center(
-        child: Text(LocalizationService.locale.forMonth),
+        child: Text(LocalizationService.locale.thisMonth),
       ),
     );
   }
