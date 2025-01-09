@@ -27,19 +27,20 @@ class ReminderService: NSObject, FlutterPlugin {
     /// 1) `Reminder` json representation object if creating was successfully finished.
     /// 2) `nil` if creating was canceled or dismissed.
     func create(_ result: @escaping FlutterResult) -> Void {
+        var isResultReturned: Bool = false
+        
         RootViewService.presentFullBottomSheet(
             onUserDismissView: {
+                if isResultReturned { return }
                 result(nil)
             },
             buider: { (onClose: @escaping () -> Void) in
                 ReminderView(
-                    onCancel: {
-                        onClose()
-                        result(nil)
-                    },
+                    onCancel: onClose,
                     onConfirm: { (reminder: Reminder) in
-                        onClose()
                         result(reminder.toJson())
+                        isResultReturned = true
+                        onClose()
                     }
                 )
             }
