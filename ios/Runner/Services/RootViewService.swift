@@ -54,7 +54,7 @@ class RootViewService {
 /// Custom `UIViewController` for `View` that is provided to the `RootViewService`.
 ///
 /// The main goal of this ViewController is ability to influence the life cycle of the View.
-class ContentViewController: UIViewController {
+fileprivate class ContentViewController: UIViewController {
     var onDidDisappear: (() -> Void)? = nil
     
     override func viewDidDisappear(_ animated: Bool) {
