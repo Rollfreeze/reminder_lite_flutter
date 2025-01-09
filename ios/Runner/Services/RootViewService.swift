@@ -13,12 +13,15 @@ class RootViewService {
     }
     
     /// Calls a bottom sheet passing the `builder` as a body to it.
-    static func presentFullBottomSheet<Content: View>(onUserDismissView: @escaping () -> Void, @ViewBuilder buider: @escaping (_ onClose: @escaping () -> Void) -> Content) -> Void {
+    static func presentFullBottomSheet<Content: View>(
+        onUserDismissView: @escaping () -> Void,
+        @ViewBuilder buider: @escaping (_ onClose: @escaping () -> Void) -> Content
+    ) -> Void {
         let viewController = ContentViewController()
         viewController.onDidDisappear = {
             onUserDismissView()
         }
-
+        
         let viewHostingController = UIHostingController(rootView: buider({
             viewController.dismiss(animated: true, completion: nil)
         }))
