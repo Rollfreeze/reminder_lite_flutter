@@ -25,7 +25,7 @@ class ReminderService: NSObject, FlutterPlugin {
     /// Creates GMT+0 `Reminder` object and returns next value to the Dart side:
     ///
     /// 1) `Reminder` json representation object if creating was successfully finished.
-    /// 2) `nil` if creating was canceled.
+    /// 2) `nil` if creating was canceled or dismissed.
     func create(_ result: @escaping FlutterResult) -> Void {
         RootViewService.presentFullBottomSheet(
             onUserDismissView: {
