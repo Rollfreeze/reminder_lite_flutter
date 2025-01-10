@@ -1,3 +1,4 @@
+/// View Model to control Date presset of Reminder.
 class DatePickerModel: ObservableObject {
     @Published var selectedDate: Date = Date.now
     @Published var isDatePickerActive: Bool = false
