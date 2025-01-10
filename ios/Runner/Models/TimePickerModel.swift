@@ -1,3 +1,4 @@
+/// View Model to control Time presset of Reminder.
 class TimePickerModel: ObservableObject {
     @Published var selectedTime: Date = Date.now
     @Published var isTimePickerActive: Bool = false
