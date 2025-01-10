@@ -1,5 +1,5 @@
 /// View Model to control form with title and notes of Reminder.
-class ReminderFormModel: ObservableObject {
+class ReminderFormViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var notes: String = ""
     

@@ -9,7 +9,7 @@ struct ReminderView: View {
     let onConfirm: (Reminder) -> Void
     
     /// Model for text fields logic.
-    @StateObject private var form = ReminderFormModel()
+    @StateObject private var form = ReminderFormViewModel()
     
     /// Model for date presset logic.
     @StateObject private var datePicker = DatePickerViewModel()

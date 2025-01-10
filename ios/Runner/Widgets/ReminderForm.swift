@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Reminder's form with title and notes fields.
 struct ReminderForm: View {
-    @EnvironmentObject var form: ReminderFormModel
+    @EnvironmentObject var form: ReminderFormViewModel
     
     var body: some View {
         VStack {
