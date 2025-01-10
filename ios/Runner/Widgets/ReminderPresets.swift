@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Reminder's grouped settings View.
 struct ReminderPresets: View {
     let onToggleDate: (_ value: Bool) -> Void
     let onActiveDatePressed: () -> Void
