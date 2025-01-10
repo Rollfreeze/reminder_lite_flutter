@@ -1,4 +1,7 @@
 extension Date {
+    /// Returns the same date but with zero time.
+    ///
+    /// e.g. "2025-01-02 00:00:00 +0000"
     var withZeroTime: Date? {
         var calendar = Calendar.current
         calendar.timeZone = .gmt
