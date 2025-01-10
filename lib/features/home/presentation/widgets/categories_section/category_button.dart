@@ -37,7 +37,7 @@ class CategoryButton extends StatelessWidget {
           color: AppColors.white,
         ),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(12, 12, 20, 6),
+          padding: const EdgeInsets.fromLTRB(12, 10, 20, 6),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.stretch,
