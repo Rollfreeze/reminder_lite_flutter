@@ -2,6 +2,7 @@ import SwiftUI
 
 /// Service class that can call iOS views for Flutter.
 class RootViewService {
+    /// Returns the most root `UIViewController` in iOS application.
     static func getController() -> UIViewController? {
         let rootController = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
