@@ -12,7 +12,7 @@ struct ReminderView: View {
     @StateObject private var form = ReminderFormModel()
     
     /// Model for date presset logic.
-    @StateObject private var datePicker = DatePickerModel()
+    @StateObject private var datePicker = DatePickerViewModel()
     
     /// Model for time presset logic.
     @StateObject private var timePicker = TimePickerModel()
