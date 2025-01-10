@@ -15,7 +15,7 @@ struct ReminderView: View {
     @StateObject private var datePicker = DatePickerViewModel()
     
     /// Model for time presset logic.
-    @StateObject private var timePicker = TimePickerModel()
+    @StateObject private var timePicker = TimePickerViewModel()
     
     var body: some View {
         NavigationStack {
