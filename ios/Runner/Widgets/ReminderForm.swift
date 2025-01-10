@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Reminder's form with title and notes fields.
 struct ReminderForm: View {
     @EnvironmentObject var form: ReminderFormModel
     
