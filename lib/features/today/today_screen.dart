@@ -13,7 +13,7 @@ class TodayScreen extends StatefulWidget {
 
 class _TodayScreenState extends State<TodayScreen> {
   final _controller = ScrollController();
-  Color _titleColor = AppColors.blue;
+  bool _isTitleCollapsed = false;
 
   @override
   void initState() {
@@ -30,12 +30,14 @@ class _TodayScreenState extends State<TodayScreen> {
 
   void _titleColorHandler() {
     const collapseOffset = 40.0;
-    if (_controller.offset > collapseOffset) {
-      setState(() => _titleColor = AppColors.black); // Collapsed color
-    } else {
-      setState(() => _titleColor = AppColors.blue); // Expanded color
-    }
+
+    final isCollapsed = _controller.offset > collapseOffset;
+    final shouldCollapse = isCollapsed != _isTitleCollapsed;
+
+    if (shouldCollapse) setState(() => _isTitleCollapsed = isCollapsed);
   }
+
+  Color get _titleColor => _isTitleCollapsed ? AppColors.black : AppColors.blue;
 
   @override
   Widget build(BuildContext context) {
