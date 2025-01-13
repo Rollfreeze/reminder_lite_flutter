@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/services/localization_service.dart';
 import 'package:reminder_lite/core/style/app_colors.dart';
+import 'package:reminder_lite/core/widgets/reminder_listing_item.dart';
 
 @RoutePage()
 class TodayScreen extends StatefulWidget {
@@ -50,6 +51,20 @@ class _TodayScreenState extends State<TodayScreen> {
             largeTitle: Text(
               LocalizationService.locale.today,
               style: TextStyle(color: _titleColor),
+            ),
+          ),
+          SliverPadding(
+            padding: EdgeInsets.only(bottom: 40),
+            sliver: SliverList.separated(
+              itemCount: 10,
+              separatorBuilder: (_, __) => ColoredBox(
+                color: AppColors.gray1,
+                child: const SizedBox(height: 1, width: double.infinity),
+              ),
+              itemBuilder: (_, __) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+                child: ReminderListingItem(),
+              ),
             ),
           ),
         ],
