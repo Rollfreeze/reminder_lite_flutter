@@ -57,9 +57,12 @@ class _TodayScreenState extends State<TodayScreen> {
             padding: EdgeInsets.only(bottom: 40),
             sliver: SliverList.separated(
               itemCount: 10,
-              separatorBuilder: (_, __) => ColoredBox(
-                color: AppColors.gray1,
-                child: const SizedBox(height: .5, width: double.infinity),
+              separatorBuilder: (_, __) => Padding(
+                padding: const EdgeInsets.only(left: 18),
+                child: ColoredBox(
+                  color: AppColors.gray1,
+                  child: const SizedBox(height: .5, width: double.infinity),
+                ),
               ),
               itemBuilder: (_, __) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
