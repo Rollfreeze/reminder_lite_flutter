@@ -14,12 +14,18 @@ class ReminderListingItem extends StatelessWidget {
       spacing: 5,
       children: [
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 8,
           children: [
-            Flexible(
+            Expanded(
               child: Text(
                 'Reminder Title',
-                style: AppTypo.bold17,
+                style: AppTypo.bold19,
               ),
+            ),
+            Text(
+              '20:01',
+              style: AppTypo.medium17hint,
             ),
           ],
         ),
