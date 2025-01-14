@@ -75,6 +75,15 @@ abstract class AppTypo {
     leadingDistribution: TextLeadingDistribution.even,
   );
 
+  static const medium17hint = TextStyle(
+    color: AppColors.text3,
+    fontWeight: FontWeight.w500,
+    fontSize: 17,
+    height: 22 / 17,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
   static const regular15 = TextStyle(
     color: AppColors.textDefault,
     fontWeight: FontWeight.w400,
