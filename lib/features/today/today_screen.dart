@@ -59,7 +59,7 @@ class _TodayScreenState extends State<TodayScreen> {
               itemCount: 10,
               separatorBuilder: (_, __) => ColoredBox(
                 color: AppColors.gray1,
-                child: const SizedBox(height: 1, width: double.infinity),
+                child: const SizedBox(height: .5, width: double.infinity),
               ),
               itemBuilder: (_, __) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
