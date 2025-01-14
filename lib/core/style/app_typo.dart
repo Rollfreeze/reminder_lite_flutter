@@ -57,6 +57,15 @@ abstract class AppTypo {
     leadingDistribution: TextLeadingDistribution.even,
   );
 
+  static const bold19 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w700,
+    fontSize: 19,
+    height: 22 / 19,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
   static const bold25 = TextStyle(
     color: AppColors.textDefault,
     fontWeight: FontWeight.w700,
