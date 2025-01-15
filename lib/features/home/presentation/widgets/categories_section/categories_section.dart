@@ -7,12 +7,16 @@ import 'package:reminder_lite/features/home/presentation/widgets/categories_sect
 class CategoriesSection extends StatelessWidget {
   const CategoriesSection({super.key});
 
+  static const _spacing = 16.0;
+
   @override
   Widget build(BuildContext context) {
     return Column(
+      spacing: _spacing,
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(
+          spacing: _spacing,
           children: [
             Flexible(
               child: CategoryButton(
@@ -21,7 +25,6 @@ class CategoriesSection extends StatelessWidget {
                 onTap: () => context.router.pushNamed('today'),
               ),
             ),
-            const SizedBox(width: 13),
             Flexible(
               child: CategoryButton(
                 category: ForMonthCategory(),
@@ -31,8 +34,8 @@ class CategoriesSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 13),
         Row(
+          spacing: _spacing,
           children: [
             Flexible(
               child: CategoryButton(
@@ -41,7 +44,6 @@ class CategoriesSection extends StatelessWidget {
                 onTap: () => context.router.pushNamed('all'),
               ),
             ),
-            const SizedBox(width: 13),
             Flexible(
               child: CategoryButton(
                 category: DoneCategory(),
