@@ -8,7 +8,10 @@ class ReminderListingItem extends StatelessWidget {
     required this.onChanged,
   });
 
+  /// Checkbox state.
   final bool isFinished;
+
+  /// Change checkbox state.
   final ValueChanged<bool?> onChanged;
 
   static const _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
