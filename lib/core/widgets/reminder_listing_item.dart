@@ -2,42 +2,41 @@ import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
 
 class ReminderListingItem extends StatelessWidget {
-  const ReminderListingItem({super.key});
+  const ReminderListingItem({super.key, required this.isFinished});
+  final bool isFinished;
 
-  static const _lorem =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In mollis sodales dictum. Quisque aliquam ultrices odio id convallis. Aliquam erat volutpat. Maecenas lobortis ante vitae consequat hendrerit. Phasellus eget turpis vitae purus dignissim auctor ut vel diam. Proin nec lacinia justo, id rhoncus risus. Phasellus luctus neque eu libero commodo fermentum. Etiam a massa massa. Suspendisse vulputate ipsum diam. Vestibulum eget erat eu nisi malesuada dapibus. Pellentesque vel suscipit neque. Duis et elementum leo, ut cursus neque. Nunc quis aliquam turpis. Proin convallis tristique imperdiet. Duis sodales pellentesque mauris bibendum mattis. Sed rutrum purus sed ex pulvinar porttitor.";
+  static const _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      spacing: 5,
+    return Row(
       children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8,
-          children: [
-            Expanded(
-              child: Text(
-                'Reminder Title',
-                style: AppTypo.bold19,
-              ),
-            ),
-            Text(
-              '20:01',
-              style: AppTypo.medium17hint,
-            ),
-          ],
+        CupertinoCheckbox(
+          value: isFinished,
+          onChanged: (value) {},
         ),
-        Row(
-          children: [
-            Flexible(
-              child: Text(
-                _lorem,
-                style: AppTypo.medium17,
+        Expanded(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 5,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 8,
+                children: [
+                  Expanded(child: Text('Reminder Title', style: AppTypo.bold19)),
+                  Text('20:01', style: AppTypo.medium17hint),
+                ],
               ),
-            ),
-          ],
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(_lorem * 2, style: AppTypo.medium17),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

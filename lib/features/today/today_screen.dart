@@ -53,6 +53,15 @@ class _TodayScreenState extends State<TodayScreen> {
               style: TextStyle(color: _titleColor),
             ),
           ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 18),
+              child: ColoredBox(
+                color: AppColors.gray1,
+                child: const SizedBox(height: .5, width: double.infinity),
+              ),
+            ),
+          ),
           SliverPadding(
             padding: EdgeInsets.only(bottom: 40),
             sliver: SliverList.separated(
@@ -64,9 +73,11 @@ class _TodayScreenState extends State<TodayScreen> {
                   child: const SizedBox(height: .5, width: double.infinity),
                 ),
               ),
-              itemBuilder: (_, __) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
-                child: ReminderListingItem(),
+              itemBuilder: (_, index) => Padding(
+                padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
+                child: ReminderListingItem(
+                  isFinished: index % 2 == 0,
+                ),
               ),
             ),
           ),
