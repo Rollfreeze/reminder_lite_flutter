@@ -71,6 +71,7 @@ class _TodayScreenState extends State<TodayScreen> {
                 padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
                 child: ReminderListingItem(
                   isFinished: index % 2 == 0,
+                  onChanged: (value) {},
                 ),
               ),
             ),

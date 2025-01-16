@@ -2,8 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
 
 class ReminderListingItem extends StatelessWidget {
-  const ReminderListingItem({super.key, required this.isFinished});
+  const ReminderListingItem({
+    super.key,
+    required this.isFinished,
+    required this.onChanged,
+  });
+
   final bool isFinished;
+  final ValueChanged<bool?> onChanged;
 
   static const _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
@@ -15,7 +21,7 @@ class ReminderListingItem extends StatelessWidget {
           scale: 1.3,
           child: CupertinoCheckbox(
             value: isFinished,
-            onChanged: (value) {},
+            onChanged: onChanged,
           ),
         ),
         Expanded(
