@@ -11,9 +11,12 @@ class ReminderListingItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CupertinoCheckbox(
-          value: isFinished,
-          onChanged: (value) {},
+        Transform.scale(
+          scale: 1.3,
+          child: CupertinoCheckbox(
+            value: isFinished,
+            onChanged: (value) {},
+          ),
         ),
         Expanded(
           child: Column(
