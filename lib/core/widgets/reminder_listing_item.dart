@@ -21,7 +21,7 @@ class ReminderListingItem extends StatelessWidget {
         Expanded(
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            spacing: 5,
+            spacing: 2,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
