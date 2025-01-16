@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
 
 class ReminderListingItem extends StatelessWidget {
@@ -6,6 +7,7 @@ class ReminderListingItem extends StatelessWidget {
     super.key,
     required this.isFinished,
     required this.onChanged,
+    required this.isRepetitive,
   });
 
   /// Checkbox state.
@@ -13,6 +15,9 @@ class ReminderListingItem extends StatelessWidget {
 
   /// Change checkbox state.
   final ValueChanged<bool?> onChanged;
+
+  /// Reminder repetition state.
+  final bool isRepetitive;
 
   static const _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
@@ -37,7 +42,19 @@ class ReminderListingItem extends StatelessWidget {
                 spacing: 8,
                 children: [
                   Expanded(child: Text('Reminder Title', style: AppTypo.bold19)),
-                  Text('20:01', style: AppTypo.medium17hint),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 8,
+                    children: [
+                      Text('20:01', style: AppTypo.medium17hint),
+                      if (isRepetitive)
+                        Icon(
+                          size: 20,
+                          CupertinoIcons.repeat,
+                          color: AppColors.text3,
+                        ),
+                    ],
+                  ),
                 ],
               ),
               Row(

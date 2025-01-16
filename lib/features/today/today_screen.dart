@@ -72,6 +72,7 @@ class _TodayScreenState extends State<TodayScreen> {
                 child: ReminderListingItem(
                   isFinished: index % 2 == 0,
                   onChanged: (value) {},
+                  isRepetitive: index % 3 == 0,
                 ),
               ),
             ),
