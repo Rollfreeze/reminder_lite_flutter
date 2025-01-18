@@ -29,9 +29,8 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: ListView(
                   children: const [
-                    SizedBox(height: 10),
                     CupertinoSearchTextField(),
-                    SizedBox(height: 25),
+                    SizedBox(height: 30),
                     CategoriesSection(),
                     SizedBox(height: 25),
                     ProgressSection(),
