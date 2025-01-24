@@ -17,12 +17,10 @@ struct ListTileToggle: View {
     var body: some View {
         ZStack {
             HStack {
-                Image(systemName: imageName)
-                    .foregroundColor(.white)
-                    .padding(.vertical, 5)
-                    .padding(.horizontal, 4.5)
-                    .background(bgColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 4))
+                IconBox(
+                    image: imageName,
+                    boxColor: bgColor
+                )
                 
                 VStack(alignment: .leading) {
                     Text(title)
