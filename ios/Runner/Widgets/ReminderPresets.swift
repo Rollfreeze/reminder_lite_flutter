@@ -18,6 +18,30 @@ struct ReminderPresets: View {
             .background(Color.white)
             .clipShape(.rect(bottomLeadingRadius: CGFloat(12), bottomTrailingRadius: CGFloat(12)))
             .offset(y: -7)
+            
+            NavigationLink {
+                ReminderRepeatView()
+            } label: {
+                HStack {
+                    IconBox(
+                        image: "repeat",
+                        boxColor: Color.gray
+                    )
+                    
+                    Text("Repeat")
+                        .padding(.horizontal, 4)
+                    
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal)
+                .padding(.vertical, 10)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            }
+            .buttonStyle(PlainButtonStyle())
+            
         }
         .padding()
     }
