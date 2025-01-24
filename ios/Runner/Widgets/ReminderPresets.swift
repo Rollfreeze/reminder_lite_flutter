@@ -11,13 +11,13 @@ struct ReminderPresets: View {
     var body: some View {
         VStack {
             ReminderDatePicker(onToggleChange: onToggleDate, onActivePressed: onActiveDatePressed)
-            .background(Color.white)
-            .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12)))
+                .background(Color.white)
+                .clipShape(.rect(topLeadingRadius: CGFloat(12), topTrailingRadius: CGFloat(12)))
             
             ReminderTimePicker(onToggleChange: onToggleTime, onActivePressed: onActiveTimePressed)
-            .background(Color.white)
-            .clipShape(.rect(bottomLeadingRadius: CGFloat(12), bottomTrailingRadius: CGFloat(12)))
-            .offset(y: -7)
+                .background(Color.white)
+                .clipShape(.rect(bottomLeadingRadius: CGFloat(12), bottomTrailingRadius: CGFloat(12)))
+                .offset(y: -7)
             
             NavigationLink {
                 ReminderRepeatView()
