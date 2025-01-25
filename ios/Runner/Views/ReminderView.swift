@@ -20,7 +20,7 @@ struct ReminderView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.15)
+                Color(UIColor.systemGroupedBackground)
                     .ignoresSafeArea()
                 
                 ScrollView {

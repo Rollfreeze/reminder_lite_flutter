@@ -4,9 +4,6 @@ struct ReminderRepeatView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.gray.opacity(0.15)
-                    .ignoresSafeArea()
-                
                 List {
                     HStack {
                         Text("Never")
