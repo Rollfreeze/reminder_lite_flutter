@@ -19,24 +19,18 @@ struct ReminderView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                Color(UIColor.systemGroupedBackground)
-                    .ignoresSafeArea()
-                
-                ScrollView {
-                    VStack {
-                        ReminderForm()
-                            .environmentObject(form)
-                        ReminderPresets(
-                            onToggleDate: onToggleDate,
-                            onActiveDatePressed: onActiveDatePressed,
-                            onToggleTime: onToggleTime,
-                            onActiveTimePressed: onActiveTimePressed
-                        )
-                        .environmentObject(datePicker)
-                        .environmentObject(timePicker)
-                    }
-                }
+            Form {
+                ReminderTextInputSection()
+                    .environmentObject(form)
+
+                ReminderDueSection(
+                    onToggleDate: onToggleDate,
+                    onActiveDatePressed: onActiveDatePressed,
+                    onToggleTime: onToggleTime,
+                    onActiveTimePressed: onActiveTimePressed
+                )
+                .environmentObject(datePicker)
+                .environmentObject(timePicker)
             }
             .toolbar {
                 ReminderAppBar(
