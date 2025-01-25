@@ -35,7 +35,6 @@ struct ReminderView: View {
                         )
                         .environmentObject(datePicker)
                         .environmentObject(timePicker)
-                        Spacer()
                     }
                 }
             }
