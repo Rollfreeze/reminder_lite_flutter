@@ -7,21 +7,18 @@ struct ReminderTimePicker: View {
     @EnvironmentObject var timePicker: TimePickerViewModel
     
     var body: some View {
-        VStack {
-            ListTileToggle(
+        List {
+            ToggleButton(
                 icon: "clock.fill",
                 iconColor: Color.blue,
                 title: "Time",
-                subTitle: timePicker.formatTimeIfSelected(),
+                subtitle: timePicker.formatTimeIfSelected(),
                 onActivePressed: onActivePressed,
                 onToggleChange: onToggleChange,
                 isToggleOn: $timePicker.isTimePickerActive
             )
             
             if timePicker.showTimePicker {
-                Divider()
-                    .padding(.leading, 55)
-                    .offset(y: -3)
                 DatePicker(
                     "",
                     selection: $timePicker.selectedTime,

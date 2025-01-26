@@ -7,30 +7,25 @@ struct ReminderDatePicker: View {
     @EnvironmentObject var datePicker: DatePickerViewModel
     
     var body: some View {
-        VStack {
-            ListTileToggle(
+        List {
+            ToggleButton(
                 icon: "calendar",
                 iconColor: Color.red,
                 title: "Date",
-                subTitle: datePicker.formatDateIfSelected(),
+                subtitle: datePicker.formatDateIfSelected(),
                 onActivePressed: onActivePressed,
                 onToggleChange: onToggleChange,
                 isToggleOn: $datePicker.isDatePickerActive
             )
             
             if datePicker.showDatePicker {
-                Divider()
-                    .padding(.leading, 55)
-                    .offset(y: -3)
                 DatePicker(
-                    "",
+                    "Due date",
                     selection: $datePicker.selectedDate,
                     displayedComponents: .date
                 )
                 .datePickerStyle(GraphicalDatePickerStyle())
-                .padding(.horizontal)
             }
-            
         }
     }
 }
