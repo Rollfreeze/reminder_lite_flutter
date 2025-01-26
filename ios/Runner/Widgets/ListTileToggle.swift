@@ -5,8 +5,8 @@ import SwiftUI
 /// 1) Action on `Toggle`.
 /// 2) Action on tap the whole area widget when `Toggle` is set as Active.
 struct ListTileToggle: View {
-    let imageName: String
-    let bgColor: Color
+    let icon: String
+    let iconColor: Color
     let title: String
     let subTitle: String?
     let onActivePressed: () -> Void
@@ -17,11 +17,7 @@ struct ListTileToggle: View {
     var body: some View {
         ZStack {
             HStack {
-                IconBox(
-                    image: imageName,
-                    boxColor: bgColor
-                )
-                
+                IconBox(image: icon, boxColor: iconColor)
                 VStack(alignment: .leading) {
                     Text(title)
                         .offset(y: subTitle == nil ? 0 : 2)

@@ -9,8 +9,8 @@ struct ReminderDatePicker: View {
     var body: some View {
         VStack {
             ListTileToggle(
-                imageName: "calendar",
-                bgColor: Color.red,
+                icon: "calendar",
+                iconColor: Color.red,
                 title: "Date",
                 subTitle: datePicker.formatDateIfSelected(),
                 onActivePressed: onActivePressed,

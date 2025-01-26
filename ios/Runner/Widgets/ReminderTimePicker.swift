@@ -9,8 +9,8 @@ struct ReminderTimePicker: View {
     var body: some View {
         VStack {
             ListTileToggle(
-                imageName: "clock.fill",
-                bgColor: Color.blue,
+                icon: "clock.fill",
+                iconColor: Color.blue,
                 title: "Time",
                 subTitle: timePicker.formatTimeIfSelected(),
                 onActivePressed: onActivePressed,
