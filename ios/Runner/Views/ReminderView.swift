@@ -31,6 +31,8 @@ struct ReminderView: View {
                 )
                 .environmentObject(datePicker)
                 .environmentObject(timePicker)
+                
+                ReminderRepeatSection()
             }
             .toolbar {
                 ReminderAppBar(
