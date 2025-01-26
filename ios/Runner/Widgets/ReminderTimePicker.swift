@@ -20,7 +20,7 @@ struct ReminderTimePicker: View {
             
             if timePicker.showTimePicker {
                 DatePicker(
-                    "",
+                    "Due time",
                     selection: $timePicker.selectedTime,
                     displayedComponents: .hourAndMinute
                 )
