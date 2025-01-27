@@ -34,6 +34,7 @@ struct ReminderView: View {
                 
                 ReminderRepeatSection()
             }
+            .padding(.vertical, -28)
             .toolbar {
                 ReminderAppBar(
                     onCancel: onCancel,
