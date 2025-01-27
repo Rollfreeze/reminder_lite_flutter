@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// An icon inside colored box for Reminders interaction menu actions.
 struct IconBox: View {
     let image: String
     let boxColor: Color
