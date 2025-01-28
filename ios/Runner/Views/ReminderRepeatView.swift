@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ReminderRepeatView: View {
     @Binding var repeatOption: String
+    @Environment(\.dismiss) var dismiss
     
     let options: [String] = [
         "Never",
@@ -35,6 +36,7 @@ struct ReminderRepeatView: View {
                         .contentShape(Rectangle())
                         .onTapGesture {
                             repeatOption = option
+                            dismiss()
                         }
                     }
                 }
