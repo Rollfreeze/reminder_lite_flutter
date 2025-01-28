@@ -12,6 +12,11 @@ struct ReminderRepeatSection: View {
                     IconBox(image: "repeat", boxColor: Color.gray)
                     Text("Repeat")
                         .padding(.horizontal, 4)
+                    Spacer()
+                    if repeatOption != nil {
+                        Text(repeatOption!)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
         }
