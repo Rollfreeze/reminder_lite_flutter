@@ -9,6 +9,7 @@ struct ReminderRepeatView: View {
         "Weekdays",
         "Weekends",
         "Weekly",
+        "Every 2 Weeks",
         "Fortnightly",
         "Monthly",
         "Every 3 Months",
