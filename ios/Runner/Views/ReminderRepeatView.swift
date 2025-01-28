@@ -1,6 +1,19 @@
 import SwiftUI
 
 struct ReminderRepeatView: View {
+    let options: [String] = [
+        "Never",
+        "Daily",
+        "Weekdays",
+        "Weekends",
+        "Weekly",
+        "Fortnightly",
+        "Monthly",
+        "Every 3 Months",
+        "Every 6 Months",
+        "Yearly",
+    ]
+    
     var body: some View {
         NavigationStack {
             ZStack {
