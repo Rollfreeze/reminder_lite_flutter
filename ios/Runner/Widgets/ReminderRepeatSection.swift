@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ReminderRepeatSection: View {
-    @Binding var repeatOption: String?
+    @Binding var repeatOption: String
     
     var body: some View {
         Section {
@@ -13,8 +13,8 @@ struct ReminderRepeatSection: View {
                     Text("Repeat")
                         .padding(.horizontal, 4)
                     Spacer()
-                    if repeatOption != nil {
-                        Text(repeatOption!)
+                    if repeatOption != "Never" {
+                        Text(repeatOption)
                             .foregroundStyle(.secondary)
                     }
                 }

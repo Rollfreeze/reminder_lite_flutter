@@ -17,8 +17,8 @@ struct ReminderView: View {
     /// Model for time presset logic.
     @StateObject private var timePicker = TimePickerViewModel()
     
-    /// Repeat
-    @State private var repeatOption: String? = nil
+    /// Repeat option.
+    @State private var repeatOption: String = "Never"
     
     var body: some View {
         NavigationStack {
