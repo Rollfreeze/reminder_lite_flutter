@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct ReminderRepeatSection: View {
+    @Binding var repeatOption: String?
+    
     var body: some View {
         Section {
             NavigationLink {
-                ReminderRepeatView()
+                ReminderRepeatView(repeatOption: $repeatOption)
             } label: {
                 HStack {
                     IconBox(image: "repeat", boxColor: Color.gray)

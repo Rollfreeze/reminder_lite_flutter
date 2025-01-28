@@ -17,6 +17,9 @@ struct ReminderView: View {
     /// Model for time presset logic.
     @StateObject private var timePicker = TimePickerViewModel()
     
+    /// Repeat
+    @State private var repeatOption: String? = nil
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -32,7 +35,7 @@ struct ReminderView: View {
                 .environmentObject(datePicker)
                 .environmentObject(timePicker)
                 
-                ReminderRepeatSection()
+                ReminderRepeatSection(repeatOption: $repeatOption)
             }
             .padding(.vertical, -24)
             .toolbar {

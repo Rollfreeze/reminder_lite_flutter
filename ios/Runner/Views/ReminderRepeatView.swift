@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ReminderRepeatView: View {
+    @Binding var repeatOption: String?
+    
     let options: [String] = [
         "Never",
         "Daily",
@@ -22,8 +24,18 @@ struct ReminderRepeatView: View {
                         HStack {
                             Text(option)
                             Spacer()
+                            if repeatOption == option {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                                    .bold()
+                            }
                         }
                         .padding(.vertical, 4)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if repeatOption == option { repeatOption = nil }
+                            else { repeatOption = option }
+                        }
                     }
                 }
             }
@@ -39,5 +51,8 @@ struct ReminderRepeatView: View {
 }
 
 #Preview {
-    ReminderRepeatView()
+    ReminderView(
+        onCancel: {},
+        onConfirm: { reminder in }
+    )
 }
