@@ -18,66 +18,13 @@ struct ReminderRepeatView: View {
         NavigationStack {
             ZStack {
                 List {
-                    HStack {
-                        Text("Never")
-                        Spacer()
+                    ForEach(options, id: \.self) { option in
+                        HStack {
+                            Text(option)
+                            Spacer()
+                        }
+                        .padding(.vertical, 4)
                     }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Daily")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Weekdays")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Weekends")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Weekly")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Fortnightly")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Monthly")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Every 3 Months")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Every 6 Months")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-                    
-                    HStack {
-                        Text("Yearly")
-                        Spacer()
-                    }
-                    .padding(.vertical, 4)
-
                 }
             }
             .toolbar {
