@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// View to select repeat option of Reminder.
 struct ReminderRepeatView: View {
     @Binding var repeatOption: String
     @Environment(\.dismiss) var dismiss
