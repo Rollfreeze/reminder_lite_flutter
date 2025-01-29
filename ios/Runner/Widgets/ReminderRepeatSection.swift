@@ -1,5 +1,7 @@
 import SwiftUI
 
+/// Section with NavigationLink to repeat settings.
+/// It also shows current selected option.
 struct ReminderRepeatSection: View {
     @Binding var repeatOption: String
     
