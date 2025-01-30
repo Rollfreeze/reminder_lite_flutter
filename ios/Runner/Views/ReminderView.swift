@@ -18,14 +18,14 @@ struct ReminderView: View {
     @StateObject private var timePicker = TimePickerViewModel()
     
     /// Repeat option.
-    @State private var repeatOption: String = "Never"
+    @State private var repeatance: String = "Never"
     
     var body: some View {
         NavigationStack {
             Form {
                 ReminderTextInputSection()
                     .environmentObject(form)
-
+                
                 ReminderDueSection(
                     onToggleDate: onToggleDate,
                     onActiveDatePressed: onActiveDatePressed,
@@ -35,7 +35,9 @@ struct ReminderView: View {
                 .environmentObject(datePicker)
                 .environmentObject(timePicker)
                 
-                ReminderRepeatSection(repeatOption: $repeatOption)
+                ReminderRepeatSection(
+                    repeatance: $repeatance
+                )
             }
             .padding(.vertical, -24)
             .toolbar {

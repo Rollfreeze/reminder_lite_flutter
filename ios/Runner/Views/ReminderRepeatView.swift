@@ -2,7 +2,7 @@ import SwiftUI
 
 /// View to select repeat option of Reminder.
 struct ReminderRepeatView: View {
-    @Binding var repeatOption: String
+    @Binding var repeatance: String
     @Environment(\.dismiss) var dismiss
     
     let options: [String] = [
@@ -27,7 +27,7 @@ struct ReminderRepeatView: View {
                         HStack {
                             Text(option)
                             Spacer()
-                            if repeatOption == option {
+                            if repeatance == option {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.blue)
                                     .bold()
@@ -36,7 +36,7 @@ struct ReminderRepeatView: View {
                         .padding(.vertical, 4)
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            repeatOption = option
+                            repeatance = option
                             dismiss()
                         }
                     }
