@@ -102,7 +102,8 @@ struct ReminderView: View {
             title: form.title,
             notes: form.notes,
             date: datePicker.getSelectedDate(),
-            time: timePicker.getSelectedTime()
+            time: timePicker.getSelectedTime(),
+            repeatance: repeatance
         )
         onConfirm(reminder)
     }
