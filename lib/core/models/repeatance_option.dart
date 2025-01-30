@@ -1,26 +1,26 @@
 /// Remindeer repeatance options
 enum RepeatanceOption {
-  never(0),
-  daily(1),
-  weekdays(2),
-  weekends(3),
-  weekly(4),
-  every2Weeks(5),
-  fortnightly(6),
-  monthly(7),
-  every3Months(8),
-  every6Months(9),
-  yearly(10);
+  never('Never'),
+  daily('Daily'),
+  weekdays('Weekdays'),
+  weekends('Weekends'),
+  weekly('Weekly'),
+  every2Weeks('Every 2 Weeks'),
+  fortnightly('Fortnightly'),
+  monthly('Monthly'),
+  every3Months('Every 3 Months'),
+  every6Months('Every 6 Months'),
+  yearly('Yearly');
 
-  final int code;
+  final String name;
 
-  const RepeatanceOption(this.code);
+  const RepeatanceOption(this.name);
 
   /// Create RepeatanceOption instance from code.
-  factory RepeatanceOption.fromCode(int code) {
+  factory RepeatanceOption.fromName(String name) {
     for (final value in values) {
-      if (code == value.code) return value;
+      if (name == value.name) return value;
     }
-    throw ArgumentError('Wrong code: $code');
+    throw ArgumentError('No such value in options: $name');
   }
 }

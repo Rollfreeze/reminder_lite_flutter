@@ -27,7 +27,7 @@ class Reminder {
                 isUtc: true,
                 ((json['date'] as double) * 1000).toInt(),
               ),
-        repeatance: RepeatanceOption.fromCode(json['repeatance'] as int),
+        repeatance: RepeatanceOption.fromName(json['repeatance'] as String),
       );
 
   /// A message with all properties of reminder instance.
