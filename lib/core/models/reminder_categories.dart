@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/services/localization_service.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
+import '../services/localization_service.dart';
+import '../style/app_colors.dart';
 
 sealed class ReminderCategory {
   /// A category name.

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
-import 'package:reminder_lite/core/style/app_radius.dart';
-import 'package:reminder_lite/core/style/app_shadows.dart';
-import 'package:reminder_lite/core/models/reminder_categories.dart';
-import 'package:reminder_lite/features/home/presentation/widgets/progress_section/progress_switch_button.dart';
+import '../../../../../core/style/app_colors.dart';
+import '../../../../../core/style/app_radius.dart';
+import '../../../../../core/style/app_shadows.dart';
+import '../../../../../core/models/reminder_categories.dart';
+import 'progress_switch_button.dart';
 
 /// A Row that contains reminder categories to select for a certain progress circle.
 class ProgressSwitchRow extends StatelessWidget {
@@ -20,11 +20,11 @@ class ProgressSwitchRow extends StatelessWidget {
   final VoidCallback onAllPressed;
 
   const ProgressSwitchRow({
-    super.key,
     required this.selectedCategory,
     required this.onTodayPressed,
     required this.onForMonthPressed,
     required this.onAllPressed,
+    super.key,
   });
 
   @override

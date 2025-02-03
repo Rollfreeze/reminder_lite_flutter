@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
+import 'app_colors.dart';
 
 /// App typography keep class.
 abstract class AppTypo {

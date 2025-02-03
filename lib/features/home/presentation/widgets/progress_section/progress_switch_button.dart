@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
-import 'package:reminder_lite/core/style/app_radius.dart';
-import 'package:reminder_lite/core/style/app_typo.dart';
-import 'package:reminder_lite/core/models/reminder_categories.dart';
+import '../../../../../core/style/app_colors.dart';
+import '../../../../../core/style/app_radius.dart';
+import '../../../../../core/style/app_typo.dart';
+import '../../../../../core/models/reminder_categories.dart';
 
 /// A selectable reminder category item for its progress to show.
 class ProgressSwitchButton extends StatelessWidget {
@@ -16,10 +16,10 @@ class ProgressSwitchButton extends StatelessWidget {
   final bool isActive;
 
   const ProgressSwitchButton({
-    super.key,
     required this.category,
     required this.onPressed,
     required this.isActive,
+    super.key,
   });
 
   @override

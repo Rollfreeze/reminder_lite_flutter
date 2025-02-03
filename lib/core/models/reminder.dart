@@ -1,4 +1,4 @@
-import 'package:reminder_lite/core/models/repeatance_option.dart';
+import 'repeatance_option.dart';
 
 /// A model that represents and contains all about some certain reminder.
 class Reminder {

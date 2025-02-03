@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:progress_circle/progress_circle.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
-import 'package:reminder_lite/core/style/app_radius.dart';
-import 'package:reminder_lite/core/style/app_shadows.dart';
-import 'package:reminder_lite/features/home/domain/models/progress_circle_model.dart';
+import '../../../../../core/style/app_colors.dart';
+import '../../../../../core/style/app_radius.dart';
+import '../../../../../core/style/app_shadows.dart';
+import '../../../domain/models/progress_circle_model.dart';
 
 /// A slider section with all progrss circles and theirs current tab indicator.
 class ProgressSlider extends StatelessWidget {
@@ -20,11 +20,11 @@ class ProgressSlider extends StatelessWidget {
   final TabController tabController;
 
   const ProgressSlider({
-    super.key,
     required this.items,
     required this.controller,
     required this.onPageChanged,
     required this.tabController,
+    super.key,
   });
 
   @override
@@ -45,7 +45,7 @@ class ProgressSlider extends StatelessWidget {
             child: ProgressCircle.fromValues(
               total: 4,
               completed: 3,
-              size: Size.square(220),
+              size: const Size.square(220),
               style: ProgressCircleStyle(
                 headIcon: items[index].category.icon,
                 centerMessage: items[index].category.name,

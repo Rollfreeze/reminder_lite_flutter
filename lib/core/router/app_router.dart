@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:reminder_lite/features/all/all_screen.dart';
-import 'package:reminder_lite/features/done/done_screen.dart';
-import 'package:reminder_lite/features/for_month/for_month_screen.dart';
-import 'package:reminder_lite/features/home/presentation/screens/home_screen.dart';
-import 'package:reminder_lite/features/home/di/home_page_wrapper.dart';
-import 'package:reminder_lite/features/today/today_screen.dart';
+import '../../features/all/all_screen.dart';
+import '../../features/done/done_screen.dart';
+import '../../features/for_month/for_month_screen.dart';
+import '../../features/home/presentation/screens/home_screen.dart';
+import '../../features/home/di/home_page_wrapper.dart';
+import '../../features/today/today_screen.dart';
 
 part 'app_router.gr.dart';
 

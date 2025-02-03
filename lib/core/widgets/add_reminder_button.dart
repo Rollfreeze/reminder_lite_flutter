@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/services/localization_service.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
-import 'package:reminder_lite/core/style/app_typo.dart';
+import '../services/localization_service.dart';
+import '../style/app_colors.dart';
+import '../style/app_typo.dart';
 
 /// A button to create new a reminder.
 class AddReminderButton extends StatelessWidget {
@@ -9,8 +9,8 @@ class AddReminderButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const AddReminderButton({
-    super.key,
     required this.onPressed,
+    super.key,
   });
 
   @override

@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/services/localization_service.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
-import 'package:reminder_lite/core/widgets/reminder_listing_item.dart';
+import '../../core/services/localization_service.dart';
+import '../../core/style/app_colors.dart';
+import '../../core/widgets/reminder_listing_item.dart';
 
 @RoutePage()
 class TodayScreen extends StatefulWidget {
@@ -53,7 +53,7 @@ class _TodayScreenState extends State<TodayScreen> {
     return CupertinoPageScaffold(
       child: CustomScrollView(
         controller: _controller,
-        physics: AlwaysScrollableScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         slivers: <Widget>[
           CupertinoSliverNavigationBar(
             largeTitle: Text(
@@ -61,9 +61,9 @@ class _TodayScreenState extends State<TodayScreen> {
               style: TextStyle(color: _titleColor),
             ),
           ),
-          SliverToBoxAdapter(child: separator),
+          const SliverToBoxAdapter(child: separator),
           SliverPadding(
-            padding: EdgeInsets.only(bottom: 40),
+            padding: const EdgeInsets.only(bottom: 40),
             sliver: SliverList.separated(
               itemCount: 10,
               separatorBuilder: (_, __) => separator,

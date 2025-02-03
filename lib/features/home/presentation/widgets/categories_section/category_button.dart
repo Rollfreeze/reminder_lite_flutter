@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reminder_lite/core/style/app_colors.dart';
-import 'package:reminder_lite/core/style/app_radius.dart';
-import 'package:reminder_lite/core/style/app_shadows.dart';
-import 'package:reminder_lite/core/style/app_typo.dart';
-import 'package:reminder_lite/core/models/reminder_categories.dart';
+import '../../../../../core/style/app_colors.dart';
+import '../../../../../core/style/app_radius.dart';
+import '../../../../../core/style/app_shadows.dart';
+import '../../../../../core/style/app_typo.dart';
+import '../../../../../core/models/reminder_categories.dart';
 
 /// Reminder category page button.
 class CategoryButton extends StatelessWidget {
@@ -17,10 +17,10 @@ class CategoryButton extends StatelessWidget {
   final VoidCallback onTap;
 
   const CategoryButton({
-    super.key,
     required this.category,
     required this.count,
     required this.onTap,
+    super.key,
   });
 
   static const _iconSize = 22.0;
