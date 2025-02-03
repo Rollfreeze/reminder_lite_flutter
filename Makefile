@@ -4,5 +4,5 @@ deps_show:
 build_run:
 	cd tools && sh build_run.sh
 
-format_sh:
-	cd tools && sh format_sh.sh
+format:
+	cd tools && sh format.sh
