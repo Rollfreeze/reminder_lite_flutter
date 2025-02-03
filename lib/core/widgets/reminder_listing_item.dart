@@ -3,13 +3,6 @@ import 'package:reminder_lite/core/style/app_colors.dart';
 import 'package:reminder_lite/core/style/app_typo.dart';
 
 class ReminderListingItem extends StatelessWidget {
-  const ReminderListingItem({
-    super.key,
-    required this.isFinished,
-    required this.onChanged,
-    required this.isRepetitive,
-  });
-
   /// Checkbox state.
   final bool isFinished;
 
@@ -18,6 +11,13 @@ class ReminderListingItem extends StatelessWidget {
 
   /// Reminder repetition state.
   final bool isRepetitive;
+
+  const ReminderListingItem({
+    super.key,
+    required this.isFinished,
+    required this.onChanged,
+    required this.isRepetitive,
+  });
 
   static const _lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
