@@ -2,4 +2,41 @@ include: package:flutter_lints/flutter.yaml
 
 linter:
   rules:
-    avoid_redundant_argument_values: true
+    # ❗ Essential Best Practices
+    - always_declare_return_types
+    - avoid_void_async
+    - prefer_final_fields
+    - avoid_print # Use logger instead
+    - avoid_dynamic_calls
+
+    # 🚀 Performance & Efficiency
+    - unnecessary_lambdas
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - avoid_unnecessary_containers
+    - use_decorated_box
+    - use_super_parameters
+
+    # 🧹 Code Style & Readability
+    - prefer_single_quotes
+    - require_trailing_commas
+    - sort_child_properties_last
+    - avoid_redundant_argument_values
+
+    # 🔐 Null Safety & Type Safety
+    - always_put_required_named_parameters_first
+    - avoid_null_checks_in_equality_operators
+    - avoid_types_on_closure_parameters
+    - avoid_returning_null
+
+    # 📌 Flutter-Specific Improvements
+    - use_key_in_widget_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_mixin
+    - avoid_positional_boolean_parameters
+    - prefer_relative_imports
+
+analyzer:
+  errors:
+    prefer_single_quotes: warning
+    avoid_print: error
