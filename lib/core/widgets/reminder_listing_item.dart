@@ -46,13 +46,13 @@ class ReminderListingItem extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     spacing: 8,
                     children: [
-                      Text('20:01', style: AppTypo.medium17hint),
                       if (isRepetitive)
                         Icon(
                           size: 20,
                           CupertinoIcons.repeat,
                           color: AppColors.text3,
                         ),
+                      Text('20:01', style: AppTypo.medium17hint),
                     ],
                   ),
                 ],
