@@ -30,7 +30,7 @@ class ProgressSwitchRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 59,
+      height: 60,
       child: DecoratedBox(
         decoration: const BoxDecoration(
           borderRadius: AppRadius.radius12,
