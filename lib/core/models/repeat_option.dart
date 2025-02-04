@@ -1,5 +1,5 @@
 /// Remindeer repeatance options
-enum RepeatanceOption {
+enum RepeatOption {
   never('Never'),
   daily('Daily'),
   weekdays('Weekdays'),
@@ -14,10 +14,10 @@ enum RepeatanceOption {
 
   final String name;
 
-  const RepeatanceOption(this.name);
+  const RepeatOption(this.name);
 
   /// Create RepeatanceOption instance from code.
-  factory RepeatanceOption.fromName(String name) {
+  factory RepeatOption.fromName(String name) {
     for (final value in values) {
       if (name == value.name) return value;
     }

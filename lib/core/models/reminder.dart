@@ -1,4 +1,4 @@
-import 'repeatance_option.dart';
+import 'repeat_option.dart';
 
 /// A model that represents and contains all about some certain reminder.
 class Reminder {
@@ -6,14 +6,14 @@ class Reminder {
   final String title;
   final String notes;
   final DateTime? date;
-  final RepeatanceOption repeatance;
+  final RepeatOption repeat;
 
   const Reminder({
     required this.id,
     required this.title,
     required this.notes,
     required this.date,
-    required this.repeatance,
+    required this.repeat,
   });
 
   // Factory constructor to create an instance from JSON
@@ -27,12 +27,12 @@ class Reminder {
                 isUtc: true,
                 ((json['date'] as double) * 1000).toInt(),
               ),
-        repeatance: RepeatanceOption.fromName(json['repeatance'] as String),
+        repeat: RepeatOption.fromName(json['repeatance'] as String),
       );
 
   /// A message with all properties of reminder instance.
   String get propertiesFormated =>
-      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance: '$repeatance'";
+      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeat: '$repeat'";
 
   /// Swift-like date formation.
   String get dateFormated =>
