@@ -1,4 +1,4 @@
-/// Reminder repeat options
+/// Reminder repeat option.
 enum RepeatOption: String, CaseIterable {
     case never = "Never"
     case daily = "Daily"

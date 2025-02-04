@@ -1,4 +1,4 @@
-/// Remindeer repeatance options
+/// Reminder repeat option.
 enum RepeatOption {
   never('Never'),
   daily('Daily'),
