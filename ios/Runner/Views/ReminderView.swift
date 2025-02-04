@@ -115,3 +115,11 @@ struct ReminderView: View {
         onConfirm: { reminder in }
     )
 }
+
+#Preview("Russian") {
+    ReminderView(
+        onCancel: {},
+        onConfirm: { reminder in }
+    )
+    .environment(\.locale, Locale(identifier: "ru"))
+}
