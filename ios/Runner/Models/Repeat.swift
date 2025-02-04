@@ -5,7 +5,6 @@ enum RepeatOption: String, CaseIterable {
     case weekdays = "Weekdays"
     case weekends = "Weekends"
     case weekly = "Weekly"
-    case every2Weeks = "Every 2 Weeks"
     case fortnightly = "Fortnightly"
     case monthly = "Monthly"
     case every3Months = "Every 3 Months"

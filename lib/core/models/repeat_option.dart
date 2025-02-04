@@ -5,7 +5,6 @@ enum RepeatOption {
   weekdays('Weekdays'),
   weekends('Weekends'),
   weekly('Weekly'),
-  every2Weeks('Every 2 Weeks'),
   fortnightly('Fortnightly'),
   monthly('Monthly'),
   every3Months('Every 3 Months'),
