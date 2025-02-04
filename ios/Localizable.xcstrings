@@ -1,0 +1,131 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить"
+          }
+        }
+      }
+    },
+    "callout!" : {
+
+    },
+    "Cancel" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отменить"
+          }
+        }
+      }
+    },
+    "caption!" : {
+
+    },
+    "caption2!" : {
+
+    },
+    "Due date" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        }
+      }
+    },
+    "Due time" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время"
+          }
+        }
+      }
+    },
+    "footnote!" : {
+
+    },
+    "headline!" : {
+
+    },
+    "Hello World!" : {
+
+    },
+    "largeTitle!" : {
+
+    },
+    "New Reminder" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новое напоминание"
+          }
+        }
+      }
+    },
+    "Notes" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заметки"
+          }
+        }
+      }
+    },
+    "Open Sheet" : {
+
+    },
+    "Repeat" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Повтор"
+          }
+        }
+      }
+    },
+    "SandboxView" : {
+
+    },
+    "subheadline!" : {
+
+    },
+    "TextEditor" : {
+
+    },
+    "TextField" : {
+
+    },
+    "Title" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название"
+          }
+        }
+      }
+    },
+    "title!" : {
+
+    },
+    "title2!" : {
+
+    },
+    "title3!" : {
+
+    }
+  },
+  "version" : "1.0"
+}
