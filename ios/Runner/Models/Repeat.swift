@@ -1,5 +1,5 @@
 /// Reminder repeat option.
-enum RepeatOption: String, CaseIterable {
+enum RepeatOption: LocalizedStringResource, CaseIterable {
     case never = "Never"
     case daily = "Daily"
     case weekdays = "Weekdays"
@@ -12,7 +12,7 @@ enum RepeatOption: String, CaseIterable {
     case yearly = "Yearly"
 
     /// Create `RepeatOption` instance from a string.
-    static func from(name: String) throws -> RepeatOption {
+    static func from(name: LocalizedStringResource) throws -> RepeatOption {
         guard let option = Self.allCases.first(where: { $0.rawValue == name }) else {
             throw NSError(domain: "RepeatOption", code: 404, userInfo: [NSLocalizedDescriptionKey: "No such value in options: \(name)"])
         }

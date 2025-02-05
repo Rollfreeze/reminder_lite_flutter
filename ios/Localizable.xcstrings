@@ -30,6 +30,16 @@
     "caption2!" : {
 
     },
+    "Daily" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ежедневно"
+          }
+        }
+      }
+    },
     "Due date" : {
       "localizations" : {
         "ru" : {
@@ -50,8 +60,38 @@
         }
       }
     },
+    "Every 3 Months" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждые 3 месяца"
+          }
+        }
+      }
+    },
+    "Every 6 Months" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждые 6 месяцев"
+          }
+        }
+      }
+    },
     "footnote!" : {
 
+    },
+    "Fortnightly" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Каждые 2 недели"
+          }
+        }
+      }
     },
     "headline!" : {
 
@@ -61,6 +101,26 @@
     },
     "largeTitle!" : {
 
+    },
+    "Monthly" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ежемесячно"
+          }
+        }
+      }
+    },
+    "Never" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Никогда"
+          }
+        }
+      }
     },
     "New Reminder" : {
       "localizations" : {
@@ -125,6 +185,46 @@
     },
     "title3!" : {
 
+    },
+    "Weekdays" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По будним дням"
+          }
+        }
+      }
+    },
+    "Weekends" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По выходным дням"
+          }
+        }
+      }
+    },
+    "Weekly" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Еженедельно"
+          }
+        }
+      }
+    },
+    "Yearly" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ежегодно"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
