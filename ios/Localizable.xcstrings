@@ -40,6 +40,16 @@
         }
       }
     },
+    "Date" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        }
+      }
+    },
     "Due date" : {
       "localizations" : {
         "ru" : {
@@ -166,6 +176,16 @@
     },
     "TextField" : {
 
+    },
+    "Time" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время"
+          }
+        }
+      }
     },
     "Title" : {
       "localizations" : {

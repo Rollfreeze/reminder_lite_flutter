@@ -4,7 +4,7 @@ import SwiftUI
 struct ToggleButton: View {
     let icon: String
     let iconColor: Color
-    let title: String
+    let title: LocalizedStringResource
     let subtitle: String?
     let onActivePressed: () -> Void
     let onToggleChange: (_ value: Bool) -> Void
