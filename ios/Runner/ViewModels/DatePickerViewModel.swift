@@ -52,6 +52,7 @@ class DatePickerViewModel: ObservableObject {
         } else {
             let formatter = DateFormatter()
             formatter.dateStyle = .full // Gives the format like "Friday, 29 November 2024"
+            formatter.locale = Locale.current
             return formatter.string(from: selectedDate)
         }
     }
