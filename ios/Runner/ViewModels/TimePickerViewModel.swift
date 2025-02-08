@@ -1,3 +1,5 @@
+import SwiftUI
+
 /// View Model to control Time presset of Reminder.
 class TimePickerViewModel: ObservableObject {
     @Published var selectedTime: Date = Date.now
@@ -31,10 +33,11 @@ class TimePickerViewModel: ObservableObject {
         isTimePickerActive = false
     }
     
-    public func formatTimeIfSelected() -> String? {
+    public func formatTimeIfSelected() -> LocalizedStringKey? {
         if !isTimePickerActive { return nil }
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
-        return formatter.string(from: selectedTime)
+        let formattedTime = formatter.string(from: selectedTime)
+        return LocalizedStringKey(formattedTime)
     }
 }

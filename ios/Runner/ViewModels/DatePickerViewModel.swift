@@ -1,3 +1,5 @@
+import SwiftUI
+
 /// View Model to control Date presset of Reminder.
 class DatePickerViewModel: ObservableObject {
     @Published var selectedDate: Date = Date.now
@@ -35,7 +37,7 @@ class DatePickerViewModel: ObservableObject {
         selectedDate = Date.now
     }
     
-    public func formatDateIfSelected() -> String? {
+    public func formatDateIfSelected() -> LocalizedStringKey? {
         if !isDatePickerActive { return nil }
 
         let calendar = Calendar.current
@@ -53,7 +55,8 @@ class DatePickerViewModel: ObservableObject {
             let formatter = DateFormatter()
             formatter.dateStyle = .full // Gives the format like "Friday, 29 November 2024"
             formatter.locale = Locale.current
-            return formatter.string(from: selectedDate).capitalized
+            let formattedDate = formatter.string(from: selectedDate).capitalized
+            return LocalizedStringKey(formattedDate)
         }
     }
 }

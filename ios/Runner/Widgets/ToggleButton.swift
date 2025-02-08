@@ -5,7 +5,7 @@ struct ToggleButton: View {
     let icon: String
     let iconColor: Color
     let title: LocalizedStringKey
-    let subtitle: String?
+    let subtitle: LocalizedStringKey?
     let onActivePressed: () -> Void
     let onToggleChange: (_ value: Bool) -> Void
     @Binding var isToggleOn: Bool
