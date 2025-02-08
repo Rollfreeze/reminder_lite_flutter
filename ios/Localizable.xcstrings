@@ -206,6 +206,26 @@
     "title3!" : {
 
     },
+    "Today" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сегодня"
+          }
+        }
+      }
+    },
+    "Tomorrow" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Завтра"
+          }
+        }
+      }
+    },
     "Weekdays" : {
       "localizations" : {
         "ru" : {
@@ -242,6 +262,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ежегодно"
+          }
+        }
+      }
+    },
+    "Yesterday" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вчера"
           }
         }
       }
