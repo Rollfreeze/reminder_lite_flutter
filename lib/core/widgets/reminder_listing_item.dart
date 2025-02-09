@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../style/app_colors.dart';
 import '../style/app_typo.dart';
 
+/// A Reminder element of the listing view.
 class ReminderListingItem extends StatelessWidget {
   /// Checkbox state.
   final bool isFinished;
