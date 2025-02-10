@@ -18,7 +18,7 @@ struct ReminderView: View {
     @StateObject private var timePicker = TimePickerViewModel()
     
     /// Repeat option.
-    @State private var repeatance: RepeatOption = RepeatOption.never
+    @State private var repeatance: RepeatanceOption = RepeatanceOption.never
     
     var body: some View {
         NavigationStack {
@@ -103,7 +103,7 @@ struct ReminderView: View {
             notes: form.notes,
             date: datePicker.getSelectedDate(),
             time: timePicker.getSelectedTime(),
-            repeatance: repeatance.rawValue.key
+            repeatance: repeatance
         )
         onConfirm(reminder)
     }

@@ -1,5 +1,5 @@
 /// Reminder repeat option.
-enum RepeatOption {
+enum RepeatanceOption {
   never(0),
   daily(1),
   weekdays(2),
@@ -13,10 +13,10 @@ enum RepeatOption {
 
   final int code;
 
-  const RepeatOption(this.code);
+  const RepeatanceOption(this.code);
 
   /// Create RepeatanceOption instance from code.
-  factory RepeatOption.fromCode(int code) {
+  factory RepeatanceOption.fromCode(int code) {
     for (final value in values) {
       if (code == value.code) return value;
     }

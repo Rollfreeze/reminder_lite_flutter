@@ -3,7 +3,7 @@ import SwiftUI
 /// Section with NavigationLink to repeat settings.
 /// It also shows current selected option.
 struct ReminderRepeatSection: View {
-    @Binding var repeatance: RepeatOption
+    @Binding var repeatance: RepeatanceOption
     
     var body: some View {
         Section {
@@ -15,8 +15,8 @@ struct ReminderRepeatSection: View {
                     Text("Repeat")
                         .padding(.horizontal, 4)
                     Spacer()
-                    if repeatance != RepeatOption.never {
-                        Text(repeatance.rawValue)
+                    if repeatance != RepeatanceOption.never {
+                        Text(repeatance.localizedString())
                             .foregroundStyle(.secondary)
                     }
                 }

@@ -31,6 +31,7 @@
 
     },
     "Daily" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -71,6 +72,7 @@
       }
     },
     "Every 3 Months" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -81,6 +83,7 @@
       }
     },
     "Every 6 Months" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -94,6 +97,7 @@
 
     },
     "Fortnightly" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -113,6 +117,7 @@
 
     },
     "Monthly" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -123,6 +128,7 @@
       }
     },
     "Never" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -227,6 +233,7 @@
       }
     },
     "Weekdays" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -237,6 +244,7 @@
       }
     },
     "Weekends" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -247,6 +255,7 @@
       }
     },
     "Weekly" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {
@@ -257,6 +266,7 @@
       }
     },
     "Yearly" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ru" : {
           "stringUnit" : {

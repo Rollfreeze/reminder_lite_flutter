@@ -2,16 +2,16 @@ import SwiftUI
 
 /// View to select repeat option of Reminder.
 struct ReminderRepeatView: View {
-    @Binding var repeatance: RepeatOption
+    @Binding var repeatance: RepeatanceOption
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
             ZStack {
                 List {
-                    ForEach(RepeatOption.allCases, id: \.self) { option in
+                    ForEach(RepeatanceOption.allCases, id: \.self) { option in
                         HStack {
-                            Text(option.rawValue)
+                            Text(option.localizedString())
                             Spacer()
                             if repeatance == option {
                                 Image(systemName: "checkmark")

@@ -4,23 +4,14 @@ struct Reminder {
     let title: String
     let notes: String
     let date: Date?
-    let repeatance: String
+    let repeatance: RepeatanceOption
     
     /// A new reminder.
-    init(title: String, notes: String, date: Date?, time: Date?, repeatance: String) {
+    init(title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption) {
         self.id = UUID().uuidString
         self.title = title
         self.notes = notes
         self.date = date?.replaceTimeFrom(time)
-        self.repeatance = repeatance
-    }
-    
-    /// An existing reminder.
-    init(id: String, title: String, notes: String, date: Date?, repeatance: String) {
-        self.id = id
-        self.title = title
-        self.notes = notes
-        self.date = date
         self.repeatance = repeatance
     }
     
@@ -30,7 +21,7 @@ struct Reminder {
             "id": id,
             "title": title,
             "notes": notes,
-            "repeatance": repeatance,
+            "repeatance": repeatance.rawValue,
         ]
         
         if let date = date {
