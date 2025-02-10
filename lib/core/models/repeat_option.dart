@@ -1,25 +1,25 @@
 /// Reminder repeat option.
 enum RepeatOption {
-  never('Never'),
-  daily('Daily'),
-  weekdays('Weekdays'),
-  weekends('Weekends'),
-  weekly('Weekly'),
-  fortnightly('Fortnightly'),
-  monthly('Monthly'),
-  every3Months('Every 3 Months'),
-  every6Months('Every 6 Months'),
-  yearly('Yearly');
+  never(0),
+  daily(1),
+  weekdays(2),
+  weekends(3),
+  weekly(4),
+  fortnightly(5),
+  monthly(6),
+  every3Months(7),
+  every6Months(8),
+  yearly(9);
 
-  final String name;
+  final int code;
 
-  const RepeatOption(this.name);
+  const RepeatOption(this.code);
 
   /// Create RepeatanceOption instance from code.
-  factory RepeatOption.fromName(String name) {
+  factory RepeatOption.fromCode(int code) {
     for (final value in values) {
-      if (name == value.name) return value;
+      if (code == value.code) return value;
     }
-    throw ArgumentError('No such value in options: $name');
+    throw ArgumentError('No such code in options: $code');
   }
 }
