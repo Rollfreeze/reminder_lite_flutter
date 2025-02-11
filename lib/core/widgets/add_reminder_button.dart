@@ -16,6 +16,7 @@ class AddReminderButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
+      padding: EdgeInsets.zero,
       onPressed: onPressed,
       child: Row(
         mainAxisSize: MainAxisSize.min,
