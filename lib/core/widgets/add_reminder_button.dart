@@ -21,11 +21,11 @@ class AddReminderButton extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(CupertinoIcons.add_circled_solid, size: 24),
-          const SizedBox(width: 5),
+          const Icon(CupertinoIcons.add_circled_solid, size: 30),
+          const SizedBox(width: 8),
           Text(
             LocalizationService.locale.reminder,
-            style: AppTypo.semibold16.copyWith(
+            style: AppTypo.semibold18.copyWith(
               color: AppColors.primary,
             ),
           ),
