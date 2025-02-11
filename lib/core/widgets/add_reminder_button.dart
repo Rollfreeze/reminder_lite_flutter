@@ -24,7 +24,7 @@ class AddReminderButton extends StatelessWidget {
           const Icon(CupertinoIcons.add_circled_solid, size: 30),
           const SizedBox(width: 8),
           Text(
-            LocalizationService.locale.reminder,
+            LocalizationService.locale.newReminder,
             style: AppTypo.semibold18.copyWith(
               color: AppColors.primary,
             ),
