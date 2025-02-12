@@ -16,8 +16,9 @@ class HomeScreen extends StatelessWidget {
     return CupertinoPageScaffold(
       backgroundColor: AppColors.gray6,
       navigationBar: const CupertinoNavigationBar(
-        backgroundColor: AppColors.gray6,
-        border: Border(),
+        border: Border.fromBorderSide(
+          BorderSide(color: CupertinoColors.separator, width: 0.5),
+        ),
       ),
       child: SafeArea(
         child: Padding(
