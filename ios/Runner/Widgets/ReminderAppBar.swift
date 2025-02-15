@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// Toolbar for Reminder View with sheet actions: cancel and creating.
 struct ReminderAppBar: ToolbarContent {
     let onCancel: () -> Void
     let onConfirm: () -> Void
