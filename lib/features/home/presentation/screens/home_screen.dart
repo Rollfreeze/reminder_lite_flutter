@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../../core/services/native_view_service.dart';
+import '../../../../core/services/reminder_service.dart';
 import '../../../../core/style/app_colors.dart';
 import '../../../../core/widgets/add_reminder_button.dart';
 import '../widgets/categories_section/categories_section.dart';
