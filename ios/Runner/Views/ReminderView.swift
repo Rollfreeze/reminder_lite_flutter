@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /// A new reminder sheet view with its UI logic.
 struct ReminderView: View {
@@ -19,6 +20,16 @@ struct ReminderView: View {
     
     /// Repeat option.
     @State private var repeatance: RepeatanceOption = RepeatanceOption.never
+    
+    /// SwiftData context.
+    @Environment(\.modelContext) var context
+    
+    /// SwiftData container for CRUD.
+    let container: ModelContainer = {
+        let schema = Schema([Reminder.self])
+        let container = try! ModelContainer(for: schema, configurations: [])
+        return container
+    }()
     
     var body: some View {
         NavigationStack {
@@ -49,6 +60,7 @@ struct ReminderView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
         }
+        .modelContainer(container)
     }
     
     /// Toggle the date presset showing when it's active.
@@ -105,6 +117,8 @@ struct ReminderView: View {
             time: timePicker.getSelectedTime(),
             repeatance: repeatance
         )
+        context.insert(reminder)
+        try! context.save()
         onConfirm(reminder)
     }
 }
