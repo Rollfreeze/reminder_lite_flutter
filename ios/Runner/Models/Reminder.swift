@@ -1,8 +1,9 @@
+import Foundation
 import SwiftData
 
 /// A model that represents and contains all about some certain reminder.
 @Model
-class Reminder {
+class Reminder: Identifiable {
     @Attribute(.unique) var id: String
     var title: String
     var notes: String

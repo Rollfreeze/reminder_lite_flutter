@@ -15,8 +15,21 @@ class ReminderService {
       if (kDebugMode) print('Created Reminder: ${reminder.propertiesFormated}');
       return reminder;
     } catch (e) {
-      if (kDebugMode) print('Create Reminder parse Error: $e');
+      if (kDebugMode) print('Create Reminder error: $e');
       return null;
+    }
+  }
+
+  static Future<List<Reminder>> getAll() async {
+    try {
+      final result = await _methodChannel.invokeMethod('getAll');
+      if (kDebugMode) print(result);
+      if (result == null) return [];
+      final r = Reminder.remindersFromJson(Map<String, dynamic>.from(result));
+      return r;
+    } catch (e) {
+      if (kDebugMode) print('Get All Reminders error: $e');
+      return [];
     }
   }
 }
