@@ -1,7 +1,6 @@
 import Foundation
 import SwiftData
 
-@MainActor
 class ReminderStorageService {
     static let shared = ReminderStorageService()
     private let modelContainer: ModelContainer

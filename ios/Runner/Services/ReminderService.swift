@@ -17,6 +17,8 @@ class ReminderService: NSObject, FlutterPlugin {
         switch(call.method) {
         case "create":
             self.create(result)
+        case "getAll":
+            self.getAll(result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -45,5 +47,10 @@ class ReminderService: NSObject, FlutterPlugin {
                 )
             }
         )
+    }
+    
+    func getAll(_ result: @escaping FlutterResult) -> Void {
+        let reminders = ReminderStorageService.shared.fetchItems()
+        result(Reminder.jsonFromList(reminders))
     }
 }
