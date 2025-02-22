@@ -9,6 +9,7 @@ class Reminder {
   final String notes;
   final DateTime? date;
   final RepeatanceOption repeatance;
+  final bool isDone;
 
   const Reminder({
     required this.id,
@@ -16,26 +17,35 @@ class Reminder {
     required this.notes,
     required this.date,
     required this.repeatance,
+    required this.isDone,
   });
 
   // Factory constructor to create an instance from JSON
-  factory Reminder.fromJson(Map<String, dynamic> json) => Reminder(
-        id: json['id'] ?? '',
-        title: json['title'] ?? '',
-        notes: json['notes'] ?? '',
-        date: json['date'] == null
+  factory Reminder.fromJson(String json) {
+    try {
+      final decoded = jsonDecode(json) as Map<String, dynamic>;
+      return Reminder(
+        id: decoded['id'] ?? '',
+        title: decoded['title'] ?? '',
+        notes: decoded['notes'] ?? '',
+        date: decoded['date'] == null
             ? null
             : DateTime.fromMillisecondsSinceEpoch(
                 isUtc: true,
-                ((json['date'] as double) * 1000).toInt(),
+                ((decoded['date'] as double) * 1000).toInt(),
               ),
-        repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
+        repeatance: RepeatanceOption.fromCode(decoded['repeatance_code'] as int),
+        isDone: decoded['is_done'] ?? false,
       );
+    } catch (e) {
+      throw ArgumentError('Failed to parse Reminder: $e');
+    }
+  }
 
   /// Creates a List of Reminders from json.
   static List<Reminder> remindersFromJson(String json) {
     try {
-      final Map<String, dynamic> decoded = jsonDecode(json) as Map<String, dynamic>;
+      final decoded = jsonDecode(json) as Map<String, dynamic>;
       final List<dynamic> reminders = decoded['reminders'] ?? [];
       return reminders.map((reminder) => Reminder.fromJson(reminder)).toList();
     } catch (e) {
@@ -46,7 +56,7 @@ class Reminder {
 
   /// A message with all properties of reminder instance.
   String get propertiesFormated =>
-      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance_code: '$repeatance'";
+      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance_code: '$repeatance', is_done: '$isDone'";
 
   /// Swift-like date formation.
   String get dateFormated => date == null

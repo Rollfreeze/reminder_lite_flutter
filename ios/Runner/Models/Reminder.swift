@@ -9,6 +9,7 @@ class Reminder: Identifiable {
     var notes: String
     var date: Date?
     var repeatanceCode: Int
+    var isDone: Bool
     
     /// A new reminder.
     init(title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption) {
@@ -17,12 +18,14 @@ class Reminder: Identifiable {
         self.notes = notes
         self.date = date?.replaceTimeFrom(time)
         self.repeatanceCode = repeatance.rawValue
+        self.isDone = false
     }
     
     /// Get map representation of Reminder.
     private func toMap() -> [String: Any] {
         var map: [String: Any] = [
-            "repeatance_code": repeatanceCode
+            "repeatance_code": repeatanceCode,
+            "is_done": isDone
         ]
         
         if !id.isEmpty { map["id"] = id }
