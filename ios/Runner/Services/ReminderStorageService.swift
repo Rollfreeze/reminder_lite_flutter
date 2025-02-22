@@ -11,18 +11,40 @@ class ReminderStorageService {
         context = ModelContext(modelContainer)
     }
     
-    public func fetchItems() -> [Reminder] {
-        let fetchDescriptor = FetchDescriptor<Reminder>()
+    public func addItem(_ item: Reminder) {
+        context.insert(item)
+        try! context.save()
+    }
+    
+    public func fetchFor(_ category: ReminderCategory) -> [Reminder] {
         do {
-            return try context.fetch(fetchDescriptor)
+            var descriptor = getDescriptor(category)
+            return try context.fetch(descriptor)
         } catch {
             print("Fetch error: \(error)")
             return []
         }
     }
+    
+    private func getDescriptor(_ category: ReminderCategory) -> FetchDescriptor<Reminder> {
+        var predicate: Predicate<Reminder>
 
-    public func addItem(_ item: Reminder) {
-        context.insert(item)
-        try! context.save()
+        switch (category) {
+        case .today:
+            predicate = #Predicate { !$0.isDone && $0.date != nil && $0.date!.isToday }
+        case .month:
+            predicate = #Predicate { !$0.isDone && $0.date != nil && $0.date!.isCurrentMonth }
+        case .all:
+            predicate = #Predicate { !$0.isDone }
+        case .done:
+            predicate = #Predicate { $0.isDone }
+        }
+        
+        return FetchDescriptor<Reminder>(
+            predicate: predicate,
+            sortBy: [
+                .init(\.date)
+            ]
+        )
     }
 }
