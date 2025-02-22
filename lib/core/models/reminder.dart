@@ -35,6 +35,7 @@ class Reminder {
       "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance: '$repeatance'";
 
   /// Swift-like date formation.
-  String get dateFormated =>
-      '${date?.year}-${date?.month}-${date?.day} ${date?.hour}:${date?.minute}:${date?.second} ${date?.timeZoneName}';
+  String get dateFormated => date == null
+      ? ''
+      : '${date?.year}-${date?.month}-${date?.day} ${date?.hour}:${date?.minute}:${date?.second} ${date?.timeZoneName}';
 }
