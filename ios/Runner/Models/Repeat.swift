@@ -13,7 +13,7 @@ enum RepeatanceOption: Int, CaseIterable {
     case every6Months = 8
     case yearly = 9
     
-    /// Create `RepeatOption` instance from a string.
+    /// Create `RepeatOption` instance from a code.
     static func from(code: Int) throws -> RepeatanceOption {
         guard let option = Self.allCases.first(where: { $0.rawValue == code }) else {
             throw NSError(
