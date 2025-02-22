@@ -40,12 +40,16 @@ class Reminder: Identifiable {
         }
         return nil
     }
+    
+    static public func jsonFromList(_ reminders: [Reminder]) -> String? {
+        let jsonData: [String: Any] = [
+            "reminders": reminders.map { $0.toMap() }
         ]
         
-        if let date = date {
-            json["date"] = date.timeIntervalSince1970
+        if let json = try? JSONSerialization.data(withJSONObject: jsonData, options: []) {
+            return String(data: json, encoding: .utf8)
         }
         
-        return json
+        return nil
     }
 }
