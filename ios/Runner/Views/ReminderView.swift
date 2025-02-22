@@ -21,9 +21,6 @@ struct ReminderView: View {
     /// Repeat option.
     @State private var repeatance: RepeatanceOption = RepeatanceOption.never
     
-    /// Stored reminders.
-    @State private var reminders: [Reminder] = ReminderStorageService.shared.fetchItems()
-    
     var body: some View {
         NavigationStack {
             Form {
@@ -110,7 +107,6 @@ struct ReminderView: View {
             repeatance: repeatance
         )
         ReminderStorageService.shared.addItem(reminder)
-        reminders = ReminderStorageService.shared.fetchItems()
 //        onConfirm(reminder)
     }
 }
