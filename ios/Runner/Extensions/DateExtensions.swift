@@ -33,4 +33,13 @@ extension Date {
         
         return calendar.date(from: combinedComponents)!
     }
+    
+    /// Checking if current date is today.
+    ///
+    /// Compatible with SwiftModel's `#Predicate`.
+    var isToday: Bool {
+        let startOfDay = Calendar.current.startOfDay(for: Date())
+        let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
+        return startOfDay <= self && self < endOfDay
+    }
 }
