@@ -12,10 +12,10 @@ class ReminderService {
       final result = await _methodChannel.invokeMethod('create');
       if (result == null) return null;
       final reminder = Reminder.fromJson(Map<String, dynamic>.from(result));
-      if (kDebugMode) print('Created Reminder: ${reminder.propertiesFormated}');
+      if (kDebugMode) debugPrint('Created Reminder: ${reminder.propertiesFormated}');
       return reminder;
     } catch (e) {
-      if (kDebugMode) print('Create Reminder error: $e');
+      if (kDebugMode) debugPrint('Create Reminder error: $e');
       return null;
     }
   }
@@ -25,7 +25,7 @@ class ReminderService {
       final reminders = await _methodChannel.invokeMethod('getAll');
       return Reminder.remindersFromJson(reminders);
     } catch (e) {
-      if (kDebugMode) print('Get All Reminders error: $e');
+      if (kDebugMode) debugPrint('Get All Reminders error: $e');
       return [];
     }
   }
