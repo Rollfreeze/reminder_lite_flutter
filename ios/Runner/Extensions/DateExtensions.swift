@@ -42,4 +42,15 @@ extension Date {
         let endOfDay = Calendar.current.date(byAdding: .day, value: 1, to: startOfDay)!
         return startOfDay <= self && self < endOfDay
     }
+    
+    /// Checking if current date is current month.
+    ///
+    /// Compatible with SwiftModel's `#Predicate`.
+    var isCurrentMonth: Bool {
+        let calendar = Calendar.current
+        let today = Date()
+        let startOfMonth = calendar.date(from: calendar.dateComponents([.year, .month], from: today))!
+        let startOfNextMonth = calendar.date(byAdding: .month, value: 1, to: startOfMonth)!
+        return startOfMonth <= self && self < startOfNextMonth
+    }
 }
