@@ -107,7 +107,7 @@ struct ReminderView: View {
             repeatance: repeatance
         )
         ReminderStorageService.shared.addItem(reminder)
-//        onConfirm(reminder)
+        onConfirm(reminder)
     }
 }
 
