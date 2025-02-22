@@ -18,21 +18,21 @@ class Reminder {
 
   // Factory constructor to create an instance from JSON
   factory Reminder.fromJson(Map<String, dynamic> json) => Reminder(
-        id: json['id'] as String,
-        title: json['title'] as String,
-        notes: json['notes'] as String,
+        id: json['id'] ?? '',
+        title: json['title'] ?? '',
+        notes: json['notes'] ?? '',
         date: json['date'] == null
             ? null
             : DateTime.fromMillisecondsSinceEpoch(
                 isUtc: true,
                 ((json['date'] as double) * 1000).toInt(),
               ),
-        repeatance: RepeatanceOption.fromCode(json['repeatance'] as int),
+        repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
       );
 
   /// A message with all properties of reminder instance.
   String get propertiesFormated =>
-      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance: '$repeatance'";
+      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance_code: '$repeatance'";
 
   /// Swift-like date formation.
   String get dateFormated => date == null

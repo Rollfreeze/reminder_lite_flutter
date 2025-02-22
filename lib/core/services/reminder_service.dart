@@ -22,11 +22,8 @@ class ReminderService {
 
   static Future<List<Reminder>> getAll() async {
     try {
-      final result = await _methodChannel.invokeMethod('getAll');
-      if (kDebugMode) print(result);
-      if (result == null) return [];
-      final r = Reminder.remindersFromJson(Map<String, dynamic>.from(result));
-      return r;
+      final reminders = await _methodChannel.invokeMethod('getAll');
+      return Reminder.remindersFromJson(reminders);
     } catch (e) {
       if (kDebugMode) print('Get All Reminders error: $e');
       return [];
