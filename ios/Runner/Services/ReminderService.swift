@@ -17,8 +17,8 @@ class ReminderService: NSObject, FlutterPlugin {
         switch(call.method) {
         case "create":
             self.create(result)
-        case "getAll":
-            self.getAll(result)
+        case "fetchFor":
+            self.fetchFor(code: call.arguments as! Int, result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -49,8 +49,13 @@ class ReminderService: NSObject, FlutterPlugin {
         )
     }
     
-    func getAll(_ result: @escaping FlutterResult) -> Void {
-        let reminders = ReminderStorageService.shared.fetchItems()
-        result(Reminder.jsonFromList(reminders))
+    func fetchFor(code: Int, _ result: @escaping FlutterResult) -> Void {
+        do {
+            var catergory = try ReminderCategory.from(code: code)
+            let reminders = ReminderStorageService.shared.fetchFor(catergory)
+            result(Reminder.jsonFromList(reminders))
+        } catch {
+            result(FlutterError(code: "Wrong argument", message: "ReminderCategory code: \(code) is wrong", details: nil))
+        }
     }
 }

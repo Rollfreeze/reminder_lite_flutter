@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import '../models/reminder.dart';
+import '../models/reminder_categories.dart';
 
 /// Service for native views call.
 class ReminderService {
@@ -11,7 +12,7 @@ class ReminderService {
     try {
       final result = await _methodChannel.invokeMethod('create');
       if (result == null) return null;
-      final reminder = Reminder.fromJson(Map<String, dynamic>.from(result));
+      final reminder = Reminder.fromJson(result);
       if (kDebugMode) debugPrint('Created Reminder: ${reminder.propertiesFormated}');
       return reminder;
     } catch (e) {
@@ -20,12 +21,12 @@ class ReminderService {
     }
   }
 
-  static Future<List<Reminder>> getAll() async {
+  static Future<List<Reminder>> fetchFor(ReminderCategory category) async {
     try {
-      final reminders = await _methodChannel.invokeMethod('getAll');
+      final reminders = await _methodChannel.invokeMethod('fetchFor', category.code);
       return Reminder.remindersFromJson(reminders);
     } catch (e) {
-      if (kDebugMode) debugPrint('Get All Reminders error: $e');
+      if (kDebugMode) debugPrint('Fetching for $category error: $e');
       return [];
     }
   }
