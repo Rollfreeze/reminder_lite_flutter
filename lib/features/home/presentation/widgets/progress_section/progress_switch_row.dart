@@ -40,28 +40,27 @@ class ProgressSwitchRow extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 9),
           child: Row(
+            spacing: 14.5,
             children: [
               Flexible(
                 child: ProgressSwitchButton(
-                  category: TodayCategory(),
+                  category: ReminderCategory.today,
                   onPressed: onTodayPressed,
-                  isActive: selectedCategory is TodayCategory,
+                  isActive: selectedCategory == ReminderCategory.today,
                 ),
               ),
-              const SizedBox(width: 14.5),
               Flexible(
                 child: ProgressSwitchButton(
-                  category: ForMonthCategory(),
+                  category: ReminderCategory.month,
                   onPressed: onForMonthPressed,
-                  isActive: selectedCategory is ForMonthCategory,
+                  isActive: selectedCategory == ReminderCategory.month,
                 ),
               ),
-              const SizedBox(width: 14.5),
               Flexible(
                 child: ProgressSwitchButton(
-                  category: AllCategory(),
+                  category: ReminderCategory.all,
                   onPressed: onAllPressed,
-                  isActive: selectedCategory is AllCategory,
+                  isActive: selectedCategory == ReminderCategory.all,
                 ),
               ),
             ],

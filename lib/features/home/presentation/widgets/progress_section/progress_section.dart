@@ -61,9 +61,9 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
   void _onPageSelect(int index) {
     _tabController.index = index;
     return switch (index) {
-      0 => _bloc.add(ProgressEvent.selectedCategory(TodayCategory())),
-      1 => _bloc.add(ProgressEvent.selectedCategory(ForMonthCategory())),
-      2 => _bloc.add(ProgressEvent.selectedCategory(AllCategory())),
+      0 => _bloc.add(const ProgressEvent.selectedCategory(ReminderCategory.today)),
+      1 => _bloc.add(const ProgressEvent.selectedCategory(ReminderCategory.month)),
+      2 => _bloc.add(const ProgressEvent.selectedCategory(ReminderCategory.all)),
       _ => null,
     };
   }

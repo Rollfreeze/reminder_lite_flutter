@@ -8,25 +8,13 @@ part 'progress_state.dart';
 part 'progress_bloc.freezed.dart';
 
 final _mock = [
-  ProgressCircleModel(
-    total: 10,
-    completed: 4,
-    category: TodayCategory(),
-  ),
-  ProgressCircleModel(
-    total: 20,
-    completed: 16,
-    category: ForMonthCategory(),
-  ),
-  ProgressCircleModel(
-    total: 30,
-    completed: 20,
-    category: AllCategory(),
-  ),
+  const ProgressCircleModel(total: 10, completed: 4, category: ReminderCategory.today),
+  const ProgressCircleModel(total: 20, completed: 16, category: ReminderCategory.month),
+  const ProgressCircleModel(total: 30, completed: 20, category: ReminderCategory.all),
 ];
 
 class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
-  ProgressBloc() : super(_Initial(TodayCategory(), _mock)) {
+  ProgressBloc() : super(_Initial(ReminderCategory.today, _mock)) {
     on<_SelectedCategory>(_onSelectedCategory);
   }
 

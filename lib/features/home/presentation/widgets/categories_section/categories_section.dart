@@ -20,14 +20,14 @@ class CategoriesSection extends StatelessWidget {
           children: [
             Flexible(
               child: CategoryButton(
-                category: TodayCategory(),
+                category: ReminderCategory.today,
                 count: 10,
                 onTap: () => context.router.pushNamed('today'),
               ),
             ),
             Flexible(
               child: CategoryButton(
-                category: ForMonthCategory(),
+                category: ReminderCategory.month,
                 count: 20,
                 onTap: () => context.router.pushNamed('month'),
               ),
@@ -39,14 +39,14 @@ class CategoriesSection extends StatelessWidget {
           children: [
             Flexible(
               child: CategoryButton(
-                category: AllCategory(),
+                category: ReminderCategory.all,
                 count: 30,
                 onTap: () => context.router.pushNamed('all'),
               ),
             ),
             Flexible(
               child: CategoryButton(
-                category: DoneCategory(),
+                category: ReminderCategory.done,
                 count: 40,
                 onTap: () => context.router.pushNamed('done'),
               ),
