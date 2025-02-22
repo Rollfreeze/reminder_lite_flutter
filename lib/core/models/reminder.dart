@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'repeat_option.dart';
 
 /// A model that represents and contains all about some certain reminder.
@@ -29,6 +31,18 @@ class Reminder {
               ),
         repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
       );
+
+  /// Creates a List of Reminders from json.
+  static List<Reminder> remindersFromJson(String json) {
+    try {
+      final Map<String, dynamic> decoded = jsonDecode(json) as Map<String, dynamic>;
+      final List<dynamic> reminders = decoded['reminders'] ?? [];
+      return reminders.map((reminder) => Reminder.fromJson(reminder)).toList();
+    } catch (e) {
+      if (kDebugMode) debugPrint('Failed to parse reminders: $e');
+      return [];
+    }
+  }
 
   /// A message with all properties of reminder instance.
   String get propertiesFormated =>
