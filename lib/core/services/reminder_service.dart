@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import '../models/reminder.dart';
 import '../models/reminder_categories.dart';
 
-/// Service for native views call.
+/// Service for working with Reminders.
 class ReminderService {
   static const _name = 'ReminderServiceMethodChannel';
   static const _methodChannel = MethodChannel(_name);
