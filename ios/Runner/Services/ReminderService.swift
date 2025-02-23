@@ -51,7 +51,7 @@ class ReminderService: NSObject, FlutterPlugin {
     
     func fetchFor(code: Int, _ result: @escaping FlutterResult) -> Void {
         do {
-            var catergory = try ReminderCategory.from(code: code)
+            let catergory = try ReminderCategory.from(code: code)
             let reminders = ReminderStorageService.shared.fetchFor(catergory)
             result(Reminder.jsonFromList(reminders))
         } catch {

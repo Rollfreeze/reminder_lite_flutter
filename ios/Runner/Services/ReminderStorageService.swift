@@ -18,7 +18,7 @@ class ReminderStorageService {
     
     public func fetchFor(_ category: ReminderCategory) -> [Reminder] {
         do {
-            var descriptor = getDescriptor(category)
+            let descriptor = getDescriptor(category)
             return try context.fetch(descriptor)
         } catch {
             print("Fetch error: \(error)")
