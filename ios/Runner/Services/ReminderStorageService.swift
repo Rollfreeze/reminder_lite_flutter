@@ -31,11 +31,11 @@ class ReminderStorageService {
 
         switch (category) {
         case .today:
-            predicate = #Predicate { !$0.isDone && $0.date != nil && $0.date!.isToday }
+            predicate = #Predicate { $0.date != nil && $0.date!.isToday }
         case .month:
-            predicate = #Predicate { !$0.isDone && $0.date != nil && $0.date!.isCurrentMonth }
+            predicate = #Predicate { $0.date != nil && $0.date!.isCurrentMonth }
         case .all:
-            predicate = #Predicate { !$0.isDone }
+            predicate = #Predicate { _ in true }
         case .done:
             predicate = #Predicate { $0.isDone }
         }
