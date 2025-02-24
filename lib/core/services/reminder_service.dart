@@ -8,7 +8,7 @@ class ReminderService {
   static const _name = 'ReminderServiceMethodChannel';
   static const _methodChannel = MethodChannel(_name);
 
-  static Future<Reminder?> create() async {
+  Future<Reminder?> create() async {
     try {
       final result = await _methodChannel.invokeMethod('create');
       if (result == null) return null;
@@ -21,7 +21,7 @@ class ReminderService {
     }
   }
 
-  static Future<List<Reminder>> fetchFor(ReminderCategory category) async {
+  Future<List<Reminder>> fetchFor(ReminderCategory category) async {
     try {
       final reminders = await _methodChannel.invokeMethod('fetchFor', category.code);
       return Reminder.remindersFromJson(reminders);
