@@ -174,25 +174,19 @@ mixin _$ReminderState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)
-        loaded,
+    required TResult Function(CategorizedReminders reminders) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)?
-        loaded,
+    TResult? Function(CategorizedReminders reminders)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)?
-        loaded,
+    TResult Function(CategorizedReminders reminders)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -280,9 +274,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)
-        loaded,
+    required TResult Function(CategorizedReminders reminders) loaded,
   }) {
     return loading();
   }
@@ -291,9 +283,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)?
-        loaded,
+    TResult? Function(CategorizedReminders reminders)? loaded,
   }) {
     return loading?.call();
   }
@@ -302,9 +292,7 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)?
-        loaded,
+    TResult Function(CategorizedReminders reminders)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -355,11 +343,9 @@ abstract class _$$LoadedImplCopyWith<$Res> {
           _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
       __$$LoadedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {List<Reminder> today,
-      List<Reminder> month,
-      List<Reminder> all,
-      List<Reminder> done});
+  $Res call({CategorizedReminders reminders});
+
+  $CategorizedRemindersCopyWith<$Res> get reminders;
 }
 
 /// @nodoc
@@ -375,80 +361,38 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? today = null,
-    Object? month = null,
-    Object? all = null,
-    Object? done = null,
+    Object? reminders = null,
   }) {
     return _then(_$LoadedImpl(
-      today: null == today
-          ? _value._today
-          : today // ignore: cast_nullable_to_non_nullable
-              as List<Reminder>,
-      month: null == month
-          ? _value._month
-          : month // ignore: cast_nullable_to_non_nullable
-              as List<Reminder>,
-      all: null == all
-          ? _value._all
-          : all // ignore: cast_nullable_to_non_nullable
-              as List<Reminder>,
-      done: null == done
-          ? _value._done
-          : done // ignore: cast_nullable_to_non_nullable
-              as List<Reminder>,
+      reminders: null == reminders
+          ? _value.reminders
+          : reminders // ignore: cast_nullable_to_non_nullable
+              as CategorizedReminders,
     ));
+  }
+
+  /// Create a copy of ReminderState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategorizedRemindersCopyWith<$Res> get reminders {
+    return $CategorizedRemindersCopyWith<$Res>(_value.reminders, (value) {
+      return _then(_value.copyWith(reminders: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl(
-      {required final List<Reminder> today,
-      required final List<Reminder> month,
-      required final List<Reminder> all,
-      required final List<Reminder> done})
-      : _today = today,
-        _month = month,
-        _all = all,
-        _done = done;
+  const _$LoadedImpl({required this.reminders});
 
-  final List<Reminder> _today;
   @override
-  List<Reminder> get today {
-    if (_today is EqualUnmodifiableListView) return _today;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_today);
-  }
-
-  final List<Reminder> _month;
-  @override
-  List<Reminder> get month {
-    if (_month is EqualUnmodifiableListView) return _month;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_month);
-  }
-
-  final List<Reminder> _all;
-  @override
-  List<Reminder> get all {
-    if (_all is EqualUnmodifiableListView) return _all;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_all);
-  }
-
-  final List<Reminder> _done;
-  @override
-  List<Reminder> get done {
-    if (_done is EqualUnmodifiableListView) return _done;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_done);
-  }
+  final CategorizedReminders reminders;
 
   @override
   String toString() {
-    return 'ReminderState.loaded(today: $today, month: $month, all: $all, done: $done)';
+    return 'ReminderState.loaded(reminders: $reminders)';
   }
 
   @override
@@ -456,19 +400,12 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
-            const DeepCollectionEquality().equals(other._today, _today) &&
-            const DeepCollectionEquality().equals(other._month, _month) &&
-            const DeepCollectionEquality().equals(other._all, _all) &&
-            const DeepCollectionEquality().equals(other._done, _done));
+            (identical(other.reminders, reminders) ||
+                other.reminders == reminders));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_today),
-      const DeepCollectionEquality().hash(_month),
-      const DeepCollectionEquality().hash(_all),
-      const DeepCollectionEquality().hash(_done));
+  int get hashCode => Object.hash(runtimeType, reminders);
 
   /// Create a copy of ReminderState
   /// with the given fields replaced by the non-null parameter values.
@@ -482,35 +419,29 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)
-        loaded,
+    required TResult Function(CategorizedReminders reminders) loaded,
   }) {
-    return loaded(today, month, all, done);
+    return loaded(reminders);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)?
-        loaded,
+    TResult? Function(CategorizedReminders reminders)? loaded,
   }) {
-    return loaded?.call(today, month, all, done);
+    return loaded?.call(reminders);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Reminder> today, List<Reminder> month,
-            List<Reminder> all, List<Reminder> done)?
-        loaded,
+    TResult Function(CategorizedReminders reminders)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(today, month, all, done);
+      return loaded(reminders);
     }
     return orElse();
   }
@@ -548,16 +479,10 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements ReminderState {
-  const factory _Loaded(
-      {required final List<Reminder> today,
-      required final List<Reminder> month,
-      required final List<Reminder> all,
-      required final List<Reminder> done}) = _$LoadedImpl;
+  const factory _Loaded({required final CategorizedReminders reminders}) =
+      _$LoadedImpl;
 
-  List<Reminder> get today;
-  List<Reminder> get month;
-  List<Reminder> get all;
-  List<Reminder> get done;
+  CategorizedReminders get reminders;
 
   /// Create a copy of ReminderState
   /// with the given fields replaced by the non-null parameter values.
