@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/bloc/progress_bloc/progress_bloc.dart';
-import '../../../../../core/models/reminder_categories.dart';
+import '../../../../../core/data/models/reminder_categories.dart';
 import 'progress_switch_row.dart';
 import 'progress_slider.dart';
 

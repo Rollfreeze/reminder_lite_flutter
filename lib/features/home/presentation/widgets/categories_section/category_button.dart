@@ -3,7 +3,7 @@ import '../../../../../core/style/app_colors.dart';
 import '../../../../../core/style/app_radius.dart';
 import '../../../../../core/style/app_shadows.dart';
 import '../../../../../core/style/app_typo.dart';
-import '../../../../../core/models/reminder_categories.dart';
+import '../../../../../core/data/models/reminder_categories.dart';
 
 /// Reminder category page button.
 class CategoryButton extends StatelessWidget {

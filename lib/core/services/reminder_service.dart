@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import '../models/reminder.dart';
-import '../models/reminder_categories.dart';
+import '../data/models/reminder.dart';
+import '../data/models/reminder_categories.dart';
 
 /// Service for working with Reminders.
 class ReminderService {
