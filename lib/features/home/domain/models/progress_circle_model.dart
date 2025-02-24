@@ -1,5 +1,5 @@
 import '../../../../core/services/localization_service.dart';
-import '../../../../core/data/models/reminder_categories.dart';
+import '../../../../core/data/models/reminder_category.dart';
 
 /// A model of ProgressCircle widget.
 class ProgressCircleModel {

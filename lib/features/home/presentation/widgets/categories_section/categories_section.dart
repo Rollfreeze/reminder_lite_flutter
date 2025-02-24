@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../../../core/data/models/reminder_categories.dart';
+import '../../../../../core/data/models/reminder_category.dart';
 import 'category_button.dart';
 
 /// A section with all reminder categories info.

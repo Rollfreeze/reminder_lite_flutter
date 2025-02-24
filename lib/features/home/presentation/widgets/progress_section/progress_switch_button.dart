@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../core/style/app_radius.dart';
 import '../../../../../core/style/app_typo.dart';
-import '../../../../../core/data/models/reminder_categories.dart';
+import '../../../../../core/data/models/reminder_category.dart';
 
 /// A selectable reminder category item for its progress to show.
 class ProgressSwitchButton extends StatelessWidget {
