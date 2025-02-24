@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import '../services/localization_service.dart';
-import '../style/app_colors.dart';
+import '../../services/localization_service.dart';
+import '../../style/app_colors.dart';
 
 enum ReminderCategory {
   today(
