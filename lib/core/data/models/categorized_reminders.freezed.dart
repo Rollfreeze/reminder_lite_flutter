@@ -139,7 +139,7 @@ class __$$CategorizedRemindersImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$CategorizedRemindersImpl implements _CategorizedReminders {
+class _$CategorizedRemindersImpl extends _CategorizedReminders {
   const _$CategorizedRemindersImpl(
       {required final List<Reminder> today,
       required final List<Reminder> month,
@@ -148,7 +148,8 @@ class _$CategorizedRemindersImpl implements _CategorizedReminders {
       : _today = today,
         _month = month,
         _all = all,
-        _done = done;
+        _done = done,
+        super._();
 
   final List<Reminder> _today;
   @override
@@ -217,12 +218,13 @@ class _$CategorizedRemindersImpl implements _CategorizedReminders {
               this, _$identity);
 }
 
-abstract class _CategorizedReminders implements CategorizedReminders {
+abstract class _CategorizedReminders extends CategorizedReminders {
   const factory _CategorizedReminders(
       {required final List<Reminder> today,
       required final List<Reminder> month,
       required final List<Reminder> all,
       required final List<Reminder> done}) = _$CategorizedRemindersImpl;
+  const _CategorizedReminders._() : super._();
 
   @override
   List<Reminder> get today;

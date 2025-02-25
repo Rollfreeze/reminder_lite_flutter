@@ -6,6 +6,8 @@ part 'categorized_reminders.freezed.dart';
 
 @freezed
 class CategorizedReminders with _$CategorizedReminders {
+  const CategorizedReminders._();
+
   const factory CategorizedReminders({
     required List<Reminder> today,
     required List<Reminder> month,
