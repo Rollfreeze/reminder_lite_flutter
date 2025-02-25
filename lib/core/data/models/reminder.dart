@@ -21,21 +21,20 @@ class Reminder {
   });
 
   // Factory constructor to create an instance from JSON
-  factory Reminder.fromJson(String json) {
+  factory Reminder.fromJson(Map<String, dynamic> json) {
     try {
-      final decoded = jsonDecode(json) as Map<String, dynamic>;
       return Reminder(
-        id: decoded['id'] ?? '',
-        title: decoded['title'] ?? '',
-        notes: decoded['notes'] ?? '',
-        date: decoded['date'] == null
+        id: json['id'] ?? '',
+        title: json['title'] ?? '',
+        notes: json['notes'] ?? '',
+        date: json['date'] == null
             ? null
             : DateTime.fromMillisecondsSinceEpoch(
                 isUtc: true,
-                ((decoded['date'] as double) * 1000).toInt(),
+                ((json['date'] as num) * 1000).toInt(),
               ),
-        repeatance: RepeatanceOption.fromCode(decoded['repeatance_code'] as int),
-        isDone: decoded['is_done'] ?? false,
+        repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
+        isDone: json['is_done'] ?? false,
       );
     } catch (e) {
       throw ArgumentError('Failed to parse Reminder: $e');
@@ -43,10 +42,9 @@ class Reminder {
   }
 
   /// Creates a List of Reminders from json.
-  static List<Reminder> remindersFromJson(String json) {
+  static List<Reminder> remindersFromJson(Map<String, dynamic> json) {
     try {
-      final decoded = jsonDecode(json) as Map<String, dynamic>;
-      final List<dynamic> reminders = decoded['reminders'] ?? [];
+      final List<dynamic> reminders = json['reminders'] ?? [];
       return reminders.map((reminder) => Reminder.fromJson(reminder)).toList();
     } catch (e) {
       if (kDebugMode) debugPrint('Failed to parse reminders: $e');
