@@ -9,7 +9,7 @@ class ReminderRepository {
 
   const ReminderRepository(this._reminderService);
 
-  Future<Result<CategorizedReminders>> getCategorizedReminders() async {
+  Future<Result<CategorizedReminders>> get() async {
     try {
       final data = await _reminderService.fetchFor(ReminderCategory.all);
       return Result<CategorizedReminders>.success(result: CategorizedReminders.from(data));
