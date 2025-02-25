@@ -38,4 +38,15 @@ class CategorizedReminders with _$CategorizedReminders {
 
     return CategorizedReminders(today: today, month: month, all: all, done: done);
   }
+
+  CategorizedReminders updateWith(Reminder reminder) {
+    if (!reminder.isDone && (reminder.date?.isToday ?? false)) today.add(reminder);
+    if (!reminder.isDone && (reminder.date?.isCurrentMonth ?? false)) month.add(reminder);
+    if (!reminder.isDone) {
+      all.add(reminder);
+    } else {
+      done.add(reminder);
+    }
+    return CategorizedReminders(today: today, month: month, all: all, done: done);
+  }
 }
