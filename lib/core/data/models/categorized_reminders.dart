@@ -42,13 +42,18 @@ class CategorizedReminders with _$CategorizedReminders {
   }
 
   CategorizedReminders updateWith(Reminder reminder) {
-    if (!reminder.isDone && (reminder.date?.isToday ?? false)) today.add(reminder);
-    if (!reminder.isDone && (reminder.date?.isCurrentMonth ?? false)) month.add(reminder);
+    final todayCopy = today.toList();
+    final monthCopy = month.toList();
+    final allCopy = all.toList();
+    final doneCopy = done.toList();
+
+    if (!reminder.isDone && (reminder.date?.isToday ?? false)) todayCopy.add(reminder);
+    if (!reminder.isDone && (reminder.date?.isCurrentMonth ?? false)) monthCopy.add(reminder);
     if (!reminder.isDone) {
-      all.add(reminder);
+      allCopy.add(reminder);
     } else {
-      done.add(reminder);
+      doneCopy.add(reminder);
     }
-    return CategorizedReminders(today: today, month: month, all: all, done: done);
+    return CategorizedReminders(today: todayCopy, month: monthCopy, all: allCopy, done: doneCopy);
   }
 }
