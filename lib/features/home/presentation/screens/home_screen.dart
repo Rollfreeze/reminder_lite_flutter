@@ -33,11 +33,7 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     const CupertinoSearchTextField(),
                     const SizedBox(height: 30),
-                    BlocBuilder<ReminderBloc, ReminderState>(
-                      builder: (_, state) => CategoriesSection(
-                        reminders: state.reminders,
-                      ),
-                    ),
+                    const CategoriesSection(),
                     const SizedBox(height: 25),
                     const ProgressSection(),
                   ],
