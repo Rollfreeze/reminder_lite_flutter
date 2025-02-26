@@ -487,23 +487,23 @@ mixin _$ReminderProcessingState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Processing value) processing,
-    required TResult Function(Failure value) failure,
-    required TResult Function(Fetched value) fetched,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_Fetched value) fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Processing value)? processing,
-    TResult? Function(Failure value)? failure,
-    TResult? Function(Fetched value)? fetched,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Fetched value)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Processing value)? processing,
-    TResult Function(Failure value)? failure,
-    TResult Function(Fetched value)? fetched,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_Fetched value)? fetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -552,7 +552,7 @@ class __$$ProcessingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ProcessingImpl implements Processing {
+class _$ProcessingImpl implements _Processing {
   const _$ProcessingImpl();
 
   @override
@@ -607,9 +607,9 @@ class _$ProcessingImpl implements Processing {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Processing value) processing,
-    required TResult Function(Failure value) failure,
-    required TResult Function(Fetched value) fetched,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_Fetched value) fetched,
   }) {
     return processing(this);
   }
@@ -617,9 +617,9 @@ class _$ProcessingImpl implements Processing {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Processing value)? processing,
-    TResult? Function(Failure value)? failure,
-    TResult? Function(Fetched value)? fetched,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Fetched value)? fetched,
   }) {
     return processing?.call(this);
   }
@@ -627,9 +627,9 @@ class _$ProcessingImpl implements Processing {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Processing value)? processing,
-    TResult Function(Failure value)? failure,
-    TResult Function(Fetched value)? fetched,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_Fetched value)? fetched,
     required TResult orElse(),
   }) {
     if (processing != null) {
@@ -639,8 +639,8 @@ class _$ProcessingImpl implements Processing {
   }
 }
 
-abstract class Processing implements ReminderProcessingState {
-  const factory Processing() = _$ProcessingImpl;
+abstract class _Processing implements ReminderProcessingState {
+  const factory _Processing() = _$ProcessingImpl;
 }
 
 /// @nodoc
@@ -695,7 +695,7 @@ class __$$FailureImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FailureImpl implements Failure {
+class _$FailureImpl implements _Failure {
   const _$FailureImpl(this.reminders, this.error);
 
   @override
@@ -767,9 +767,9 @@ class _$FailureImpl implements Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Processing value) processing,
-    required TResult Function(Failure value) failure,
-    required TResult Function(Fetched value) fetched,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_Fetched value) fetched,
   }) {
     return failure(this);
   }
@@ -777,9 +777,9 @@ class _$FailureImpl implements Failure {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Processing value)? processing,
-    TResult? Function(Failure value)? failure,
-    TResult? Function(Fetched value)? fetched,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Fetched value)? fetched,
   }) {
     return failure?.call(this);
   }
@@ -787,9 +787,9 @@ class _$FailureImpl implements Failure {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Processing value)? processing,
-    TResult Function(Failure value)? failure,
-    TResult Function(Fetched value)? fetched,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_Fetched value)? fetched,
     required TResult orElse(),
   }) {
     if (failure != null) {
@@ -799,8 +799,8 @@ class _$FailureImpl implements Failure {
   }
 }
 
-abstract class Failure implements ReminderProcessingState {
-  const factory Failure(
+abstract class _Failure implements ReminderProcessingState {
+  const factory _Failure(
       final CategorizedReminders reminders, final String error) = _$FailureImpl;
 
   CategorizedReminders get reminders;
@@ -860,7 +860,7 @@ class __$$FetchedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FetchedImpl implements Fetched {
+class _$FetchedImpl implements _Fetched {
   const _$FetchedImpl(this.reminders);
 
   @override
@@ -929,9 +929,9 @@ class _$FetchedImpl implements Fetched {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Processing value) processing,
-    required TResult Function(Failure value) failure,
-    required TResult Function(Fetched value) fetched,
+    required TResult Function(_Processing value) processing,
+    required TResult Function(_Failure value) failure,
+    required TResult Function(_Fetched value) fetched,
   }) {
     return fetched(this);
   }
@@ -939,9 +939,9 @@ class _$FetchedImpl implements Fetched {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Processing value)? processing,
-    TResult? Function(Failure value)? failure,
-    TResult? Function(Fetched value)? fetched,
+    TResult? Function(_Processing value)? processing,
+    TResult? Function(_Failure value)? failure,
+    TResult? Function(_Fetched value)? fetched,
   }) {
     return fetched?.call(this);
   }
@@ -949,9 +949,9 @@ class _$FetchedImpl implements Fetched {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Processing value)? processing,
-    TResult Function(Failure value)? failure,
-    TResult Function(Fetched value)? fetched,
+    TResult Function(_Processing value)? processing,
+    TResult Function(_Failure value)? failure,
+    TResult Function(_Fetched value)? fetched,
     required TResult orElse(),
   }) {
     if (fetched != null) {
@@ -961,8 +961,8 @@ class _$FetchedImpl implements Fetched {
   }
 }
 
-abstract class Fetched implements ReminderProcessingState {
-  const factory Fetched(final CategorizedReminders reminders) = _$FetchedImpl;
+abstract class _Fetched implements ReminderProcessingState {
+  const factory _Fetched(final CategorizedReminders reminders) = _$FetchedImpl;
 
   CategorizedReminders get reminders;
 
