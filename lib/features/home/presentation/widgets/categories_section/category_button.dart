@@ -10,16 +10,16 @@ class CategoryButton extends StatelessWidget {
   /// The current reminder category.
   final ReminderCategory category;
 
-  /// The top right corner count value.
-  final int count;
-
   /// Call on tap the widget.
   final VoidCallback onTap;
 
+  /// The top right corner count value.
+  final int? count;
+
   const CategoryButton({
     required this.category,
-    required this.count,
     required this.onTap,
+    this.count,
     super.key,
   });
 
@@ -59,7 +59,7 @@ class CategoryButton extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Text('$count', style: AppTypo.bold25),
+                  if (count != null) Text('$count', style: AppTypo.bold25),
                 ],
               ),
               const SizedBox(height: 10),
