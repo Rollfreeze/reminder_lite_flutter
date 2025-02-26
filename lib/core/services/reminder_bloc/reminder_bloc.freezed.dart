@@ -817,7 +817,7 @@ mixin _$ReminderProcessingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() processing,
-    required TResult Function(CategorizedReminders reminders, String error)
+    required TResult Function(CategorizedReminders? reminders, String error)
         failure,
     required TResult Function(CategorizedReminders reminders) fetched,
   }) =>
@@ -825,14 +825,14 @@ mixin _$ReminderProcessingState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? processing,
-    TResult? Function(CategorizedReminders reminders, String error)? failure,
+    TResult? Function(CategorizedReminders? reminders, String error)? failure,
     TResult? Function(CategorizedReminders reminders)? fetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? processing,
-    TResult Function(CategorizedReminders reminders, String error)? failure,
+    TResult Function(CategorizedReminders? reminders, String error)? failure,
     TResult Function(CategorizedReminders reminders)? fetched,
     required TResult orElse(),
   }) =>
@@ -925,7 +925,7 @@ class _$ProcessingImpl implements _Processing {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() processing,
-    required TResult Function(CategorizedReminders reminders, String error)
+    required TResult Function(CategorizedReminders? reminders, String error)
         failure,
     required TResult Function(CategorizedReminders reminders) fetched,
   }) {
@@ -936,7 +936,7 @@ class _$ProcessingImpl implements _Processing {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? processing,
-    TResult? Function(CategorizedReminders reminders, String error)? failure,
+    TResult? Function(CategorizedReminders? reminders, String error)? failure,
     TResult? Function(CategorizedReminders reminders)? fetched,
   }) {
     return processing?.call();
@@ -946,7 +946,7 @@ class _$ProcessingImpl implements _Processing {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? processing,
-    TResult Function(CategorizedReminders reminders, String error)? failure,
+    TResult Function(CategorizedReminders? reminders, String error)? failure,
     TResult Function(CategorizedReminders reminders)? fetched,
     required TResult orElse(),
   }) {
@@ -1001,9 +1001,9 @@ abstract class _$$FailureImplCopyWith<$Res> {
           _$FailureImpl value, $Res Function(_$FailureImpl) then) =
       __$$FailureImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CategorizedReminders reminders, String error});
+  $Res call({CategorizedReminders? reminders, String error});
 
-  $CategorizedRemindersCopyWith<$Res> get reminders;
+  $CategorizedRemindersCopyWith<$Res>? get reminders;
 }
 
 /// @nodoc
@@ -1019,14 +1019,14 @@ class __$$FailureImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? reminders = null,
+    Object? reminders = freezed,
     Object? error = null,
   }) {
     return _then(_$FailureImpl(
-      null == reminders
+      freezed == reminders
           ? _value.reminders
           : reminders // ignore: cast_nullable_to_non_nullable
-              as CategorizedReminders,
+              as CategorizedReminders?,
       null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1038,8 +1038,12 @@ class __$$FailureImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $CategorizedRemindersCopyWith<$Res> get reminders {
-    return $CategorizedRemindersCopyWith<$Res>(_value.reminders, (value) {
+  $CategorizedRemindersCopyWith<$Res>? get reminders {
+    if (_value.reminders == null) {
+      return null;
+    }
+
+    return $CategorizedRemindersCopyWith<$Res>(_value.reminders!, (value) {
       return _then(_value.copyWith(reminders: value));
     });
   }
@@ -1051,7 +1055,7 @@ class _$FailureImpl implements _Failure {
   const _$FailureImpl(this.reminders, this.error);
 
   @override
-  final CategorizedReminders reminders;
+  final CategorizedReminders? reminders;
   @override
   final String error;
 
@@ -1085,7 +1089,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() processing,
-    required TResult Function(CategorizedReminders reminders, String error)
+    required TResult Function(CategorizedReminders? reminders, String error)
         failure,
     required TResult Function(CategorizedReminders reminders) fetched,
   }) {
@@ -1096,7 +1100,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? processing,
-    TResult? Function(CategorizedReminders reminders, String error)? failure,
+    TResult? Function(CategorizedReminders? reminders, String error)? failure,
     TResult? Function(CategorizedReminders reminders)? fetched,
   }) {
     return failure?.call(reminders, error);
@@ -1106,7 +1110,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? processing,
-    TResult Function(CategorizedReminders reminders, String error)? failure,
+    TResult Function(CategorizedReminders? reminders, String error)? failure,
     TResult Function(CategorizedReminders reminders)? fetched,
     required TResult orElse(),
   }) {
@@ -1153,9 +1157,10 @@ class _$FailureImpl implements _Failure {
 
 abstract class _Failure implements ReminderProcessingState {
   const factory _Failure(
-      final CategorizedReminders reminders, final String error) = _$FailureImpl;
+          final CategorizedReminders? reminders, final String error) =
+      _$FailureImpl;
 
-  CategorizedReminders get reminders;
+  CategorizedReminders? get reminders;
   String get error;
 
   /// Create a copy of ReminderProcessingState
@@ -1247,7 +1252,7 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() processing,
-    required TResult Function(CategorizedReminders reminders, String error)
+    required TResult Function(CategorizedReminders? reminders, String error)
         failure,
     required TResult Function(CategorizedReminders reminders) fetched,
   }) {
@@ -1258,7 +1263,7 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? processing,
-    TResult? Function(CategorizedReminders reminders, String error)? failure,
+    TResult? Function(CategorizedReminders? reminders, String error)? failure,
     TResult? Function(CategorizedReminders reminders)? fetched,
   }) {
     return fetched?.call(reminders);
@@ -1268,7 +1273,7 @@ class _$FetchedImpl implements _Fetched {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? processing,
-    TResult Function(CategorizedReminders reminders, String error)? failure,
+    TResult Function(CategorizedReminders? reminders, String error)? failure,
     TResult Function(CategorizedReminders reminders)? fetched,
     required TResult orElse(),
   }) {

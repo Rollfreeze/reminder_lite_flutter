@@ -34,10 +34,9 @@ class HomeScreen extends StatelessWidget {
                     const CupertinoSearchTextField(),
                     const SizedBox(height: 30),
                     BlocBuilder<ReminderBloc, ReminderState>(
-                      builder: (_, state) => switch (state.processingState) {
-                        ReminderProcessingState.processing => const CategoriesSection(),
-                        _ => CategoriesSection(reminders: state.reminders),
-                      },
+                      builder: (_, state) => CategoriesSection(
+                        reminders: state.reminders,
+                      ),
                     ),
                     const SizedBox(height: 25),
                     const ProgressSection(),

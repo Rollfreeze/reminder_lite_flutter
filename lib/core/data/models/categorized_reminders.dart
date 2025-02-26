@@ -15,13 +15,6 @@ class CategorizedReminders with _$CategorizedReminders {
     required List<Reminder> done,
   }) = _CategorizedReminders;
 
-  factory CategorizedReminders.empty() => const CategorizedReminders(
-        today: [],
-        month: [],
-        all: [],
-        done: [],
-      );
-
   factory CategorizedReminders.from(List<Reminder> reminders) {
     final today = <Reminder>[];
     final month = <Reminder>[];

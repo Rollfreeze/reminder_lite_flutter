@@ -34,7 +34,12 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   }
 
   Future<void> _handleCreate(_Create event, Emitter<ReminderState> emit) async {
-    final result = await _repository.add(state.reminders);
+    final reminders = state.reminders;
+
+    // A new reminder can not be created if others haven't been loaded yet.
+    if (reminders == null) return;
+
+    final result = await _repository.add(reminders);
 
     return switch (result) {
       Success(:final result) => add(_Succeed(result)),
