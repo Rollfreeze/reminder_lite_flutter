@@ -9,23 +9,23 @@ class ReminderRepository {
 
   const ReminderRepository(this._reminderService);
 
-  Future<Result<CategorizedReminders>> get() async {
+  Future<Result<CategorizedReminders>> getCategorizedReminders() async {
     try {
       final data = await _reminderService.fetchFor(ReminderCategory.all);
       return Success<CategorizedReminders>(CategorizedReminders.from(data));
     } catch (error) {
-      if (kDebugMode) debugPrint('fetchForAll method error: $error');
+      if (kDebugMode) debugPrint('getCategorizedReminders method error: $error');
       return Failure('Could not get reminders');
     }
   }
 
-  Future<Result<CategorizedReminders>> add(CategorizedReminders currentReminders) async {
+  Future<Result<CategorizedReminders>> createReminder(CategorizedReminders currentReminders) async {
     try {
       final data = await _reminderService.create();
       if (data == null) return Success(currentReminders);
       return Success(currentReminders.updateWith(data));
     } catch (error) {
-      if (kDebugMode) debugPrint('create method error: $error');
+      if (kDebugMode) debugPrint('createReminder method error: $error');
       return Failure('Could not create reminder');
     }
   }
