@@ -20,20 +20,16 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   EventHandler<ReminderEvent, ReminderState> get _handler => (event, emit) => switch (event) {
         _Load() => _handleLoad(event, emit),
         _Create() => _handleCreate(event, emit),
+        _Succeed() => _handleSucceed(event, emit),
+        _Fail() => _handleFail(event, emit),
       };
 
   Future<void> _handleLoad(_Load event, Emitter<ReminderState> emit) async {
     final result = await _repository.get();
 
     return switch (result) {
-      Success(:final result) => emit(
-          state.copyWith(processingState: ReminderProcessingState.fetched(result)),
-        ),
-      Failure(:final error) => emit(
-          state.copyWith(
-            processingState: ReminderProcessingState.failure(CategorizedReminders.empty(), error),
-          ),
-        ),
+      Success(:final result) => add(_Succeed(result)),
+      Failure(:final error) => add(_Fail(error)),
     };
   }
 
@@ -41,14 +37,20 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     final result = await _repository.add(state.reminders);
 
     return switch (result) {
-      Success(:final result) => emit(
-          state.copyWith(processingState: ReminderProcessingState.fetched(result)),
-        ),
-      Failure(:final error) => emit(
-          state.copyWith(
-            processingState: ReminderProcessingState.failure(state.reminders, error),
-          ),
-        ),
+      Success(:final result) => add(_Succeed(result)),
+      Failure(:final error) => add(_Fail(error)),
     };
   }
+
+  void _handleSucceed(_Succeed event, Emitter<ReminderState> emit) => emit(
+        state.copyWith(
+          processingState: ReminderProcessingState.fetched(event.reminders),
+        ),
+      );
+
+  void _handleFail(_Fail event, Emitter<ReminderState> emit) => emit(
+        state.copyWith(
+          processingState: ReminderProcessingState.failure(state.reminders, event.error),
+        ),
+      );
 }

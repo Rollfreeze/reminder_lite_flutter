@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 30),
                     BlocBuilder<ReminderBloc, ReminderState>(
                       builder: (_, state) => switch (state.processingState) {
-                        Processing() => const CategoriesSection(),
+                        ReminderProcessingState.processing => const CategoriesSection(),
                         _ => CategoriesSection(reminders: state.reminders),
                       },
                     ),

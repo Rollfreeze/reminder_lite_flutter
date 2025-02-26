@@ -1,9 +1,13 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+sealed class Result<T> {}
 
-part 'result.freezed.dart';
+final class Success<T> extends Result<T> {
+  final T result;
 
-@freezed
-class Result<T> with _$Result<T> {
-  const factory Result.success({required T result}) = Success;
-  const factory Result.failure({required String error}) = Failure;
+  Success(this.result);
+}
+
+final class Failure<T> extends Result<T> {
+  final String error;
+
+  Failure(this.error);
 }
