@@ -59,7 +59,19 @@ class CategoryButton extends StatelessWidget {
                       ),
                     ),
                   ),
-                  if (count != null) Text('$count', style: AppTypo.bold25),
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 250),
+                    transitionBuilder: (child, animation) => FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    ),
+                    child: count == null
+                        ? const SizedBox()
+                        : Text(
+                            '$count',
+                            style: AppTypo.bold25,
+                          ),
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
