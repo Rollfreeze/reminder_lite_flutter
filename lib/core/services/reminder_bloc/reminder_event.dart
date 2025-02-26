@@ -9,4 +9,5 @@ sealed class ReminderEvent with _$ReminderEvent {
   /// UI change events.
   const factory ReminderEvent.succeed(CategorizedReminders reminders) = _Succeed;
   const factory ReminderEvent.fail(String error) = _Fail;
+  const factory ReminderEvent.selectedCategory(ReminderCategory category) = _SelectedCategory;
 }

@@ -22,6 +22,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
         _Create() => _handleCreate(event, emit),
         _Succeed() => _handleSucceed(event, emit),
         _Fail() => _handleFail(event, emit),
+        _SelectedCategory() => _handleSelectedCategory(event, emit),
       };
 
   Future<void> _handleLoad(_Load event, Emitter<ReminderState> emit) async {
@@ -56,6 +57,12 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   void _handleFail(_Fail event, Emitter<ReminderState> emit) => emit(
         state.copyWith(
           processingState: ReminderProcessingState.failure(state.reminders, event.error),
+        ),
+      );
+
+  void _handleSelectedCategory(_SelectedCategory event, Emitter<ReminderState> emit) => emit(
+        state.copyWith(
+          selectedCategory: event.category,
         ),
       );
 }
