@@ -50,7 +50,6 @@ class CategoriesSection extends StatelessWidget {
             Flexible(
               child: CategoryButton(
                 category: ReminderCategory.done,
-                count: reminders?.done.length ?? 0,
                 onTap: () => context.router.pushNamed('done'),
               ),
             ),
