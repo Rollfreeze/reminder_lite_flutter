@@ -11,12 +11,12 @@ class ReminderState with _$ReminderState {
 @freezed
 sealed class ReminderProcessingState with _$ReminderProcessingState {
   const factory ReminderProcessingState.processing() = _Processing;
-  const factory ReminderProcessingState.failure(CategorizedReminders? reminders, String error) = _Failure;
-  const factory ReminderProcessingState.fetched(CategorizedReminders reminders) = _Fetched;
+  const factory ReminderProcessingState.failure(ReminderCollection? reminders, String error) = _Failure;
+  const factory ReminderProcessingState.fetched(ReminderCollection reminders) = _Fetched;
 }
 
 extension ReminderStateExtension on ReminderState {
-  CategorizedReminders? get reminders => switch (processingState) {
+  ReminderCollection? get reminders => switch (processingState) {
         _Processing() => null,
         _Failure(:final reminders) => reminders,
         _Fetched(:final reminders) => reminders,
