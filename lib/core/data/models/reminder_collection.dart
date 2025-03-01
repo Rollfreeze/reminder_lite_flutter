@@ -7,9 +7,7 @@ import 'reminder_group.dart';
 part 'reminder_collection.freezed.dart';
 
 @freezed
-class ReminderCollection {
-  const ReminderCollection._();
-
+class ReminderCollection with _$ReminderCollection {
   const factory ReminderCollection({required Iterable<ReminderGroup> groups}) = _ReminderCollection;
 
   factory ReminderCollection.of(List<Reminder> reminders) {
@@ -38,38 +36,25 @@ class ReminderCollection {
   }
 
   ReminderCollection append(Reminder reminder) {
-    final today = <Reminder>[];
-    int todayCompleted = 0;
+    // Create copies of the existing category mappings
+    final remindersByCategory = {for (final group in groups) group.category: List<Reminder>.from(group.reminders)};
+    final completedByCategory = {for (final group in groups) group.category: group.completedAmount};
 
-    final month = <Reminder>[];
-    int monthCompleted = 0;
+    // Add the reminder to the appropriate categories
+    for (final category in ReminderCategory.values.where(reminder.belongsTo)) {
+      remindersByCategory.putIfAbsent(category, () => <Reminder>[]).add(reminder);
+      if (reminder.isDone) completedByCategory[category] = completedByCategory[category]! + 1;
+    }
 
-    final all = <Reminder>[];
-    int allCompleted = 0;
-
+    // Generate new ReminderGroups and return a new ReminderCollection instance
     return ReminderCollection(
-      groups: [
-        ReminderGroup(
-          category: ReminderCategory.today,
-          reminders: today,
-          completedAmount: todayCompleted,
+      groups: remindersByCategory.entries.map(
+        (entry) => ReminderGroup(
+          category: entry.key,
+          reminders: entry.value,
+          completedAmount: completedByCategory[entry.key]!,
         ),
-        ReminderGroup(
-          category: ReminderCategory.month,
-          reminders: month,
-          completedAmount: monthCompleted,
-        ),
-        ReminderGroup(
-          category: ReminderCategory.all,
-          reminders: all,
-          completedAmount: allCompleted,
-        ),
-        ReminderGroup(
-          category: ReminderCategory.done,
-          reminders: all,
-          completedAmount: all.length,
-        ),
-      ],
+      ),
     );
   }
 }
