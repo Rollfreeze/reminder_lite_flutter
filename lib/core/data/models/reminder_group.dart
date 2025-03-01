@@ -11,4 +11,6 @@ class ReminderGroup {
     required this.reminders,
     required this.completedAmount,
   });
+
+  int get length => reminders.length;
 }
