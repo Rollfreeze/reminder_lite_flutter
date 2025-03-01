@@ -45,12 +45,12 @@ class ProgressSlider extends StatelessWidget {
             final item = items[index];
             return Center(
               child: ProgressCircle.fromValues(
-                total: item.length.toDouble(),
+                total: item.length == 0 ? 1 : item.length.toDouble(),
                 completed: item.completedAmount.toDouble(),
                 size: const Size.square(220),
                 style: ProgressCircleStyle(
                   headIcon: item.category.icon,
-                  centerMessage: item.category.name,
+                  centerMessage: item.progressMessage,
                   progressArcColor: item.category.color,
                 ),
               ),
