@@ -1,5 +1,5 @@
+import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../utils/date_time_extension.dart';
 import 'reminder.dart';
 import 'reminder_category.dart';
 import 'reminder_group.dart';
@@ -11,57 +11,31 @@ class ReminderCollection {
   const ReminderCollection._();
 
   const factory ReminderCollection({
-    required List<ReminderGroup> groups,
+    required Iterable<ReminderGroup> groups,
   }) = _ReminderCollection;
 
   factory ReminderCollection.of(List<Reminder> reminders) {
-    final today = <Reminder>[];
-    int todayCompleted = 0;
+    // Initialize maps for reminders and their completed counts by each category.
+    final remindersByCategory = {for (final category in ReminderCategory.values) category: <Reminder>[]};
+    final completedByCategory = {for (final category in ReminderCategory.values) category: 0};
 
-    final month = <Reminder>[];
-    int monthCompleted = 0;
-
-    final all = <Reminder>[];
-    int allCompleted = 0;
-
-    for (final element in reminders) {
-      if (element.date?.isToday ?? false) {
-        today.add(element);
-        todayCompleted++;
+    // Distribute reminders into their respective categories
+    for (final reminder in reminders) {
+      for (final category in ReminderCategory.values.where(reminder.belongsTo)) {
+        remindersByCategory[category]!.add(reminder);
+        if (reminder.isDone) completedByCategory[category] = completedByCategory[category]! + 1;
       }
-
-      if (element.date?.isCurrentMonth ?? false) {
-        month.add(element);
-        monthCompleted++;
-      }
-
-      all.add(element);
-      if (!element.isDone) allCompleted++;
     }
 
+    // Convert the collected data into ReminderGroup instances for ReminderCollection.
     return ReminderCollection(
-      groups: [
-        ReminderGroup(
-          category: ReminderCategory.today,
-          reminders: today,
-          completedAmount: todayCompleted,
+      groups: remindersByCategory.entries.map(
+        (entry) => ReminderGroup(
+          category: entry.key,
+          reminders: entry.value,
+          completedAmount: completedByCategory[entry.key]!,
         ),
-        ReminderGroup(
-          category: ReminderCategory.month,
-          reminders: month,
-          completedAmount: monthCompleted,
-        ),
-        ReminderGroup(
-          category: ReminderCategory.all,
-          reminders: all,
-          completedAmount: allCompleted,
-        ),
-        ReminderGroup(
-          category: ReminderCategory.done,
-          reminders: all,
-          completedAmount: all.length,
-        ),
-      ],
+      ),
     );
   }
 

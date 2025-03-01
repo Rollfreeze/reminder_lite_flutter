@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ReminderCollection {
-  List<ReminderGroup> get groups => throw _privateConstructorUsedError;
+  Iterable<ReminderGroup> get groups => throw _privateConstructorUsedError;
 
   /// Create a copy of ReminderCollection
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +31,7 @@ abstract class $ReminderCollectionCopyWith<$Res> {
           ReminderCollection value, $Res Function(ReminderCollection) then) =
       _$ReminderCollectionCopyWithImpl<$Res, ReminderCollection>;
   @useResult
-  $Res call({List<ReminderGroup> groups});
+  $Res call({Iterable<ReminderGroup> groups});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$ReminderCollectionCopyWithImpl<$Res, $Val extends ReminderCollection>
       groups: null == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<ReminderGroup>,
+              as Iterable<ReminderGroup>,
     ) as $Val);
   }
 }
@@ -68,7 +68,7 @@ abstract class _$$ReminderCollectionImplCopyWith<$Res>
       __$$ReminderCollectionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<ReminderGroup> groups});
+  $Res call({Iterable<ReminderGroup> groups});
 }
 
 /// @nodoc
@@ -88,31 +88,33 @@ class __$$ReminderCollectionImplCopyWithImpl<$Res>
   }) {
     return _then(_$ReminderCollectionImpl(
       groups: null == groups
-          ? _value._groups
+          ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as List<ReminderGroup>,
+              as Iterable<ReminderGroup>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$ReminderCollectionImpl extends _ReminderCollection {
-  const _$ReminderCollectionImpl({required final List<ReminderGroup> groups})
-      : _groups = groups,
-        super._();
+class _$ReminderCollectionImpl extends _ReminderCollection
+    with DiagnosticableTreeMixin {
+  const _$ReminderCollectionImpl({required this.groups}) : super._();
 
-  final List<ReminderGroup> _groups;
   @override
-  List<ReminderGroup> get groups {
-    if (_groups is EqualUnmodifiableListView) return _groups;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_groups);
+  final Iterable<ReminderGroup> groups;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ReminderCollection(groups: $groups)';
   }
 
   @override
-  String toString() {
-    return 'ReminderCollection(groups: $groups)';
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ReminderCollection'))
+      ..add(DiagnosticsProperty('groups', groups));
   }
 
   @override
@@ -120,12 +122,12 @@ class _$ReminderCollectionImpl extends _ReminderCollection {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReminderCollectionImpl &&
-            const DeepCollectionEquality().equals(other._groups, _groups));
+            const DeepCollectionEquality().equals(other.groups, groups));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_groups));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(groups));
 
   /// Create a copy of ReminderCollection
   /// with the given fields replaced by the non-null parameter values.
@@ -139,11 +141,12 @@ class _$ReminderCollectionImpl extends _ReminderCollection {
 
 abstract class _ReminderCollection extends ReminderCollection {
   const factory _ReminderCollection(
-      {required final List<ReminderGroup> groups}) = _$ReminderCollectionImpl;
+          {required final Iterable<ReminderGroup> groups}) =
+      _$ReminderCollectionImpl;
   const _ReminderCollection._() : super._();
 
   @override
-  List<ReminderGroup> get groups;
+  Iterable<ReminderGroup> get groups;
 
   /// Create a copy of ReminderCollection
   /// with the given fields replaced by the non-null parameter values.
