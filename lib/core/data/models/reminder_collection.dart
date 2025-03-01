@@ -10,7 +10,7 @@ part 'reminder_collection.freezed.dart';
 class ReminderCollection with _$ReminderCollection {
   const ReminderCollection._();
 
-  const factory ReminderCollection({required Iterable<ReminderGroup> groups}) = _ReminderCollection;
+  const factory ReminderCollection({required List<ReminderGroup> groups}) = _ReminderCollection;
 
   factory ReminderCollection.of(List<Reminder> reminders) {
     // Initialize maps for reminders and their completed counts by each category.
@@ -27,13 +27,15 @@ class ReminderCollection with _$ReminderCollection {
 
     // Convert the collected data into ReminderGroup instances for ReminderCollection.
     return ReminderCollection(
-      groups: remindersByCategory.entries.map(
-        (entry) => ReminderGroup(
-          category: entry.key,
-          reminders: entry.value,
-          completedAmount: completedByCategory[entry.key]!,
-        ),
-      ),
+      groups: remindersByCategory.entries
+          .map(
+            (entry) => ReminderGroup(
+              category: entry.key,
+              reminders: entry.value,
+              completedAmount: completedByCategory[entry.key]!,
+            ),
+          )
+          .toList(),
     );
   }
 
@@ -50,13 +52,15 @@ class ReminderCollection with _$ReminderCollection {
 
     // Generate new ReminderGroups and return a new ReminderCollection instance
     return ReminderCollection(
-      groups: remindersByCategory.entries.map(
-        (entry) => ReminderGroup(
-          category: entry.key,
-          reminders: entry.value,
-          completedAmount: completedByCategory[entry.key]!,
-        ),
-      ),
+      groups: remindersByCategory.entries
+          .map(
+            (entry) => ReminderGroup(
+              category: entry.key,
+              reminders: entry.value,
+              completedAmount: completedByCategory[entry.key]!,
+            ),
+          )
+          .toList(),
     );
   }
 

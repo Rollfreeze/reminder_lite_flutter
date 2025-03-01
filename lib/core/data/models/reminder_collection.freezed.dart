@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ReminderCollection {
-  Iterable<ReminderGroup> get groups => throw _privateConstructorUsedError;
+  List<ReminderGroup> get groups => throw _privateConstructorUsedError;
 
   /// Create a copy of ReminderCollection
   /// with the given fields replaced by the non-null parameter values.
@@ -31,7 +31,7 @@ abstract class $ReminderCollectionCopyWith<$Res> {
           ReminderCollection value, $Res Function(ReminderCollection) then) =
       _$ReminderCollectionCopyWithImpl<$Res, ReminderCollection>;
   @useResult
-  $Res call({Iterable<ReminderGroup> groups});
+  $Res call({List<ReminderGroup> groups});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$ReminderCollectionCopyWithImpl<$Res, $Val extends ReminderCollection>
       groups: null == groups
           ? _value.groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as Iterable<ReminderGroup>,
+              as List<ReminderGroup>,
     ) as $Val);
   }
 }
@@ -68,7 +68,7 @@ abstract class _$$ReminderCollectionImplCopyWith<$Res>
       __$$ReminderCollectionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Iterable<ReminderGroup> groups});
+  $Res call({List<ReminderGroup> groups});
 }
 
 /// @nodoc
@@ -88,9 +88,9 @@ class __$$ReminderCollectionImplCopyWithImpl<$Res>
   }) {
     return _then(_$ReminderCollectionImpl(
       groups: null == groups
-          ? _value.groups
+          ? _value._groups
           : groups // ignore: cast_nullable_to_non_nullable
-              as Iterable<ReminderGroup>,
+              as List<ReminderGroup>,
     ));
   }
 }
@@ -99,10 +99,17 @@ class __$$ReminderCollectionImplCopyWithImpl<$Res>
 
 class _$ReminderCollectionImpl extends _ReminderCollection
     with DiagnosticableTreeMixin {
-  const _$ReminderCollectionImpl({required this.groups}) : super._();
+  const _$ReminderCollectionImpl({required final List<ReminderGroup> groups})
+      : _groups = groups,
+        super._();
 
+  final List<ReminderGroup> _groups;
   @override
-  final Iterable<ReminderGroup> groups;
+  List<ReminderGroup> get groups {
+    if (_groups is EqualUnmodifiableListView) return _groups;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_groups);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -122,12 +129,12 @@ class _$ReminderCollectionImpl extends _ReminderCollection
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReminderCollectionImpl &&
-            const DeepCollectionEquality().equals(other.groups, groups));
+            const DeepCollectionEquality().equals(other._groups, _groups));
   }
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(groups));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_groups));
 
   /// Create a copy of ReminderCollection
   /// with the given fields replaced by the non-null parameter values.
@@ -141,12 +148,11 @@ class _$ReminderCollectionImpl extends _ReminderCollection
 
 abstract class _ReminderCollection extends ReminderCollection {
   const factory _ReminderCollection(
-          {required final Iterable<ReminderGroup> groups}) =
-      _$ReminderCollectionImpl;
+      {required final List<ReminderGroup> groups}) = _$ReminderCollectionImpl;
   const _ReminderCollection._() : super._();
 
   @override
-  Iterable<ReminderGroup> get groups;
+  List<ReminderGroup> get groups;
 
   /// Create a copy of ReminderCollection
   /// with the given fields replaced by the non-null parameter values.
