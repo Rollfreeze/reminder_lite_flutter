@@ -97,10 +97,9 @@ class __$$ReminderCollectionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ReminderCollectionImpl
-    with DiagnosticableTreeMixin
-    implements _ReminderCollection {
-  const _$ReminderCollectionImpl({required this.groups});
+class _$ReminderCollectionImpl extends _ReminderCollection
+    with DiagnosticableTreeMixin {
+  const _$ReminderCollectionImpl({required this.groups}) : super._();
 
   @override
   final Iterable<ReminderGroup> groups;
@@ -140,10 +139,11 @@ class _$ReminderCollectionImpl
           this, _$identity);
 }
 
-abstract class _ReminderCollection implements ReminderCollection {
+abstract class _ReminderCollection extends ReminderCollection {
   const factory _ReminderCollection(
           {required final Iterable<ReminderGroup> groups}) =
       _$ReminderCollectionImpl;
+  const _ReminderCollection._() : super._();
 
   @override
   Iterable<ReminderGroup> get groups;

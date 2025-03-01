@@ -8,6 +8,8 @@ part 'reminder_collection.freezed.dart';
 
 @freezed
 class ReminderCollection with _$ReminderCollection {
+  const ReminderCollection._();
+
   const factory ReminderCollection({required Iterable<ReminderGroup> groups}) = _ReminderCollection;
 
   factory ReminderCollection.of(List<Reminder> reminders) {
