@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import '../../utils/date_time_extension.dart';
+import 'reminder_category.dart';
 import 'repeat_option.dart';
 
 /// A model that represents and contains all about some certain reminder.
@@ -50,6 +52,13 @@ class Reminder {
       return [];
     }
   }
+
+  bool belongsTo(ReminderCategory category) => switch (category) {
+        ReminderCategory.today => date?.isToday ?? false,
+        ReminderCategory.month => date?.isCurrentMonth ?? false,
+        ReminderCategory.all => true,
+        ReminderCategory.done => isDone,
+      };
 
   /// A message with all properties of reminder instance.
   String get propertiesFormated =>
