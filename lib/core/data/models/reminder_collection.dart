@@ -10,9 +10,7 @@ part 'reminder_collection.freezed.dart';
 class ReminderCollection {
   const ReminderCollection._();
 
-  const factory ReminderCollection({
-    required Iterable<ReminderGroup> groups,
-  }) = _ReminderCollection;
+  const factory ReminderCollection({required Iterable<ReminderGroup> groups}) = _ReminderCollection;
 
   factory ReminderCollection.of(List<Reminder> reminders) {
     // Initialize maps for reminders and their completed counts by each category.
