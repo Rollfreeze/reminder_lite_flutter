@@ -22,5 +22,8 @@ class ReminderGroup {
   int get length => reminders.length;
 
   /// Get the message about how many reminders are completed currently.
-  String get progressMessage => LocalizationService.locale.completeAmount(completedAmount, length);
+  String get progressMessage {
+    if (length == 0) return LocalizationService.locale.noReminders.split(' ').join('\n');
+    return LocalizationService.locale.completeAmount(completedAmount, length);
+  }
 }
