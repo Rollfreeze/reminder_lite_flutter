@@ -6,7 +6,7 @@ import '../../../core/services/localization_service.dart';
 import '../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../core/services/reminder_service.dart';
 import '../presentation/screens/home_screen.dart';
-import '../services/bloc/progress_bloc.dart';
+import '../bloc/progress_bloc.dart';
 
 /// Di wrapper for [HomeScreen].
 @RoutePage()

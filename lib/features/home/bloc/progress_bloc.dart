@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../../../core/data/models/reminder_category.dart';
-import '../../../../core/data/models/reminder_collection.dart';
-import '../../../../core/services/reminder_bloc/reminder_bloc.dart';
+import '../../../core/data/models/reminder_category.dart';
+import '../../../core/data/models/reminder_collection.dart';
+import '../../../core/services/reminder_bloc/reminder_bloc.dart';
 
 part 'progress_event.dart';
 part 'progress_state.dart';
