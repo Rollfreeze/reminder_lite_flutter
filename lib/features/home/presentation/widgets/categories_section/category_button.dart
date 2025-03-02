@@ -11,7 +11,7 @@ class CategoryButton extends StatelessWidget {
   final ReminderCategory category;
 
   /// Call on tap the widget.
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   /// The top right corner count value.
   final int? count;

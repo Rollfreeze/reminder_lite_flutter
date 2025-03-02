@@ -64,8 +64,5 @@ class ReminderCollection with _$ReminderCollection {
     );
   }
 
-  ReminderGroup get today => groups.firstWhere((e) => e.category == ReminderCategory.today);
-  ReminderGroup get month => groups.firstWhere((e) => e.category == ReminderCategory.month);
-  ReminderGroup get all => groups.firstWhere((e) => e.category == ReminderCategory.all);
-  ReminderGroup get done => groups.firstWhere((e) => e.category == ReminderCategory.done);
+  ReminderGroup getBy(ReminderCategory category) => groups.firstWhere((e) => e.category == category);
 }

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/data/models/reminder_category.dart';
+import '../../../../../core/router/app_router.dart';
 import '../../../../../core/services/reminder_bloc/reminder_bloc.dart';
 import 'category_button.dart';
 
@@ -14,49 +15,43 @@ class CategoriesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReminderBloc, ReminderState>(
-      builder: (context, state) => Column(
-        spacing: _spacing,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            spacing: _spacing,
-            children: [
-              Flexible(
-                child: CategoryButton(
-                  category: ReminderCategory.today,
-                  count: state.reminders?.today.length,
-                  onTap: () => context.router.pushNamed('today'),
-                ),
-              ),
-              Flexible(
-                child: CategoryButton(
-                  category: ReminderCategory.month,
-                  count: state.reminders?.month.length,
-                  onTap: () => context.router.pushNamed('month'),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            spacing: _spacing,
-            children: [
-              Flexible(
-                child: CategoryButton(
-                  category: ReminderCategory.all,
-                  count: state.reminders?.all.length,
-                  onTap: () => context.router.pushNamed('all'),
-                ),
-              ),
-              Flexible(
-                child: CategoryButton(
-                  category: ReminderCategory.done,
-                  onTap: () => context.router.pushNamed('done'),
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+      builder: (context, state) {
+        final reminders = state.reminders;
+        const categories = ReminderCategory.values;
+
+        Widget buildCategoryButton(ReminderCategory category) {
+          final group = reminders?.getBy(category);
+          return Expanded(
+            child: CategoryButton(
+              category: category,
+              count: category == ReminderCategory.done ? null : group?.length,
+              onTap: group == null ? null : () => context.router.push(ListingRoute(group: group)),
+            ),
+          );
+        }
+
+        // Chunk categories into pairs of two.
+        final rows = List.generate(
+          (categories.length / 2).ceil(), // Number of rows.
+          (index) {
+            final start = index * 2;
+            final end = start + 2;
+            final pair = categories.sublist(start, end.clamp(0, categories.length));
+
+            return Row(
+              spacing: _spacing,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: pair.map(buildCategoryButton).toList(),
+            );
+          },
+        );
+
+        return Column(
+          spacing: _spacing,
+          mainAxisSize: MainAxisSize.min,
+          children: rows.map((row) => row).toList(),
+        );
+      },
     );
   }
 }
