@@ -5,7 +5,6 @@ import '../../../core/data/repositories/reminder_repository.dart';
 import '../../../core/services/localization_service.dart';
 import '../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../core/services/reminder_service.dart';
-import '../domain/bloc/progress_bloc/progress_bloc.dart';
 import '../presentation/screens/home_screen.dart';
 
 /// Di wrapper for [HomeScreen].
@@ -18,15 +17,8 @@ class HomeScreenWrapper extends AutoRouter implements AutoRouteWrapper {
     LocalizationService.init(context);
     final repository = ReminderRepository(ReminderService());
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => ReminderBloc(repository),
-        ),
-        BlocProvider(
-          create: (_) => ProgressBloc(),
-        ),
-      ],
+    return BlocProvider(
+      create: (_) => ReminderBloc(repository),
       child: this,
     );
   }

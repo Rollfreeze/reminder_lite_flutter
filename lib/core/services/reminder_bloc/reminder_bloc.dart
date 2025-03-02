@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import '../../data/models/categorized_reminders.dart';
 import '../../data/models/reminder_category.dart';
+import '../../data/models/reminder_collection.dart';
 import '../../data/models/result.dart';
 import '../../data/repositories/reminder_repository.dart';
 
@@ -26,7 +26,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
       };
 
   Future<void> _handleLoad(_Load event, Emitter<ReminderState> emit) async {
-    final result = await _repository.getCategorizedReminders();
+    final result = await _repository.getReminderCollection();
 
     return switch (result) {
       Success(:final result) => add(_Succeed(result)),
@@ -40,7 +40,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     // A new reminder can not be created if others haven't been loaded yet.
     if (reminders == null) return;
 
-    final result = await _repository.createReminder(reminders);
+    final result = await _repository.createNewReminder(reminders);
 
     return switch (result) {
       Success(:final result) => add(_Succeed(result)),

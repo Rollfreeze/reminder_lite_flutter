@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import '../../services/reminder_service.dart';
-import '../models/categorized_reminders.dart';
 import '../models/reminder_category.dart';
+import '../models/reminder_collection.dart';
 import '../models/result.dart';
 
 class ReminderRepository {
@@ -9,23 +9,23 @@ class ReminderRepository {
 
   const ReminderRepository(this._reminderService);
 
-  Future<Result<CategorizedReminders>> getCategorizedReminders() async {
+  Future<Result<ReminderCollection>> getReminderCollection() async {
     try {
-      final data = await _reminderService.fetchFor(ReminderCategory.all);
-      return Success<CategorizedReminders>(CategorizedReminders.from(data));
+      final reminders = await _reminderService.fetchFor(ReminderCategory.all);
+      return Success<ReminderCollection>(ReminderCollection.of(reminders));
     } catch (error) {
-      if (kDebugMode) debugPrint('getCategorizedReminders method error: $error');
+      if (kDebugMode) debugPrint('getReminderCollection method error: $error');
       return Failure('Could not get reminders');
     }
   }
 
-  Future<Result<CategorizedReminders>> createReminder(CategorizedReminders currentReminders) async {
+  Future<Result<ReminderCollection>> createNewReminder(ReminderCollection currentReminders) async {
     try {
-      final data = await _reminderService.create();
-      if (data == null) return Success(currentReminders);
-      return Success(currentReminders.updateWith(data));
+      final reminder = await _reminderService.create();
+      if (reminder == null) return Success(currentReminders);
+      return Success(currentReminders.append(reminder));
     } catch (error) {
-      if (kDebugMode) debugPrint('createReminder method error: $error');
+      if (kDebugMode) debugPrint('createNewReminder method error: $error');
       return Failure('Could not create reminder');
     }
   }

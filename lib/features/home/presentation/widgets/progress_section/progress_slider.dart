@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:progress_circle/progress_circle.dart';
+import '../../../../../core/data/models/reminder_group.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../core/style/app_radius.dart';
 import '../../../../../core/style/app_shadows.dart';
-import '../../../domain/models/progress_circle_model.dart';
 
 /// A slider section with all progrss circles and theirs current tab indicator.
 class ProgressSlider extends StatelessWidget {
   /// Progress circles' items.
-  final List<ProgressCircleModel> items;
+  final List<ReminderGroup> items;
 
   /// A circles' slider controller.
   final PageController controller;
@@ -41,18 +41,21 @@ class ProgressSlider extends StatelessWidget {
           controller: controller,
           itemCount: items.length,
           onPageChanged: onPageChanged,
-          itemBuilder: (_, index) => Center(
-            child: ProgressCircle.fromValues(
-              total: 4,
-              completed: 3,
-              size: const Size.square(220),
-              style: ProgressCircleStyle(
-                headIcon: items[index].category.icon,
-                centerMessage: items[index].category.name,
-                progressArcColor: items[index].category.color,
+          itemBuilder: (_, index) {
+            final item = items[index];
+            return Center(
+              child: ProgressCircle.fromValues(
+                total: item.length == 0 ? 1 : item.length.toDouble(),
+                completed: item.completedAmount.toDouble(),
+                size: const Size.square(220),
+                style: ProgressCircleStyle(
+                  headIcon: item.category.icon,
+                  centerMessage: item.progressMessage,
+                  progressArcColor: item.category.color,
+                ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );
