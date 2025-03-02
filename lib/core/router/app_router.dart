@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/cupertino.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
 import '../../features/home/di/home_page_wrapper.dart';
-import '../../features/today/today_screen.dart';
+import '../../features/listing/listing_screen.dart';
+import '../data/models/reminder_group.dart';
 
 part 'app_router.gr.dart';
 
@@ -19,8 +21,8 @@ class AppRouter extends RootStackRouter {
               title: (_, __) => '',
             ),
             CupertinoRoute(
-              path: 'today',
-              page: TodayRoute.page,
+              path: 'listing',
+              page: ListingRoute.page,
               title: (_, __) => '',
             ),
           ],

@@ -43,17 +43,38 @@ class HomeRouteWrapper extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TodayScreen]
-class TodayRoute extends PageRouteInfo<void> {
-  const TodayRoute({List<PageRouteInfo>? children})
-    : super(TodayRoute.name, initialChildren: children);
+/// [ListingScreen]
+class ListingRoute extends PageRouteInfo<ListingRouteArgs> {
+  ListingRoute({
+    required ReminderGroup group,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ListingRoute.name,
+         args: ListingRouteArgs(group: group, key: key),
+         initialChildren: children,
+       );
 
-  static const String name = 'TodayRoute';
+  static const String name = 'ListingRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const TodayScreen();
+      final args = data.argsAs<ListingRouteArgs>();
+      return ListingScreen(group: args.group, key: args.key);
     },
   );
+}
+
+class ListingRouteArgs {
+  const ListingRouteArgs({required this.group, this.key});
+
+  final ReminderGroup group;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ListingRouteArgs{group: $group, key: $key}';
+  }
 }

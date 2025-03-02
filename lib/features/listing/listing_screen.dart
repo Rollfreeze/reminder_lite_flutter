@@ -1,18 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import '../../core/data/models/reminder_group.dart';
 import '../../core/services/localization_service.dart';
 import '../../core/style/app_colors.dart';
 import '../../core/widgets/reminder_listing_item.dart';
 
 @RoutePage()
-class TodayScreen extends StatefulWidget {
-  const TodayScreen({super.key});
+class ListingScreen extends StatefulWidget {
+  final ReminderGroup group;
+
+  const ListingScreen({required this.group, super.key});
 
   @override
-  State<TodayScreen> createState() => _TodayScreenState();
+  State<ListingScreen> createState() => _ListingScreenState();
 }
 
-class _TodayScreenState extends State<TodayScreen> {
+class _ListingScreenState extends State<ListingScreen> {
   final _controller = ScrollController();
   bool _isTitleCollapsed = false;
 
