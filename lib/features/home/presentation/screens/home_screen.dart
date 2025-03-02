@@ -42,6 +42,8 @@ class _HomeScreenState extends State<HomeScreen> {
     if (shouldMakeVisible) setState(() => _isBottomContainerVisible = isVisible);
   }
 
+  void _createNewReminder() => context.read<ReminderBloc>().add(const ReminderEvent.create());
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -88,11 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Positioned(
                     top: 10,
                     left: 12,
-                    child: AddReminderButton(
-                      onPressed: () => context.read<ReminderBloc>().add(
-                            const ReminderEvent.create(),
-                          ),
-                    ),
+                    child: AddReminderButton(onPressed: _createNewReminder),
                   ),
                 ],
               ),
