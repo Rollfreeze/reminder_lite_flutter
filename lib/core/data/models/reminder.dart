@@ -31,7 +31,6 @@ class Reminder {
         date: json['date'] == null
             ? null
             : DateTime.fromMillisecondsSinceEpoch(
-                isUtc: true,
                 ((json['date'] as num) * 1000).toInt(),
               ),
         repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
