@@ -44,15 +44,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void _createNewReminder() => context.read<ReminderBloc>().add(const ReminderEvent.create());
 
+  static const _containerBorder = Border.fromBorderSide(
+    BorderSide(color: CupertinoColors.separator, width: 0.5),
+  );
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       backgroundColor: AppColors.gray6,
-      navigationBar: const CupertinoNavigationBar(
-        border: Border.fromBorderSide(
-          BorderSide(color: CupertinoColors.separator, width: 0.5),
-        ),
-      ),
+      navigationBar: const CupertinoNavigationBar(border: _containerBorder),
       child: SafeArea(
         bottom: false,
         child: Stack(
@@ -80,9 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: CupertinoTheme.of(context).barBackgroundColor,
-                        border: const Border.fromBorderSide(
-                          BorderSide(color: CupertinoColors.separator, width: 0.5),
-                        ),
+                        border: _containerBorder,
                       ),
                       child: const SizedBox.expand(),
                     ),
