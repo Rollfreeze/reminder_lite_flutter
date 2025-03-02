@@ -9,8 +9,38 @@ import '../widgets/progress_section/progress_section.dart';
 
 /// This is a home page with all reminder groups.
 @RoutePage()
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final _controller = ScrollController();
+  bool _isBottomContainerVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_bottomOpacityHandler);
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_bottomOpacityHandler);
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _bottomOpacityHandler() {
+    const visibilityOffset = -80.0;
+
+    final isVisible = _controller.offset < visibilityOffset;
+    final shouldMakeVisible = isVisible != _isBottomContainerVisible;
+
+    if (shouldMakeVisible) setState(() => _isBottomContainerVisible = isVisible);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,28 +52,52 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       child: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListView(
-                  children: [
-                    const CupertinoSearchTextField(),
-                    const SizedBox(height: 30),
-                    const CategoriesSection(),
-                    const SizedBox(height: 25),
-                    const ProgressSection(),
-                  ],
-                ),
+        bottom: false,
+        child: Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            ListView(
+              controller: _controller,
+              physics: const AlwaysScrollableScrollPhysics(),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
+              children: [
+                const CupertinoSearchTextField(),
+                const SizedBox(height: 30),
+                const CategoriesSection(),
+                const SizedBox(height: 25),
+                const ProgressSection(),
+              ],
+            ),
+            SizedBox(
+              height: 86,
+              child: Stack(
+                children: [
+                  AnimatedOpacity(
+                    duration: const Duration(milliseconds: 150),
+                    opacity: _isBottomContainerVisible ? 1 : 0,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: CupertinoTheme.of(context).barBackgroundColor,
+                        border: const Border.fromBorderSide(
+                          BorderSide(color: CupertinoColors.separator, width: 0.5),
+                        ),
+                      ),
+                      child: const SizedBox.expand(),
+                    ),
+                  ),
+                  Positioned(
+                    top: 10,
+                    left: 10,
+                    child: AddReminderButton(
+                      onPressed: () => context.read<ReminderBloc>().add(
+                            const ReminderEvent.create(),
+                          ),
+                    ),
+                  ),
+                ],
               ),
-              AddReminderButton(
-                onPressed: () => context.read<ReminderBloc>().add(const ReminderEvent.create()),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
