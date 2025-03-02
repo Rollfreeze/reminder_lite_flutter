@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:progress_circle/progress_circle.dart';
-import '../../../../../core/data/models/reminder_group.dart';
+import '../../../../../core/data/models/reminder_collection.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../core/style/app_radius.dart';
 import '../../../../../core/style/app_shadows.dart';
 
 /// A slider section with all progrss circles and theirs current tab indicator.
 class ProgressSlider extends StatelessWidget {
-  /// Progress circles' items.
-  final List<ReminderGroup> items;
+  /// Reminders for appropriate circles.
+  final ReminderCollection reminders;
 
   /// A circles' slider controller.
   final PageController controller;
@@ -20,7 +20,7 @@ class ProgressSlider extends StatelessWidget {
   final TabController tabController;
 
   const ProgressSlider({
-    required this.items,
+    required this.reminders,
     required this.controller,
     required this.onPageChanged,
     required this.tabController,
@@ -39,19 +39,19 @@ class ProgressSlider extends StatelessWidget {
         ),
         child: PageView.builder(
           controller: controller,
-          itemCount: items.length,
+          itemCount: reminders.groups.length,
           onPageChanged: onPageChanged,
           itemBuilder: (_, index) {
-            final item = items[index];
+            final group = reminders.groups[index];
             return Center(
               child: ProgressCircle.fromValues(
-                total: item.length == 0 ? 1 : item.length.toDouble(),
-                completed: item.completedAmount.toDouble(),
+                total: group.length == 0 ? 1 : group.length.toDouble(),
+                completed: group.completedAmount.toDouble(),
                 size: const Size.square(220),
                 style: ProgressCircleStyle(
-                  headIcon: item.category.icon,
-                  centerMessage: item.progressMessage,
-                  progressArcColor: item.category.color,
+                  headIcon: group.category.icon,
+                  centerMessage: group.progressMessage,
+                  progressArcColor: group.category.color,
                 ),
               ),
             );
