@@ -87,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Positioned(
                     top: 10,
-                    left: 10,
+                    left: 12,
                     child: AddReminderButton(
                       onPressed: () => context.read<ReminderBloc>().add(
                             const ReminderEvent.create(),
