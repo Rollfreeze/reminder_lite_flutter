@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import '../style/app_colors.dart';
-import '../style/app_typo.dart';
+import '../../../../core/style/app_colors.dart';
+import '../../../../core/style/app_typo.dart';
 
 /// A Reminder element of the listing view.
 class ReminderListingItem extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../../core/style/app_colors.dart';
-import '../../../../core/widgets/add_reminder_button.dart';
+import '../widgets/add_reminder_button.dart';
 import '../widgets/categories_section/categories_section.dart';
 import '../widgets/progress_section/progress_section.dart';
 
