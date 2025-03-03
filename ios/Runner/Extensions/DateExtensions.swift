@@ -1,39 +1,31 @@
 extension Date {
-    /// Returns the same date but with zero time.
-    ///
-    /// e.g. "2025-01-02 00:00:00 +0000"
-    var withZeroTime: Date? {
-        var calendar = Calendar.current
-        calendar.timeZone = .gmt
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+    func toUTCString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        return dateFormatter.string(from: self)
+    }
+    
+    /// Merges a given date with an optional time and returns the result.
+    static func mergeDateAndTime(date: Date?, time: Date?) -> Date? {
+        guard let date = date else { return nil }
+        
+        let calendar = Calendar.current
+        var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        
+        if let time = time {
+            let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+            dateComponents.hour = timeComponents.hour
+            dateComponents.minute = timeComponents.minute
+            dateComponents.second = timeComponents.second
+        } else {
+            dateComponents.hour = 0
+            dateComponents.minute = 0
+            dateComponents.second = 0
+        }
+        
         return calendar.date(from: dateComponents)
     }
-    
-    /// Change current date time to the passed one instead.
-    ///
-    /// Returns the same date if passed date is nil.
-    func replaceTimeFrom(_ date: Date?) -> Date {
-        guard date != nil else { return self }
-        
-        var calendar = Calendar.current
-        calendar.timeZone = .gmt
-        
-        let dateComponents = calendar.dateComponents([.year, .month, .day], from: self)
-        let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: date!)
-        
-        var combinedComponents = DateComponents()
-        
-        combinedComponents.year = dateComponents.year
-        combinedComponents.month = dateComponents.month
-        combinedComponents.day = dateComponents.day
-        
-        combinedComponents.hour = timeComponents.hour
-        combinedComponents.minute = timeComponents.minute
-        combinedComponents.second = timeComponents.second
-        
-        return calendar.date(from: combinedComponents)!
-    }
-    
+
     /// Checking if current date is today.
     ///
     /// Compatible with SwiftModel's `#Predicate`.

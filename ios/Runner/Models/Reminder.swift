@@ -16,7 +16,7 @@ class Reminder: Identifiable {
         self.id = UUID().uuidString
         self.title = title
         self.notes = notes
-        self.date = date?.replaceTimeFrom(time)
+        self.date = Date.mergeDateAndTime(date: date, time: time)
         self.repeatanceCode = repeatance.rawValue
         self.isDone = false
     }
@@ -31,7 +31,7 @@ class Reminder: Identifiable {
         if !id.isEmpty { map["id"] = id }
         if !title.isEmpty { map["title"] = title }
         if !notes.isEmpty { map["notes"] = notes }
-        if let date = date { map["date"] = date.timeIntervalSince1970 }
+        if let date = date { map["date"] = date.toUTCString() }
 
         return map
     }

@@ -28,11 +28,7 @@ class Reminder {
         id: json['id'] ?? '',
         title: json['title'] ?? '',
         notes: json['notes'] ?? '',
-        date: json['date'] == null
-            ? null
-            : DateTime.fromMillisecondsSinceEpoch(
-                ((json['date'] as num) * 1000).toInt(),
-              ),
+        date: json['date'] == null ? null : DateTime.parse(json['date']),
         repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
         isDone: json['is_done'] ?? false,
       );

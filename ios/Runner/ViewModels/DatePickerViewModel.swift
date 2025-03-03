@@ -8,7 +8,7 @@ class DatePickerViewModel: ObservableObject {
     
     public func getSelectedDate() -> Date? {
         if !isDatePickerActive { return nil }
-        return selectedDate.withZeroTime
+        return selectedDate
     }
     
     public func show() -> Void {
