@@ -1,15 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../../core/data/models/reminder_group.dart';
 import '../../../../core/services/localization_service.dart';
 import '../../../../core/style/app_colors.dart';
 import '../widgets/reminder_listing_item.dart';
 
 @RoutePage()
 class ListingScreen extends StatefulWidget {
-  final ReminderGroup group;
-
-  const ListingScreen({required this.group, super.key});
+  const ListingScreen({super.key});
 
   @override
   State<ListingScreen> createState() => _ListingScreenState();

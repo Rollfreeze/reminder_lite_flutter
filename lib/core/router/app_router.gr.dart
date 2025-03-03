@@ -44,30 +44,48 @@ class HomeRouteWrapper extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ListingScreen]
-class ListingRoute extends PageRouteInfo<ListingRouteArgs> {
-  ListingRoute({
-    required ReminderGroup group,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-         ListingRoute.name,
-         args: ListingRouteArgs(group: group, key: key),
-         initialChildren: children,
-       );
+class ListingRoute extends PageRouteInfo<void> {
+  const ListingRoute({List<PageRouteInfo>? children})
+    : super(ListingRoute.name, initialChildren: children);
 
   static const String name = 'ListingRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      final args = data.argsAs<ListingRouteArgs>();
-      return ListingScreen(group: args.group, key: args.key);
+      return const ListingScreen();
     },
   );
 }
 
-class ListingRouteArgs {
-  const ListingRouteArgs({required this.group, this.key});
+/// generated route for
+/// [ListingScreenWrapper]
+class ListingRouteWrapper extends PageRouteInfo<ListingRouteWrapperArgs> {
+  ListingRouteWrapper({
+    required ReminderGroup group,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ListingRouteWrapper.name,
+         args: ListingRouteWrapperArgs(group: group, key: key),
+         initialChildren: children,
+       );
+
+  static const String name = 'ListingRouteWrapper';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<ListingRouteWrapperArgs>();
+      return WrappedRoute(
+        child: ListingScreenWrapper(group: args.group, key: args.key),
+      );
+    },
+  );
+}
+
+class ListingRouteWrapperArgs {
+  const ListingRouteWrapperArgs({required this.group, this.key});
 
   final ReminderGroup group;
 
@@ -75,6 +93,6 @@ class ListingRouteArgs {
 
   @override
   String toString() {
-    return 'ListingRouteArgs{group: $group, key: $key}';
+    return 'ListingRouteWrapperArgs{group: $group, key: $key}';
   }
 }
