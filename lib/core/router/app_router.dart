@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import '../../features/home/presentation/screens/home_screen.dart';
-import '../../features/home/di/home_page_wrapper.dart';
+import '../../features/home/di/home_screen_wrapper.dart';
 import '../../features/listing/presentation/screens/listing_screen.dart';
 import '../data/models/reminder_group.dart';
 
