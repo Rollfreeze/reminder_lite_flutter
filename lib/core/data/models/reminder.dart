@@ -60,11 +60,13 @@ class Reminder {
       };
 
   /// A message with all properties of reminder instance.
-  String get propertiesFormated =>
-      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance_code: '$repeatance', is_done: '$isDone'";
-
-  /// Swift-like date formation.
-  String get dateFormated => date == null
-      ? ''
-      : '${date?.year}-${date?.month}-${date?.day} ${date?.hour}:${date?.minute}:${date?.second} ${date?.timeZoneName}';
+  String get propertiesFormated => """\n
+      id: '$id',
+      title: '$title',
+      notes: '$notes',
+      utc-date: '${date?.toUtc()}',
+      local-date: '${date?.toLocal()}',
+      repeatance_code: '$repeatance',
+      is_done: '$isDone'
+    """;
 }
