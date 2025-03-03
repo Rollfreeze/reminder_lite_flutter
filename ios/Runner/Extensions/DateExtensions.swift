@@ -13,10 +13,9 @@ extension Date {
         var dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
         
         if let time = time {
-            let timeComponents = calendar.dateComponents([.hour, .minute, .second], from: time)
+            let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
             dateComponents.hour = timeComponents.hour
             dateComponents.minute = timeComponents.minute
-            dateComponents.second = timeComponents.second
         } else {
             dateComponents.hour = 0
             dateComponents.minute = 0
