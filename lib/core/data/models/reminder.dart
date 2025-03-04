@@ -55,6 +55,8 @@ class Reminder {
         ReminderCategory.done => isDone,
       };
 
+  bool get isRepetitive => repeatance != RepeatanceOption.never;
+
   /// A message with all properties of reminder instance.
   String get propertiesFormated => """\n
       id: '$id',
