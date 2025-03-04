@@ -44,55 +44,37 @@ class HomeRouteWrapper extends PageRouteInfo<void> {
 
 /// generated route for
 /// [ListingScreen]
-class ListingRoute extends PageRouteInfo<void> {
-  const ListingRoute({List<PageRouteInfo>? children})
-    : super(ListingRoute.name, initialChildren: children);
+class ListingRoute extends PageRouteInfo<ListingRouteArgs> {
+  ListingRoute({
+    required ReminderCategory category,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ListingRoute.name,
+         args: ListingRouteArgs(category: category, key: key),
+         initialChildren: children,
+       );
 
   static const String name = 'ListingRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const ListingScreen();
+      final args = data.argsAs<ListingRouteArgs>();
+      return ListingScreen(category: args.category, key: args.key);
     },
   );
 }
 
-/// generated route for
-/// [ListingScreenWrapper]
-class ListingRouteWrapper extends PageRouteInfo<ListingRouteWrapperArgs> {
-  ListingRouteWrapper({
-    required ReminderGroup group,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-         ListingRouteWrapper.name,
-         args: ListingRouteWrapperArgs(group: group, key: key),
-         initialChildren: children,
-       );
+class ListingRouteArgs {
+  const ListingRouteArgs({required this.category, this.key});
 
-  static const String name = 'ListingRouteWrapper';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<ListingRouteWrapperArgs>();
-      return WrappedRoute(
-        child: ListingScreenWrapper(group: args.group, key: args.key),
-      );
-    },
-  );
-}
-
-class ListingRouteWrapperArgs {
-  const ListingRouteWrapperArgs({required this.group, this.key});
-
-  final ReminderGroup group;
+  final ReminderCategory category;
 
   final Key? key;
 
   @override
   String toString() {
-    return 'ListingRouteWrapperArgs{group: $group, key: $key}';
+    return 'ListingRouteArgs{category: $category, key: $key}';
   }
 }
