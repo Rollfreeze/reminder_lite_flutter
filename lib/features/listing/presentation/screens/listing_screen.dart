@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/data/models/reminder_category.dart';
 import '../../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../../core/style/app_colors.dart';
+import '../widgets/no_reminders_view.dart';
 import '../widgets/reminder_listing_item.dart';
 
 @RoutePage()
@@ -69,7 +70,11 @@ class _ListingScreenState extends State<ListingScreen> {
                 ),
               ),
               const SliverToBoxAdapter(child: separator),
-              if (group != null)
+              if (group == null || group.reminders.isEmpty)
+                const SliverFillRemaining(
+                  child: NoRemindersView(),
+                )
+              else
                 SliverPadding(
                   padding: const EdgeInsets.only(bottom: 40),
                   sliver: SliverList.separated(
