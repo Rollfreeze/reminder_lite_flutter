@@ -753,10 +753,11 @@ class __$$ReminderStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ReminderStateImpl implements _ReminderState {
+class _$ReminderStateImpl extends _ReminderState {
   const _$ReminderStateImpl(
       {this.selectedCategory = ReminderCategory.today,
-      this.processingState = const ReminderProcessingState.processing()});
+      this.processingState = const ReminderProcessingState.processing()})
+      : super._();
 
   @override
   @JsonKey()
@@ -794,10 +795,11 @@ class _$ReminderStateImpl implements _ReminderState {
       __$$ReminderStateImplCopyWithImpl<_$ReminderStateImpl>(this, _$identity);
 }
 
-abstract class _ReminderState implements ReminderState {
+abstract class _ReminderState extends ReminderState {
   const factory _ReminderState(
       {final ReminderCategory selectedCategory,
       final ReminderProcessingState processingState}) = _$ReminderStateImpl;
+  const _ReminderState._() : super._();
 
   @override
   ReminderCategory get selectedCategory;
