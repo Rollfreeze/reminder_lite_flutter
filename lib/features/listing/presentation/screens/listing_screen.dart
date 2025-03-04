@@ -56,34 +56,37 @@ class _ListingScreenState extends State<ListingScreen> {
 
     return CupertinoPageScaffold(
       child: BlocBuilder<ReminderBloc, ReminderState>(
-        builder: (_, state) => CustomScrollView(
-          controller: _controller,
-          physics: const AlwaysScrollableScrollPhysics(),
-          slivers: <Widget>[
-            CupertinoSliverNavigationBar(
-              largeTitle: Text(
-                widget.category.name,
-                style: TextStyle(color: _titleColor),
-              ),
-            ),
-            const SliverToBoxAdapter(child: separator),
-            SliverPadding(
-              padding: const EdgeInsets.only(bottom: 40),
-              sliver: SliverList.separated(
-                itemCount: 10,
-                separatorBuilder: (_, __) => separator,
-                itemBuilder: (_, index) => Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
-                  child: ReminderListingItem(
-                    isFinished: index % 2 == 0,
-                    onChanged: (value) {},
-                    isRepetitive: index % 3 == 0,
-                  ),
+        builder: (_, state) {
+          final group = state.reminders?.getBy(widget.category);
+          return CustomScrollView(
+            controller: _controller,
+            physics: const AlwaysScrollableScrollPhysics(),
+            slivers: <Widget>[
+              CupertinoSliverNavigationBar(
+                largeTitle: Text(
+                  widget.category.name,
+                  style: TextStyle(color: _titleColor),
                 ),
               ),
-            ),
-          ],
-        ),
+              const SliverToBoxAdapter(child: separator),
+              if (group != null)
+                SliverPadding(
+                  padding: const EdgeInsets.only(bottom: 40),
+                  sliver: SliverList.separated(
+                    itemCount: group.length,
+                    separatorBuilder: (_, __) => separator,
+                    itemBuilder: (_, index) => Padding(
+                      padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
+                      child: ReminderListingItem(
+                        reminder: group.reminders[index],
+                        onChanged: (value) {},
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          );
+        },
       ),
     );
   }
