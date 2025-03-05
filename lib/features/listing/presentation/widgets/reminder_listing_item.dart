@@ -58,16 +58,17 @@ class ReminderListingItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      reminder.notes,
-                      style: AppTypo.medium17,
+              if (reminder.notes.isNotEmpty)
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        reminder.notes,
+                        style: AppTypo.medium17,
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
             ],
           ),
         ),
