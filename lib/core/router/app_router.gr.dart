@@ -11,54 +11,6 @@
 part of 'app_router.dart';
 
 /// generated route for
-/// [AllScreen]
-class AllRoute extends PageRouteInfo<void> {
-  const AllRoute({List<PageRouteInfo>? children})
-    : super(AllRoute.name, initialChildren: children);
-
-  static const String name = 'AllRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const AllScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [DoneScreen]
-class DoneRoute extends PageRouteInfo<void> {
-  const DoneRoute({List<PageRouteInfo>? children})
-    : super(DoneRoute.name, initialChildren: children);
-
-  static const String name = 'DoneRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const DoneScreen();
-    },
-  );
-}
-
-/// generated route for
-/// [ForMonthScreen]
-class ForMonthRoute extends PageRouteInfo<void> {
-  const ForMonthRoute({List<PageRouteInfo>? children})
-    : super(ForMonthRoute.name, initialChildren: children);
-
-  static const String name = 'ForMonthRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      return const ForMonthScreen();
-    },
-  );
-}
-
-/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -91,17 +43,38 @@ class HomeRouteWrapper extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [TodayScreen]
-class TodayRoute extends PageRouteInfo<void> {
-  const TodayRoute({List<PageRouteInfo>? children})
-    : super(TodayRoute.name, initialChildren: children);
+/// [ListingScreen]
+class ListingRoute extends PageRouteInfo<ListingRouteArgs> {
+  ListingRoute({
+    required ReminderCategory category,
+    Key? key,
+    List<PageRouteInfo>? children,
+  }) : super(
+         ListingRoute.name,
+         args: ListingRouteArgs(category: category, key: key),
+         initialChildren: children,
+       );
 
-  static const String name = 'TodayRoute';
+  static const String name = 'ListingRoute';
 
   static PageInfo page = PageInfo(
     name,
     builder: (data) {
-      return const TodayScreen();
+      final args = data.argsAs<ListingRouteArgs>();
+      return ListingScreen(category: args.category, key: args.key);
     },
   );
+}
+
+class ListingRouteArgs {
+  const ListingRouteArgs({required this.category, this.key});
+
+  final ReminderCategory category;
+
+  final Key? key;
+
+  @override
+  String toString() {
+    return 'ListingRouteArgs{category: $category, key: $key}';
+  }
 }

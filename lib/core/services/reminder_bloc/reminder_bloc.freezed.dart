@@ -22,7 +22,6 @@ mixin _$ReminderEvent {
     required TResult Function() create,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
-    required TResult Function(ReminderCategory category) selectedCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +30,6 @@ mixin _$ReminderEvent {
     TResult? Function()? create,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
-    TResult? Function(ReminderCategory category)? selectedCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +38,6 @@ mixin _$ReminderEvent {
     TResult Function()? create,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
-    TResult Function(ReminderCategory category)? selectedCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -50,7 +47,6 @@ mixin _$ReminderEvent {
     required TResult Function(_Create value) create,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
-    required TResult Function(_SelectedCategory value) selectedCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,7 +55,6 @@ mixin _$ReminderEvent {
     TResult? Function(_Create value)? create,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
-    TResult? Function(_SelectedCategory value)? selectedCategory,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -68,7 +63,6 @@ mixin _$ReminderEvent {
     TResult Function(_Create value)? create,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
-    TResult Function(_SelectedCategory value)? selectedCategory,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,7 +133,6 @@ class _$LoadImpl implements _Load {
     required TResult Function() create,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
-    required TResult Function(ReminderCategory category) selectedCategory,
   }) {
     return load();
   }
@@ -151,7 +144,6 @@ class _$LoadImpl implements _Load {
     TResult? Function()? create,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
-    TResult? Function(ReminderCategory category)? selectedCategory,
   }) {
     return load?.call();
   }
@@ -163,7 +155,6 @@ class _$LoadImpl implements _Load {
     TResult Function()? create,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
-    TResult Function(ReminderCategory category)? selectedCategory,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -179,7 +170,6 @@ class _$LoadImpl implements _Load {
     required TResult Function(_Create value) create,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
-    required TResult Function(_SelectedCategory value) selectedCategory,
   }) {
     return load(this);
   }
@@ -191,7 +181,6 @@ class _$LoadImpl implements _Load {
     TResult? Function(_Create value)? create,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
-    TResult? Function(_SelectedCategory value)? selectedCategory,
   }) {
     return load?.call(this);
   }
@@ -203,7 +192,6 @@ class _$LoadImpl implements _Load {
     TResult Function(_Create value)? create,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
-    TResult Function(_SelectedCategory value)? selectedCategory,
     required TResult orElse(),
   }) {
     if (load != null) {
@@ -262,7 +250,6 @@ class _$CreateImpl implements _Create {
     required TResult Function() create,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
-    required TResult Function(ReminderCategory category) selectedCategory,
   }) {
     return create();
   }
@@ -274,7 +261,6 @@ class _$CreateImpl implements _Create {
     TResult? Function()? create,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
-    TResult? Function(ReminderCategory category)? selectedCategory,
   }) {
     return create?.call();
   }
@@ -286,7 +272,6 @@ class _$CreateImpl implements _Create {
     TResult Function()? create,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
-    TResult Function(ReminderCategory category)? selectedCategory,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -302,7 +287,6 @@ class _$CreateImpl implements _Create {
     required TResult Function(_Create value) create,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
-    required TResult Function(_SelectedCategory value) selectedCategory,
   }) {
     return create(this);
   }
@@ -314,7 +298,6 @@ class _$CreateImpl implements _Create {
     TResult? Function(_Create value)? create,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
-    TResult? Function(_SelectedCategory value)? selectedCategory,
   }) {
     return create?.call(this);
   }
@@ -326,7 +309,6 @@ class _$CreateImpl implements _Create {
     TResult Function(_Create value)? create,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
-    TResult Function(_SelectedCategory value)? selectedCategory,
     required TResult orElse(),
   }) {
     if (create != null) {
@@ -425,7 +407,6 @@ class _$SucceedImpl implements _Succeed {
     required TResult Function() create,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
-    required TResult Function(ReminderCategory category) selectedCategory,
   }) {
     return succeed(reminders);
   }
@@ -437,7 +418,6 @@ class _$SucceedImpl implements _Succeed {
     TResult? Function()? create,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
-    TResult? Function(ReminderCategory category)? selectedCategory,
   }) {
     return succeed?.call(reminders);
   }
@@ -449,7 +429,6 @@ class _$SucceedImpl implements _Succeed {
     TResult Function()? create,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
-    TResult Function(ReminderCategory category)? selectedCategory,
     required TResult orElse(),
   }) {
     if (succeed != null) {
@@ -465,7 +444,6 @@ class _$SucceedImpl implements _Succeed {
     required TResult Function(_Create value) create,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
-    required TResult Function(_SelectedCategory value) selectedCategory,
   }) {
     return succeed(this);
   }
@@ -477,7 +455,6 @@ class _$SucceedImpl implements _Succeed {
     TResult? Function(_Create value)? create,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
-    TResult? Function(_SelectedCategory value)? selectedCategory,
   }) {
     return succeed?.call(this);
   }
@@ -489,7 +466,6 @@ class _$SucceedImpl implements _Succeed {
     TResult Function(_Create value)? create,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
-    TResult Function(_SelectedCategory value)? selectedCategory,
     required TResult orElse(),
   }) {
     if (succeed != null) {
@@ -582,7 +558,6 @@ class _$FailImpl implements _Fail {
     required TResult Function() create,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
-    required TResult Function(ReminderCategory category) selectedCategory,
   }) {
     return fail(error);
   }
@@ -594,7 +569,6 @@ class _$FailImpl implements _Fail {
     TResult? Function()? create,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
-    TResult? Function(ReminderCategory category)? selectedCategory,
   }) {
     return fail?.call(error);
   }
@@ -606,7 +580,6 @@ class _$FailImpl implements _Fail {
     TResult Function()? create,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
-    TResult Function(ReminderCategory category)? selectedCategory,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -622,7 +595,6 @@ class _$FailImpl implements _Fail {
     required TResult Function(_Create value) create,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
-    required TResult Function(_SelectedCategory value) selectedCategory,
   }) {
     return fail(this);
   }
@@ -634,7 +606,6 @@ class _$FailImpl implements _Fail {
     TResult? Function(_Create value)? create,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
-    TResult? Function(_SelectedCategory value)? selectedCategory,
   }) {
     return fail?.call(this);
   }
@@ -646,7 +617,6 @@ class _$FailImpl implements _Fail {
     TResult Function(_Create value)? create,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
-    TResult Function(_SelectedCategory value)? selectedCategory,
     required TResult orElse(),
   }) {
     if (fail != null) {
@@ -665,167 +635,6 @@ abstract class _Fail implements ReminderEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailImplCopyWith<_$FailImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$SelectedCategoryImplCopyWith<$Res> {
-  factory _$$SelectedCategoryImplCopyWith(_$SelectedCategoryImpl value,
-          $Res Function(_$SelectedCategoryImpl) then) =
-      __$$SelectedCategoryImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ReminderCategory category});
-}
-
-/// @nodoc
-class __$$SelectedCategoryImplCopyWithImpl<$Res>
-    extends _$ReminderEventCopyWithImpl<$Res, _$SelectedCategoryImpl>
-    implements _$$SelectedCategoryImplCopyWith<$Res> {
-  __$$SelectedCategoryImplCopyWithImpl(_$SelectedCategoryImpl _value,
-      $Res Function(_$SelectedCategoryImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ReminderEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? category = null,
-  }) {
-    return _then(_$SelectedCategoryImpl(
-      null == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as ReminderCategory,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$SelectedCategoryImpl implements _SelectedCategory {
-  const _$SelectedCategoryImpl(this.category);
-
-  @override
-  final ReminderCategory category;
-
-  @override
-  String toString() {
-    return 'ReminderEvent.selectedCategory(category: $category)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SelectedCategoryImpl &&
-            (identical(other.category, category) ||
-                other.category == category));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, category);
-
-  /// Create a copy of ReminderEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SelectedCategoryImplCopyWith<_$SelectedCategoryImpl> get copyWith =>
-      __$$SelectedCategoryImplCopyWithImpl<_$SelectedCategoryImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() load,
-    required TResult Function() create,
-    required TResult Function(ReminderCollection reminders) succeed,
-    required TResult Function(String error) fail,
-    required TResult Function(ReminderCategory category) selectedCategory,
-  }) {
-    return selectedCategory(category);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? load,
-    TResult? Function()? create,
-    TResult? Function(ReminderCollection reminders)? succeed,
-    TResult? Function(String error)? fail,
-    TResult? Function(ReminderCategory category)? selectedCategory,
-  }) {
-    return selectedCategory?.call(category);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
-    TResult Function()? create,
-    TResult Function(ReminderCollection reminders)? succeed,
-    TResult Function(String error)? fail,
-    TResult Function(ReminderCategory category)? selectedCategory,
-    required TResult orElse(),
-  }) {
-    if (selectedCategory != null) {
-      return selectedCategory(category);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
-    required TResult Function(_Create value) create,
-    required TResult Function(_Succeed value) succeed,
-    required TResult Function(_Fail value) fail,
-    required TResult Function(_SelectedCategory value) selectedCategory,
-  }) {
-    return selectedCategory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Load value)? load,
-    TResult? Function(_Create value)? create,
-    TResult? Function(_Succeed value)? succeed,
-    TResult? Function(_Fail value)? fail,
-    TResult? Function(_SelectedCategory value)? selectedCategory,
-  }) {
-    return selectedCategory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
-    TResult Function(_Create value)? create,
-    TResult Function(_Succeed value)? succeed,
-    TResult Function(_Fail value)? fail,
-    TResult Function(_SelectedCategory value)? selectedCategory,
-    required TResult orElse(),
-  }) {
-    if (selectedCategory != null) {
-      return selectedCategory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SelectedCategory implements ReminderEvent {
-  const factory _SelectedCategory(final ReminderCategory category) =
-      _$SelectedCategoryImpl;
-
-  ReminderCategory get category;
-
-  /// Create a copy of ReminderEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SelectedCategoryImplCopyWith<_$SelectedCategoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -944,10 +753,11 @@ class __$$ReminderStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ReminderStateImpl implements _ReminderState {
+class _$ReminderStateImpl extends _ReminderState {
   const _$ReminderStateImpl(
       {this.selectedCategory = ReminderCategory.today,
-      this.processingState = const ReminderProcessingState.processing()});
+      this.processingState = const ReminderProcessingState.processing()})
+      : super._();
 
   @override
   @JsonKey()
@@ -985,10 +795,11 @@ class _$ReminderStateImpl implements _ReminderState {
       __$$ReminderStateImplCopyWithImpl<_$ReminderStateImpl>(this, _$identity);
 }
 
-abstract class _ReminderState implements ReminderState {
+abstract class _ReminderState extends ReminderState {
   const factory _ReminderState(
       {final ReminderCategory selectedCategory,
       final ReminderProcessingState processingState}) = _$ReminderStateImpl;
+  const _ReminderState._() : super._();
 
   @override
   ReminderCategory get selectedCategory;

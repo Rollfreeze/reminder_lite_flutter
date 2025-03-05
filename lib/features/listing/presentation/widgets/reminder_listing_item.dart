@@ -1,26 +1,21 @@
 import 'package:flutter/cupertino.dart';
-import '../style/app_colors.dart';
-import '../style/app_typo.dart';
+import '../../../../core/data/models/reminder.dart';
+import '../../../../core/style/app_colors.dart';
+import '../../../../core/style/app_typo.dart';
 
 /// A Reminder element of the listing view.
 class ReminderListingItem extends StatelessWidget {
-  /// Checkbox state.
-  final bool isFinished;
+  /// Reminder element.
+  final Reminder reminder;
 
   /// Change checkbox state.
   final ValueChanged<bool?> onChanged;
 
-  /// Reminder repetition state.
-  final bool isRepetitive;
-
   const ReminderListingItem({
-    required this.isFinished,
+    required this.reminder,
     required this.onChanged,
-    required this.isRepetitive,
     super.key,
   });
-
-  static const _lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +24,7 @@ class ReminderListingItem extends StatelessWidget {
         Transform.scale(
           scale: 1.3,
           child: CupertinoCheckbox(
-            value: isFinished,
+            value: reminder.isDone,
             onChanged: onChanged,
           ),
         ),
@@ -42,12 +37,17 @@ class ReminderListingItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 8,
                 children: [
-                  const Expanded(child: Text('Reminder Title', style: AppTypo.bold19)),
+                  Expanded(
+                    child: Text(
+                      reminder.title,
+                      style: AppTypo.bold19,
+                    ),
+                  ),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     spacing: 8,
                     children: [
-                      if (isRepetitive)
+                      if (reminder.isRepetitive)
                         const Icon(
                           size: 20,
                           CupertinoIcons.repeat,
@@ -58,13 +58,17 @@ class ReminderListingItem extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(_lorem * 2, style: AppTypo.medium17),
-                  ),
-                ],
-              ),
+              if (reminder.notes.isNotEmpty)
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        reminder.notes,
+                        style: AppTypo.medium17,
+                      ),
+                    ),
+                  ],
+                ),
             ],
           ),
         ),

@@ -6,4 +6,8 @@ class ReminderFormViewModel: ObservableObject {
     func isTitleNotEmpty() -> Bool {
         return !title.isEmpty
     }
+    
+    func getTrimedNotes() -> String {
+        return notes.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
 }

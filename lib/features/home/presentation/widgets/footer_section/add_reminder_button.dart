@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import '../services/localization_service.dart';
-import '../style/app_colors.dart';
-import '../style/app_typo.dart';
+import '../../../../../core/services/localization_service.dart';
+import '../../../../../core/style/app_colors.dart';
+import '../../../../../core/style/app_typo.dart';
 
 /// A button to create new a reminder.
 class AddReminderButton extends StatelessWidget {

@@ -28,12 +28,7 @@ class Reminder {
         id: json['id'] ?? '',
         title: json['title'] ?? '',
         notes: json['notes'] ?? '',
-        date: json['date'] == null
-            ? null
-            : DateTime.fromMillisecondsSinceEpoch(
-                isUtc: true,
-                ((json['date'] as num) * 1000).toInt(),
-              ),
+        date: json['date'] == null ? null : DateTime.parse(json['date']),
         repeatance: RepeatanceOption.fromCode(json['repeatance_code'] as int),
         isDone: json['is_done'] ?? false,
       );
@@ -60,12 +55,16 @@ class Reminder {
         ReminderCategory.done => isDone,
       };
 
-  /// A message with all properties of reminder instance.
-  String get propertiesFormated =>
-      "id: '$id', title: '$title', notes: '$notes', date: '$dateFormated', repeatance_code: '$repeatance', is_done: '$isDone'";
+  bool get isRepetitive => repeatance != RepeatanceOption.never;
 
-  /// Swift-like date formation.
-  String get dateFormated => date == null
-      ? ''
-      : '${date?.year}-${date?.month}-${date?.day} ${date?.hour}:${date?.minute}:${date?.second} ${date?.timeZoneName}';
+  /// A message with all properties of reminder instance.
+  String get propertiesFormated => """\n
+      id: '$id',
+      title: '$title',
+      notes: '$notes',
+      utc-date: '${date?.toUtc()}',
+      local-date: '${date?.toLocal()}',
+      repeatance_code: '$repeatance',
+      is_done: '$isDone'
+    """;
 }

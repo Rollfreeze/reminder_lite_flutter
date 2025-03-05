@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../../../core/data/models/reminder_category.dart';
+import '../../../bloc/progress_bloc.dart';
 import 'progress_switch_row.dart';
 import 'progress_slider.dart';
 
@@ -16,14 +16,14 @@ class ProgressSection extends StatefulWidget {
 class _ProgressSectionState extends State<ProgressSection> with TickerProviderStateMixin {
   final _controller = PageController();
   late final TabController _tabController;
-  late final ReminderBloc _bloc;
+  late final ProgressBloc _bloc;
   int? _desirePage;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
-    _bloc = context.read<ReminderBloc>();
+    _bloc = context.read<ProgressBloc>();
   }
 
   @override
@@ -35,23 +35,32 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ReminderBloc, ReminderState>(
+    return BlocBuilder<ProgressBloc, ProgressState>(
       builder: (_, state) => Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ProgressSwitchRow(
-            selectedCategory: state.selectedCategory,
+            selectedCategory: state.selected,
             onTodayPressed: () => _animateToPage(0),
             onForMonthPressed: () => _animateToPage(1),
             onAllPressed: () => _animateToPage(2),
           ),
           const SizedBox(height: 18),
-          ProgressSlider(
-            items: state.reminders?.groups ?? [],
-            controller: _controller,
-            onPageChanged: _onPageChanged,
-            tabController: _tabController,
+          AnimatedSwitcher(
+            duration: const Duration(milliseconds: 250),
+            transitionBuilder: (child, animation) => FadeTransition(
+              opacity: animation,
+              child: child,
+            ),
+            child: state.reminders == null
+                ? const SizedBox()
+                : ProgressSlider(
+                    reminders: state.reminders!,
+                    controller: _controller,
+                    onPageChanged: _onPageChanged,
+                    tabController: _tabController,
+                  ),
           ),
         ],
       ),
@@ -61,9 +70,9 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
   void _onPageSelect(int index) {
     _tabController.index = index;
     return switch (index) {
-      0 => _bloc.add(const ReminderEvent.selectedCategory(ReminderCategory.today)),
-      1 => _bloc.add(const ReminderEvent.selectedCategory(ReminderCategory.month)),
-      2 => _bloc.add(const ReminderEvent.selectedCategory(ReminderCategory.all)),
+      0 => _bloc.add(const ProgressEvent.select(ReminderCategory.today)),
+      1 => _bloc.add(const ProgressEvent.select(ReminderCategory.month)),
+      2 => _bloc.add(const ProgressEvent.select(ReminderCategory.all)),
       _ => null,
     };
   }

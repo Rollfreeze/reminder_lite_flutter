@@ -101,7 +101,7 @@ struct ReminderView: View {
         guard form.isTitleNotEmpty() else { return }
         let reminder = Reminder(
             title: form.title,
-            notes: form.notes,
+            notes: form.getTrimedNotes(),
             date: datePicker.getSelectedDate(),
             time: timePicker.getSelectedTime(),
             repeatance: repeatance
