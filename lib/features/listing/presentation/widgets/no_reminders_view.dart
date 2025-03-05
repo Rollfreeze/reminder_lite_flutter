@@ -11,7 +11,7 @@ class NoRemindersView extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 2,
+          flex: 4,
           child: Align(
             alignment: Alignment.bottomCenter,
             child: Text(
@@ -21,7 +21,7 @@ class NoRemindersView extends StatelessWidget {
             ),
           ),
         ),
-        const Expanded(flex: 3, child: SizedBox()),
+        const Expanded(flex: 5, child: SizedBox()),
       ],
     );
   }
