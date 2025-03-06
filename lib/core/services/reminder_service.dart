@@ -31,4 +31,17 @@ class ReminderService {
       return [];
     }
   }
+
+  Future<Reminder?> update(Reminder reminder) async {
+    try {
+      final result = await _methodChannel.invokeMethod('update');
+      if (result == null) return null;
+      final reminder = Reminder.fromJson(jsonDecode(result) as Map<String, dynamic>);
+      if (kDebugMode) debugPrint('Updated Reminder: ${reminder.propertiesFormated}');
+      return reminder;
+    } catch (e) {
+      if (kDebugMode) debugPrint('Update Reminder error: $e');
+      return null;
+    }
+  }
 }
