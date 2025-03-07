@@ -19,6 +19,8 @@ class ReminderService: NSObject, FlutterPlugin {
             self.create(result)
         case "fetchFor":
             self.fetchFor(code: call.arguments as! Int, result)
+        case "update":
+            self.update(reminderJson: call.arguments as! [String: Any], result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -57,5 +59,9 @@ class ReminderService: NSObject, FlutterPlugin {
         } catch {
             result(FlutterError(code: "Wrong argument", message: "ReminderCategory code: \(code) is wrong", details: nil))
         }
+    }
+    
+    func update(reminderJson: [String: Any], _ result: @escaping FlutterResult) -> Void {
+        
     }
 }
