@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../../services/reminder_service.dart';
+import '../models/reminder.dart';
 import '../models/reminder_category.dart';
 import '../models/reminder_collection.dart';
 import '../models/result.dart';
@@ -27,6 +28,20 @@ class ReminderRepository {
     } catch (error) {
       if (kDebugMode) debugPrint('createNewReminder method error: $error');
       return Failure('Could not create reminder');
+    }
+  }
+
+  Future<Result<ReminderCollection>> updateReminder(
+    Reminder reminder,
+    ReminderCollection currentReminders,
+  ) async {
+    try {
+      final updatedReminder = await _reminderService.update(reminder);
+      if (updatedReminder == null) return Success(currentReminders);
+      return Success(currentReminders.append(updatedReminder));
+    } catch (error) {
+      if (kDebugMode) debugPrint('updateReminder method error: $error');
+      return Failure('Could not update reminder');
     }
   }
 }
