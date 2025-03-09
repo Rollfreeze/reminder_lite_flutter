@@ -37,16 +37,6 @@ class Reminder {
     }
   }
 
-  /// Creates a List of Reminders from json.
-  static List<Reminder> remindersFromJson(Map<String, dynamic> json) {
-    try {
-      final List<dynamic> reminders = json['reminders'] ?? [];
-      return reminders.map((reminder) => Reminder.fromJson(reminder)).toList();
-    } catch (e) {
-      if (kDebugMode) debugPrint('Failed to parse reminders: $e');
-      return [];
-    }
-  }
 
   bool belongsTo(ReminderCategory category) => switch (category) {
         ReminderCategory.today => date?.isToday ?? false,

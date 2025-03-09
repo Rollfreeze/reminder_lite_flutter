@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import '../data/mappers/reminder_mapper.dart';
 import '../data/models/reminder.dart';
 import '../data/models/reminder_category.dart';
 
@@ -25,7 +26,7 @@ class ReminderService {
   Future<List<Reminder>> fetchFor(ReminderCategory category) async {
     try {
       final result = await _methodChannel.invokeMethod('fetchFor', category.code);
-      return Reminder.remindersFromJson(jsonDecode(result) as Map<String, dynamic>);
+      return ReminderMapper.fromJsonList(jsonDecode(result) as Map<String, dynamic>);
     } catch (e) {
       if (kDebugMode) debugPrint('Fetching for $category error: $e');
       return [];
