@@ -28,9 +28,9 @@ class Reminder: Identifiable {
             "is_done": isDone
         ]
         
-        if !id.isEmpty { map["id"] = id }
-        if !title.isEmpty { map["title"] = title }
-        if !notes.isEmpty { map["notes"] = notes }
+        map["id"] = id
+        map["title"] = title
+        map["notes"] = notes
         if let date = date { map["date"] = date.toUTCString() }
 
         return map
