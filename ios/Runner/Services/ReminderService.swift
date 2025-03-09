@@ -20,7 +20,7 @@ class ReminderService: NSObject, FlutterPlugin {
         case "fetchFor":
             self.fetchFor(code: call.arguments as! Int, result)
         case "update":
-            self.update(reminderJson: call.arguments as! [String: Any], result)
+            self.update(json: call.arguments as! [String: Any], result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -61,7 +61,7 @@ class ReminderService: NSObject, FlutterPlugin {
         }
     }
     
-    func update(reminderJson: [String: Any], _ result: @escaping FlutterResult) -> Void {
+    func update(json: [String: Any], _ result: @escaping FlutterResult) -> Void {
         
     }
 }
