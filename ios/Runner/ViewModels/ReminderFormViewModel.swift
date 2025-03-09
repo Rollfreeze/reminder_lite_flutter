@@ -3,8 +3,8 @@ class ReminderFormViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var notes: String = ""
     
-    func isTitleNotEmpty() -> Bool {
-        return !title.isEmpty
+    func isTitleEmpty() -> Bool {
+        return title.isEmpty
     }
     
     func getTrimedNotes() -> String {

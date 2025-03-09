@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Reminder's form section with title and notes fields.
 struct ReminderTextInputSection: View {
-    @EnvironmentObject var form: ReminderFormViewModel
+    @ObservedObject var form: ReminderFormViewModel
     
     var body: some View {
         Section {
