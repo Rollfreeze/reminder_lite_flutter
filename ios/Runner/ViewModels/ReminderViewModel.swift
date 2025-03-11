@@ -15,13 +15,13 @@ class ReminderViewModel: ObservableObject {
     /// Repeatance selection.
     @Published var repeatance: RepeatanceOption
     
-    init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void) {
+    init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
         self.onCancel = onCancel
         self.onConfirm = onConfirm
-        self.form = ReminderFormViewModel()
-        self.datePicker = DatePickerViewModel()
-        self.timePicker = TimePickerViewModel()
-        self.repeatance = .never
+        self.form = ReminderFormViewModel(title: initialReminder?.title, notes: initialReminder?.notes)
+        self.datePicker = DatePickerViewModel(selectedDate: initialReminder?.date)
+        self.timePicker = TimePickerViewModel(selectedTime: initialReminder?.date)
+        self.repeatance = try! RepeatanceOption.from(code: initialReminder?.repeatanceCode ?? 0)
     }
     
     /// Toggle the date presset showing when it's active.

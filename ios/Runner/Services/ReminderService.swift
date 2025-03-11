@@ -20,7 +20,7 @@ class ReminderService: NSObject, FlutterPlugin {
         case "fetchFor":
             self.fetchFor(code: call.arguments as! Int, result)
         case "update":
-            self.update(json: call.arguments as! [String: Any], result)
+            self.update(json: call.arguments as! String, result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -61,7 +61,31 @@ class ReminderService: NSObject, FlutterPlugin {
         }
     }
     
-    func update(json: [String: Any], _ result: @escaping FlutterResult) -> Void {
+    func update(json: String, _ result: @escaping FlutterResult) -> Void {
+        let reminder = Reminder(from: json)
+        if reminder == nil {
+            result(FlutterError(code: "Wrong argument", message: "Reminder json data is wrong", details: nil))
+            return
+        }
         
+        var isResultReturned: Bool = false
+        
+        RootViewService.presentFullBottomSheet(
+            onUserDismissView: {
+                if isResultReturned { return }
+                result(nil)
+            },
+            buider: { (onClose: @escaping () -> Void) in
+                ReminderView(
+                    onCancel: onClose,
+                    onConfirm: { (reminder: Reminder) in
+                        result(reminder.toJson())
+                        isResultReturned = true
+                        onClose()
+                    },
+                    initialReminder: reminder
+                )
+            }
+        )
     }
 }

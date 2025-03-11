@@ -6,6 +6,12 @@ class TimePickerViewModel: ObservableObject {
     @Published var isTimePickerActive: Bool = false
     @Published var showTimePicker: Bool = false
     
+    init(selectedTime: Date?) {
+        self.selectedTime = selectedTime ?? Date.now
+        self.isTimePickerActive = selectedTime != nil
+        self.showTimePicker = false
+    }
+    
     public func getSelectedTime() -> Date? {
         if !isTimePickerActive { return nil }
         return selectedTime

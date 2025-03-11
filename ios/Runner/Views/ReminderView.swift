@@ -6,7 +6,7 @@ struct ReminderView: View {
     /// View model with state elements.
     @StateObject private var viewModel: ReminderViewModel
     
-    init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void) {
+    init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
         _viewModel = StateObject(
             wrappedValue: ReminderViewModel(
                 onCancel: onCancel,

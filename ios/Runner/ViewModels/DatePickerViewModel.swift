@@ -6,6 +6,12 @@ class DatePickerViewModel: ObservableObject {
     @Published var isDatePickerActive: Bool = false
     @Published var showDatePicker: Bool = false
     
+    init(selectedDate: Date?) {
+        self.selectedDate = selectedDate ?? Date.now
+        self.isDatePickerActive = selectedDate != nil
+        self.showDatePicker = false
+    }
+    
     public func getSelectedDate() -> Date? {
         if !isDatePickerActive { return nil }
         return selectedDate

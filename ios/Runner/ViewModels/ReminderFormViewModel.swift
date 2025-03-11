@@ -3,6 +3,11 @@ class ReminderFormViewModel: ObservableObject {
     @Published var title: String = ""
     @Published var notes: String = ""
     
+    init(title: String?, notes: String?) {
+        self.title = title ?? ""
+        self.notes = notes ?? ""
+    }
+    
     func isTitleEmpty() -> Bool {
         return title.isEmpty
     }
