@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import '../../../../core/data/models/reminder.dart';
 import '../../../../core/style/app_colors.dart';
 import '../../../../core/style/app_typo.dart';
@@ -11,9 +12,13 @@ class ReminderListingItem extends StatelessWidget {
   /// Change checkbox state.
   final ValueChanged<bool?> onChanged;
 
+  /// Action on tap the available space except for checbox.
+  final VoidCallback onTap;
+
   const ReminderListingItem({
     required this.reminder,
     required this.onChanged,
+    required this.onTap,
     super.key,
   });
 
@@ -29,47 +34,61 @@ class ReminderListingItem extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 2,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                spacing: 8,
-                children: [
-                  Expanded(
-                    child: Text(
-                      reminder.title,
-                      style: AppTypo.bold19,
-                    ),
-                  ),
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 2,
+              children: [
+                if (reminder.date != null)
                   Row(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 8,
                     children: [
-                      if (reminder.isRepetitive)
-                        const Icon(
-                          size: 20,
-                          CupertinoIcons.repeat,
-                          color: AppColors.text3,
+                      Expanded(
+                        child: Text(
+                          DateFormat('dd.MM.yyyy-hh:mm:ss').format(reminder.date!),
+                          style: AppTypo.medium17hint,
                         ),
-                      const Text('20:01', style: AppTypo.medium17hint),
+                      ),
                     ],
                   ),
-                ],
-              ),
-              if (reminder.notes.isNotEmpty)
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 8,
                   children: [
                     Expanded(
                       child: Text(
-                        reminder.notes,
-                        style: AppTypo.medium17,
+                        reminder.title,
+                        style: AppTypo.bold19,
                       ),
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 8,
+                      children: [
+                        if (reminder.isRepetitive)
+                          const Icon(
+                            size: 20,
+                            CupertinoIcons.repeat,
+                            color: AppColors.text3,
+                          ),
+                      ],
                     ),
                   ],
                 ),
-            ],
+                if (reminder.notes.isNotEmpty)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          reminder.notes,
+                          style: AppTypo.medium17,
+                        ),
+                      ),
+                    ],
+                  ),
+              ],
+            ),
           ),
         ),
       ],
