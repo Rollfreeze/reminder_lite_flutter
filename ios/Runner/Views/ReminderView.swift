@@ -6,8 +6,6 @@ struct ReminderView: View {
     /// View model with state elements.
     @StateObject private var viewModel: ReminderViewModel
     
-    let date: String?
-    
     init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
         _viewModel = StateObject(
             wrappedValue: ReminderViewModel(
@@ -16,7 +14,6 @@ struct ReminderView: View {
                 initialReminder: initialReminder
             )
         )
-        date = initialReminder?.date?.formatted()
     }
     
     var body: some View {
@@ -25,7 +22,6 @@ struct ReminderView: View {
                 ReminderTextInputSection(form: viewModel.form)
                 ReminderDueSection(viewModel: viewModel)
                 ReminderRepeatSection(repeatance: $viewModel.repeatance)
-                Text(date ?? "")
             }
             .padding(.vertical, -24)
             .toolbar {

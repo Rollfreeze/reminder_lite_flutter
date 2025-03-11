@@ -1,10 +1,4 @@
 extension Date {
-    func toUTCString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-        return dateFormatter.string(from: self)
-    }
-    
     /// Merges a given date with an optional time and returns the result.
     static func mergeDateAndTime(date: Date?, time: Date?) -> Date? {
         guard let date = date else { return nil }

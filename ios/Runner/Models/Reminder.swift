@@ -30,7 +30,8 @@ class Reminder: Identifiable {
             return nil
         }
 
-        let date: Date? = (dictionary["date"] as? String)?.toDateFromUTC()
+        let timeStamp = dictionary["date"] as? Int
+        let date: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
         
         self.init(title: title, notes: notes, date: date, time: nil, repeatance: RepeatanceOption(rawValue: repeatanceCode)!)
         self.id = id
@@ -47,7 +48,7 @@ class Reminder: Identifiable {
         map["id"] = id
         map["title"] = title
         map["notes"] = notes
-        if let date = date { map["date"] = date.toUTCString() }
+        if let date = date { map["date"] = date.timeIntervalSince1970 }
 
         return map
     }

@@ -12,15 +12,16 @@ extension DateTimeExtension on DateTime {
   }
 }
 
-class DateTimeSerializer implements JsonConverter<DateTime?, String?> {
+class DateTimeSerializer implements JsonConverter<DateTime?, int?> {
   const DateTimeSerializer();
 
   @override
-  DateTime? fromJson(String? date) {
-    if (date == null || date.isEmpty) return null;
-    return DateTime.tryParse(date);
+  DateTime? fromJson(int? timestamp) {
+    if (timestamp == null) return null;
+    /// Swift is returing seconds so it is need to convert it to ms. 
+    return DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
   }
 
   @override
-  String? toJson(DateTime? date) => date?.toIso8601String();
+  int? toJson(DateTime? date) => date == null ? null : (date.millisecondsSinceEpoch / 1000).floor();
 }
