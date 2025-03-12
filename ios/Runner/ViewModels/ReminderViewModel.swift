@@ -1,6 +1,8 @@
 import SwiftUI
 
 class ReminderViewModel: ObservableObject {
+    let isEditingMode: Bool
+    
     /// Callback to close the view.
     let onCancel: () -> Void
     
@@ -16,6 +18,7 @@ class ReminderViewModel: ObservableObject {
     @Published var repeatance: RepeatanceOption
     
     init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
+        self.isEditingMode = initialReminder != nil
         self.onCancel = onCancel
         self.onConfirm = onConfirm
         self.form = ReminderFormViewModel(title: initialReminder?.title, notes: initialReminder?.notes)
