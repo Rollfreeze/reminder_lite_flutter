@@ -79,7 +79,7 @@ class ReminderViewModel: ObservableObject {
     
     public func confirm() -> Void {
         guard !form.isTitleEmpty() else { return }
-        var reminder = Reminder(
+        let reminder = Reminder(
             id: defaultIdentifier,
             title: form.title,
             notes: form.getTrimedNotes(),
