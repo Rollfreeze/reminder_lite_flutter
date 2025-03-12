@@ -1,28 +1,29 @@
 import SwiftUI
 
 class ReminderViewModel: ObservableObject {
-    /// Identifier of editing reminder. It's null when it's creating.
-    let defaultIdentifier: UUID?
+    /// Identifier of editing reminder.
+    private let defaultIdentifier: UUID?
     
-    /// Callback to close the view.
-    let onCancel: () -> Void
+    private let onCancel: () -> Void
     
-    /// Callback to confirm changes.
-    let onConfirm: (Reminder) -> Void
+    private let onConfirm: (Reminder) -> Void
     
-    /// View Models of Sub-Views.
-    let form: ReminderFormViewModel
-    let datePicker: DatePickerViewModel
-    let timePicker: TimePickerViewModel
+    @Published var title: String
     
-    /// Repeatance selection.
-    @Published var repeatance: RepeatanceOption
+    @Published var notes: String
+
+    @Published public var datePicker: DatePickerViewModel
+    
+    @Published public var timePicker: TimePickerViewModel
+    
+    @Published public var repeatance: RepeatanceOption
     
     init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
         self.defaultIdentifier = initialReminder?.id
         self.onCancel = onCancel
         self.onConfirm = onConfirm
-        self.form = ReminderFormViewModel(title: initialReminder?.title, notes: initialReminder?.notes)
+        self.title = initialReminder?.title ?? ""
+        self.notes = initialReminder?.notes ?? ""
         self.datePicker = DatePickerViewModel(selectedDate: initialReminder?.date)
         self.timePicker = TimePickerViewModel(selectedTime: initialReminder?.date)
         self.repeatance = try! RepeatanceOption.from(code: initialReminder?.repeatanceCode ?? 0)
@@ -77,12 +78,16 @@ class ReminderViewModel: ObservableObject {
         }
     }
     
+    public func cancel () -> Void {
+        onCancel()
+    }
+    
     public func confirm() -> Void {
-        guard !form.isTitleEmpty() else { return }
+        guard !title.isEmpty else { return }
         let reminder = Reminder(
             id: defaultIdentifier,
-            title: form.title,
-            notes: form.getTrimedNotes(),
+            title: title,
+            notes: trimedNotes,
             date: datePicker.getSelectedDate(),
             time: timePicker.getSelectedTime(),
             repeatance: repeatance
@@ -95,5 +100,9 @@ class ReminderViewModel: ObservableObject {
         }
   
         onConfirm(reminder)
+    }
+    
+    private var trimedNotes : String {
+        notes.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

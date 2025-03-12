@@ -6,7 +6,7 @@ struct ReminderAppBar: ToolbarContent {
     
     var body: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
-            Button("Cancel", action: viewModel.onCancel)
+            Button("Cancel", action: viewModel.cancel)
         }
         ToolbarItem(placement: .principal) {
             Text("New Reminder")
@@ -14,7 +14,7 @@ struct ReminderAppBar: ToolbarContent {
         }
         ToolbarItem(placement: .confirmationAction) {
             Button(viewModel.isEditingMode() ? "Done" : "Add", action: viewModel.confirm)
-                .disabled(viewModel.form.isTitleEmpty())
+                .disabled(viewModel.title.isEmpty)
         }
     }
 }
