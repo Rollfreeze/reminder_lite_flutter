@@ -17,7 +17,7 @@ class ReminderCollection with _$ReminderCollection {
     final remindersByCategory = {for (final category in ReminderCategory.values) category: <Reminder>[]};
     final completedByCategory = {for (final category in ReminderCategory.values) category: 0};
 
-    // Distribute reminders into their respective categories
+    // Distribute reminders into their respective categories.
     for (final reminder in reminders) {
       for (final category in ReminderCategory.values.where(reminder.belongsTo)) {
         remindersByCategory[category]!.add(reminder);
@@ -40,11 +40,11 @@ class ReminderCollection with _$ReminderCollection {
   }
 
   ReminderCollection append(Reminder reminder) {
-    // Create copies of the existing category mappings
+    // Create copies of the existing category mappings.
     final remindersByCategory = {for (final group in groups) group.category: List<Reminder>.from(group.reminders)};
     final completedByCategory = {for (final group in groups) group.category: group.completedAmount};
 
-    // Add the reminder to the appropriate categories
+    // Add the reminder to the appropriate categories.
     for (final category in ReminderCategory.values.where(reminder.belongsTo)) {
       remindersByCategory.putIfAbsent(category, () => <Reminder>[]).add(reminder);
       if (reminder.isDone) completedByCategory[category] = completedByCategory[category]! + 1;
