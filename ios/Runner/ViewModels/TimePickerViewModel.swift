@@ -2,9 +2,9 @@ import SwiftUI
 
 /// View Model to control Time presset of Reminder.
 class TimePickerViewModel: ObservableObject {
-    @Published var selectedTime: Date = Date.now
-    @Published var isTimePickerActive: Bool = false
-    @Published var showTimePicker: Bool = false
+    @Published var selectedTime: Date
+    @Published var isTimePickerActive: Bool
+    @Published var showTimePicker: Bool
     
     init(selectedTime: Date?) {
         self.selectedTime = selectedTime ?? Date.now
