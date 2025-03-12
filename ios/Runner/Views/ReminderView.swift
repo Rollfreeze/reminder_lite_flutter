@@ -25,11 +25,10 @@ struct ReminderView: View {
             }
             .padding(.vertical, -24)
             .toolbar {
-                ReminderAppBar()
+                ReminderAppBar(viewModel: viewModel)
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-        .environmentObject(viewModel)
     }
 }
 

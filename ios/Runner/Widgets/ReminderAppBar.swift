@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Toolbar for Reminder View with sheet actions: cancel and creating.
 struct ReminderAppBar: ToolbarContent {
-    @EnvironmentObject var viewModel: ReminderViewModel
+    @ObservedObject var viewModel: ReminderViewModel
     
     var body: some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
