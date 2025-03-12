@@ -13,7 +13,7 @@ struct ReminderAppBar: ToolbarContent {
                 .font(.headline)
         }
         ToolbarItem(placement: .confirmationAction) {
-            Button("Add", action: viewModel.confirm)
+            Button(viewModel.isEditingMode ? "Done" : "Add", action: viewModel.confirm)
                 .disabled(viewModel.form.isTitleEmpty())
         }
     }
