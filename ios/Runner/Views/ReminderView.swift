@@ -19,7 +19,10 @@ struct ReminderView: View {
     var body: some View {
         NavigationStack {
             Form {
-                ReminderTextInputSection(title: $viewModel.title, notes: $viewModel.notes)
+                ReminderTextInputSection(
+                    title: $viewModel.title,
+                    notes: $viewModel.notes
+                )
                 ReminderDueSection(viewModel: viewModel)
                 ReminderRepeatSection(repeatance: $viewModel.repeatance)
             }
