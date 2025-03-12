@@ -48,7 +48,7 @@ class ListingScreen extends StatelessWidget {
                 child: ReminderListingItem(
                   reminder: group.reminders[index],
                   onChanged: (value) {},
-                  onTap: () {},
+                  onTap: (r) => context.read<ReminderBloc>().add(ReminderEvent.update(r)),
                 ),
               ),
             );

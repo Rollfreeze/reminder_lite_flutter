@@ -13,7 +13,7 @@ class ReminderListingItem extends StatelessWidget {
   final ValueChanged<bool?> onChanged;
 
   /// Action on tap the available space except for checbox.
-  final VoidCallback onTap;
+  final ValueChanged<Reminder> onTap;
 
   const ReminderListingItem({
     required this.reminder,
@@ -36,7 +36,7 @@ class ReminderListingItem extends StatelessWidget {
         Expanded(
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: onTap,
+            onTap: () => onTap(reminder),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               spacing: 2,
