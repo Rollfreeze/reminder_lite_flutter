@@ -2,17 +2,18 @@ import SwiftUI
 
 /// Reminder's form section with title and notes fields.
 struct ReminderTextInputSection: View {
-    @EnvironmentObject var form: ReminderFormViewModel
+    @Binding var title: String
+    @Binding var notes: String
     
     var body: some View {
         Section {
-            TextField("Title", text: $form.title)
-            TextEditor(text: $form.notes)
+            TextField("Title", text: $title)
+            TextEditor(text: $notes)
                 .padding(.vertical, -8)
                 .padding(.horizontal, -4)
                 .frame(height: 100)
                 .overlay {
-                    if form.notes.isEmpty {
+                    if notes.isEmpty {
                         VStack {
                             HStack {
                                 Text("Notes")

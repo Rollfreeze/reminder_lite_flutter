@@ -3,111 +3,35 @@ import SwiftData
 
 /// A new reminder sheet view with its UI logic.
 struct ReminderView: View {
-    /// Callback to close the view.
-    let onCancel: () -> Void
+    /// View model with state elements.
+    @StateObject private var viewModel: ReminderViewModel
     
-    /// Callback to confirm changes.
-    let onConfirm: (Reminder) -> Void
-    
-    /// Model for text fields logic.
-    @StateObject private var form = ReminderFormViewModel()
-    
-    /// Model for date presset logic.
-    @StateObject private var datePicker = DatePickerViewModel()
-    
-    /// Model for time presset logic.
-    @StateObject private var timePicker = TimePickerViewModel()
-    
-    /// Repeat option.
-    @State private var repeatance: RepeatanceOption = RepeatanceOption.never
+    init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
+        _viewModel = StateObject(
+            wrappedValue: ReminderViewModel(
+                onCancel: onCancel,
+                onConfirm: onConfirm,
+                initialReminder: initialReminder
+            )
+        )
+    }
     
     var body: some View {
         NavigationStack {
             Form {
-                ReminderTextInputSection()
-                    .environmentObject(form)
-                
-                ReminderDueSection(
-                    onToggleDate: onToggleDate,
-                    onActiveDatePressed: onActiveDatePressed,
-                    onToggleTime: onToggleTime,
-                    onActiveTimePressed: onActiveTimePressed
+                ReminderTextInputSection(
+                    title: $viewModel.title,
+                    notes: $viewModel.notes
                 )
-                .environmentObject(datePicker)
-                .environmentObject(timePicker)
-                
-                ReminderRepeatSection(
-                    repeatance: $repeatance
-                )
+                ReminderDueSection(viewModel: viewModel)
+                ReminderRepeatSection(repeatance: $viewModel.repeatance)
             }
             .padding(.vertical, -24)
             .toolbar {
-                ReminderAppBar(
-                    onCancel: onCancel,
-                    onConfirm: confirm,
-                    isConfirmActive: form.isTitleNotEmpty()
-                )
+                ReminderAppBar(viewModel: viewModel)
             }
             .navigationBarTitleDisplayMode(.inline)
         }
-    }
-    
-    /// Toggle the date presset showing when it's active.
-    private func onActiveDatePressed() -> Void {
-        withAnimation {
-            timePicker.hide()
-            datePicker.showDatePicker.toggle()
-        }
-    }
-    
-    /// Toggle the time presset showing when it's active.
-    private func onActiveTimePressed() -> Void {
-        withAnimation {
-            datePicker.hide()
-            timePicker.showTimePicker.toggle()
-        }
-    }
-    
-    /// Toggle active for the date presset.
-    private func onToggleDate(_ value: Bool) -> Void {
-        withAnimation {
-            if (value) {
-                timePicker.hide()
-                datePicker.setDefault()
-                datePicker.setActive()
-                datePicker.show()
-            }
-            else {
-                datePicker.reset()
-                timePicker.reset()
-            }
-        }
-    }
-    
-    /// Toggle active for the time presset.
-    private func onToggleTime(_ value: Bool) -> Void {
-        withAnimation {
-            if (value) {
-                datePicker.setActive()
-                datePicker.hide()
-                timePicker.setActive()
-                timePicker.show()
-            }
-            else { timePicker.reset() }
-        }
-    }
-    
-    private func confirm() -> Void {
-        guard form.isTitleNotEmpty() else { return }
-        let reminder = Reminder(
-            title: form.title,
-            notes: form.getTrimedNotes(),
-            date: datePicker.getSelectedDate(),
-            time: timePicker.getSelectedTime(),
-            repeatance: repeatance
-        )
-        ReminderStorageService.shared.addItem(reminder)
-        onConfirm(reminder)
     }
 }
 

@@ -4,7 +4,7 @@ import SwiftUI
 struct ReminderDatePicker: View {
     let onToggleChange: (_ value: Bool) -> Void
     let onActivePressed: () -> Void
-    @EnvironmentObject var datePicker: DatePickerViewModel
+    @ObservedObject var datePicker: DatePickerViewModel
     
     var body: some View {
         List {

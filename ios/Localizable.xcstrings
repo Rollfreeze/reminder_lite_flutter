@@ -51,6 +51,17 @@
         }
       }
     },
+    "Done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
+          }
+        }
+      }
+    },
     "Due date" : {
       "localizations" : {
         "ru" : {
@@ -159,9 +170,6 @@
       }
     },
     "Open Sheet" : {
-
-    },
-    "reminders is empty" : {
 
     },
     "Repeat" : {

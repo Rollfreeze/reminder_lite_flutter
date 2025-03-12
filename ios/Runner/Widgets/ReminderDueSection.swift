@@ -2,20 +2,20 @@ import SwiftUI
 
 /// Reminder's grouped settings View.
 struct ReminderDueSection: View {
-    let onToggleDate: (_ value: Bool) -> Void
-    let onActiveDatePressed: () -> Void
-    let onToggleTime: (_ value: Bool) -> Void
-    let onActiveTimePressed: () -> Void
+    /// View model with state elements.
+    @ObservedObject var viewModel: ReminderViewModel
     
     var body: some View {
         Section {
             ReminderDatePicker(
-                onToggleChange: onToggleDate,
-                onActivePressed: onActiveDatePressed
+                onToggleChange: viewModel.onToggleDate,
+                onActivePressed: viewModel.onActiveDatePressed,
+                datePicker: viewModel.datePicker
             )
             ReminderTimePicker(
-                onToggleChange: onToggleTime,
-                onActivePressed: onActiveTimePressed
+                onToggleChange: viewModel.onToggleTime,
+                onActivePressed: viewModel.onActiveTimePressed,
+                timePicker: viewModel.timePicker
             )
         }
     }

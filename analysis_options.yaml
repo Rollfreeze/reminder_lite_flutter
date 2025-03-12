@@ -37,6 +37,9 @@ linter:
     - prefer_relative_imports
 
 analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
   errors:
     prefer_single_quotes: warning
     avoid_print: error

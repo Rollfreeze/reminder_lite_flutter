@@ -2,9 +2,15 @@ import SwiftUI
 
 /// View Model to control Date presset of Reminder.
 class DatePickerViewModel: ObservableObject {
-    @Published var selectedDate: Date = Date.now
-    @Published var isDatePickerActive: Bool = false
-    @Published var showDatePicker: Bool = false
+    @Published var selectedDate: Date
+    @Published var isDatePickerActive: Bool
+    @Published var showDatePicker: Bool
+    
+    init(selectedDate: Date?) {
+        self.selectedDate = selectedDate ?? Date.now
+        self.isDatePickerActive = selectedDate != nil
+        self.showDatePicker = false
+    }
     
     public func getSelectedDate() -> Date? {
         if !isDatePickerActive { return nil }
@@ -27,10 +33,6 @@ class DatePickerViewModel: ObservableObject {
     
     public func setActive() -> Void {
         isDatePickerActive = true
-    }
-    
-    public func setInactive() -> Void {
-        isDatePickerActive = false
     }
 
     public func setDefault() -> Void {

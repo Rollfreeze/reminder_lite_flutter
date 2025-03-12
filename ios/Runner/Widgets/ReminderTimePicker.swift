@@ -4,7 +4,7 @@ import SwiftUI
 struct ReminderTimePicker: View {
     let onToggleChange: (_ value: Bool) -> Void
     let onActivePressed: () -> Void
-    @EnvironmentObject var timePicker: TimePickerViewModel
+    @ObservedObject var timePicker: TimePickerViewModel
     
     var body: some View {
         List {

@@ -20,6 +20,7 @@ mixin _$ReminderEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() create,
+    required TResult Function(Reminder reminder) update,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
   }) =>
@@ -28,6 +29,7 @@ mixin _$ReminderEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? create,
+    TResult? Function(Reminder reminder)? update,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
   }) =>
@@ -36,6 +38,7 @@ mixin _$ReminderEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? create,
+    TResult Function(Reminder reminder)? update,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
     required TResult orElse(),
@@ -45,6 +48,7 @@ mixin _$ReminderEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_Create value) create,
+    required TResult Function(_Update value) update,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
   }) =>
@@ -53,6 +57,7 @@ mixin _$ReminderEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_Create value)? create,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
   }) =>
@@ -61,6 +66,7 @@ mixin _$ReminderEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_Create value)? create,
+    TResult Function(_Update value)? update,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
@@ -131,6 +137,7 @@ class _$LoadImpl implements _Load {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() create,
+    required TResult Function(Reminder reminder) update,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
   }) {
@@ -142,6 +149,7 @@ class _$LoadImpl implements _Load {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? create,
+    TResult? Function(Reminder reminder)? update,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
   }) {
@@ -153,6 +161,7 @@ class _$LoadImpl implements _Load {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? create,
+    TResult Function(Reminder reminder)? update,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
     required TResult orElse(),
@@ -168,6 +177,7 @@ class _$LoadImpl implements _Load {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_Create value) create,
+    required TResult Function(_Update value) update,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
   }) {
@@ -179,6 +189,7 @@ class _$LoadImpl implements _Load {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_Create value)? create,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
   }) {
@@ -190,6 +201,7 @@ class _$LoadImpl implements _Load {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_Create value)? create,
+    TResult Function(_Update value)? update,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
@@ -248,6 +260,7 @@ class _$CreateImpl implements _Create {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() create,
+    required TResult Function(Reminder reminder) update,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
   }) {
@@ -259,6 +272,7 @@ class _$CreateImpl implements _Create {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? create,
+    TResult? Function(Reminder reminder)? update,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
   }) {
@@ -270,6 +284,7 @@ class _$CreateImpl implements _Create {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? create,
+    TResult Function(Reminder reminder)? update,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
     required TResult orElse(),
@@ -285,6 +300,7 @@ class _$CreateImpl implements _Create {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_Create value) create,
+    required TResult Function(_Update value) update,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
   }) {
@@ -296,6 +312,7 @@ class _$CreateImpl implements _Create {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_Create value)? create,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
   }) {
@@ -307,6 +324,7 @@ class _$CreateImpl implements _Create {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_Create value)? create,
+    TResult Function(_Update value)? update,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
@@ -320,6 +338,177 @@ class _$CreateImpl implements _Create {
 
 abstract class _Create implements ReminderEvent {
   const factory _Create() = _$CreateImpl;
+}
+
+/// @nodoc
+abstract class _$$UpdateImplCopyWith<$Res> {
+  factory _$$UpdateImplCopyWith(
+          _$UpdateImpl value, $Res Function(_$UpdateImpl) then) =
+      __$$UpdateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Reminder reminder});
+
+  $ReminderCopyWith<$Res> get reminder;
+}
+
+/// @nodoc
+class __$$UpdateImplCopyWithImpl<$Res>
+    extends _$ReminderEventCopyWithImpl<$Res, _$UpdateImpl>
+    implements _$$UpdateImplCopyWith<$Res> {
+  __$$UpdateImplCopyWithImpl(
+      _$UpdateImpl _value, $Res Function(_$UpdateImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? reminder = null,
+  }) {
+    return _then(_$UpdateImpl(
+      null == reminder
+          ? _value.reminder
+          : reminder // ignore: cast_nullable_to_non_nullable
+              as Reminder,
+    ));
+  }
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ReminderCopyWith<$Res> get reminder {
+    return $ReminderCopyWith<$Res>(_value.reminder, (value) {
+      return _then(_value.copyWith(reminder: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UpdateImpl implements _Update {
+  const _$UpdateImpl(this.reminder);
+
+  @override
+  final Reminder reminder;
+
+  @override
+  String toString() {
+    return 'ReminderEvent.update(reminder: $reminder)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateImpl &&
+            (identical(other.reminder, reminder) ||
+                other.reminder == reminder));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, reminder);
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateImplCopyWith<_$UpdateImpl> get copyWith =>
+      __$$UpdateImplCopyWithImpl<_$UpdateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() load,
+    required TResult Function() create,
+    required TResult Function(Reminder reminder) update,
+    required TResult Function(ReminderCollection reminders) succeed,
+    required TResult Function(String error) fail,
+  }) {
+    return update(reminder);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? load,
+    TResult? Function()? create,
+    TResult? Function(Reminder reminder)? update,
+    TResult? Function(ReminderCollection reminders)? succeed,
+    TResult? Function(String error)? fail,
+  }) {
+    return update?.call(reminder);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? load,
+    TResult Function()? create,
+    TResult Function(Reminder reminder)? update,
+    TResult Function(ReminderCollection reminders)? succeed,
+    TResult Function(String error)? fail,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(reminder);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Load value) load,
+    required TResult Function(_Create value) create,
+    required TResult Function(_Update value) update,
+    required TResult Function(_Succeed value) succeed,
+    required TResult Function(_Fail value) fail,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Load value)? load,
+    TResult? Function(_Create value)? create,
+    TResult? Function(_Update value)? update,
+    TResult? Function(_Succeed value)? succeed,
+    TResult? Function(_Fail value)? fail,
+  }) {
+    return update?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Load value)? load,
+    TResult Function(_Create value)? create,
+    TResult Function(_Update value)? update,
+    TResult Function(_Succeed value)? succeed,
+    TResult Function(_Fail value)? fail,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Update implements ReminderEvent {
+  const factory _Update(final Reminder reminder) = _$UpdateImpl;
+
+  Reminder get reminder;
+
+  /// Create a copy of ReminderEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateImplCopyWith<_$UpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -405,6 +594,7 @@ class _$SucceedImpl implements _Succeed {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() create,
+    required TResult Function(Reminder reminder) update,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
   }) {
@@ -416,6 +606,7 @@ class _$SucceedImpl implements _Succeed {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? create,
+    TResult? Function(Reminder reminder)? update,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
   }) {
@@ -427,6 +618,7 @@ class _$SucceedImpl implements _Succeed {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? create,
+    TResult Function(Reminder reminder)? update,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
     required TResult orElse(),
@@ -442,6 +634,7 @@ class _$SucceedImpl implements _Succeed {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_Create value) create,
+    required TResult Function(_Update value) update,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
   }) {
@@ -453,6 +646,7 @@ class _$SucceedImpl implements _Succeed {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_Create value)? create,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
   }) {
@@ -464,6 +658,7 @@ class _$SucceedImpl implements _Succeed {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_Create value)? create,
+    TResult Function(_Update value)? update,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),
@@ -556,6 +751,7 @@ class _$FailImpl implements _Fail {
   TResult when<TResult extends Object?>({
     required TResult Function() load,
     required TResult Function() create,
+    required TResult Function(Reminder reminder) update,
     required TResult Function(ReminderCollection reminders) succeed,
     required TResult Function(String error) fail,
   }) {
@@ -567,6 +763,7 @@ class _$FailImpl implements _Fail {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? load,
     TResult? Function()? create,
+    TResult? Function(Reminder reminder)? update,
     TResult? Function(ReminderCollection reminders)? succeed,
     TResult? Function(String error)? fail,
   }) {
@@ -578,6 +775,7 @@ class _$FailImpl implements _Fail {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? load,
     TResult Function()? create,
+    TResult Function(Reminder reminder)? update,
     TResult Function(ReminderCollection reminders)? succeed,
     TResult Function(String error)? fail,
     required TResult orElse(),
@@ -593,6 +791,7 @@ class _$FailImpl implements _Fail {
   TResult map<TResult extends Object?>({
     required TResult Function(_Load value) load,
     required TResult Function(_Create value) create,
+    required TResult Function(_Update value) update,
     required TResult Function(_Succeed value) succeed,
     required TResult Function(_Fail value) fail,
   }) {
@@ -604,6 +803,7 @@ class _$FailImpl implements _Fail {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Load value)? load,
     TResult? Function(_Create value)? create,
+    TResult? Function(_Update value)? update,
     TResult? Function(_Succeed value)? succeed,
     TResult? Function(_Fail value)? fail,
   }) {
@@ -615,6 +815,7 @@ class _$FailImpl implements _Fail {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Load value)? load,
     TResult Function(_Create value)? create,
+    TResult Function(_Update value)? update,
     TResult Function(_Succeed value)? succeed,
     TResult Function(_Fail value)? fail,
     required TResult orElse(),

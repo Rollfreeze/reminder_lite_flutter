@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import '../../data/models/reminder.dart';
 import '../../data/models/reminder_category.dart';
 import '../../data/models/reminder_collection.dart';
 import '../../data/models/result.dart';
@@ -20,6 +21,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   EventHandler<ReminderEvent, ReminderState> get _handler => (event, emit) => switch (event) {
         _Load() => _handleLoad(event, emit),
         _Create() => _handleCreate(event, emit),
+        _Update() => _handleUpdate(event, emit),
         _Succeed() => _handleSucceed(event, emit),
         _Fail() => _handleFail(event, emit),
       };
@@ -40,6 +42,23 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     if (reminders == null) return;
 
     final result = await _repository.createNewReminder(reminders);
+
+    return switch (result) {
+      Success(:final result) => add(_Succeed(result)),
+      Failure(:final error) => add(_Fail(error)),
+    };
+  }
+
+  Future<void> _handleUpdate(_Update event, Emitter<ReminderState> emit) async {
+    final reminders = state.reminders;
+
+    // A new reminder can not be created if others haven't been loaded yet.
+    if (reminders == null) return;
+
+    final result = await _repository.updateReminder(
+      reminder: event.reminder,
+      currentReminders: reminders,
+    );
 
     return switch (result) {
       Success(:final result) => add(_Succeed(result)),
