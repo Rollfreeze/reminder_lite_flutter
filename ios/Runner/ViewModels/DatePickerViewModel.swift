@@ -34,10 +34,6 @@ class DatePickerViewModel: ObservableObject {
     public func setActive() -> Void {
         isDatePickerActive = true
     }
-    
-    public func setInactive() -> Void {
-        isDatePickerActive = false
-    }
 
     public func setDefault() -> Void {
         selectedDate = Date.now

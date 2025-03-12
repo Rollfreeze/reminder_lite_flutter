@@ -35,10 +35,6 @@ class TimePickerViewModel: ObservableObject {
         isTimePickerActive = true
     }
     
-    public func setInactive() -> Void {
-        isTimePickerActive = false
-    }
-    
     public func formatTimeIfSelected() -> LocalizedStringKey? {
         if !isTimePickerActive { return nil }
         let formatter = DateFormatter()
