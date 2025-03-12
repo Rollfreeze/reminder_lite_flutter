@@ -1,7 +1,8 @@
 import SwiftUI
 
 class ReminderViewModel: ObservableObject {
-    let isEditingMode: Bool
+    /// Identifier of editing reminder. It's null when it's creating.
+    let defaultIdentifier: UUID?
     
     /// Callback to close the view.
     let onCancel: () -> Void
@@ -18,13 +19,17 @@ class ReminderViewModel: ObservableObject {
     @Published var repeatance: RepeatanceOption
     
     init(onCancel: @escaping () -> Void, onConfirm: @escaping (Reminder) -> Void, initialReminder: Reminder? = nil) {
-        self.isEditingMode = initialReminder != nil
+        self.defaultIdentifier = initialReminder?.id
         self.onCancel = onCancel
         self.onConfirm = onConfirm
         self.form = ReminderFormViewModel(title: initialReminder?.title, notes: initialReminder?.notes)
         self.datePicker = DatePickerViewModel(selectedDate: initialReminder?.date)
         self.timePicker = TimePickerViewModel(selectedTime: initialReminder?.date)
         self.repeatance = try! RepeatanceOption.from(code: initialReminder?.repeatanceCode ?? 0)
+    }
+    
+    public func isEditingMode() -> Bool {
+        return defaultIdentifier != nil
     }
     
     /// Toggle the date presset showing when it's active.
@@ -74,14 +79,21 @@ class ReminderViewModel: ObservableObject {
     
     public func confirm() -> Void {
         guard !form.isTitleEmpty() else { return }
-        let reminder = Reminder(
+        var reminder = Reminder(
+            id: defaultIdentifier,
             title: form.title,
             notes: form.getTrimedNotes(),
             date: datePicker.getSelectedDate(),
             time: timePicker.getSelectedTime(),
             repeatance: repeatance
         )
-        ReminderStorageService.shared.addItem(reminder)
+        
+        if self.isEditingMode() {
+            ReminderStorageService.shared.update(reminder)
+        } else {
+            ReminderStorageService.shared.addItem(reminder)
+        }
+  
         onConfirm(reminder)
     }
 }

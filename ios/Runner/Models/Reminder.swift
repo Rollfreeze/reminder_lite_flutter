@@ -4,7 +4,7 @@ import SwiftData
 /// A model that represents and contains all about some certain reminder.
 @Model
 class Reminder: Identifiable {
-    @Attribute(.unique) var id: String
+    @Attribute(.unique) var id: UUID
     var title: String
     var notes: String
     var date: Date?
@@ -12,17 +12,18 @@ class Reminder: Identifiable {
     var isDone: Bool
     
     /// A new reminder.
-    init(title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption) {
-        self.id = UUID().uuidString
+    init(id: UUID? = nil, title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption, isDone: Bool = false) {
+        self.id = id ?? UUID()
         self.title = title
         self.notes = notes
         self.date = Date.mergeDateAndTime(date: date, time: time)
         self.repeatanceCode = repeatance.rawValue
-        self.isDone = false
+        self.isDone = isDone
     }
     
     convenience init?(from dictionary: [String: Any]) {
-        guard let id = dictionary["id"] as? String,
+        guard let idString = dictionary["id"] as? String,
+              let uuid = UUID(uuidString: idString),
               let title = dictionary["title"] as? String,
               let notes = dictionary["notes"] as? String,
               let repeatanceCode = dictionary["repeatance_code"] as? Int,
@@ -33,10 +34,17 @@ class Reminder: Identifiable {
         let timeStamp = dictionary["date"] as? Int
         let date: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
         
-        self.init(title: title, notes: notes, date: date, time: nil, repeatance: RepeatanceOption(rawValue: repeatanceCode)!)
-        self.id = id
-        self.isDone = isDone
+        self.init(id: uuid, title: title, notes: notes, date: date, time: nil, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isDone: isDone)
     }
+    
+    /// Update fields from another Reminder instance.
+     func update(from newReminder: Reminder) {
+         self.title = newReminder.title
+         self.notes = newReminder.notes
+         self.date = newReminder.date
+         self.repeatanceCode = newReminder.repeatanceCode
+         self.isDone = newReminder.isDone
+     }
     
     /// Get map representation of Reminder.
     private func toMap() -> [String: Any] {
@@ -45,7 +53,7 @@ class Reminder: Identifiable {
             "is_done": isDone
         ]
         
-        map["id"] = id
+        map["id"] = id.uuidString
         map["title"] = title
         map["notes"] = notes
         if let date = date { map["date"] = date.timeIntervalSince1970 }
