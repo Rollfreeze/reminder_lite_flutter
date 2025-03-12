@@ -11,7 +11,7 @@ class ReminderStorageService {
         context = ModelContext(modelContainer)
     }
     
-    public func addItem(_ item: Reminder) {
+    public func add(_ item: Reminder) {
         context.insert(item)
     }
     

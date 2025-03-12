@@ -91,7 +91,7 @@ class ReminderViewModel: ObservableObject {
         if self.isEditingMode() {
             ReminderStorageService.shared.update(reminder)
         } else {
-            ReminderStorageService.shared.addItem(reminder)
+            ReminderStorageService.shared.add(reminder)
         }
   
         onConfirm(reminder)
