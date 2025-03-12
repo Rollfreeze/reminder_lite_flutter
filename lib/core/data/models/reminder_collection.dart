@@ -50,7 +50,44 @@ class ReminderCollection with _$ReminderCollection {
       if (reminder.isDone) completedByCategory[category] = completedByCategory[category]! + 1;
     }
 
-    // Generate new ReminderGroups and return a new ReminderCollection instance
+    // Generate new ReminderGroups and return a new ReminderCollection instance.
+    return ReminderCollection(
+      groups: remindersByCategory.entries
+          .map(
+            (entry) => ReminderGroup(
+              category: entry.key,
+              reminders: entry.value,
+              completedAmount: completedByCategory[entry.key]!,
+            ),
+          )
+          .toList(),
+    );
+  }
+
+  ReminderCollection update(Reminder updatedReminder) {
+    // Create copies of the existing category mappings.
+    final remindersByCategory = {for (final group in groups) group.category: List<Reminder>.from(group.reminders)};
+    final completedByCategory = {for (final group in groups) group.category: group.completedAmount};
+
+    // Iterate over categories and replace the matching reminder if found.
+    for (final category in ReminderCategory.values.where(updatedReminder.belongsTo)) {
+      if (remindersByCategory.containsKey(category)) {
+        final index = remindersByCategory[category]!.indexWhere((r) => r.id == updatedReminder.id);
+        if (index != -1) {
+          final isCurrentDone = remindersByCategory[category]![index].isDone;
+          remindersByCategory[category]![index] = updatedReminder;
+
+          // Update completed count.
+          if (updatedReminder.isDone && !isCurrentDone) {
+            completedByCategory[category] = completedByCategory[category]! + 1;
+          } else if (!updatedReminder.isDone && isCurrentDone) {
+            completedByCategory[category] = completedByCategory[category]! - 1;
+          }
+        }
+      }
+    }
+
+    // Generate new ReminderGroups and return a new ReminderCollection instance.
     return ReminderCollection(
       groups: remindersByCategory.entries
           .map(
