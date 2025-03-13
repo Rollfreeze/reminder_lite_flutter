@@ -44,8 +44,8 @@ class ReminderStorageService {
             predicate = #Predicate { $0.date != nil && $0.date!.isCurrentMonth }
         case .all:
             predicate = #Predicate { _ in true }
-        case .done:
-            predicate = #Predicate { $0.isDone }
+        case .completed:
+            predicate = #Predicate { $0.isCompleted }
         }
         
         return FetchDescriptor<Reminder>(

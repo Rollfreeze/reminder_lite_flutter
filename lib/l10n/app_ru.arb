@@ -2,7 +2,7 @@
     "today": "Сегодня",
     "thisMonth": "Этот месяц",
     "all": "Все",
-    "done": "Завершено",
+    "completed": "Завершено",
     "completeAmount": "Выполнено:\n{completed} из {total}",
     "reminder": "Напоминание",
     "noReminders": "Напоминаний нет",

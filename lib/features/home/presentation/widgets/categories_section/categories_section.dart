@@ -24,7 +24,7 @@ class CategoriesSection extends StatelessWidget {
           return Expanded(
             child: CategoryButton(
               category: category,
-              count: category == ReminderCategory.done ? null : group?.length,
+              count: category == ReminderCategory.completed ? null : group?.length,
               onTap: group == null ? null : () => context.router.push(ListingRoute(category: group.category)),
             ),
           );

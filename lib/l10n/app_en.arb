@@ -11,9 +11,9 @@
   "@all": {
     "description": "All reminders"
   },
-  "done": "Done",
-  "@done": {
-    "description": "Done reminders"
+  "completed": "Completed",
+  "@completed": {
+    "description": "Completed reminders"
   },
   "completeAmount": "Completed:\n{completed} out of {total}",
   "@completeAmount": {

@@ -29,7 +29,7 @@ class ReminderListingItem extends StatelessWidget {
         Transform.scale(
           scale: 1.3,
           child: CupertinoCheckbox(
-            value: reminder.isDone,
+            value: reminder.isCompleted,
             onChanged: onChanged,
           ),
         ),

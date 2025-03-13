@@ -21,7 +21,7 @@ class ReminderCollection with _$ReminderCollection {
     for (final reminder in reminders) {
       for (final category in ReminderCategory.values.where(reminder.belongsTo)) {
         remindersByCategory[category]!.add(reminder);
-        if (reminder.isDone) completedByCategory[category] = completedByCategory[category]! + 1;
+        if (reminder.isCompleted) completedByCategory[category] = completedByCategory[category]! + 1;
       }
     }
 
@@ -47,7 +47,7 @@ class ReminderCollection with _$ReminderCollection {
     // Add the reminder to the appropriate categories.
     for (final category in ReminderCategory.values.where(reminder.belongsTo)) {
       remindersByCategory.putIfAbsent(category, () => <Reminder>[]).add(reminder);
-      if (reminder.isDone) completedByCategory[category] = completedByCategory[category]! + 1;
+      if (reminder.isCompleted) completedByCategory[category] = completedByCategory[category]! + 1;
     }
 
     // Generate new ReminderGroups and return a new ReminderCollection instance.
@@ -74,13 +74,13 @@ class ReminderCollection with _$ReminderCollection {
       if (remindersByCategory.containsKey(category)) {
         final index = remindersByCategory[category]!.indexWhere((r) => r.id == updatedReminder.id);
         if (index != -1) {
-          final isCurrentDone = remindersByCategory[category]![index].isDone;
+          final isCurrentCompleted = remindersByCategory[category]![index].isCompleted;
           remindersByCategory[category]![index] = updatedReminder;
 
           // Update completed count.
-          if (updatedReminder.isDone && !isCurrentDone) {
+          if (updatedReminder.isCompleted && !isCurrentCompleted) {
             completedByCategory[category] = completedByCategory[category]! + 1;
-          } else if (!updatedReminder.isDone && isCurrentDone) {
+          } else if (!updatedReminder.isCompleted && isCurrentCompleted) {
             completedByCategory[category] = completedByCategory[category]! - 1;
           }
         }

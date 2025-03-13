@@ -2,7 +2,7 @@ enum ReminderCategory: Int, CaseIterable {
     case today = 0
     case month = 1
     case all = 2
-    case done = 3
+    case completed = 3
     
     /// Create `ReminderCategory` instance from a code.
     static func from(code: Int) throws -> ReminderCategory {

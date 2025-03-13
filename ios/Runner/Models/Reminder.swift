@@ -9,16 +9,16 @@ class Reminder: Identifiable {
     var notes: String
     var date: Date?
     var repeatanceCode: Int
-    var isDone: Bool
+    var isCompleted: Bool
     
     /// A new reminder.
-    init(id: UUID? = nil, title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption, isDone: Bool = false) {
+    init(id: UUID? = nil, title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption, isCompleted: Bool = false) {
         self.id = id ?? UUID()
         self.title = title
         self.notes = notes
         self.date = Date.mergeDateAndTime(date: date, time: time)
         self.repeatanceCode = repeatance.rawValue
-        self.isDone = isDone
+        self.isCompleted = isCompleted
     }
     
     convenience init?(from dictionary: [String: Any]) {
@@ -27,14 +27,14 @@ class Reminder: Identifiable {
               let title = dictionary["title"] as? String,
               let notes = dictionary["notes"] as? String,
               let repeatanceCode = dictionary["repeatance_code"] as? Int,
-              let isDone = dictionary["is_done"] as? Bool else {
+              let isCompleted = dictionary["is_done"] as? Bool else {
             return nil
         }
 
         let timeStamp = dictionary["date"] as? Int
         let date: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
         
-        self.init(id: uuid, title: title, notes: notes, date: date, time: nil, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isDone: isDone)
+        self.init(id: uuid, title: title, notes: notes, date: date, time: nil, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isCompleted: isCompleted)
     }
     
     /// Update fields from another Reminder instance.
@@ -43,14 +43,14 @@ class Reminder: Identifiable {
          self.notes = newReminder.notes
          self.date = newReminder.date
          self.repeatanceCode = newReminder.repeatanceCode
-         self.isDone = newReminder.isDone
+         self.isCompleted = newReminder.isCompleted
      }
     
     /// Get map representation of Reminder.
     private func toMap() -> [String: Any] {
         var map: [String: Any] = [
             "repeatance_code": repeatanceCode,
-            "is_done": isDone
+            "is_done": isCompleted
         ]
         
         map["id"] = id.uuidString

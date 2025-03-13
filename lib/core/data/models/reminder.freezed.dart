@@ -27,7 +27,7 @@ mixin _$Reminder {
   @JsonKey(name: 'notes')
   String get notes => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_done')
-  bool get isDone => throw _privateConstructorUsedError;
+  bool get isCompleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'repeatance_code')
   RepeatanceOption get repeatance => throw _privateConstructorUsedError;
   @DateTimeSerializer()
@@ -53,7 +53,7 @@ abstract class $ReminderCopyWith<$Res> {
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'notes') String notes,
-      @JsonKey(name: 'is_done') bool isDone,
+      @JsonKey(name: 'is_done') bool isCompleted,
       @JsonKey(name: 'repeatance_code') RepeatanceOption repeatance,
       @DateTimeSerializer() @JsonKey(name: 'date') DateTime? date});
 }
@@ -76,7 +76,7 @@ class _$ReminderCopyWithImpl<$Res, $Val extends Reminder>
     Object? id = null,
     Object? title = null,
     Object? notes = null,
-    Object? isDone = null,
+    Object? isCompleted = null,
     Object? repeatance = null,
     Object? date = freezed,
   }) {
@@ -93,9 +93,9 @@ class _$ReminderCopyWithImpl<$Res, $Val extends Reminder>
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
               as String,
-      isDone: null == isDone
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
       repeatance: null == repeatance
           ? _value.repeatance
@@ -121,7 +121,7 @@ abstract class _$$ReminderImplCopyWith<$Res>
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'notes') String notes,
-      @JsonKey(name: 'is_done') bool isDone,
+      @JsonKey(name: 'is_done') bool isCompleted,
       @JsonKey(name: 'repeatance_code') RepeatanceOption repeatance,
       @DateTimeSerializer() @JsonKey(name: 'date') DateTime? date});
 }
@@ -142,7 +142,7 @@ class __$$ReminderImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? notes = null,
-    Object? isDone = null,
+    Object? isCompleted = null,
     Object? repeatance = null,
     Object? date = freezed,
   }) {
@@ -159,9 +159,9 @@ class __$$ReminderImplCopyWithImpl<$Res>
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
               as String,
-      isDone: null == isDone
-          ? _value.isDone
-          : isDone // ignore: cast_nullable_to_non_nullable
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
       repeatance: null == repeatance
           ? _value.repeatance
@@ -182,7 +182,7 @@ class _$ReminderImpl extends _Reminder {
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'notes') required this.notes,
-      @JsonKey(name: 'is_done') required this.isDone,
+      @JsonKey(name: 'is_done') required this.isCompleted,
       @JsonKey(name: 'repeatance_code') required this.repeatance,
       @DateTimeSerializer() @JsonKey(name: 'date') this.date})
       : super._();
@@ -201,7 +201,7 @@ class _$ReminderImpl extends _Reminder {
   final String notes;
   @override
   @JsonKey(name: 'is_done')
-  final bool isDone;
+  final bool isCompleted;
   @override
   @JsonKey(name: 'repeatance_code')
   final RepeatanceOption repeatance;
@@ -212,7 +212,7 @@ class _$ReminderImpl extends _Reminder {
 
   @override
   String toString() {
-    return 'Reminder(id: $id, title: $title, notes: $notes, isDone: $isDone, repeatance: $repeatance, date: $date)';
+    return 'Reminder(id: $id, title: $title, notes: $notes, isCompleted: $isCompleted, repeatance: $repeatance, date: $date)';
   }
 
   @override
@@ -223,7 +223,8 @@ class _$ReminderImpl extends _Reminder {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.notes, notes) || other.notes == notes) &&
-            (identical(other.isDone, isDone) || other.isDone == isDone) &&
+            (identical(other.isCompleted, isCompleted) ||
+                other.isCompleted == isCompleted) &&
             (identical(other.repeatance, repeatance) ||
                 other.repeatance == repeatance) &&
             (identical(other.date, date) || other.date == date));
@@ -232,7 +233,7 @@ class _$ReminderImpl extends _Reminder {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, title, notes, isDone, repeatance, date);
+      Object.hash(runtimeType, id, title, notes, isCompleted, repeatance, date);
 
   /// Create a copy of Reminder
   /// with the given fields replaced by the non-null parameter values.
@@ -255,7 +256,7 @@ abstract class _Reminder extends Reminder {
           {@JsonKey(name: 'id') required final String id,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'notes') required final String notes,
-          @JsonKey(name: 'is_done') required final bool isDone,
+          @JsonKey(name: 'is_done') required final bool isCompleted,
           @JsonKey(name: 'repeatance_code')
           required final RepeatanceOption repeatance,
           @DateTimeSerializer() @JsonKey(name: 'date') final DateTime? date}) =
@@ -276,7 +277,7 @@ abstract class _Reminder extends Reminder {
   String get notes;
   @override
   @JsonKey(name: 'is_done')
-  bool get isDone;
+  bool get isCompleted;
   @override
   @JsonKey(name: 'repeatance_code')
   RepeatanceOption get repeatance;

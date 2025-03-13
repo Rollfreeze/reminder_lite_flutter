@@ -18,7 +18,7 @@ enum ReminderCategory {
     icon: CupertinoIcons.cube_box,
     color: AppColors.black,
   ),
-  done(
+  completed(
     code: 3,
     icon: CupertinoIcons.checkmark,
     color: AppColors.gray5,
@@ -39,6 +39,6 @@ enum ReminderCategory {
         ReminderCategory.today => LocalizationService.locale.today,
         ReminderCategory.month => LocalizationService.locale.thisMonth,
         ReminderCategory.all => LocalizationService.locale.all,
-        ReminderCategory.done => LocalizationService.locale.done,
+        ReminderCategory.completed => LocalizationService.locale.completed,
       };
 }
