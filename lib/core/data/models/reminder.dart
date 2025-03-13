@@ -15,7 +15,7 @@ class Reminder with _$Reminder {
     @JsonKey(name: 'id') required String id,
     @JsonKey(name: 'title') required String title,
     @JsonKey(name: 'notes') required String notes,
-    @JsonKey(name: 'is_done') required bool isCompleted,
+    @JsonKey(name: 'is_completed') required bool isCompleted,
     @JsonKey(name: 'repeatance_code') required RepeatanceOption repeatance,
     @DateTimeSerializer() @JsonKey(name: 'date') DateTime? date,
   }) = _Reminder;

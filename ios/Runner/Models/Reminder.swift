@@ -27,7 +27,7 @@ class Reminder: Identifiable {
               let title = dictionary["title"] as? String,
               let notes = dictionary["notes"] as? String,
               let repeatanceCode = dictionary["repeatance_code"] as? Int,
-              let isCompleted = dictionary["is_done"] as? Bool else {
+              let isCompleted = dictionary["is_completed"] as? Bool else {
             return nil
         }
 
@@ -50,7 +50,7 @@ class Reminder: Identifiable {
     private func toMap() -> [String: Any] {
         var map: [String: Any] = [
             "repeatance_code": repeatanceCode,
-            "is_done": isCompleted
+            "is_completed": isCompleted
         ]
         
         map["id"] = id.uuidString
