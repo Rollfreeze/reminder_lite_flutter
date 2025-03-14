@@ -26,7 +26,7 @@ mixin _$Reminder {
   String get title => throw _privateConstructorUsedError;
   @JsonKey(name: 'notes')
   String get notes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'is_done')
+  @JsonKey(name: 'is_completed')
   bool get isCompleted => throw _privateConstructorUsedError;
   @JsonKey(name: 'repeatance_code')
   RepeatanceOption get repeatance => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ abstract class $ReminderCopyWith<$Res> {
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'notes') String notes,
-      @JsonKey(name: 'is_done') bool isCompleted,
+      @JsonKey(name: 'is_completed') bool isCompleted,
       @JsonKey(name: 'repeatance_code') RepeatanceOption repeatance,
       @DateTimeSerializer() @JsonKey(name: 'date') DateTime? date});
 }
@@ -121,7 +121,7 @@ abstract class _$$ReminderImplCopyWith<$Res>
       {@JsonKey(name: 'id') String id,
       @JsonKey(name: 'title') String title,
       @JsonKey(name: 'notes') String notes,
-      @JsonKey(name: 'is_done') bool isCompleted,
+      @JsonKey(name: 'is_completed') bool isCompleted,
       @JsonKey(name: 'repeatance_code') RepeatanceOption repeatance,
       @DateTimeSerializer() @JsonKey(name: 'date') DateTime? date});
 }
@@ -182,7 +182,7 @@ class _$ReminderImpl extends _Reminder {
       {@JsonKey(name: 'id') required this.id,
       @JsonKey(name: 'title') required this.title,
       @JsonKey(name: 'notes') required this.notes,
-      @JsonKey(name: 'is_done') required this.isCompleted,
+      @JsonKey(name: 'is_completed') required this.isCompleted,
       @JsonKey(name: 'repeatance_code') required this.repeatance,
       @DateTimeSerializer() @JsonKey(name: 'date') this.date})
       : super._();
@@ -200,7 +200,7 @@ class _$ReminderImpl extends _Reminder {
   @JsonKey(name: 'notes')
   final String notes;
   @override
-  @JsonKey(name: 'is_done')
+  @JsonKey(name: 'is_completed')
   final bool isCompleted;
   @override
   @JsonKey(name: 'repeatance_code')
@@ -256,7 +256,7 @@ abstract class _Reminder extends Reminder {
           {@JsonKey(name: 'id') required final String id,
           @JsonKey(name: 'title') required final String title,
           @JsonKey(name: 'notes') required final String notes,
-          @JsonKey(name: 'is_done') required final bool isCompleted,
+          @JsonKey(name: 'is_completed') required final bool isCompleted,
           @JsonKey(name: 'repeatance_code')
           required final RepeatanceOption repeatance,
           @DateTimeSerializer() @JsonKey(name: 'date') final DateTime? date}) =
@@ -276,7 +276,7 @@ abstract class _Reminder extends Reminder {
   @JsonKey(name: 'notes')
   String get notes;
   @override
-  @JsonKey(name: 'is_done')
+  @JsonKey(name: 'is_completed')
   bool get isCompleted;
   @override
   @JsonKey(name: 'repeatance_code')
