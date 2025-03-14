@@ -31,14 +31,14 @@ class ReminderRepository {
     }
   }
 
-  Future<Result<ReminderCollection>> updateReminder({
-    required Reminder reminder,
+  Future<Result<ReminderCollection>> update(
+    Reminder reminder, {
     required ReminderCollection currentReminders,
   }) async {
     try {
-      final updatedReminder = await _reminderService.update(reminder);
-      if (updatedReminder == null) return Success(currentReminders);
-      return Success(currentReminders.update(updatedReminder));
+      final reminders = await _reminderService.update(reminder);
+      if (reminders == null) return Success(currentReminders);
+      return Success<ReminderCollection>(ReminderCollection.of(reminders));
     } catch (error) {
       if (kDebugMode) debugPrint('updateReminder method error: $error');
       return Failure('Could not update reminder');

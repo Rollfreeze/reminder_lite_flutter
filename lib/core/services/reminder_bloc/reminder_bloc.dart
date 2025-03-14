@@ -55,8 +55,8 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     // A new reminder can not be created if others haven't been loaded yet.
     if (reminders == null) return;
 
-    final result = await _repository.updateReminder(
-      reminder: event.reminder,
+    final result = await _repository.update(
+      event.reminder,
       currentReminders: reminders,
     );
 

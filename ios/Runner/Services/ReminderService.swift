@@ -84,7 +84,8 @@ class ReminderService: NSObject, FlutterPlugin {
                 ReminderView(
                     onCancel: onClose,
                     onConfirm: { (reminder: Reminder) in
-                        result(reminder.toJson())
+                        let reminders = ReminderStorageService.shared.fetchFor(.all)
+                        result(Reminder.jsonFromList(reminders))
                         isResultReturned = true
                         onClose()
                     },
