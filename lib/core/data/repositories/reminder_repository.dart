@@ -10,7 +10,7 @@ class ReminderRepository {
 
   const ReminderRepository(this._reminderService);
 
-  Future<Result<ReminderCollection>> getReminderCollection() async {
+  Future<Result<ReminderCollection>> getReminders() async {
     try {
       final reminders = await _reminderService.fetchFor(ReminderCategory.all);
       return Success<ReminderCollection>(ReminderCollection.of(reminders));
@@ -20,7 +20,7 @@ class ReminderRepository {
     }
   }
 
-  Future<Result<ReminderCollection>> createNewReminder(ReminderCollection currentReminders) async {
+  Future<Result<ReminderCollection>> addNewReminderTo(ReminderCollection currentReminders) async {
     try {
       final reminder = await _reminderService.create();
       if (reminder == null) return Success(currentReminders);
