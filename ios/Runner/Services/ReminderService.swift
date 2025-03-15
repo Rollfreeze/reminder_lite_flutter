@@ -108,9 +108,6 @@ class ReminderService: NSObject, FlutterPlugin {
             }
             ReminderStorageService.shared.update(reminder!)
             let reminders = ReminderStorageService.shared.fetchFor(.all)
-            for reminder in reminders {
-                print(reminder.isCompleted)
-            }
             result(Reminder.jsonFromList(reminders))
         } catch {
             result(FlutterError(code: "Wrong argument", message: "Argument data is incorrect", details: nil))
