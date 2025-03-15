@@ -21,6 +21,8 @@ class ReminderService: NSObject, FlutterPlugin {
             self.fetchFor(code: call.arguments as! Int, result)
         case "update":
             self.update(json: call.arguments as? String, result)
+        case "toggleCompletion":
+            self.toggleCompletion(json: call.arguments as? String, result)
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -93,5 +95,26 @@ class ReminderService: NSObject, FlutterPlugin {
                 )
             }
         )
+    }
+    
+    func toggleCompletion(json: String?, _ result: @escaping FlutterResult) -> Void {
+        do {
+            let data = json!.data(using: .utf8)
+            let jsonDict = try JSONSerialization.jsonObject(with: data!, options: []) as! [String: Any]
+            let reminder = Reminder(from: jsonDict)
+            if (reminder == nil) {
+                result(FlutterError(code: "Wrong argument", message: "Argument data is incorrect", details: nil))
+                return
+            }
+            ReminderStorageService.shared.update(reminder!)
+            let reminders = ReminderStorageService.shared.fetchFor(.all)
+            for reminder in reminders {
+                print(reminder.isCompleted)
+            }
+            result(Reminder.jsonFromList(reminders))
+        } catch {
+            result(FlutterError(code: "Wrong argument", message: "Argument data is incorrect", details: nil))
+            return
+        }
     }
 }

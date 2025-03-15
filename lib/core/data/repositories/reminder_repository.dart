@@ -44,4 +44,18 @@ class ReminderRepository {
       return Failure('Could not update reminder');
     }
   }
+
+  Future<Result<ReminderCollection>> toggleCompletionOf(
+    Reminder reminder, {
+    required ReminderCollection currentReminders,
+  }) async {
+    try {
+      final reminders = await _reminderService.toggleCompletion(reminder);
+      if (reminders == null) return Success(currentReminders);
+      return Success<ReminderCollection>(ReminderCollection.of(reminders));
+    } catch (error) {
+      if (kDebugMode) debugPrint('updateReminder method error: $error');
+      return Failure('Could not update reminder');
+    }
+  }
 }
