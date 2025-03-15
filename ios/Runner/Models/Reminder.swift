@@ -38,7 +38,7 @@ class Reminder: Identifiable {
     }
     
     /// Update fields from another Reminder instance.
-     func update(from newReminder: Reminder) {
+     func update(from newReminder: Reminder) -> Void {
          self.title = newReminder.title
          self.notes = newReminder.notes
          self.date = newReminder.date
