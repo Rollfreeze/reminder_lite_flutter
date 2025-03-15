@@ -23,6 +23,8 @@ class ListingScreen extends StatelessWidget {
       ),
     );
 
+    final bloc = context.read<ReminderBloc>();
+
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar.large(
         largeTitle: Text(
@@ -43,14 +45,20 @@ class ListingScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 40),
               itemCount: state.reminders!.getBy(category).length,
               separatorBuilder: (_, __) => separator,
-              itemBuilder: (_, index) => Padding(
-                padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
-                child: ReminderListingItem(
-                  reminder: group.reminders[index],
-                  onChanged: (value) {},
-                  onTap: (r) => context.read<ReminderBloc>().add(ReminderEvent.update(r)),
-                ),
-              ),
+              itemBuilder: (_, index) {
+                final reminder = group.reminders[index];
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
+                  child: ReminderListingItem(
+                    reminder: reminder,
+                    onTap: () => bloc.add(ReminderEvent.update(reminder)),
+                    onCompletionToggle: (value) {
+                      if (value == null) return;
+                      bloc.add(ReminderEvent.toggleCompletion((reminder.copyWith(isCompleted: value))));
+                    },
+                  ),
+                );
+              },
             );
           },
         ),

@@ -9,15 +9,15 @@ class ReminderListingItem extends StatelessWidget {
   /// Reminder element.
   final Reminder reminder;
 
-  /// Change checkbox state.
-  final ValueChanged<bool?> onChanged;
+  /// Action on tap the checkbox.
+  final ValueChanged<bool?> onCompletionToggle;
 
   /// Action on tap the available space except for checbox.
-  final ValueChanged<Reminder> onTap;
+  final VoidCallback onTap;
 
   const ReminderListingItem({
     required this.reminder,
-    required this.onChanged,
+    required this.onCompletionToggle,
     required this.onTap,
     super.key,
   });
@@ -30,13 +30,13 @@ class ReminderListingItem extends StatelessWidget {
           scale: 1.3,
           child: CupertinoCheckbox(
             value: reminder.isCompleted,
-            onChanged: onChanged,
+            onChanged: onCompletionToggle,
           ),
         ),
         Expanded(
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
-            onTap: () => onTap(reminder),
+            onTap: onTap,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               spacing: 2,
