@@ -14,8 +14,7 @@ _$ReminderImpl _$$ReminderImplFromJson(Map<String, dynamic> json) =>
       isCompleted: json['is_completed'] as bool,
       repeatance:
           $enumDecode(_$RepeatanceOptionEnumMap, json['repeatance_code']),
-      date:
-          const DateTimeSerializer().fromJson((json['date'] as num?)?.toInt()),
+      due: const DateTimeSerializer().fromJson((json['due'] as num?)?.toInt()),
     );
 
 Map<String, dynamic> _$$ReminderImplToJson(_$ReminderImpl instance) =>
@@ -25,7 +24,7 @@ Map<String, dynamic> _$$ReminderImplToJson(_$ReminderImpl instance) =>
       'notes': instance.notes,
       'is_completed': instance.isCompleted,
       'repeatance_code': _$RepeatanceOptionEnumMap[instance.repeatance]!,
-      'date': const DateTimeSerializer().toJson(instance.date),
+      'due': const DateTimeSerializer().toJson(instance.due),
     };
 
 const _$RepeatanceOptionEnumMap = {

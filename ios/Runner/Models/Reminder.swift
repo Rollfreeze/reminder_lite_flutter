@@ -7,16 +7,16 @@ class Reminder: Identifiable {
     @Attribute(.unique) var id: UUID
     var title: String
     var notes: String
-    var date: Date?
+    var due: Date?
     var repeatanceCode: Int
     var isCompleted: Bool
     
     /// A new reminder.
-    init(id: UUID? = nil, title: String, notes: String, date: Date?, time: Date?, repeatance: RepeatanceOption, isCompleted: Bool = false) {
+    init(id: UUID? = nil, title: String, notes: String, dueDate: Date?, dueTime: Date?, repeatance: RepeatanceOption, isCompleted: Bool = false) {
         self.id = id ?? UUID()
         self.title = title
         self.notes = notes
-        self.date = Date.mergeDateAndTime(date: date, time: time)
+        self.due = Date.mergeDateAndTime(date: dueDate, time: dueTime)
         self.repeatanceCode = repeatance.rawValue
         self.isCompleted = isCompleted
     }
@@ -31,17 +31,17 @@ class Reminder: Identifiable {
             return nil
         }
 
-        let timeStamp = dictionary["date"] as? Double
-        let date: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
+        let timeStamp = dictionary["due"] as? Double
+        let due: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
         
-        self.init(id: uuid, title: title, notes: notes, date: date, time: date, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isCompleted: isCompleted)
+        self.init(id: uuid, title: title, notes: notes, dueDate: due, dueTime: due, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isCompleted: isCompleted)
     }
     
     /// Update fields from another Reminder instance.
      func update(from newReminder: Reminder) -> Void {
          self.title = newReminder.title
          self.notes = newReminder.notes
-         self.date = newReminder.date
+         self.due = newReminder.due
          self.repeatanceCode = newReminder.repeatanceCode
          self.isCompleted = newReminder.isCompleted
      }
@@ -56,7 +56,7 @@ class Reminder: Identifiable {
         map["id"] = id.uuidString
         map["title"] = title
         map["notes"] = notes
-        if let date = date { map["date"] = date.timeIntervalSince1970 }
+        if let due = due { map["due"] = due.timeIntervalSince1970 }
 
         return map
     }

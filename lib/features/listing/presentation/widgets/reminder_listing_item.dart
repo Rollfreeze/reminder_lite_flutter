@@ -41,12 +41,12 @@ class ReminderListingItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               spacing: 2,
               children: [
-                if (reminder.date != null)
+                if (reminder.due != null)
                   Row(
                     children: [
                       Expanded(
                         child: Text(
-                          DateFormat('dd.MM.yyyy-HH:mm').format(reminder.date!),
+                          DateFormat('dd.MM.yyyy-HH:mm').format(reminder.due!),
                           style: AppTypo.medium17hint,
                         ),
                       ),

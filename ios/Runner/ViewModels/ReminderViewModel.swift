@@ -24,8 +24,8 @@ class ReminderViewModel: ObservableObject {
         self.onConfirm = onConfirm
         self.title = initialReminder?.title ?? ""
         self.notes = initialReminder?.notes ?? ""
-        self.datePicker = DatePickerViewModel(selectedDate: initialReminder?.date)
-        self.timePicker = TimePickerViewModel(selectedTime: initialReminder?.date)
+        self.datePicker = DatePickerViewModel(selectedDate: initialReminder?.due)
+        self.timePicker = TimePickerViewModel(selectedTime: initialReminder?.due)
         self.repeatance = try! RepeatanceOption.from(code: initialReminder?.repeatanceCode ?? 0)
     }
     
@@ -88,8 +88,8 @@ class ReminderViewModel: ObservableObject {
             id: defaultIdentifier,
             title: title,
             notes: trimedNotes,
-            date: datePicker.getSelectedDate(),
-            time: timePicker.getSelectedTime(),
+            dueDate: datePicker.getSelectedDate(),
+            dueTime: timePicker.getSelectedTime(),
             repeatance: repeatance
         )
         

@@ -17,15 +17,15 @@ class Reminder with _$Reminder {
     @JsonKey(name: 'notes') required String notes,
     @JsonKey(name: 'is_completed') required bool isCompleted,
     @JsonKey(name: 'repeatance_code') required RepeatanceOption repeatance,
-    @DateTimeSerializer() @JsonKey(name: 'date') DateTime? date,
+    @DateTimeSerializer() @JsonKey(name: 'due') DateTime? due,
   }) = _Reminder;
 
   factory Reminder.fromJson(Map<String, dynamic> json) => _$ReminderFromJson(json);
 
   /// Categorizes reminders based on the given category.
   bool belongsTo(ReminderCategory category) => switch (category) {
-        ReminderCategory.today => date?.isToday ?? false,
-        ReminderCategory.month => date?.isCurrentMonth ?? false,
+        ReminderCategory.today => due?.isToday ?? false,
+        ReminderCategory.month => due?.isCurrentMonth ?? false,
         ReminderCategory.all => true,
         ReminderCategory.completed => isCompleted,
       };

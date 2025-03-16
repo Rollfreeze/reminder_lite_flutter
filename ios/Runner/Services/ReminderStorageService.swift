@@ -39,9 +39,9 @@ class ReminderStorageService {
         
         switch (category) {
         case .today:
-            predicate = #Predicate { $0.date != nil && $0.date!.isToday }
+            predicate = #Predicate { $0.due != nil && $0.due!.isToday }
         case .month:
-            predicate = #Predicate { $0.date != nil && $0.date!.isCurrentMonth }
+            predicate = #Predicate { $0.due != nil && $0.due!.isCurrentMonth }
         case .all:
             predicate = #Predicate { _ in true }
         case .completed:
@@ -50,7 +50,7 @@ class ReminderStorageService {
         
         return FetchDescriptor<Reminder>(
             predicate: predicate,
-            sortBy: [SortDescriptor(\.date, order: .forward)]
+            sortBy: [SortDescriptor(\.due, order: .forward)]
         )
     }
 }
