@@ -32,36 +32,34 @@ class ListingScreen extends StatelessWidget {
           style: TextStyle(color: category.color),
         ),
       ),
-      child: SafeArea(
-        child: BlocBuilder<ReminderBloc, ReminderState>(
-          builder: (context, state) {
-            final group = state.reminders?.getBy(category);
-
-            if (group == null || group.reminders.isEmpty) {
-              return const NoRemindersView();
-            }
-
-            return ListView.separated(
-              padding: const EdgeInsets.only(top: 40),
-              itemCount: state.reminders!.getBy(category).length,
-              separatorBuilder: (_, __) => separator,
-              itemBuilder: (_, index) {
-                final reminder = group.reminders[index];
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
-                  child: ReminderListingItem(
-                    reminder: reminder,
-                    onTap: () => bloc.add(ReminderEvent.edit(reminder)),
-                    onCompletionToggle: (value) {
-                      if (value == null) return;
-                      bloc.add(ReminderEvent.toggleCompletion((reminder.copyWith(isCompleted: value))));
-                    },
-                  ),
-                );
-              },
-            );
-          },
-        ),
+      child: BlocBuilder<ReminderBloc, ReminderState>(
+        builder: (context, state) {
+          final group = state.reminders?.getBy(category);
+      
+          if (group == null || group.reminders.isEmpty) {
+            return const NoRemindersView();
+          }
+      
+          return ListView.separated(
+            padding: const EdgeInsets.only(top: 40),
+            itemCount: state.reminders!.getBy(category).length,
+            separatorBuilder: (_, __) => separator,
+            itemBuilder: (_, index) {
+              final reminder = group.reminders[index];
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
+                child: ReminderListingItem(
+                  reminder: reminder,
+                  onTap: () => bloc.add(ReminderEvent.edit(reminder)),
+                  onCompletionToggle: (value) {
+                    if (value == null) return;
+                    bloc.add(ReminderEvent.toggleCompletion((reminder.copyWith(isCompleted: value))));
+                  },
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
