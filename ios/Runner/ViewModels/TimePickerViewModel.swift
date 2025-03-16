@@ -32,6 +32,7 @@ class TimePickerViewModel: ObservableObject {
     }
     
     public func setActive() -> Void {
+        selectedTime = Date.now
         isTimePickerActive = true
     }
     
