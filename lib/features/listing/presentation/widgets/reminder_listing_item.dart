@@ -46,7 +46,7 @@ class ReminderListingItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Text(
-                          DateFormat('dd.MM.yyyy-hh:mm:ss').format(reminder.date!),
+                          DateFormat('dd.MM.yyyy-HH:mm').format(reminder.date!),
                           style: AppTypo.medium17hint,
                         ),
                       ),
