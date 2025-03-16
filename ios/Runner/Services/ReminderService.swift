@@ -5,7 +5,6 @@ import SwiftUI
 
 /// Service class that interacts with Reminders via Flutter's MethodChannel.
 class ReminderService: NSObject, FlutterPlugin {
-    
     public static let registrarServiceName = "ReminderService"
     private static let flutterMethodChannelName = "ReminderServiceMethodChannel"
     
