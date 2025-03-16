@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/data/models/reminder_category.dart';
+import '../../../../core/services/dialog_service.dart';
 import '../../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../../core/style/app_colors.dart';
 import '../widgets/no_reminders_view.dart';
@@ -34,7 +35,11 @@ class ListingScreen extends StatelessWidget {
       ),
       child: SafeArea(
         bottom: false,
-        child: BlocBuilder<ReminderBloc, ReminderState>(
+        child: BlocConsumer<ReminderBloc, ReminderState>(
+          listener: (context, state) {
+            final error = state.error;
+            if (error != null) DialogService.showErrorMessage(error, context);
+          },
           builder: (context, state) {
             final group = state.reminders?.getBy(category);
 
