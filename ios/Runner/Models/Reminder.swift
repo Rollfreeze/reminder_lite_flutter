@@ -31,10 +31,10 @@ class Reminder: Identifiable {
             return nil
         }
 
-        let timeStamp = dictionary["date"] as? Int
+        let timeStamp = dictionary["date"] as? Double
         let date: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
         
-        self.init(id: uuid, title: title, notes: notes, date: date, time: nil, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isCompleted: isCompleted)
+        self.init(id: uuid, title: title, notes: notes, date: date, time: date, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isCompleted: isCompleted)
     }
     
     /// Update fields from another Reminder instance.
