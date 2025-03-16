@@ -50,9 +50,7 @@ class ReminderStorageService {
         
         return FetchDescriptor<Reminder>(
             predicate: predicate,
-            sortBy: [
-                .init(\.date)
-            ]
+            sortBy: [SortDescriptor(\.date, order: .forward)]
         )
     }
 }
