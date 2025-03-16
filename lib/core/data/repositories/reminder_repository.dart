@@ -27,21 +27,21 @@ class ReminderRepository {
       return Success(currentReminders.append(reminder));
     } catch (error) {
       if (kDebugMode) debugPrint('createNewReminder method error: $error');
-      return Failure('Could not create reminder');
+      return Failure('Could not create the reminder');
     }
   }
 
-  Future<Result<ReminderCollection>> update(
+  Future<Result<ReminderCollection>> edit(
     Reminder reminder, {
     required ReminderCollection currentReminders,
   }) async {
     try {
-      final reminders = await _reminderService.update(reminder);
+      final reminders = await _reminderService.edit(reminder);
       if (reminders == null) return Success(currentReminders);
       return Success<ReminderCollection>(ReminderCollection.of(reminders));
     } catch (error) {
-      if (kDebugMode) debugPrint('updateReminder method error: $error');
-      return Failure('Could not update reminder');
+      if (kDebugMode) debugPrint('edit method error: $error');
+      return Failure('Could not edit the reminder');
     }
   }
 
@@ -54,8 +54,8 @@ class ReminderRepository {
       if (reminders == null) return Success(currentReminders);
       return Success<ReminderCollection>(ReminderCollection.of(reminders));
     } catch (error) {
-      if (kDebugMode) debugPrint('updateReminder method error: $error');
-      return Failure('Could not update reminder');
+      if (kDebugMode) debugPrint('toggleCompletionOf method error: $error');
+      return Failure('Could not toggle completion of the reminder');
     }
   }
 }

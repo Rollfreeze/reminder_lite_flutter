@@ -21,7 +21,7 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
   EventHandler<ReminderEvent, ReminderState> get _handler => (event, emit) => switch (event) {
         _Load() => _handleLoad(event, emit),
         _Create() => _handleCreate(event, emit),
-        _Update() => _handleUpdate(event, emit),
+        _Edit() => _handleEdit(event, emit),
         _ToggleCompletion() => _handleToggleCompletion(event, emit),
         _Succeed() => _handleSucceed(event, emit),
         _Fail() => _handleFail(event, emit),
@@ -50,13 +50,13 @@ class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
     };
   }
 
-  Future<void> _handleUpdate(_Update event, Emitter<ReminderState> emit) async {
+  Future<void> _handleEdit(_Edit event, Emitter<ReminderState> emit) async {
     final reminders = state.reminders;
 
-    // A reminder can not be updated if others haven't been loaded yet.
+    // A reminder can not be edited if others haven't been loaded yet.
     if (reminders == null) return;
 
-    final result = await _repository.update(
+    final result = await _repository.edit(
       event.reminder,
       currentReminders: reminders,
     );

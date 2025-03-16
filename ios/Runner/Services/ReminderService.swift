@@ -24,8 +24,8 @@ class ReminderService: NSObject, FlutterPlugin {
             } else {
                 result(FlutterError(code: "Invalid Arguments", message: "Expected an integer for fetchFor method", details: nil))
             }
-        case "update":
-            update(json: call.arguments as? String, result: result)
+        case "edit":
+            edit(json: call.arguments as? String, result: result)
         case "toggleCompletion":
             toggleCompletion(json: call.arguments as? String, result: result)
         default:
@@ -67,8 +67,8 @@ class ReminderService: NSObject, FlutterPlugin {
         }
     }
     
-    /// Updates a reminder from a JSON string.
-    func update(json: String?, result: @escaping FlutterResult) {
+    /// Edits a reminder from a JSON string.
+    func edit(json: String?, result: @escaping FlutterResult) {
         guard let jsonData = parseJson(json) else {
             result(FlutterError(code: "Invalid JSON", message: "Failed to parse reminder JSON", details: nil))
             return

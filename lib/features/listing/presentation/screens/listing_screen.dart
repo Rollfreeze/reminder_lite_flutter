@@ -51,7 +51,7 @@ class ListingScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(4, 8, 18, 8),
                   child: ReminderListingItem(
                     reminder: reminder,
-                    onTap: () => bloc.add(ReminderEvent.update(reminder)),
+                    onTap: () => bloc.add(ReminderEvent.edit(reminder)),
                     onCompletionToggle: (value) {
                       if (value == null) return;
                       bloc.add(ReminderEvent.toggleCompletion((reminder.copyWith(isCompleted: value))));
