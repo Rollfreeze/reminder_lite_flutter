@@ -8,15 +8,16 @@ class Reminder: Identifiable {
     var title: String
     var notes: String
     var due: Date?
+    var createdAt: Date
     var repeatanceCode: Int
     var isCompleted: Bool
     
-    /// A new reminder.
-    init(id: UUID? = nil, title: String, notes: String, dueDate: Date?, dueTime: Date?, repeatance: RepeatanceOption, isCompleted: Bool = false) {
+    init(id: UUID? = nil, title: String, notes: String, dueDate: Date?, dueTime: Date?, createdAt: Date = Date.now, repeatance: RepeatanceOption, isCompleted: Bool = false) {
         self.id = id ?? UUID()
         self.title = title
         self.notes = notes
         self.due = Date.mergeDateAndTime(date: dueDate, time: dueTime)
+        self.createdAt = createdAt
         self.repeatanceCode = repeatance.rawValue
         self.isCompleted = isCompleted
     }
@@ -31,8 +32,8 @@ class Reminder: Identifiable {
             return nil
         }
 
-        let timeStamp = dictionary["due"] as? Double
-        let due: Date? = timeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(timeStamp!))
+        let dueTimeStamp = dictionary["due"] as? Double
+        let due: Date? = dueTimeStamp == nil ? nil : Date(timeIntervalSince1970: TimeInterval(dueTimeStamp!))
         
         self.init(id: uuid, title: title, notes: notes, dueDate: due, dueTime: due, repeatance: RepeatanceOption(rawValue: repeatanceCode)!, isCompleted: isCompleted)
     }
