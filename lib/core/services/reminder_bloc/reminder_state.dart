@@ -14,6 +14,8 @@ class ReminderState with _$ReminderState {
         _Failure(:final reminders) => reminders,
         _Fetched(:final reminders) => reminders,
       };
+
+  String? get error => switch (processingState) { _Failure(:final error) => error, _ => null };
 }
 
 @freezed

@@ -33,13 +33,24 @@ class ReminderService {
     }
   }
 
-  Future<List<Reminder>?> update(Reminder reminder) async {
+  Future<List<Reminder>?> edit(Reminder reminder) async {
     try {
-      final result = await _methodChannel.invokeMethod('update', jsonEncode(reminder.toJson()));
+      final result = await _methodChannel.invokeMethod('edit', jsonEncode(reminder.toJson()));
       if (result == null) return null;
       return ReminderMapper.fromJsonList(jsonDecode(result) as Map<String, dynamic>);
     } catch (e) {
-      if (kDebugMode) debugPrint('Update Reminder error: $e');
+      if (kDebugMode) debugPrint('Edit Reminder error: $e');
+      return null;
+    }
+  }
+
+  Future<List<Reminder>?> toggleCompletion(Reminder reminder) async {
+    try {
+      final result = await _methodChannel.invokeMethod('toggleCompletion', jsonEncode(reminder.toJson()));
+      if (result == null) return null;
+      return ReminderMapper.fromJsonList(jsonDecode(result) as Map<String, dynamic>);
+    } catch (e) {
+      if (kDebugMode) debugPrint('Toggle completion Reminder error: $e');
       return null;
     }
   }
