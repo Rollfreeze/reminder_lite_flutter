@@ -45,13 +45,15 @@ class ProgressSlider extends StatelessWidget {
             final group = reminders.groups[index];
             return Center(
               child: ProgressCircle.fromValues(
-                total: group.length == 0 ? 1 : group.length.toDouble(),
+                total: group.length.toDouble(),
                 completed: group.completedAmount.toDouble(),
                 size: const Size.square(220),
                 style: ProgressCircleStyle(
                   headIcon: group.category.icon,
                   centerMessage: group.progressMessage,
                   progressArcColor: group.category.color,
+                  showZeroProgress: true,
+                  headIconSize: 20.0,
                 ),
               ),
             );
