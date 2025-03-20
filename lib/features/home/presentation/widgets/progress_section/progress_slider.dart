@@ -52,7 +52,7 @@ class ProgressSlider extends StatelessWidget {
                   headIcon: group.category.icon,
                   centerMessage: group.progressMessage,
                   progressArcColor: group.category.color,
-                  showZeroProgress: true,
+                  showZeroProgress: group.length > 0,
                   headIconSize: 20.0,
                 ),
               ),
