@@ -49,11 +49,11 @@ class ProgressSlider extends StatelessWidget {
                 completed: group.completedAmount.toDouble(),
                 size: const Size.square(220),
                 style: ProgressCircleStyle(
-                  headIcon: group.category.icon,
+                  headIconSize: 18.0,
+                  headIcon: Icons.circle,
                   centerMessage: group.progressMessage,
                   progressArcColor: group.category.color,
                   showZeroProgress: group.length > 0,
-                  headIconSize: 20.0,
                 ),
               ),
             );
