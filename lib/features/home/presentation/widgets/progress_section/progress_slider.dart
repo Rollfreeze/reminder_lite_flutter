@@ -49,8 +49,9 @@ class ProgressSlider extends StatelessWidget {
                 completed: group.completedAmount.toDouble(),
                 size: const Size.square(220),
                 style: ProgressCircleStyle(
-                  headIconSize: 18.0,
-                  headIcon: Icons.circle,
+                  headIconSize: 30.0,
+                  headIcon: Icons.chevron_right,
+                  useHeadIconRotation: true,
                   centerMessage: group.progressMessage,
                   progressArcColor: group.category.color,
                   showZeroProgress: group.length > 0,
