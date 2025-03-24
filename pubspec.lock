@@ -516,10 +516,10 @@ packages:
     dependency: "direct main"
     description:
       name: progress_circle
-      sha256: b9da8336826d855ba16978c7427179672bfc5d634a815fbbabe4aaeed6fb06ea
+      sha256: "9c6122f0eda9335c1d401fe00ae2270b727ac7fbe51ff84b6bd606efb0a14a54"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.2.0"
   provider:
     dependency: "direct main"
     description:
