@@ -3,6 +3,41 @@ import 'app_colors.dart';
 
 /// App typography keep class.
 abstract class AppTypo {
+  static const semibold32 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w600,
+    fontSize: 32,
+    height: 36 / 32,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
+  static const semibold18 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    height: 22 / 18,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
+  static const semibold16 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w600,
+    fontSize: 16,
+    height: 22 / 16,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
+  static const semibold12 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w600,
+    fontSize: 12,
+    height: 16 / 12,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
 
   static const regular24 = TextStyle(
     fontSize: 24,
