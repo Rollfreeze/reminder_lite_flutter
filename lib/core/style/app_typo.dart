@@ -3,6 +3,15 @@ import 'app_colors.dart';
 
 /// App typography keep class.
 abstract class AppTypo {
+  static const bold24 = TextStyle(
+    color: AppColors.textDefault,
+    fontWeight: FontWeight.w700,
+    fontSize: 24,
+    height: 28 / 24,
+    letterSpacing: -0.4,
+    leadingDistribution: TextLeadingDistribution.even,
+  );
+
   static const semibold32 = TextStyle(
     color: AppColors.textDefault,
     fontWeight: FontWeight.w600,
