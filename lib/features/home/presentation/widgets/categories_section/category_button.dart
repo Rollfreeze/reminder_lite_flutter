@@ -69,7 +69,7 @@ class CategoryButton extends StatelessWidget {
                         ? const SizedBox()
                         : Text(
                             '$count',
-                            style: AppTypo.bold25,
+                            style: AppTypo.bold24,
                           ),
                   ),
                 ],

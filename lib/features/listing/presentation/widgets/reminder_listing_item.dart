@@ -47,7 +47,7 @@ class ReminderListingItem extends StatelessWidget {
                       Expanded(
                         child: Text(
                           DateFormat('dd.MM.yyyy-HH:mm').format(reminder.due!),
-                          style: AppTypo.medium17hint,
+                          style: AppTypo.medium16,
                         ),
                       ),
                     ],
@@ -59,7 +59,7 @@ class ReminderListingItem extends StatelessWidget {
                     Expanded(
                       child: Text(
                         reminder.title,
-                        style: AppTypo.bold19,
+                        style: AppTypo.semibold18,
                       ),
                     ),
                     Row(
@@ -82,7 +82,7 @@ class ReminderListingItem extends StatelessWidget {
                       Expanded(
                         child: Text(
                           reminder.notes,
-                          style: AppTypo.medium17,
+                          style: AppTypo.medium16,
                         ),
                       ),
                     ],
