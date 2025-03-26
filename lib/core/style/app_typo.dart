@@ -8,7 +8,7 @@ abstract class AppTypo {
     fontSize: 24,
     height: 28 / 24,
     letterSpacing: -0.4,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.textDefault,
     leadingDistribution: TextLeadingDistribution.even,
   );
@@ -17,7 +17,7 @@ abstract class AppTypo {
     fontSize: 22,
     height: 26 / 22,
     letterSpacing: -0.4,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.textDefault,
     leadingDistribution: TextLeadingDistribution.even,
   );
@@ -26,7 +26,7 @@ abstract class AppTypo {
     fontSize: 20,
     height: 26 / 20,
     letterSpacing: -0.4,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.textDefault,
     leadingDistribution: TextLeadingDistribution.even,
   );
@@ -35,7 +35,7 @@ abstract class AppTypo {
     fontSize: 16,
     height: 22 / 16,
     letterSpacing: -0.4,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.textDefault,
     leadingDistribution: TextLeadingDistribution.even,
   );
@@ -44,7 +44,7 @@ abstract class AppTypo {
     fontSize: 14,
     height: 16 / 14,
     letterSpacing: -0.4,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.textDefault,
     leadingDistribution: TextLeadingDistribution.even,
   );
@@ -53,7 +53,7 @@ abstract class AppTypo {
     fontSize: 12,
     height: 16 / 12,
     letterSpacing: -0.4,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.textDefault,
     leadingDistribution: TextLeadingDistribution.even,
   );
