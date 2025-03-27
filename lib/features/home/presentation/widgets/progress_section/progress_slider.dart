@@ -39,7 +39,7 @@ class ProgressSlider extends StatelessWidget {
         ),
         child: PageView.builder(
           controller: controller,
-          itemCount: reminders.groups.length,
+          itemCount: reminders.groups.length - 1,
           onPageChanged: onPageChanged,
           itemBuilder: (_, index) {
             final group = reminders.groups[index];
