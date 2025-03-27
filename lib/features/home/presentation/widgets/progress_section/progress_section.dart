@@ -37,6 +37,7 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
   Widget build(BuildContext context) {
     return BlocBuilder<ProgressBloc, ProgressState>(
       builder: (_, state) => Column(
+        spacing: 18,
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -46,7 +47,6 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
             onForMonthPressed: () => _animateToPage(1),
             onAllPressed: () => _animateToPage(2),
           ),
-          const SizedBox(height: 18),
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 250),
             transitionBuilder: (child, animation) => FadeTransition(
