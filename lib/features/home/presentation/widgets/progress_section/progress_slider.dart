@@ -13,17 +13,17 @@ class ProgressSlider extends StatelessWidget {
   /// A circles' slider controller.
   final PageController controller;
 
-  /// When changes a current circle page.
-  final ValueChanged<int> onPageChanged;
-
   /// Selected page indicator controller.
   final TabController tabController;
+
+  /// When changes a current circle page.
+  final ValueChanged<int> onPageChanged;
 
   const ProgressSlider({
     required this.reminders,
     required this.controller,
-    required this.onPageChanged,
     required this.tabController,
+    required this.onPageChanged,
     super.key,
   });
 

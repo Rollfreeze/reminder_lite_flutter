@@ -1,8 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/data/models/reminder_category.dart';
 import '../../../bloc/progress_bloc.dart';
-import 'progress_switch_row.dart';
+import 'progress_switch_item.dart';
 import 'progress_slider.dart';
 
 /// A section that contains all the control logic for working with progress of each category.
@@ -18,6 +19,7 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
   late final TabController _tabController;
   late final ProgressBloc _bloc;
   int? _desirePage;
+  bool ignorePageMooving = false;
 
   @override
   void initState() {
@@ -41,11 +43,29 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          ProgressSwitchRow(
-            selectedCategory: state.selected,
-            onTodayPressed: () => _animateToPage(0),
-            onForMonthPressed: () => _animateToPage(1),
-            onAllPressed: () => _animateToPage(2),
+          CupertinoSlidingSegmentedControl<ReminderCategory>(
+            backgroundColor: CupertinoColors.white,
+            thumbColor: state.selected.color,
+            groupValue: state.selected,
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+            onValueChanged: (category) {
+              _bloc.add(ProgressEvent.select(category!));
+              _selectPageByCategory(category);
+            },
+            children: <ReminderCategory, Widget>{
+              ReminderCategory.today: ProgressSwitchItem(
+                category: ReminderCategory.today,
+                isActive: state.selected == ReminderCategory.today,
+              ),
+              ReminderCategory.month: ProgressSwitchItem(
+                category: ReminderCategory.month,
+                isActive: state.selected == ReminderCategory.month,
+              ),
+              ReminderCategory.all: ProgressSwitchItem(
+                category: ReminderCategory.all,
+                isActive: state.selected == ReminderCategory.all,
+              ),
+            },
           ),
           AnimatedSwitcher(
             duration: const Duration(milliseconds: 250),
@@ -58,8 +78,8 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
                 : ProgressSlider(
                     reminders: state.reminders!,
                     controller: _controller,
-                    onPageChanged: _onPageChanged,
                     tabController: _tabController,
+                    onPageChanged: _onPageChanged,
                   ),
           ),
         ],
@@ -67,7 +87,17 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
     );
   }
 
-  void _onPageSelect(int index) {
+  void _onPageChanged(int index) {
+    if (ignorePageMooving) return;
+    if (_desirePage != null && index != _desirePage) return;
+    if (_desirePage != null && _desirePage == index) {
+      _desirePage = null;
+      return;
+    }
+    _selectPageByIndex(index);
+  }
+
+  void _selectPageByIndex(int index) {
     _tabController.index = index;
     return switch (index) {
       0 => _bloc.add(const ProgressEvent.select(ReminderCategory.today)),
@@ -77,23 +107,19 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
     };
   }
 
-  void _animateToPage(int index) {
-    if (index == _controller.page) return;
-    _onPageSelect(index);
-    _desirePage = index;
-    _controller.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 750),
-      curve: Curves.ease,
+  Future<void> _selectPageByCategory(ReminderCategory category) async {
+    final page = switch (category) {
+      ReminderCategory.today => 0,
+      ReminderCategory.month => 1,
+      ReminderCategory.all => 2,
+      _ => _tabController.index,
+    };
+    ignorePageMooving = true;
+    await _controller.animateToPage(
+      page,
+      curve: Curves.linear,
+      duration: Durations.long2,
     );
-  }
-
-  void _onPageChanged(int index) {
-    if (_desirePage != null && index != _desirePage) return;
-    if (_desirePage != null && _desirePage == index) {
-      _desirePage = null;
-      return;
-    }
-    _onPageSelect(index);
+    ignorePageMooving = false;
   }
 }
