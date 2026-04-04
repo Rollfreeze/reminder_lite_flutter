@@ -5,13 +5,13 @@ import '../../../../../core/style/app_typo.dart';
 
 /// A button to create new a reminder.
 class AddReminderButton extends StatelessWidget {
-  /// OnPressed callback.
-  final VoidCallback onPressed;
-
   const AddReminderButton({
     required this.onPressed,
     super.key,
   });
+
+  /// OnPressed callback.
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {

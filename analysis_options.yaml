@@ -1,45 +1,61 @@
 include: package:flutter_lints/flutter.yaml
 
-linter:
-  rules:
-    # ❗ Essential Best Practices
-    - always_declare_return_types
-    - avoid_void_async
-    - prefer_final_fields
-    - avoid_print # Use logger instead
-    - avoid_dynamic_calls
-
-    # 🚀 Performance & Efficiency
-    - unnecessary_lambdas
-    - prefer_const_constructors
-    - prefer_const_declarations
-    - avoid_unnecessary_containers
-    - use_decorated_box
-    - use_super_parameters
-
-    # 🧹 Code Style & Readability
-    - prefer_single_quotes
-    - require_trailing_commas
-    - sort_child_properties_last
-    - avoid_redundant_argument_values
-
-    # 🔐 Null Safety & Type Safety
-    - always_put_required_named_parameters_first
-    - avoid_null_checks_in_equality_operators
-    - avoid_types_on_closure_parameters
-    - avoid_returning_null
-
-    # 📌 Flutter-Specific Improvements
-    - use_key_in_widget_constructors
-    - prefer_const_constructors_in_immutables
-    - prefer_mixin
-    - avoid_positional_boolean_parameters
-    - prefer_relative_imports
-
 analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "build/**"
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
   errors:
-    prefer_single_quotes: warning
     avoid_print: error
+    invalid_annotation_target: ignore
+    prefer_single_quotes: warning
+
+linter:
+  rules:
+    # API & type safety
+    - always_declare_return_types
+    - always_put_required_named_parameters_first
+    - avoid_dynamic_calls
+    - avoid_null_checks_in_equality_operators
+    - avoid_positional_boolean_parameters
+    - avoid_print # Use logger instead
+    - avoid_types_on_closure_parameters
+    - cast_nullable_to_non_nullable
+    - prefer_final_fields
+    - prefer_final_locals
+
+    # Async & correctness
+    - avoid_redundant_argument_values
+    - avoid_void_async
+    - discarded_futures
+    - unnecessary_await_in_return
+
+    # Flutter & performance
+    - avoid_unnecessary_containers
+    - prefer_const_constructors
+    - prefer_const_constructors_in_immutables
+    - prefer_const_declarations
+    - use_colored_box
+    - use_decorated_box
+    - use_key_in_widget_constructors
+    - use_super_parameters
+
+    # Style & maintainability
+    - directives_ordering
+    - prefer_relative_imports
+    - prefer_single_quotes
+    - require_trailing_commas
+    - sort_child_properties_last
+    - sort_constructors_first
+    - unnecessary_lambdas
+
+    # Modern Dart idioms
+    - noop_primitive_operations
+    - prefer_null_aware_method_calls
+    - unnecessary_null_aware_assignments
+    - unnecessary_null_in_if_null_operators

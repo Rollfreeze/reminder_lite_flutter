@@ -1,12 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../core/data/repositories/reminder_repository.dart';
 import '../../../core/services/localization_service.dart';
 import '../../../core/services/reminder_bloc/reminder_bloc.dart';
 import '../../../core/services/reminder_service.dart';
-import '../presentation/screens/home_screen.dart';
 import '../bloc/progress_bloc.dart';
+import '../presentation/screens/home_screen.dart';
 
 /// Di wrapper for [HomeScreen].
 @RoutePage()

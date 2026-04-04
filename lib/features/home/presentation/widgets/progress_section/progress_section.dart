@@ -1,10 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/data/models/reminder_category.dart';
 import '../../../bloc/progress_bloc.dart';
-import 'progress_switch_item.dart';
 import 'progress_slider.dart';
+import 'progress_switch_item.dart';
 
 /// A section that contains all the control logic for working with progress of each category.
 class ProgressSection extends StatefulWidget {
@@ -50,7 +53,7 @@ class _ProgressSectionState extends State<ProgressSection> with TickerProviderSt
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
             onValueChanged: (category) {
               _bloc.add(ProgressEvent.select(category!));
-              _selectPageByCategory(category);
+              unawaited(_selectPageByCategory(category));
             },
             children: <ReminderCategory, Widget>{
               ReminderCategory.today: ProgressSwitchItem(

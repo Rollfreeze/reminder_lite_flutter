@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
+import '../../../../../core/data/models/reminder_category.dart';
 import '../../../../../core/style/app_colors.dart';
 import '../../../../../core/style/app_typo.dart';
-import '../../../../../core/data/models/reminder_category.dart';
 
 /// A selectable reminder category item for its progress to show.
 class ProgressSwitchItem extends StatelessWidget {
-  /// An item category.
-  final ReminderCategory category;
-
-  /// Is this item currently active.
-  final bool isActive;
-
   const ProgressSwitchItem({
     required this.category,
     required this.isActive,
     super.key,
   });
+
+  /// An item category.
+  final ReminderCategory category;
+
+  /// Is this item currently active.
+  final bool isActive;
 
   @override
   Widget build(BuildContext context) {

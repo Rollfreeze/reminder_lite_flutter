@@ -11,12 +11,11 @@ part 'reminder_state.dart';
 part 'reminder_bloc.freezed.dart';
 
 class ReminderBloc extends Bloc<ReminderEvent, ReminderState> {
-  final ReminderRepository _repository;
-
   ReminderBloc(this._repository) : super(const ReminderState()) {
     on<ReminderEvent>(_handler);
     add(const _Load());
   }
+  final ReminderRepository _repository;
 
   EventHandler<ReminderEvent, ReminderState> get _handler => (event, emit) => switch (event) {
         _Load() => _handleLoad(event, emit),

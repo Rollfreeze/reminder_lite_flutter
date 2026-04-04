@@ -24,15 +24,15 @@ enum ReminderCategory {
     color: AppColors.gray5,
   );
 
-  final int code;
-  final IconData icon;
-  final Color color;
-
   const ReminderCategory({
     required this.code,
     required this.icon,
     required this.color,
   });
+
+  final int code;
+  final IconData icon;
+  final Color color;
 
   /// Localized name based on the current locale.
   String get name => switch (this) {

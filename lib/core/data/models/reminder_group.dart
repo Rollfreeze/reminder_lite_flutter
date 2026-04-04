@@ -3,6 +3,12 @@ import 'reminder.dart';
 import 'reminder_category.dart';
 
 class ReminderGroup {
+  const ReminderGroup({
+    required this.category,
+    required this.reminders,
+    required this.completedAmount,
+  });
+
   /// Reminders category of the Group.
   final ReminderCategory category;
 
@@ -11,12 +17,6 @@ class ReminderGroup {
 
   /// Amount of completed reminders in the current group.
   final int completedAmount;
-
-  const ReminderGroup({
-    required this.category,
-    required this.reminders,
-    required this.completedAmount,
-  });
 
   /// The Group's reminders' length.
   int get length => reminders.length;

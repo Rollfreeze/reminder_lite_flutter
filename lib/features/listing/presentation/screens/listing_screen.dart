@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,9 +12,9 @@ import '../widgets/reminder_listing_item.dart';
 
 @RoutePage()
 class ListingScreen extends StatelessWidget {
-  final ReminderCategory category;
-
   const ListingScreen({required this.category, super.key});
+
+  final ReminderCategory category;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,9 @@ class ListingScreen extends StatelessWidget {
         child: BlocConsumer<ReminderBloc, ReminderState>(
           listener: (context, state) {
             final error = state.error;
-            if (error != null) DialogService.showErrorMessage(error, context);
+            if (error != null) {
+              unawaited(DialogService.showErrorMessage(error, context));
+            }
           },
           builder: (context, state) {
             final group = state.reminders?.getBy(category);

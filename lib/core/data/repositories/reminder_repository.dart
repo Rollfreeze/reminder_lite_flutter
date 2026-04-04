@@ -6,9 +6,8 @@ import '../models/reminder_collection.dart';
 import '../models/result.dart';
 
 class ReminderRepository {
-  final ReminderService _reminderService;
-
   const ReminderRepository(this._reminderService);
+  final ReminderService _reminderService;
 
   Future<Result<ReminderCollection>> getReminders() async {
     try {

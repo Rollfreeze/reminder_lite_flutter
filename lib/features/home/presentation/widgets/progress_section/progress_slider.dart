@@ -7,6 +7,14 @@ import '../../../../../core/style/app_shadows.dart';
 
 /// A slider section with all progrss circles and theirs current tab indicator.
 class ProgressSlider extends StatelessWidget {
+  const ProgressSlider({
+    required this.reminders,
+    required this.controller,
+    required this.tabController,
+    required this.onPageChanged,
+    super.key,
+  });
+
   /// Reminders for appropriate circles.
   final ReminderCollection reminders;
 
@@ -18,14 +26,6 @@ class ProgressSlider extends StatelessWidget {
 
   /// When changes a current circle page.
   final ValueChanged<int> onPageChanged;
-
-  const ProgressSlider({
-    required this.reminders,
-    required this.controller,
-    required this.tabController,
-    required this.onPageChanged,
-    super.key,
-  });
 
   @override
   Widget build(BuildContext context) {

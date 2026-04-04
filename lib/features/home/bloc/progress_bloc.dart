@@ -10,13 +10,13 @@ part 'progress_state.dart';
 part 'progress_bloc.freezed.dart';
 
 class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
-  final ReminderBloc _reminderBloc;
-  late final StreamSubscription<ReminderState> _subscription;
-
   ProgressBloc(this._reminderBloc) : super(const ProgressState()) {
     on<ProgressEvent>(_handler);
     _subscription = _reminderBloc.stream.listen((state) => add(_Actualize(state.reminders)));
   }
+
+  final ReminderBloc _reminderBloc;
+  late final StreamSubscription<ReminderState> _subscription;
 
   EventHandler<ProgressEvent, ProgressState> get _handler => (event, emit) => switch (event) {
         _Select() => _handleSelect(event, emit),
@@ -32,8 +32,8 @@ class ProgressBloc extends Bloc<ProgressEvent, ProgressState> {
       );
 
   @override
-  Future<void> close() {
-    _subscription.cancel();
+  Future<void> close() async {
+    await _subscription.cancel();
     return super.close();
   }
 }

@@ -6,6 +6,13 @@ import '../../../../core/style/app_typo.dart';
 
 /// A Reminder element of the listing view.
 class ReminderListingItem extends StatelessWidget {
+  const ReminderListingItem({
+    required this.reminder,
+    required this.onCompletionToggle,
+    required this.onTap,
+    super.key,
+  });
+
   /// Reminder element.
   final Reminder reminder;
 
@@ -14,13 +21,6 @@ class ReminderListingItem extends StatelessWidget {
 
   /// Action on tap the available space except for checbox.
   final VoidCallback onTap;
-
-  const ReminderListingItem({
-    required this.reminder,
-    required this.onCompletionToggle,
-    required this.onTap,
-    super.key,
-  });
 
   @override
   Widget build(BuildContext context) {
